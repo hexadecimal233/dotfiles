@@ -1,0 +1,5 @@
+result*
+.secrets/
+secrets/*.age
+*.bak
+*.bak-*
