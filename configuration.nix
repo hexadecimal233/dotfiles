@@ -21,8 +21,6 @@
 
   environment.systemPackages = with pkgs; [
     # system tools
-    zoxide
-    tmux
     wget
     curl
     rsync
@@ -36,10 +34,6 @@
     docker-compose
 
     # file tools
-    fzf
-    ripgrep
-    eza
-    fd
     zip
     unzip
     # efibootmgr
@@ -47,13 +41,8 @@
     # utils
     bc
     alejandra
-    starship
     ffmpeg
     yt-dlp
-
-    # cool stuff
-    fastfetch
-    hyfetch
 
     # system monitoring
     powertop
@@ -71,6 +60,10 @@
     ethtool
     iperf3
   ];
+
+  # Zsh 设为用户默认 shell
+  programs.zsh.enable = true;
+  users.users.hexzii.shell = pkgs.zsh;
 
   system.stateVersion = "25.11";
 }
