@@ -79,6 +79,7 @@
     };
 
     shellAliases = {
+      cd = "z";
       ls = "eza";
       ll = "eza -l";
       la = "eza -la";
