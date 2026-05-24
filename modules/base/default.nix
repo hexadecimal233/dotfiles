@@ -9,7 +9,7 @@
   users.users.hexzii = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.zsh; # set up user shell
+    shell = pkgs.fish; # set up user shell
   };
 
   time.timeZone = "Asia/Shanghai";
@@ -22,7 +22,7 @@
     options = "--delete-older-than 7d";
   };
 
-  programs.zsh.enable = true; # use system shell
+  programs.fish.enable = true; # use system shell
   programs.nix-ld.enable = true; # support for dynamically linked programs
 
   # ==================== 核心系统包 ====================

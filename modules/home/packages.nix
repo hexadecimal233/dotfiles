@@ -5,7 +5,6 @@
     gnupg
     sops
     uv
-    zsh
     bat
 
     # 工具
@@ -20,8 +19,4 @@
     fastfetch
     hyfetch
   ];
-
-  programs.bat = {
-    enable = true;
-  };
 }
