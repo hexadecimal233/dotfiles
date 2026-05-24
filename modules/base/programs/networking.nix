@@ -3,5 +3,7 @@
   environment.systemPackages = with pkgs; [
     ethtool
     iperf3
+    dnsutils
+    net-tools
   ];
 }
