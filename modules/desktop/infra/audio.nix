@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   security.rtkit.enable = true;
+  hardware.pulseaudio.enable = false;
 
   services = {
     pulseaudio.enable = false;
@@ -13,14 +14,16 @@
         support32Bit = true;
       };
 
-      # wireplumber.enable = true;
+      wireplumber.enable = true;
     };
   };
 
-  # ==================== 额外音频工具 ====================
+  # tools
   environment.systemPackages = with pkgs; [
-    pavucontrol      # PulseAudio 音量控制 GUI（对 PipeWire 也兼容）
-    # helvum           # PipeWire 连线图 GUI
-    # easyeffects      # 音频均衡器 / 滤镜（PipeWire 版）
+    pulseaudio # pulseaudio toolkit
+    pavucontrol # volume ctrl
+    crosspipe # router
+    easyeffects # mixer
+    openmeters # TODO(update): wait for upstream merge
   ];
 }

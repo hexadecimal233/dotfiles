@@ -1,12 +1,13 @@
-# 开发工具包
+# essential system stuff
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    git
-    vim
-    gh
+    # composing
+    gnumake
+    just # make but better
     docker-compose
+
+    # programming
     nodejs_24
-    alejandra
     nixd
     just-lsp
   ];

@@ -12,14 +12,10 @@
         ./git.nix
         ./gpg.nix
         ./packages.nix
+        ./nvim.nix
       ];
 
-      home.sessionVariables = {
-        EDITOR = "vim";
-        VISUAL = "vim";
-      };
-
-      home.stateVersion = "25.11";
+      home.stateVersion = "25.11"; # home.stateVersion = osConfig.system.nixos.release
     };
   };
 }

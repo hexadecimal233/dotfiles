@@ -1,4 +1,3 @@
-# ==================== Shell: Fish ====================
 {...}: {
   programs.fish = {
     enable = true;

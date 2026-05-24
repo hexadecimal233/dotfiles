@@ -1,21 +1,41 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # 系统工具 — 用户级别
+    # system tools
     tmux
+    sops # todo: configure secrets
     gnupg
-    sops
-    uv
-    bat
+    uv # added
 
-    # 工具
-    starship
+    # data
+    bc
+    jq
+    yq
+
+    # file tools
+    hexyl
+    lnav
+    ncdu
+    file
     eza
+    bat
     ripgrep
     fd
     fzf
+
+    # utils
+    ffmpeg
     yt-dlp
 
-    # 美化
+    # development
+    gh
+    alejandra
+
+    # network
+    pv
+    whois
+
+    # beautify
+    hollywood
     fastfetch
     hyfetch
   ];

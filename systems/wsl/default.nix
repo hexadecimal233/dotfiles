@@ -1,5 +1,3 @@
-# WSL 系统实例
-# 通过 self.nixosModules 统一引用，避免散乱的相对路径导入
 {
   self,
   nixos-wsl,

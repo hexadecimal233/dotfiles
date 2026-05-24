@@ -13,10 +13,10 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = ["Maple Mono NF CN"]; # 终端等宽字体
-      sansSerif = ["Noto Sans CJK SC"]; # 无衬线字体（含中文）
-      serif = ["Noto Serif CJK SC"]; # 衬线字体（含中文）
-      emoji = ["Noto Color Emoji"]; # 表情符号字体
+      monospace = ["Maple Mono NF CN"];
+      sansSerif = ["Noto Sans CJK SC"];
+      serif = ["Noto Serif CJK SC"];
+      emoji = ["Noto Color Emoji"];
     };
   };
 }
