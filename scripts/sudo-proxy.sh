@@ -1,7 +1,8 @@
+#!/usr/bin/env bash
 env_args=()
 for var in http_proxy https_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY no_proxy; do
   if [[ -n "${!var:-}" ]]; then
-    env_args+=("$var='${!var}'")
+    env_args+=("$var=${!var}")
   fi
 done
 

@@ -5,7 +5,7 @@
   "nix.serverSettings": {
     "nixd": {
       "formatting": {
-        "command": ["alejandra"] 
+        "command": ["alejandra"]
       }
     }
   }

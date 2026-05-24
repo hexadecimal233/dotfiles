@@ -1,11 +1,21 @@
+# WSL 系统实例
+# 通过 self.nixosModules 统一引用，避免散乱的相对路径导入
 {
-  wsl,
+  self,
+  nixos-wsl,
   ...
 }: {
   imports = [
-    wsl.nixosModules.default
+    nixos-wsl.nixosModules.default
+    self.nixosModules.base
+    self.nixosModules.home
+    self.nixosModules.desktop-infra
   ];
 
-  wsl.enable = true;
-  wsl.defaultUser = "hexzii";
+  config = {
+    wsl.enable = true;
+    wsl.defaultUser = "hexzii";
+    wsl.useWindowsDriver = true;
+    # FIXME: why tf gpu rendering does not work
+  };
 }

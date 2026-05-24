@@ -1,18 +1,6 @@
-# Build the WSL NixOS configuration
-build-wsl:
-    nixos-rebuild build --flake .#wsl
-
-# Switch to the WSL NixOS configuration (requires sudo)
+# Build and switch to the WSL configuration
 switch-wsl:
-    sudo nixos-rebuild switch --flake .#wsl
-
-# Build the physical machine NixOS configuration
-build-physical:
-    nixos-rebuild build --flake .#physical
-
-# Switch to the physical machine configuration (requires sudo)
-switch-physical:
-    sudo nixos-rebuild switch --flake .#physical
+    nixos-rebuild switch --flake .#wsl
 
 # Update the flake lockfile
 update:
@@ -26,3 +14,7 @@ check:
 gc:
     sudo nix-collect-garbage --delete-old
     nix-collect-garbage --delete-old
+
+# Format files
+fmt:
+    alejandra .
