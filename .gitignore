@@ -1,5 +1,5 @@
 result*
-.secrets/
-secrets/*.age
+.DS_Store
+.direnv/
 *.bak
 *.bak-*

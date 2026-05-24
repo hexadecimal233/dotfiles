@@ -121,16 +121,25 @@
       user.name = "hexzii";
       user.email = "hexzii@nichijou.moe";
       init.defaultBranch = "main";
-      pull.rebase = true;
+      http.postBuffer = 524288000;
+      signing.signByDefault = true;
     };
   };
 
   programs.lazygit.enable = true;
 
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    pinentry.package = pkgs.pinentry-curses; # 终端
+  };
+
   # ==================== 用户级包（从 configuration.nix 迁来） ====================
   home.packages = with pkgs; [
     # 系统工具 — 用户级别
     tmux
+    gnupg
+    uv
 
     # 文件工具（原来在 systemPackages）
     ripgrep
