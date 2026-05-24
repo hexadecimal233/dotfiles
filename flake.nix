@@ -22,17 +22,7 @@
     ...
   }: {
     nixosModules = {
-      # 基础系统配置：用户、时区、Nix 设置、核心包
-      base = import ./modules/base;
-
-      # 桌面基础设施：音频、字体
-      desktop-infra = import ./modules/desktop/infra;
-
-      # 桌面应用
-      desktop-apps = import ./modules/desktop/apps;
-
-      # Home-manager 用户环境
-      home = import ./modules/home;
+      profile = import ./modules/profile;
     };
 
     nixosConfigurations = {

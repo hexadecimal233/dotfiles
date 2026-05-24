@@ -1,9 +1,11 @@
-{...}: {
+{lib, config, ...}: {
   imports = [
     ./audio.nix
     ./fonts.nix
     ./graphics.nix
   ];
 
-  programs.dconf.enable = true;
+  config = lib.mkIf config.hexzii.profile.desktopInfra {
+    programs.dconf.enable = true;
+  };
 }

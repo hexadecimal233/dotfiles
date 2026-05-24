@@ -6,12 +6,19 @@
 }: {
   imports = [
     nixos-wsl.nixosModules.default
-    self.nixosModules.base
-    self.nixosModules.home
-    self.nixosModules.desktop-infra
+    self.nixosModules.profile
   ];
 
   config = {
+    # === 编排选项 ===
+    hexzii.profile = {
+      desktopInfra = true;
+      home = true;
+    };
+
+    # WSL 下强制使用 PulseAudio（WSLg 提供 PA server）
+    hexzii.desktop.infra.audio.usePulse = true;
+
     wsl.enable = true;
     wsl.defaultUser = "hexzii";
     wsl.useWindowsDriver = true; # enable windows gpu driver support
