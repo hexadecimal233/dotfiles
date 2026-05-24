@@ -72,6 +72,7 @@
 
   # Zsh 设为用户默认 shell
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   system.stateVersion = "25.11";
 }

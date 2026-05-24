@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }: {
   # ==================== Shell: Zsh ====================
@@ -12,10 +10,6 @@
     syntaxHighlighting.enable = true;
 
     initContent = ''
-      # ---- Editor ----
-      export EDITOR="vim"
-      export VISUAL="vim"
-
       # ---- Proxy (从 .bashrc 迁移) ----
       _PROXY_DEFAULT="http://192.168.2.149:10808"
       _PROXY_FILE="''${HOME}/.cache/proxy-state"
@@ -61,6 +55,8 @@
       ];
     };
 
+    # FIXME: all zsh integrations fails
+    # i may have to hardcode em here ...
     shellAliases = {
       cd = "z";
       ls = "eza";
@@ -91,7 +87,6 @@
   };
 
   programs.bat.enable = true;
-  programs.fzf.enable = true;
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
