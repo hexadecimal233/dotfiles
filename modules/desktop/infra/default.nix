@@ -3,5 +3,6 @@
   imports = [
     ./audio.nix
     ./fonts.nix
+    ./graphics.nix
   ];
 }

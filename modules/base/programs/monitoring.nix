@@ -9,9 +9,6 @@
     lshw
     pciutils
     usbutils
-    clinfo
-    mesa-demos
-    vulkan-tools
     dmidecode
     lm_sensors
   ];
