@@ -25,23 +25,6 @@
         source "$_PROXY_FILE"
       fi
 
-      # sudo 时携带 proxy 环境变量
-      sudoe() {
-        local proxy_vars=(
-          http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
-          NO_PROXY   no_proxy
-        )
-        local env_args=()
-        for var in "''${proxy_vars[@]}"; do
-          [[ -n "''${(P)var}" ]] && env_args+=("$var=''${(P)var}")
-        done
-        if [[ "''${#env_args[@]}" -gt 0 ]]; then
-          command sudo "''${env_args[@]}" "$@"
-        else
-          command sudo "$@"
-        fi
-      }
-
       # 开启代理 (持久化到 ~/.cache/proxy-state)
       proxy_on() {
         local proxy="''${1:-$_PROXY_DEFAULT}"
@@ -139,7 +122,9 @@
     # 系统工具 — 用户级别
     tmux
     gnupg
+    sops
     uv
+    zsh
 
     # 文件工具（原来在 systemPackages）
     ripgrep

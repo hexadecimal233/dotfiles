@@ -22,24 +22,7 @@
         specialArgs = {wsl = nixos-wsl;};
         system = "x86_64-linux";
         modules = [
-          ./modules/wsl/default.nix
-          # ./modules/desktop/default.nix
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.hexzii = import ./modules/home;
-            };
-          }
-        ];
-      };
-
-      physical = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hardware-configuration.nix
+          ./systems/wsl/default.nix
           # ./modules/desktop/default.nix
           ./configuration.nix
           home-manager.nixosModules.home-manager

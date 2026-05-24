@@ -7,6 +7,7 @@
   users.users.hexzii = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
   };
 
   time.timeZone = "Asia/Shanghai";
@@ -25,6 +26,7 @@
     curl
     rsync
     gnumake
+    just
     jq
 
     # infra tools
@@ -32,15 +34,19 @@
     vim
     gh
     docker-compose
+    nodejs_24
 
     # file tools
     zip
     unzip
     # efibootmgr
 
+    # devel
+    alejandra
+    nixd
+
     # utils
     bc
-    alejandra
     ffmpeg
     yt-dlp
 
@@ -59,11 +65,13 @@
     # networking
     ethtool
     iperf3
+
+    # sudo with proxy
+    (writeShellScriptBin "sudo-proxy" (builtins.readFile ./scripts/sudo-proxy.sh))
   ];
 
   # Zsh 设为用户默认 shell
   programs.zsh.enable = true;
-  users.users.hexzii.shell = pkgs.zsh;
 
   system.stateVersion = "25.11";
 }
