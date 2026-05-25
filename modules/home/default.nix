@@ -1,4 +1,9 @@
-{lib, config, home-manager, ...}: {
+{
+  lib,
+  config,
+  home-manager,
+  ...
+}: {
   imports = [
     home-manager.nixosModules.home-manager
   ];
@@ -12,6 +17,7 @@
           ./shell.nix
           ./git.nix
           ./gpg.nix
+          ./dev.nix
           ./packages.nix
           ./nvim.nix
         ];

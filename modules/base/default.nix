@@ -15,7 +15,7 @@
   time.timeZone = "UTC";
   i18n.defaultLocale = "zh_CN.UTF-8";
 
-  nix.settings.experimental-features = ["nix-command" "flakes"]; # enable experimental features
+  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"]; # enable experimental features
   nix.gc = {
     automatic = true;
     dates = "weekly";

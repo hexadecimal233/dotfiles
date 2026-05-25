@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
 
@@ -62,4 +62,10 @@
     enableFishIntegration = true;
     nix-direnv.enable = true;
   };
+
+  # multiplexing
+  home.packages = with pkgs; [
+    tmux
+    zellij
+  ];
 }

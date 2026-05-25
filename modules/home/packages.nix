@@ -1,10 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # system tools
-    tmux
     sops # todo: configure secrets
     gnupg
-    uv # added
 
     # data
     bc
@@ -12,6 +10,7 @@
     yq
 
     # file tools
+    ouch
     hexyl
     lnav
     ncdu
@@ -25,10 +24,6 @@
     # utils
     ffmpeg
     yt-dlp
-
-    # development
-    gh
-    alejandra
 
     # network
     pv

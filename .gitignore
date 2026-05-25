@@ -3,3 +3,6 @@ result*
 .direnv/
 *.bak
 *.bak-*
+
+# some sketches
+temp.md

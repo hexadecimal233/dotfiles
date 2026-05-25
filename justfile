@@ -15,6 +15,10 @@ test config:
 update:
     nix flake update
 
+# Analyze current system tree
+tree:
+    nix run nixpkgs#nix-tree /run/current-system
+
 # Update and rebuild in one command
 refresh config:
     nix flake update
@@ -32,7 +36,6 @@ clean-boot:
 # Show current generation metadata
 info:
     nixos-rebuild list-generations
-    echo ""
     nix flake metadata
 
 # Garbage collect old Nix generations
@@ -44,14 +47,13 @@ gc:
 fmt:
     alejandra .
 
-# Format and check formatting
-fmt-check:
-    alejandra --check .
+# Trim the FS (for WS: mainly)
+fstrim:
+    sudo fstrim -v /
 
 # Show flake status/diff
 status:
     nix flake show
-    echo ""
     nix store diff-closures /run/current-system ./result
 
 # Rollback to previous generation

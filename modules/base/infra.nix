@@ -6,9 +6,7 @@
     just # make but better
     docker-compose
 
-    # programming
-    nodejs_24
-    nixd
-    just-lsp
+    # scripting
+    python314
   ];
 }

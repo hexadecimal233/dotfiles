@@ -1,6 +1,6 @@
 # 编排入口 — 系统只需导入此模块 + 配置选项即可，
 # 无需手动逐个导入 base / desktop-infra / apps / home。
-{ lib, ... }: {
+{lib, ...}: {
   imports = [
     ../base
     ../desktop/infra
