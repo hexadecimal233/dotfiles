@@ -15,12 +15,21 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     nixos-wsl,
+    sops-nix,
     home-manager,
     ...
   }: {
@@ -31,7 +40,7 @@
     nixosConfigurations = {
       wsl = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self nixos-wsl home-manager;
+          inherit self nixos-wsl home-manager sops-nix;
         };
         system = "x86_64-linux";
         modules = [

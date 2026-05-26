@@ -2,10 +2,12 @@
   self,
   nixos-wsl,
   pkgs,
+  # sops-nix,
   ...
 }: {
   imports = [
     nixos-wsl.nixosModules.default
+    # sops-nix.nixosModules.sops
     self.nixosModules.profile
   ];
 

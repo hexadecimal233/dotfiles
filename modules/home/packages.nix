@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # system tools
-    sops # todo: configure secrets
+    age
+    sops
     gnupg
 
     # data
@@ -11,6 +12,7 @@
 
     # file tools
     ouch
+    yazi
     hexyl
     lnav
     ncdu
