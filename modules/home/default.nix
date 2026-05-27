@@ -19,7 +19,8 @@
           ./gpg.nix
           ./dev.nix
           ./packages.nix
-          ./nvim.nix
+          # ./nvim.nix
+          ./helix.nix
         ];
 
         home.stateVersion = "25.11"; # home.stateVersion = osConfig.system.nixos.release

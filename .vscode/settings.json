@@ -5,7 +5,15 @@
   "nix.serverSettings": {
     "nixd": {
       "formatting": {
-        "command": ["alejandra"]
+        "command": [
+          "alejandra" // use alejandra instead of nixfmt
+        ]
+      },
+      "options": {
+        "home-manager": {
+          // use "wsl" as our source for home-manager language features
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.wsl.options.home-manager.users.type.getSubOptions []"
+        }
       }
     }
   }

@@ -4,6 +4,7 @@
     age
     sops
     gnupg
+    chezmoi
 
     # data
     pv

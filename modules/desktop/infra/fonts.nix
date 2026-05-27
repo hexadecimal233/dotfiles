@@ -3,7 +3,6 @@
     maple-mono.NF-CN-unhinted
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-serif
     noto-fonts-cjk-serif
     # source-han-sans
     # source-han-serif
