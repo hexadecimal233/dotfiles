@@ -3,8 +3,12 @@
     maple-mono.NF-CN-unhinted
     noto-fonts
     noto-fonts-cjk-sans
+    noto-fonts-serif
+    noto-fonts-cjk-serif
+    # source-han-sans
+    # source-han-serif
     noto-fonts-color-emoji
-    fira-code
+    # fira-code
     liberation_ttf
   ];
 
@@ -14,9 +18,9 @@
     enable = true;
     defaultFonts = {
       monospace = ["Maple Mono NF CN"];
+      emoji = ["Noto Color Emoji"];
       sansSerif = ["Noto Sans CJK SC"];
       serif = ["Noto Serif CJK SC"];
-      emoji = ["Noto Color Emoji"];
     };
   };
 }

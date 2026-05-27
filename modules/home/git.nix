@@ -3,11 +3,11 @@
     enable = true;
     settings = {
       user.name = "hexzii";
-      user.email = "hexzii@nichijou.moe";
+      user.email = "hexzii${"@"}nichijou.moe";
       init.defaultBranch = "main";
       http.postBuffer = 524288000;
       signing.signByDefault = true;
-      aliases = {
+      alias = {
         # basic
         st = "status -sb";
         co = "checkout";

@@ -6,6 +6,7 @@
     gnupg
 
     # data
+    pv
     bc
     jq
     yq
@@ -28,11 +29,10 @@
     yt-dlp
 
     # network
-    pv
     whois
 
     # beautify
-    hollywood
+    # hollywood
     fastfetch
     hyfetch
   ];
