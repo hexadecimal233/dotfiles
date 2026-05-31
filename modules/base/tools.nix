@@ -8,6 +8,7 @@
     unzip
 
     # monitoring
+    psmisc
     powertop
     htop
     atop

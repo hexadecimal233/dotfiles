@@ -24,7 +24,8 @@
     wsl.enable = true;
     wsl.defaultUser = "hexzii";
     wsl.useWindowsDriver = true; # enable windows gpu driver support
-
+    wsl.wslConf.interop.appendWindowsPath = false; # prevent windows path lagging system down
+    
     hardware.graphics = {
       enable = true;
       enable32Bit = true; # 32 位兼容（Wine 什么的）

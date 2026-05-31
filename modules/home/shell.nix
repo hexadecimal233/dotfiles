@@ -41,6 +41,8 @@
       la = "eza -la";
       lt = "eza --tree";
       top = "btop";
+      tokscale = "bunx tokscale@latest"; # count tokens
+      maleme = "bunx maleme@latest"; # fxxk
     };
   };
 
@@ -63,9 +65,12 @@
     nix-direnv.enable = true;
   };
 
-  # multiplexing
   home.packages = with pkgs; [
+    # multiplexing
     tmux
     zellij
+
+    # scripting
+    nushell
   ];
 }

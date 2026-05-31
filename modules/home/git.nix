@@ -7,6 +7,8 @@
       init.defaultBranch = "main";
       http.postBuffer = 524288000;
       signing.signByDefault = true;
+      # just manually added
+      credential."https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
       alias = {
         # basic
         st = "status -sb";
@@ -43,7 +45,15 @@
 
   home.packages = with pkgs; [
     difftastic
+    gh
   ];
+
+  # TODO: maybe move to dotfiles
+  #  programs.gh = {
+  #   enable = true;
+  #   gitCredentialHelper.enable = true;  
+  # };
+
 
   programs.lazygit.enable = true;
   programs.delta = {
