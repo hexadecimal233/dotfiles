@@ -31,6 +31,7 @@
 
     # network
     whois
+    asn
 
     # beautify
     # hollywood
