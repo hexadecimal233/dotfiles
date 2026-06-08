@@ -1,8 +1,7 @@
 {...}: {
+  # TODO: might use dotfiles manager (chezmoi) later
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    # we do not explicitly manage config here
-    # TODO: use dotfiles later
   };
 }

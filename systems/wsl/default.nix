@@ -2,34 +2,37 @@
   self,
   nixos-wsl,
   pkgs,
-  # sops-nix,
   ...
 }: {
   imports = [
     nixos-wsl.nixosModules.default
-    # sops-nix.nixosModules.sops
     self.nixosModules.profile
   ];
 
   config = {
-    # === 编排选项 ===
-    hexzii.profile = {
-      desktopInfra = true;
-      home = true;
+    # hex options
+    hex.system.enable = true;
+    hex.desktop = {
+      enable = true;
+      audio = {
+        enable = true;
+        usePulse = true; # WSL uses WSLg PulseAudio
+      };
+      fonts.enable = true;
+      hyprland.enable = false; # WSL has no Hyprland
     };
+    hex.shell.enable = true;
+    hex.git.enable = true;
+    hex.editor.enable = true;
+    hex.dev.enable = true;
+    hex.packages.enable = true;
+    hex.gpg.enable = true;
 
-    # WSL 下强制使用 PulseAudio（WSLg 提供 PA server）
-    hexzii.desktop.infra.audio.usePulse = true;
-
+    # WSL-specific (not abstracted, written directly)
     wsl.enable = true;
     wsl.defaultUser = "hexzii";
     wsl.useWindowsDriver = true; # enable windows gpu driver support
     wsl.wslConf.interop.appendWindowsPath = false; # prevent windows path lagging system down
-    
-    hardware.graphics = {
-      enable = true;
-      enable32Bit = true; # 32 位兼容（Wine 什么的）
-    };
 
     # fixes WSLg libd3d12.so and NVIDIA WSL driver libssl.so deps
     environment.sessionVariables = let

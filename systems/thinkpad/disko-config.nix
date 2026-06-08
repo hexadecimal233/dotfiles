@@ -2,13 +2,13 @@
   disko.devices = {
     disk.main = {
       type = "disk";
-      device = "/dev/disk/by-id/nvme-SAMSUNG_MZAL81T0HFLB-00BLL_S7XTNX0L320611"; # 安装时会被实际路径替换
+      device = "/dev/nvme0n1";
       content = {
         type = "gpt";
         partitions = {
           boot = {
             size = "512M";
-            type = "EF00"; # ESP 类型代码
+            type = "EF00";
             content = {
               type = "filesystem";
               format = "vfat";
@@ -20,19 +20,19 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = [ "-f" ];  # 强制格式化
+              extraArgs = ["-f"];
               subvolumes = {
                 "@root" = {
                   mountpoint = "/";
-                  mountOptions = [ ];
+                  mountOptions = [];
                 };
                 "@nix" = {
                   mountpoint = "/nix";
-                  mountOptions = [ "compress=zstd" "noatime" ];
+                  mountOptions = ["compress=zstd" "noatime"];
                 };
                 "@home" = {
                   mountpoint = "/home";
-                  mountOptions = [ "compress=zstd" ];
+                  mountOptions = ["compress=zstd"];
                 };
                 "@swap" = {
                   mountpoint = "/.swapvol";

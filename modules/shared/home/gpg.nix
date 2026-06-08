@@ -2,6 +2,6 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentry.package = pkgs.pinentry-curses; # terminal ui
+    pinentry.package = pkgs.pinentry-curses;
   };
 }

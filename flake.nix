@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nur = {
-      url = "github:nix-community/NUR";
+      url = "github:nix-community/NUR"; # unused: reserved for future use
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
@@ -20,12 +20,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     denix = {
-      url = "github:yunfachi/denix";
+      url = "github:yunfachi/denix"; # unused: reserved for future use
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
     sops-nix = {
-      url = "github:Mic92/sops-nix";
+      url = "github:Mic92/sops-nix"; # unused: reserved for future use
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -34,9 +34,8 @@
     self,
     nixpkgs,
     nixos-wsl,
-    sops-nix,
     home-manager,
-    disko,  # 添加 disko
+    disko,
     ...
   }: {
     nixosModules = {
@@ -46,7 +45,7 @@
     nixosConfigurations = {
       wsl = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self nixos-wsl home-manager sops-nix;
+          inherit self nixos-wsl home-manager;
         };
         system = "x86_64-linux";
         modules = [
@@ -54,14 +53,13 @@
         ];
       };
 
-      # 新增 ThinkPad 配置
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager sops-nix disko;
+          inherit self home-manager disko;
         };
         system = "x86_64-linux";
         modules = [
-          disko.nixosModules.disko  # 启用 disko 模块
+          disko.nixosModules.disko
           ./systems/thinkpad/default.nix
         ];
       };

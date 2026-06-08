@@ -1,4 +1,4 @@
-# tools & stuff used in terminal environment
+# system-level tools
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # files
@@ -22,7 +22,7 @@
     usbutils
     dmidecode
     lm_sensors
-    # efibootmgr
+    efibootmgr
 
     # network
     rustnet
@@ -32,7 +32,7 @@
     iperf3
     dnsutils
     net-tools
-    rsync # added but currently unused
+    rsync
 
     # graphics
     vulkan-tools

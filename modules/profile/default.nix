@@ -1,18 +1,19 @@
-# 编排入口 — 系统只需导入此模块 + 配置选项即可，
-# 无需手动逐个导入 base / desktop-infra / apps / home。
+# Orchestration: imports all hex.* modules
 {lib, ...}: {
   imports = [
-    ../base
-    ../desktop/infra
-    ../desktop/apps
-    ../home
+    # home-manager
+    ./home.nix
+
+    # shared (cross-platform, home-manager)
+    ../shared/home/shell.nix
+    ../shared/home/git.nix
+    ../shared/home/editor.nix
+    ../shared/home/dev.nix
+    ../shared/home/packages.nix
+    ../shared/home/gpg.nix
+
+    # nixos (system-level)
+    ../nixos/system
+    ../nixos/desktop
   ];
-
-  options.hexzii.profile = {
-    desktopInfra = lib.mkEnableOption "desktop infrastructure (audio, fonts, graphics, etc.)";
-
-    desktopApps = lib.mkEnableOption "desktop applications";
-
-    home = lib.mkEnableOption "home-manager user environment";
-  };
 }
