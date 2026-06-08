@@ -7,6 +7,7 @@
 }: {
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-t14
+    nixos-hardware.nixosModules.common-gpu-intel
     self.nixosModules.profile
     disko.nixosModules.disko
     ./disko-config.nix
@@ -36,12 +37,8 @@
     hex.packages.enable = true;
     hex.gpg.enable = true;
 
-    # ThinkPad-specific (not abstracted)
-    # Panther Lake Xe driver: disable Panel Replay to prevent display freeze
-    # See https://github.com/basecamp/omarchy/issues/5573
-    boot.kernelParams = [
-      "xe.enable_panel_replay=0"
-    ];
+    # Use latest kernel for Xe driver fixes (Linux 7.0)
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
     boot.loader = {
       systemd-boot.enable = true;
