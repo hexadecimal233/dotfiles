@@ -15,6 +15,31 @@ in {
       xwayland.enable = true;
     };
 
+    # system-level hyprland config
+    # user's ~/.config/hypr/hyprland.conf overrides this at runtime
+    environment.etc."hypr/hyprland.conf".text = ''
+      $terminal = ghostty
+      $fileManager = nautilus
+      $menu = wofi --show drun
+
+      # keybindings
+      bind = SUPER, Q, exec, $terminal
+      bind = SUPER, E, exec, $fileManager
+      bind = SUPER, SPACE, exec, $menu
+
+      # essential env
+      env = XCURSOR_SIZE,24
+
+      # general
+      misc {
+        disable_hyprland_logo = true
+        disable_splash_rendering = true
+      }
+    '';
+
+    # tell Hyprland where to find the system config
+    environment.sessionVariables.HYPRLAND_CONFIG = "/etc/hypr/hyprland.conf";
+
     # display manager for selecting Hyprland at login
     services.displayManager.sddm = {
       enable = true;

@@ -37,6 +37,12 @@
     hex.gpg.enable = true;
 
     # ThinkPad-specific (not abstracted)
+    # Panther Lake Xe driver: disable Panel Replay to prevent display freeze
+    # See https://github.com/basecamp/omarchy/issues/5573
+    boot.kernelParams = [
+      "xe.enable_panel_replay=0"
+    ];
+
     boot.loader = {
       systemd-boot.enable = true;
       # 或者使用 GRUB（如果需要双系统，可以改用这个）
