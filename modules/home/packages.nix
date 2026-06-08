@@ -27,6 +27,7 @@
 
     # utils
     ffmpeg
+    mediainfo
     yt-dlp
 
     # network
