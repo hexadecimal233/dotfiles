@@ -23,7 +23,6 @@
       url = "github:yunfachi/denix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-      # inputs.nix-darwin.follows = "nix-darwin";
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -37,6 +36,7 @@
     nixos-wsl,
     sops-nix,
     home-manager,
+    disko,  # 添加 disko
     ...
   }: {
     nixosModules = {
@@ -51,6 +51,18 @@
         system = "x86_64-linux";
         modules = [
           ./systems/wsl/default.nix
+        ];
+      };
+
+      # 新增 ThinkPad 配置
+      thinkpad = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit self home-manager sops-nix disko;
+        };
+        system = "x86_64-linux";
+        modules = [
+          disko.nixosModules.disko  # 启用 disko 模块
+          ./systems/thinkpad/default.nix
         ];
       };
     };

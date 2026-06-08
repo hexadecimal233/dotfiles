@@ -5,4 +5,7 @@ result*
 *.bak-*
 
 # some sketches
-temp.md
+temp
+
+# ai coding stuff
+.omo
