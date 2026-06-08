@@ -40,6 +40,10 @@
     # Use latest kernel for Xe driver fixes (Linux 7.0)
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
+    # Intel GPU: xe driver with required firmware
+    hardware.intelgpu.driver = "xe";
+    hardware.enableRedistributableFirmware = true;
+
     boot.loader = {
       systemd-boot.enable = true;
       # 或者使用 GRUB（如果需要双系统，可以改用这个）
