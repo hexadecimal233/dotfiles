@@ -1,30 +1,39 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
-  home.packages = with pkgs; [
-    alejandra
-    nodejs_24
-    uv
-    # mise
-    go
+}: let
+  cfg = config.hex.dev;
+in {
+  options.hex.dev.enable = lib.mkEnableOption "dev environment (compilers, LSPs)";
 
-    # infra
-    gcc
-    pkg-config
+  config = lib.mkIf cfg.enable {
+    home-manager.users.hexzii = {
+      home.packages = with pkgs; [
+        alejandra
+        nodejs_24
+        uv
+        # mise
+        go
 
-    # nodejs
-    pnpm
-    bun
+        # infra
+        gcc
+        pkg-config
 
-    # rust
-    rustup
+        # nodejs
+        pnpm
+        bun
 
-    # lsps
-    nixd
-    just-lsp
-  ];
+        # rust
+        rustup
 
-  home.sessionPath = lib.mkAfter ["$HOME/.bun/bin" "$HOME/go/bin"];
+        # lsps
+        nixd
+        just-lsp
+      ];
+
+      home.sessionPath = lib.mkAfter ["$HOME/.bun/bin" "$HOME/go/bin"];
+    };
+  };
 }

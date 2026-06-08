@@ -2,15 +2,22 @@
   self,
   pkgs,
   disko,
+  nixos-hardware,
   ...
 }: {
   imports = [
+    nixos-hardware.nixosModules.lenovo-thinkpad-t14
     self.nixosModules.profile
     disko.nixosModules.disko
     ./disko-config.nix
   ];
 
   config = {
+    # host identity
+    system.stateVersion = "26.05"; # Did you read the comment — first install was 26.05
+
+    home-manager.users.hexzii.home.stateVersion = "26.05";
+
     # hex options
     hex.system.enable = true;
     hex.desktop = {
@@ -50,5 +57,14 @@
 
     # Bluetooth
     hardware.bluetooth.enable = true;
+
+    # SSD TRIM
+    services.fstrim.enable = true;
+
+    # Fingerprint reader
+    services.fprintd.enable = true;
+    # TODO: PAM integration for fingerprint auth — add 'lib' to function args, then:
+    #   security.pam.services.sudo.fprintAuth = lib.mkDefault true;
+    #   security.pam.services.login.fprintAuth = lib.mkDefault true;  # may break GDM
   };
 }

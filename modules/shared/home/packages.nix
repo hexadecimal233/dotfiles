@@ -1,42 +1,55 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    # system tools
-    age
-    sops
-    gnupg
-    chezmoi
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  cfg = config.hex.packages;
+in {
+  options.hex.packages.enable = lib.mkEnableOption "CLI tools and utilities";
 
-    # data
-    pv
-    bc
-    jq
-    yq
+  config = lib.mkIf cfg.enable {
+    home-manager.users.hexzii = {
+      home.packages = with pkgs; [
+        # system tools
+        age
+        sops
+        gnupg
+        chezmoi
 
-    # file tools
-    ouch
-    yazi
-    hexyl
-    lnav
-    ncdu
-    file
-    eza
-    bat
-    ripgrep
-    fd
-    fzf
+        # data
+        pv
+        bc
+        jq
+        yq
 
-    # utils
-    ffmpeg
-    mediainfo
-    yt-dlp
+        # file tools
+        ouch
+        yazi
+        hexyl
+        lnav
+        ncdu
+        file
+        eza
+        bat
+        ripgrep
+        fd
+        fzf
 
-    # network
-    whois
-    asn
+        # utils
+        ffmpeg
+        mediainfo
+        yt-dlp
 
-    # beautify
-    # hollywood
-    fastfetch
-    hyfetch
-  ];
+        # network
+        whois
+        asn
+
+        # beautify
+        # hollywood
+        fastfetch
+        hyfetch
+      ];
+    };
+  };
 }

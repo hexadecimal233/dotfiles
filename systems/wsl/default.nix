@@ -10,6 +10,11 @@
   ];
 
   config = {
+    # host identity
+    system.stateVersion = "25.11"; # Did you read the comment?
+
+    home-manager.users.hexzii.home.stateVersion = "25.11";
+
     # hex options
     hex.system.enable = true;
     hex.desktop = {

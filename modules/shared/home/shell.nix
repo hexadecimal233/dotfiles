@@ -56,11 +56,11 @@ in {
 
       programs.starship.enable = true;
 
-        # atuin - a bit heavy
-        # programs.atuin = {
-        #   enable = true;
-        #   enableFishIntegration = true;
-        # };
+      # atuin - a bit heavy
+      # programs.atuin = {
+      #   enable = true;
+      #   enableFishIntegration = true;
+      # };
 
       programs.zoxide = {
         enable = true;

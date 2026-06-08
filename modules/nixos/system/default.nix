@@ -11,18 +11,21 @@ in {
     ./infra.nix
   ];
 
-  options.hex.system.enable = lib.mkEnableOption "core system (users, locale, nix settings)";
+  options.hex.system = {
+    enable = lib.mkEnableOption "core system (users, locale, nix settings)";
+    tools.enable = lib.mkEnableOption "system-level tools (htop, btop, wget, etc.)";
+    infra.enable = lib.mkEnableOption "dev infrastructure (gnumake, nh, just, docker-compose)";
+  };
 
   config = lib.mkIf cfg.enable {
-    system.stateVersion = "25.11";
-
+    hex.system.tools.enable = lib.mkDefault true;
+    hex.system.infra.enable = lib.mkDefault true;
     users.users.hexzii = {
       isNormalUser = true;
       extraGroups = ["wheel"];
       shell = pkgs.fish;
     };
 
-    time.timeZone = "UTC";
     i18n.defaultLocale = "zh_CN.UTF-8";
 
     nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];

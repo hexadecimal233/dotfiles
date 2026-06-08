@@ -28,6 +28,9 @@
       url = "github:Mic92/sops-nix"; # unused: reserved for future use
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+    };
   };
 
   outputs = {
@@ -36,6 +39,7 @@
     nixos-wsl,
     home-manager,
     disko,
+    nixos-hardware,
     ...
   }: {
     nixosModules = {
@@ -55,7 +59,7 @@
 
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko;
+          inherit self home-manager disko nixos-hardware;
         };
         system = "x86_64-linux";
         modules = [
