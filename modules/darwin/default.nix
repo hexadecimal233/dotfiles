@@ -1,4 +1,4 @@
-# Orchestration: imports all hex.* modules
+# Orchestration: imports all hex.* modules (darwin)
 {lib, ...}: {
   imports = [
     # home-manager
@@ -15,8 +15,7 @@
     # shared (cross-platform, system)
     ../shared/system
 
-    # nixos (system-level)
-    ../nixos/system
-    ../nixos/desktop
+    # darwin (system-level)
+    ./system.nix
   ];
 }

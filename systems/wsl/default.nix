@@ -16,6 +16,7 @@
     home-manager.users.hexzii.home.stateVersion = "25.11";
 
     # hex options
+    hex.nixos.enable = true;
     hex.system.enable = true;
     hex.desktop = {
       enable = true;

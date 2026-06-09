@@ -1,28 +1,19 @@
-# system-level tools
+# linux-only system tools
 {
   lib,
   config,
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.hex.system.tools.enable {
+  config = lib.mkIf config.hex.nixos.tools.enable {
     environment.systemPackages = with pkgs; [
-      # files
-      wget
-      curl
-      zip
-      unzip
-
-      # monitoring
+      # monitoring (linux-only)
       psmisc
       powertop
-      htop
       atop
-      btop
       iotop
-      lsof
 
-      # hardware
+      # hardware (linux-only)
       lshw
       pciutils
       usbutils
@@ -30,7 +21,7 @@
       lm_sensors
       efibootmgr
 
-      # network
+      # network (linux-only)
       rustnet
       vnstat
       wavemon
@@ -38,9 +29,8 @@
       iperf3
       dnsutils
       net-tools
-      rsync
 
-      # graphics
+      # graphics (linux-only)
       vulkan-tools
       vulkan-loader
       clinfo
