@@ -13,6 +13,8 @@ in {
       programs.fish = {
         enable = true;
 
+
+        # Proxy default must be set per-host via sessionVariables
         shellInit = ''
           # ---- Proxy ----
           set -g _PROXY_FILE "$HOME/.cache/proxy-state"
@@ -50,11 +52,6 @@ in {
           tokscale = "bunx tokscale@latest"; # count tokens
           maleme = "bunx maleme@latest"; # fxxk
         };
-      };
-
-      # Proxy default (set per-host via sessionVariables)
-      home.sessionVariables = {
-        PROXY_DEFAULT = "";
       };
 
       programs.starship.enable = true;
