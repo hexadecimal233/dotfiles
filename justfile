@@ -1,34 +1,43 @@
-# Build but don't switch
-build config:
-    nixos-rebuild build --flake .#{{ config }}
+# NOTE: some of the functionalities are being replaced by nh!!
+#       build, switch, refresh, gc have been removed.
 
-# Build and switch
-switch config:
-    sudo nixos-rebuild switch --flake .#{{ config }}
+# --- mirror args (auto-detect proxy env) ---
+_mirror_args := if env("HTTP_PROXY", "") + env("HTTPS_PROXY", "") + env_var_or_default("http_proxy", "") + env_var_or_default("https_proxy", "") + env_var_or_default("ALL_PROXY", "") + env_var_or_default("all_proxy", "") != "" {
+  "--option substituters https://mirrors.ustc.edu.cn/nix-channels/store"
+} else {
+  ""
+}
 
-# Update flake and switch
-refresh config:
-    nix flake update
-    sudo nixos-rebuild switch --flake .#{{ config }}
+# Differentiate the package updates
+diff:
+    nix run nixpkgs#nvd -- diff /run/current-system ./result
 
-# Check flake for errors
-check:
-    nix flake check
-
-# Format with alejandra
-fmt:
-    alejandra .
-
-# Update flake lockfile
+# Update the flake lockfile
 update:
     nix flake update
 
-# Garbage collect
-gc:
-    sudo nix-collect-garbage --delete-old
-    nix-collect-garbage --delete-old
+# Analyze current system tree
+tree:
+    nix run nixpkgs#nix-tree /run/current-system
 
-# Clean boot entries
-clean-boot:
-    sudo nix-collect-garbage --delete-older-than 30d
-    sudo /run/current-system/bin/switch-to-configuration boot
+# Check the flake for errors
+check:
+    nix flake check
+
+# Show current generation metadata
+info:
+    nixos-rebuild list-generations
+    nix flake metadata
+
+# Format files with alejandra
+fmt:
+    alejandra .
+
+# Trim the FS (for WS: mainly)
+fstrim:
+    sudo fstrim -v /
+
+# Show flake status/diff
+status:
+    nix flake show
+    nix store diff-closures /run/current-system ./result

@@ -11,29 +11,27 @@ in {
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {
       home.packages = with pkgs; [
+        # nix
         alejandra
-        nodejs_24
-        uv
-        # mise
-        go
+        nixd
 
-        # infra
+        # build tools
         gcc
         pkg-config
 
-        # nodejs
+        # justfile
+        just-lsp
+
+        # stuff
+        mise
+
+        # nodejs (global: npx/bunx)
+        nodejs_26
         pnpm
         bun
-
-        # rust
-        rustup
-
-        # lsps
-        nixd
-        just-lsp
       ];
 
-      home.sessionPath = lib.mkAfter ["$HOME/.bun/bin" "$HOME/go/bin"];
+      home.sessionPath = lib.mkAfter ["$HOME/.bun/bin"];
     };
   };
 }

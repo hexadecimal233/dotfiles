@@ -5,14 +5,20 @@
   "nix.serverSettings": {
     "nixd": {
       "formatting": {
-        "command": [
-          "alejandra" // use alejandra instead of nixfmt
-        ]
+        "command": ["alejandra"]
       },
       "options": {
+        "nixos-thinkpad": {
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.thinkpad.options"
+        },
+        "nixos-wsl": {
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.wsl.options"
+        },
+        "darwin-neo": {
+          "expr": "(builtins.getFlake (builtins.toString ./.)).darwinConfigurations.neo.options"
+        },
         "home-manager": {
-          // use "wsl" as our source for home-manager language features
-          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.wsl.options.home-manager.users.type.getSubOptions []"
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.thinkpad.options.home-manager.users.type.getSubOptions []"
         }
       }
     }
