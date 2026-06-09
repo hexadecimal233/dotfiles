@@ -15,14 +15,15 @@
     home-manager.users.hexzii.home.stateVersion = "26.05";
 
     # hex options
-    hex.darwin.enable = true;
-    hex.system.enable = true;
-    hex.shell.enable = true;
-    hex.git.enable = true;
-    hex.editor.enable = true;
-    hex.dev.enable = true;
-    hex.packages.enable = true;
-    hex.gpg.enable = true;
+    hex.shared.nix.enable = true;
+    hex.darwin.system.enable = true;
+    hex.shared.system.enable = true;
+    hex.shared.home.shell.enable = true;
+    hex.shared.home.git.enable = true;
+    hex.shared.home.editor.enable = true;
+    hex.shared.home.dev.enable = true;
+    hex.shared.home.packages.enable = true;
+    hex.shared.home.gpg.enable = true;
 
     # macOS user
     users.users.hexzii = {
@@ -42,6 +43,11 @@
       casks = [
         "ghostty"
         "firefox"
+        "freetube"
+        "utm"
+        "stats"
+        "vscodium"
+        "middleclick"
       ];
     };
   };

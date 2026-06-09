@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.hex.nixos.tools.enable {
+  config = lib.mkIf config.hex.nixos.system.tools.enable {
     environment.systemPackages = with pkgs; [
       # monitoring (linux-only)
       psmisc

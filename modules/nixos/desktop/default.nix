@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  cfg = config.hex.desktop;
+  cfg = config.hex.nixos.desktop;
 in {
   imports = [
     ./audio.nix
@@ -11,7 +11,7 @@ in {
     ./hyprland.nix
   ];
 
-  options.hex.desktop = {
+  options.hex.nixos.desktop = {
     enable = lib.mkEnableOption "desktop environment and graphics";
     hyprland.enable = lib.mkEnableOption "Hyprland compositor";
     audio = {
@@ -29,7 +29,7 @@ in {
     };
 
     # Sub-options default to parent
-    hex.desktop = {
+    hex.nixos.desktop = {
       hyprland.enable = lib.mkDefault true;
       audio.enable = lib.mkDefault true;
       fonts.enable = lib.mkDefault true;

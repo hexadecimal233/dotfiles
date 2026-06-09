@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.system;
+  cfg = config.hex.shared.system;
 in {
   config = lib.mkIf cfg.tools.enable {
     home-manager.users.hexzii.home.packages = with pkgs; [

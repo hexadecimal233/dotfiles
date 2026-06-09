@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.desktop.fonts;
+  cfg = config.hex.nixos.desktop.fonts;
 in {
-  config = lib.mkIf (config.hex.desktop.enable && cfg.enable) {
+  config = lib.mkIf (config.hex.nixos.desktop.enable && cfg.enable) {
     fonts.packages = with pkgs; [
-      maple-mono.NF-CN-unhinted
+      maple-mono.NF-CN-unhinted # the mono font ^^
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif

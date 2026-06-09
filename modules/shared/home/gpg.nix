@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.gpg;
+  cfg = config.hex.shared.home.gpg;
 in {
-  options.hex.gpg.enable = lib.mkEnableOption "gpg-agent with SSH support";
+  options.hex.shared.home.gpg.enable = lib.mkEnableOption "gpg-agent with SSH support";
 
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {

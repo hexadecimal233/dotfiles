@@ -4,15 +4,16 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.desktop.audio;
+  cfg = config.hex.nixos.desktop.audio;
   withPulse = cfg.usePulse;
   withPipewire = !withPulse;
 in {
-  config = lib.mkIf (config.hex.desktop.enable && cfg.enable) (lib.mkMerge [
+  config = lib.mkIf (config.hex.nixos.desktop.enable && cfg.enable) (lib.mkMerge [
     {
       security.rtkit.enable = true;
     }
 
+    # pipewire mode (for better wiring support)
     (lib.mkIf withPipewire {
       services.pulseaudio.enable = false;
       services.pipewire = {
@@ -34,6 +35,7 @@ in {
       ];
     })
 
+    # pulseaudio mode
     (lib.mkIf withPulse {
       services.pipewire.enable = false;
       environment.systemPackages = with pkgs; [

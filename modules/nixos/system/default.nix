@@ -5,19 +5,19 @@
   self,
   ...
 }: let
-  cfg = config.hex.nixos;
+  cfg = config.hex.nixos.system;
 in {
   imports = [
     ./tools.nix
   ];
 
-  options.hex.nixos = {
+  options.hex.nixos.system = {
     enable = lib.mkEnableOption "NixOS system (users, locale, nix settings)";
     tools.enable = lib.mkEnableOption "linux-only system tools (lshw, pciutils, etc.)";
   };
 
   config = lib.mkIf cfg.enable {
-    hex.nixos.tools.enable = lib.mkDefault true;
+    hex.nixos.system.tools.enable = lib.mkDefault true;
     users.users.hexzii = {
       isNormalUser = true;
       extraGroups = ["wheel"];
@@ -26,12 +26,8 @@ in {
 
     i18n.defaultLocale = "zh_CN.UTF-8";
 
-    nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
-    nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
+    # NixOS-specific GC schedule (systemd calendar format)
+    nix.gc.dates = "weekly";
 
     programs.fish.enable = true;
     # FIXME: nix-ld enabled but no packages used yet

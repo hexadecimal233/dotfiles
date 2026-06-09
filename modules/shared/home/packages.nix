@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.packages;
+  cfg = config.hex.shared.home.packages;
 in {
-  options.hex.packages.enable = lib.mkEnableOption "CLI tools and utilities";
+  options.hex.shared.home.packages.enable = lib.mkEnableOption "CLI tools and utilities";
 
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {

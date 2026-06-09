@@ -1,13 +1,14 @@
 # Hyprland compositor
+# TODO: this is just for temporary state, and might be ai slops inside
 {
   lib,
   config,
   pkgs,
   ...
 }: let
-  cfg = config.hex.desktop.hyprland;
+  cfg = config.hex.nixos.desktop.hyprland;
 in {
-  config = lib.mkIf (config.hex.desktop.enable && cfg.enable) {
+  config = lib.mkIf (config.hex.nixos.desktop.enable && cfg.enable) {
     # enable the compositor with UWSM for proper systemd integration
     programs.hyprland = {
       enable = true;

@@ -3,9 +3,9 @@
   config,
   ...
 }: let
-  cfg = config.hex.editor;
+  cfg = config.hex.shared.home.editor;
 in {
-  options.hex.editor.enable = lib.mkEnableOption "helix editor";
+  options.hex.shared.home.editor.enable = lib.mkEnableOption "helix editor";
 
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {

@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.shell;
+  cfg = config.hex.shared.home.shell;
 in {
-  options.hex.shell.enable = lib.mkEnableOption "shell environment (fish, starship, zoxide, direnv)";
+  options.hex.shared.home.shell.enable = lib.mkEnableOption "shell environment (fish, starship, zoxide, direnv)";
 
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {

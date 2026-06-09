@@ -16,9 +16,10 @@
     home-manager.users.hexzii.home.stateVersion = "25.11";
 
     # hex options
-    hex.nixos.enable = true;
-    hex.system.enable = true;
-    hex.desktop = {
+    hex.shared.nix.enable = true;
+    hex.nixos.system.enable = true;
+    hex.shared.system.enable = true;
+    hex.nixos.desktop = {
       enable = true;
       audio = {
         enable = true;
@@ -27,12 +28,12 @@
       fonts.enable = true;
       hyprland.enable = false; # WSL has no Hyprland
     };
-    hex.shell.enable = true;
-    hex.git.enable = true;
-    hex.editor.enable = true;
-    hex.dev.enable = true;
-    hex.packages.enable = true;
-    hex.gpg.enable = true;
+    hex.shared.home.shell.enable = true;
+    hex.shared.home.git.enable = true;
+    hex.shared.home.editor.enable = true;
+    hex.shared.home.dev.enable = true;
+    hex.shared.home.packages.enable = true;
+    hex.shared.home.gpg.enable = true;
 
     # WSL-specific (not abstracted, written directly)
     wsl.enable = true;

@@ -5,18 +5,18 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.system;
+  cfg = config.hex.shared.system;
 in {
   imports = [
     ./tools.nix
   ];
 
-  options.hex.system = {
+  options.hex.shared.system = {
     enable = lib.mkEnableOption "core system (nix settings, environment)";
     tools.enable = lib.mkEnableOption "cross-platform system tools (htop, btop, wget, etc.)";
   };
 
   config = lib.mkIf cfg.enable {
-    hex.system.tools.enable = lib.mkDefault true;
+    hex.shared.system.tools.enable = lib.mkDefault true;
   };
 }

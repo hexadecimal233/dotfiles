@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.git;
+  cfg = config.hex.shared.home.git;
 in {
-  options.hex.git.enable = lib.mkEnableOption "git with gh, lazygit, delta";
+  options.hex.shared.home.git.enable = lib.mkEnableOption "git with gh, lazygit, delta";
 
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {
