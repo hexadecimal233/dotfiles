@@ -25,6 +25,11 @@
     hex.shared.home.packages.enable = true;
     hex.shared.home.gpg.enable = true;
 
+    # host-specific proxy
+    home-manager.users.hexzii.home.sessionVariables = {
+      PROXY_DEFAULT = "http://localhost:7897";
+    };
+
     # macOS user
     users.users.hexzii = {
       name = "hexzii";

@@ -15,8 +15,6 @@ in {
 
         shellInit = ''
           # ---- Proxy ----
-          # FIXME: hardcoded proxy IP, move to sessionVariables later
-          set -g _PROXY_DEFAULT "http://192.168.2.149:10808"
           set -g _PROXY_FILE "$HOME/.cache/proxy-state"
 
           if test -f "$_PROXY_FILE"
@@ -24,7 +22,7 @@ in {
           end
 
           function proxy_on -d "Enable proxy"
-            set proxy (test -n "$argv[1]"; and echo "$argv[1]"; or echo "$_PROXY_DEFAULT")
+            set proxy (test -n "$argv[1]"; and echo "$argv[1]"; or echo "$PROXY_DEFAULT")
             mkdir -p (dirname "$_PROXY_FILE")
             echo "set -gx http_proxy $proxy
             set -gx https_proxy $proxy
@@ -52,6 +50,11 @@ in {
           tokscale = "bunx tokscale@latest"; # count tokens
           maleme = "bunx maleme@latest"; # fxxk
         };
+      };
+
+      # Proxy default (set per-host via sessionVariables)
+      home.sessionVariables = {
+        PROXY_DEFAULT = "";
       };
 
       programs.starship.enable = true;

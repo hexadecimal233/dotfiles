@@ -39,6 +39,11 @@
     hex.shared.home.packages.enable = true;
     hex.shared.home.gpg.enable = true;
 
+    # host-specific proxy
+    home-manager.users.hexzii.home.sessionVariables = {
+      PROXY_DEFAULT = "http://localhost:7897";
+    };
+
     # Use latest kernel for Xe driver fixes (Linux 7.0)
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
