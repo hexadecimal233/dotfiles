@@ -52,7 +52,7 @@
         "utm"
         "stats"
         "vscodium"
-        "middleclick"
+        # "middleclick" does not work very well duh
       ];
     };
   };

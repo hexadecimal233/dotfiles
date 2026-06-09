@@ -1,6 +1,6 @@
 # Hyprland compositor
 # TODO: this is just for temporary state, and might be ai slops inside
-# in the future, we may use HM to manage config 
+# in the future, we may use HM to manage config
 {
   lib,
   config,
