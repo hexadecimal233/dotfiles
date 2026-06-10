@@ -52,7 +52,8 @@
         "utm"
         "stats"
         "vscodium"
-        # "middleclick" does not work very well duh
+        # "middleclick" # does not work very well duh
+        "vesktop"
       ];
     };
   };
