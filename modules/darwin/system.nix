@@ -28,6 +28,8 @@ in {
       (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
       (writeShellScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.sh")))
       (writeShellScriptBin "unquarantine" (builtins.readFile (self + "/scripts/unquarantine.sh")))
+    ] ++ [
+      (pkgs.callPackage (self + "/modules/darwin/apps/jhentai.nix") {})
     ];
   };
 }
