@@ -1,0 +1,9 @@
+# macOS only: Library/Application Support
+{{ if ne .chezmoi.os "darwin" }}
+Library/Application Support
+{{ end }}
+
+# Windows only: AppData
+{{ if ne .chezmoi.os "windows" }}
+AppData
+{{ end }}
