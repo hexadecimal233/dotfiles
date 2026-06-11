@@ -1,0 +1,73 @@
+{
+    "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+    // ========== Agent 配置（控制每个 Agent 自己的模型） ==========
+    "agents": {
+        // 核心 Orchestrator – 困难任务
+        "sisyphus": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "prometheus": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "atlas": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        // 深度推理/架构 Agent – 困难任务
+        "hephaestus": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "oracle": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "metis": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "momus": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        // 工具型/检索型 Agent – 简单任务（速度快，成本低）
+        "librarian": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+        },
+        "explore": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+        },
+        "multimodal-looker": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+        },
+        // Sisyphus-Junior 通常不需要单独配置，它会使用 category 的模型
+        // 但如果您想强制统一，也可以取消注释：
+        // "sisyphus-junior": {
+        //   "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        // }
+    },
+    // ========== Category 配置（控制 task() 委托的子任务模型） ==========
+    "categories": {
+        // 困难任务 → pro 版本
+        "ultrabrain": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "deep": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "unspecified-high": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "visual-engineering": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        "artistry": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        },
+        // 简单任务 → 普通版本
+        "quick": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+        },
+        "unspecified-low": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+        },
+        "writing": {
+            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+        }
+    }
+}

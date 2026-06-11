@@ -1,0 +1,5 @@
+{{- if eq .chezmoi.os "darwin" -}}
+../../.config/hyfetch.json
+{{- else -}}
+.config/hyfetch.json
+{{- end -}}

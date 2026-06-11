@@ -3,7 +3,8 @@
   "plugin": [
     "oh-my-openagent@latest"
   ],
-  "model": "deepseek/deepseek-v4-flash",
+  "autoupdate": false,
+  // "model": "deepseek/deepseek-v4-flash",
   // "small_model": "deepseek/deepseek-v4-flash",
   "mcp": {
     "deepwiki": {
@@ -35,7 +36,7 @@
         "@modelcontextprotocol/server-memory"
       ]
     }
-  },
+  }
   /* 
   "lsp": {
     "deno": {
