@@ -50,9 +50,14 @@
     # Intel GPU: xe driver with required firmware
     hardware.intelgpu.driver = "xe";
     hardware.enableRedistributableFirmware = true;
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
     boot.loader = {
       systemd-boot.enable = true;
+      # TODO: move bootloader to nixos system section
       # 或者使用 GRUB（如果需要双系统，可以改用这个）
       # grub = {
       #   enable = true;

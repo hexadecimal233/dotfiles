@@ -53,6 +53,12 @@
     wsl.useWindowsDriver = true; # enable windows gpu driver support
     wsl.wslConf.interop.appendWindowsPath = false; # prevent windows path lagging system down
 
+    # WSLg GPU passthrough
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true; # 32-bit compat (Wine, etc.)
+    };
+
     # fixes WSLg libd3d12.so and NVIDIA WSL driver libssl.so deps
     environment.sessionVariables = let
       wslGpuLibs = "/run/opengl-driver/lib";

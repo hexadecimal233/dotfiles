@@ -23,10 +23,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.dconf.enable = true;
-    hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
 
     # Sub-options default to parent
     hex.nixos.desktop = {
