@@ -71,3 +71,4 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 ## Scripts
 - `sudo-proxy` — Run commands with proxy (cross-platform)
 - `unquarantine` — Remove macOS quarantine attribute from apps (macOS-only)
+- `set-chezmoi-dir` - Sets chezmoi working repository for to self diectory

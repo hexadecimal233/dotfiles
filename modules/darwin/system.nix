@@ -26,6 +26,7 @@ in {
     # system packages (darwin-safe)
     environment.systemPackages = with pkgs; [
       (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
+      (writeShellScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.sh")))
       (writeShellScriptBin "unquarantine" (builtins.readFile (self + "/scripts/unquarantine.sh")))
     ];
   };

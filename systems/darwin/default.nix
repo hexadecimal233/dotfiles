@@ -54,6 +54,8 @@
         "vscodium"
         # "middleclick" # does not work very well duh
         "vesktop"
+        "iina"
+        "zed"
       ];
     };
   };
