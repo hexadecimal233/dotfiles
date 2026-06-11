@@ -1,8 +1,8 @@
 # AGENTS.md
 
 ## Build & Test
-- Build: `just build wsl` or `just build thinkpad`
-- Switch: `just switch wsl` or `just switch thinkpad` (requires sudo)
+- Switch (NixOS): `nh os switch . -H <hostname>`
+- Switch (macOS): `nh darwin switch . -H <hostname>`
 - Format: `just fmt`
 - Check: `just check`
 
@@ -46,6 +46,11 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - `hex.shared.nix.enable` — Nix package manager settings (GC, flakes, etc.)
 - `hex.shared.system.enable` — cross-platform system tools (wget, curl, htop, btop)
 - `hex.nixos.system.enable` — NixOS system (users, locale, linux-only tools)
+  - `hex.nixos.system.tools.enable` — linux-only system tools (lshw, pciutils, etc.)
+    - `hex.nixos.system.tools.monitoring` — monitoring tools (psmisc, powertop, atop, iotop)
+    - `hex.nixos.system.tools.hardware` — hardware tools (lshw, pciutils, usbutils, etc.)
+    - `hex.nixos.system.tools.network` — network tools (rustnet, wavemon, vnstat, etc.)
+    - `hex.nixos.system.tools.graphics` — graphics tools (vulkan-tools, clinfo, mesa-demos)
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
 
 **Home-level (`*.home.*`)**
@@ -54,6 +59,12 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - `hex.shared.home.editor.enable` — helix
 - `hex.shared.home.dev.enable` — compilers, LSPs
 - `hex.shared.home.packages.enable` — CLI tools
+  - `hex.shared.home.packages.systemTools` — system tools (age, sops, gnupg, chezmoi)
+  - `hex.shared.home.packages.dataProcessing` — data processing (pv, bc, jq, yq)
+  - `hex.shared.home.packages.fileTools` — file tools (ouch, p7zip, yazi, eza, bat, etc.)
+  - `hex.shared.home.packages.mediaUtils` — media utilities (ffmpeg, mediainfo, yt-dlp)
+  - `hex.shared.home.packages.network` — network tools (whois, iperf3, asn, dnsutils)
+  - `hex.shared.home.packages.beautify` — beautify tools (fastfetch, hyfetch)
 - `hex.shared.home.gpg.enable` — gpg-agent
 
 **NixOS-only**

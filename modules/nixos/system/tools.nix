@@ -4,37 +4,45 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  cfg = config.hex.nixos.system.tools;
+in {
   config = lib.mkIf config.hex.nixos.system.tools.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; (
       # monitoring (linux-only)
-      psmisc
-      powertop
-      atop
-      iotop
-
+      lib.optionals cfg.monitoring [
+        psmisc
+        powertop
+        atop
+        iotop
+      ]
+    ) ++ (
       # hardware (linux-only)
-      lshw
-      pciutils
-      usbutils
-      dmidecode
-      lm_sensors
-      efibootmgr
-
+      lib.optionals cfg.hardware [
+        lshw
+        pciutils
+        usbutils
+        dmidecode
+        lm_sensors
+        efibootmgr
+      ]
+    ) ++ (
       # network (linux-only)
-      rustnet
-      vnstat
-      wavemon
-      ethtool
-      iperf3
-      dnsutils
-      net-tools
-
+      lib.optionals cfg.network [
+        rustnet
+        wavemon
+        vnstat
+        ethtool
+        iproute2
+      ]
+    ) ++ (
       # graphics (linux-only)
-      vulkan-tools
-      vulkan-loader
-      clinfo
-      mesa-demos
-    ];
+      lib.optionals cfg.graphics [
+        vulkan-tools
+        vulkan-loader
+        clinfo
+        mesa-demos
+      ]
+    );
   };
 }

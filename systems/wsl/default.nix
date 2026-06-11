@@ -17,7 +17,14 @@
 
     # hex options
     hex.shared.nix.enable = true;
-    hex.nixos.system.enable = true;
+    hex.nixos.system = {
+      enable = true;
+      tools = {
+        enable = true;
+        hardware = false; # WSL has no physical hardware
+        graphics = false; # WSL uses WSLg, no vulkan/mesa needed
+      };
+    };
     hex.shared.system.enable = true;
     hex.nixos.desktop = {
       enable = true;
