@@ -757,8 +757,8 @@
     "cloud": {
         "authenticated": false,
         "url": "https://api.vencord.dev/",
-        "settingsSync": true,
-        "settingsSyncVersion": 1781170682917
+        "settingsSync": false,
+        "settingsSyncVersion": 1781176172460
     },
     "enabledThemes": [
         "system24.theme.css"
