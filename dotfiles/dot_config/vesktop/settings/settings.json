@@ -758,7 +758,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1781176172460
+        "settingsSyncVersion": 1781176888516
     },
     "enabledThemes": [
         "system24.theme.css"
@@ -768,5 +768,6 @@
         "chatBarButtons": {},
         "messagePopoverButtons": {}
     },
-    "windowsMaterial": "none"
+    "windowsMaterial": "none",
+    "macosVibrancyStyle": "under-page"
 }
