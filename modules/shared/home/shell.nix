@@ -13,7 +13,6 @@ in {
       programs.fish = {
         enable = true;
 
-
         # Proxy default must be set per-host via sessionVariables
         shellInit = ''
           # ---- Proxy ----

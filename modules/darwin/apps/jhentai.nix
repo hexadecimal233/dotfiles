@@ -4,7 +4,6 @@
   stdenvNoCC,
   undmg,
 }:
-
 stdenvNoCC.mkDerivation {
   pname = "jhentai";
   version = "8.0.13";
@@ -14,7 +13,7 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-pVmhjUW+I23bHVU49m7MWqcnvHjgRQjhSv8lFPom+FY=";
   };
 
-  nativeBuildInputs = [ undmg ];
+  nativeBuildInputs = [undmg];
   sourceRoot = ".";
 
   installPhase = ''

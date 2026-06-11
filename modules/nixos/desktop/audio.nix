@@ -31,7 +31,7 @@ in {
         pavucontrol # volume ctrl
         crosspipe # router
         easyeffects # mixer
-        openmeters # TODO(update): wait for upstream merge
+        openmeters
       ];
     })
 
