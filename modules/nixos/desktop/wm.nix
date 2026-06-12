@@ -24,31 +24,27 @@ in {
       settings = {
         terminal.vt = 1;
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd '${uwsm} start hyprland.desktop'";
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd '${uwsm} start hyprland.desktop'";
           user = "greeter";
         };
       };
     };
 
-    # First-boot fallback Hyprland Lua config — chezmoi overwrites later
-    environment.etc."hypr/hyprland.lua".text = ''
-      hl.on("hyprland.start", function()
-        hl.exec_cmd("qs -c noctalia-shell")
-      end)
-
-      hl.monitor({ output = "", mode = "preferred", scale = 1 })
-
-      hl.config({
-        input = { kb_layout = "us" },
-        misc = {
-          disable_hyprland_logo = true,
-          disable_splash_rendering = true,
-        },
-      })
-
-      hl.bind("SUPER + Q", hl.dsp.window.close())
-      hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
-    '';
+    # HM-level Hyprland config (generates ~/.config/hypr/hyprland.conf)
+    home-manager.users.hexzii.wayland.windowManager.hyprland = {
+      enable = true;
+      configType = "hyprlang";
+      systemd.enable = false;
+      settings.exec-once = ["noctalia"];
+      extraConfig = ''
+        $mod = SUPER
+        bind = $mod, T, exec, ghostty
+        bind = $mod, Q, killactive
+        bind = $mod, SPACE, exec, ghostty
+        bind = $mod, E, exec, nautilus
+        bind = , Print, exec, grimblast copy area
+      '';
+    };
 
     # hint Electron apps to use Wayland
     environment.sessionVariables = {
