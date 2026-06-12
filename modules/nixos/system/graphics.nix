@@ -22,6 +22,8 @@ in {
       vulkan-loader
       clinfo # OpenCL info
       mesa-demos # glxinfo, eglinfo
+      ddcutil # external monitor DDC/CI control
+      brightnessctl # backlight control CLI
     ];
   };
 }
