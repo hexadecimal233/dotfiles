@@ -23,6 +23,8 @@ in {
       freetube
       mpv
       celluloid
+      nwg-displays # GUI multi-monitor configurator
+      nwg-look # GTK theme/cursor/icon settings GUI
     ];
   };
 }

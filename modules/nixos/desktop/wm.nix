@@ -33,11 +33,12 @@ in {
     # Direct Hyprland Lua config — bypasses broken HM generator
     home-manager.users.hexzii = {
       xdg.configFile."hypr/hyprland.lua".text = ''
+        -- nwg-displays manages monitors via ~/.config/hypr/monitors.lua
+        require("monitors")
+
         hl.on("hyprland.start", function()
           hl.exec_cmd("noctalia")
         end)
-
-        hl.monitor({ output = "", mode = "preferred", scale = 1.5 })
 
         hl.config({
           input = {
