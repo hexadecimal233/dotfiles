@@ -18,11 +18,20 @@ in {
       imports = [noctalia.homeModules.default];
       programs.noctalia.enable = true;
 
-      # Tell Hyprland to start Noctalia (systemd disabled — UWSM manages it)
+      # Tell Hyprland to start Noctalia via Lua event (systemd disabled — UWSM)
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = false;
-        settings.exec-once = ["qs -c noctalia-shell"];
+        settings = {
+          on = {
+            _args = [
+              "hyprland.start"
+              (lib.generators.mkLuaInline ''
+                function() hl.exec_cmd("qs -c noctalia-shell") end
+              '')
+            ];
+          };
+        };
       };
 
       # UWSM session env vars

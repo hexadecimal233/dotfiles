@@ -17,16 +17,12 @@ in {
       xwayland.enable = true;
     };
 
-    # greetd — auto-login via UWSM (Noctalia's lock screen handles auth)
+    # greetd — tuigreet login, then UWSM → Hyprland
     services.greetd = {
       enable = true;
       restart = false;
       settings = {
         terminal.vt = 1;
-        initial_session = {
-          command = "${uwsm} start hyprland.desktop";
-          user = "hexzii";
-        };
         default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd '${uwsm} start hyprland.desktop'";
           user = "greeter";
@@ -34,18 +30,24 @@ in {
       };
     };
 
-    # First-boot fallback Hyprland config — chezmoi overwrites later
-    environment.etc."hypr/hyprland.conf".text = ''
-      exec-once = qs -c noctalia-shell
+    # First-boot fallback Hyprland Lua config — chezmoi overwrites later
+    environment.etc."hypr/hyprland.lua".text = ''
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("qs -c noctalia-shell")
+      end)
 
-      monitor = , preferred, auto, 1
-      input { kb_layout = us }
-      misc {
-        disable_hyprland_logo = true
-        disable_splash_rendering = true
-      }
-      bind = SUPER, Q, killactive
-      bind = SUPER, T, exec, ghostty
+      hl.monitor({ output = "", mode = "preferred", scale = 1 })
+
+      hl.config({
+        input = { kb_layout = "us" },
+        misc = {
+          disable_hyprland_logo = true,
+          disable_splash_rendering = true,
+        },
+      })
+
+      hl.bind("SUPER + Q", hl.dsp.window.close())
+      hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
     '';
 
     # hint Electron apps to use Wayland
