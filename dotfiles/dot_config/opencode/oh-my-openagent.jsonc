@@ -4,70 +4,70 @@
     "agents": {
         // 核心 Orchestrator – 困难任务
         "sisyphus": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "prometheus": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "atlas": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         // 深度推理/架构 Agent – 困难任务
         "hephaestus": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "oracle": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "metis": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "momus": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         // 工具型/检索型 Agent – 简单任务（速度快，成本低）
         "librarian": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+            "model": "deepseek/deepseek-v4-flash"
         },
         "explore": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+            "model": "deepseek/deepseek-v4-flash"
         },
         "multimodal-looker": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5"
-        },
+            "model": "deepseek/deepseek-v4-flash"
+        }
         // Sisyphus-Junior 通常不需要单独配置，它会使用 category 的模型
         // 但如果您想强制统一，也可以取消注释：
         // "sisyphus-junior": {
-        //   "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+        //   "model": "deepseek/deepseek-v4-pro"
         // }
     },
     // ========== Category 配置（控制 task() 委托的子任务模型） ==========
     "categories": {
         // 困难任务 → pro 版本
         "ultrabrain": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "deep": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "unspecified-high": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "visual-engineering": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
         "artistry": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5-pro"
+            "model": "deepseek/deepseek-v4-pro"
         },
-        // 简单任务 → 普通版本
+        // 简单任务 → flash 版本
         "quick": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+            "model": "deepseek/deepseek-v4-flash"
         },
         "unspecified-low": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+            "model": "deepseek/deepseek-v4-flash"
         },
         "writing": {
-            "model": "xiaomi-token-plan-cn/mimo-v2.5"
+            "model": "deepseek/deepseek-v4-flash"
         }
     }
 }

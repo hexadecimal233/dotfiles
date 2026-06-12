@@ -27,6 +27,7 @@ in {
           dmidecode
           lm_sensors
           efibootmgr
+          efivar
         ]
       )
       ++ (
