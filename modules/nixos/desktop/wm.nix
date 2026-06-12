@@ -37,14 +37,11 @@ in {
         -- falls back to nothing if monitors.lua doesn't exist (first boot)
         local ok = pcall(require, "monitors")
 
-        hl.env("HYPRCURSOR_THEME", "aosp-cursors")
-        hl.env("HYPRCURSOR_SIZE", "24")
         hl.env("XCURSOR_THEME", "aosp-cursors")
         hl.env("XCURSOR_SIZE", "24")
 
         hl.on("hyprland.start", function()
           hl.exec_cmd("noctalia")
-          hl.exec_cmd("hyprctl setcursor aosp-cursors 24")
         end)
 
         hl.config({
@@ -55,6 +52,7 @@ in {
           misc = {
             disable_hyprland_logo = true,
             disable_splash_rendering = true,
+            disable_hyprcursor = true,
           },
         })
 
