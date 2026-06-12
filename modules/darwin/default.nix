@@ -18,5 +18,6 @@
 
     # darwin (system-level)
     ./system.nix
+    ./system/fonts.nix
   ];
 }

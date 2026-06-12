@@ -52,6 +52,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
     - `hex.nixos.system.tools.network` — network tools (rustnet, wavemon, vnstat, etc.)
     - `hex.nixos.system.tools.graphics` — graphics tools (vulkan-tools, clinfo, mesa-demos)
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
+  - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
 
 **Home-level (`*.home.*`)**
 - `hex.shared.home.shell.enable` — fish, starship, zoxide, direnv

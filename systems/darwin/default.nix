@@ -17,6 +17,7 @@
     # hex options
     hex.shared.nix.enable = true;
     hex.darwin.system.enable = true;
+    hex.darwin.system.fonts.enable = true;
     hex.shared.system.enable = true;
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;
@@ -52,6 +53,7 @@
         "utm"
         "stats"
         "vscodium"
+        "rekordbox"
         # "middleclick" # does not work very well duh
         "vesktop"
         "iina"
