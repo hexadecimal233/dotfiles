@@ -35,6 +35,7 @@
       networking.enable = true;
       wireless.enable = true;
       power.enable = true;
+      time.auto = true;
       graphics.enable = true;
     };
     hex.shared.system = {

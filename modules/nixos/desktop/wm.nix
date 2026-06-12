@@ -69,6 +69,9 @@ in {
         hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"), { repeating = true })
 
         -- Workspaces (SUPER + 1-9)
+        -- Touchpad swipe gestures (macOS-like)
+        hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+
         hl.bind("SUPER + 1", hl.dsp.focus({ workspace = "1" }))
         hl.bind("SUPER + 2", hl.dsp.focus({ workspace = "2" }))
         hl.bind("SUPER + 3", hl.dsp.focus({ workspace = "3" }))
@@ -93,6 +96,7 @@ in {
       # UWSM session env
       xdg.configFile."uwsm/env".text = ''
         XCURSOR_SIZE=24
+        XCURSOR_THEME=Bibata-Modern-Classic
         TERMINAL=ghostty
       '';
     };

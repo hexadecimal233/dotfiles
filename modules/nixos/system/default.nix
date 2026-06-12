@@ -16,6 +16,7 @@ in {
     ./power.nix
     ./graphics.nix
     ./security.nix
+    ./time.nix
   ];
 
   options.hex.nixos.system = {

@@ -25,6 +25,7 @@ in {
       celluloid
       nwg-displays # GUI multi-monitor configurator
       nwg-look # GTK theme/cursor/icon settings GUI
+      desktop-file-utils # update-desktop-database
     ];
   };
 }
