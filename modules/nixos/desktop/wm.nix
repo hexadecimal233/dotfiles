@@ -3,6 +3,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.hex.nixos.desktop.hyprland;
@@ -15,10 +16,15 @@ in {
       xwayland.enable = true;
     };
 
-    # display manager for selecting Hyprland at login
-    services.displayManager.sddm = {
+    # greetd — auto-login into Hyprland (Noctalia's lock screen handles auth)
+    services.greetd = {
       enable = true;
-      wayland.enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "hexzii";
+        };
+      };
     };
 
     # hint Electron apps to use Wayland

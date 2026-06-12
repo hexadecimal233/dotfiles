@@ -15,6 +15,7 @@ in {
     ./wireless.nix
     ./power.nix
     ./graphics.nix
+    ./security.nix
   ];
 
   options.hex.nixos.system = {

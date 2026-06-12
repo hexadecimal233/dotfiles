@@ -31,6 +31,7 @@
       };
       boot.enable = true;
       fingerprint.enable = true;
+      security.enable = true;
       networking.enable = true;
       wireless.enable = true;
       power.enable = true;
