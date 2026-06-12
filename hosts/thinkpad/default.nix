@@ -72,6 +72,7 @@
       enable = true;
       noctalia.enable = true;
       packages.enable = true;
+      theme.enable = true;
     };
 
     # host-specific proxy

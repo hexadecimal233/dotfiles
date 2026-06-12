@@ -96,7 +96,7 @@
         };
         system = "aarch64-darwin";
         modules = [
-          ./hosts/darwin/default.nix
+          ./hosts/neo/default.nix
         ];
       };
     };

@@ -69,6 +69,7 @@
         "vscodium"
         "rekordbox"
         # "middleclick" # does not work very well duh
+        # bitwarden: installed via appstore
         "vesktop"
         "iina"
         "zed"
