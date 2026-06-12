@@ -12,7 +12,12 @@
 
   config = {
     # host identity
+    # Set this to the nixpkgs release version used at first install.
+    # nixpkgs-unstable as of 2025-06 = 25.11, 2026-06 = 26.05
+    # Change only when explicitly upgrading nixpkgs channel.
     system.stateVersion = "26.05";
+
+    home-manager.users.hexzii.home.stateVersion = "26.05";
 
     # hex options — explicitly opt-in, no assumptions
     hex.shared.nix.enable = true;

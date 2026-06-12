@@ -33,16 +33,9 @@ This repo uses [disko](https://github.com/nix-community/disko) for declarative d
 
 ## Method 1: disko-install (recommended for first install)
 
+**ENSURE YOU HAVE ENOUGH MEMORY TO DOWNLOAD THE PACKAGES INTO THE RAMDISK!!!**
+
 [`disko-install`](https://github.com/nix-community/disko/blob/master/docs/disko-install.md) combines partitioning, formatting, mounting, and `nixos-install` into a single command.
-
-```bash
-# Replace <host> with one of: thinkpad, vmware
-# Replace /dev/sda with the actual disk device
-
-sudo nix run github:nix-community/disko/latest#disko-install -- \
-  --flake 'github:hexzii/nixos-config#<host>' \
-  --disk main /dev/sda
-```
 
 ### Options
 
@@ -54,16 +47,11 @@ sudo nix run github:nix-community/disko/latest#disko-install -- \
 
 ```bash
 # From the repo root
-sudo nix run github:nix-community/disko/latest#disko-install -- \
-  --flake '.#vmware' \
-  --disk main /dev/sda
-```
+# Replace <host> with one of: thinkpad, vmware
+# Replace /dev/sda with the actual disk device
 
-Or with the flake at a local path:
-
-```bash
 sudo nix run github:nix-community/disko/latest#disko-install -- \
-  --flake '/path/to/nixos-config#vmware' \
+  --flake '.#<host>' \
   --disk main /dev/sda
 ```
 
@@ -98,7 +86,7 @@ sudo nix run github:nix-community/disko/latest -- \
 
 ```bash
 # Clone the repo to /mnt if needed
-nix shell nixpkgs#git --command git clone https://github.com/hexzii/nixos-config /mnt/etc/nixos
+nix shell nixpkgs#git --command git clone https://codeberg.org/hexzii/nixos-config /mnt/etc/nixos
 
 # Generate hardware config (optional — the disko module handles filesystems)
 nixos-generate-config --root /mnt --no-filesystems
@@ -137,10 +125,4 @@ After rebooting into the new system, run the first switch:
 
 ```bash
 sudo nh os switch . -H vmware
-```
-
-Or if you want to update from a remote flake:
-
-```bash
-sudo nh os switch --flake 'github:hexzii/nixos-config#vmware'
 ```
