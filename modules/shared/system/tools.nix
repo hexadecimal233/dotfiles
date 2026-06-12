@@ -1,4 +1,5 @@
 # cross-platform system tools
+# TODO: add virtualization stuff
 {
   lib,
   config,
@@ -27,7 +28,6 @@ in {
       gnumake
       nh
       just
-      docker-compose
       python3
     ];
   };

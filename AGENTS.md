@@ -79,6 +79,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - Shared modules must be cross-platform (no Linux-only or macOS-only packages)
 - Platform-specific modules go in `nixos/` or `darwin/` directories
 - Naming must follow `hex.<platform>.<scope>.<module>.enable` pattern
+- **Desktop GUI apps with built-in settings editors should NOT use home-manager for config management** — Let their internal settings editor be the source of truth. Use chezmoi or plain file install instead. Applies to apps like vesktop, vscodium, and desktop shells with GUI settings panels.
 
 ## Dotfiles Management
 

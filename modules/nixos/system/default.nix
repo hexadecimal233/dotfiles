@@ -15,19 +15,20 @@ in {
     enable = lib.mkEnableOption "NixOS system (users, locale, nix settings)";
     tools = {
       enable = lib.mkEnableOption "linux-only system tools (lshw, pciutils, etc.)";
-      monitoring = lib.mkEnableOption "monitoring tools (psmisc, powertop, atop, iotop)" // {default = true;};
-      hardware = lib.mkEnableOption "hardware tools (lshw, pciutils, usbutils, etc.)" // {default = true;};
-      network = lib.mkEnableOption "network tools (rustnet, wavemon, vnstat, etc.)" // {default = true;};
-      graphics = lib.mkEnableOption "graphics tools (vulkan-tools, clinfo, mesa-demos)" // {default = true;};
+      monitoring = lib.mkEnableOption "monitoring tools (psmisc, powertop, atop, iotop)" // {default = false;};
+      hardware = lib.mkEnableOption "hardware tools (lshw, pciutils, usbutils, etc.)" // {default = false;};
+      network = lib.mkEnableOption "network tools (rustnet, wavemon, vnstat, etc.)" // {default = false;};
+      graphics = lib.mkEnableOption "graphics tools (vulkan-tools, clinfo, mesa-demos)" // {default = false;};
     };
   };
 
   config = lib.mkIf cfg.enable {
-    hex.nixos.system.tools.enable = lib.mkDefault true;
+    hex.nixos.system.tools.enable = lib.mkDefault false;
     users.users.hexzii = {
       isNormalUser = true;
       extraGroups = ["wheel"];
       shell = pkgs.fish;
+      initialPassword = "123456";
     };
 
     i18n.defaultLocale = "zh_CN.UTF-8";

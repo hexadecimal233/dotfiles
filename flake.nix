@@ -71,6 +71,17 @@
           ./systems/thinkpad/default.nix
         ];
       };
+
+      vmware = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit self home-manager disko;
+        };
+        system = "x86_64-linux";
+        modules = [
+          disko.nixosModules.disko
+          ./systems/vmware/default.nix
+        ];
+      };
     };
 
     darwinConfigurations = {

@@ -8,12 +8,12 @@
 in {
   options.hex.shared.home.packages = {
     enable = lib.mkEnableOption "CLI tools and utilities";
-    systemTools = lib.mkEnableOption "system tools (age, sops, gnupg, chezmoi)" // {default = true;};
-    dataProcessing = lib.mkEnableOption "data processing tools (pv, bc, jq, yq)" // {default = true;};
-    fileTools = lib.mkEnableOption "file tools (ouch, p7zip, yazi, eza, bat, etc.)" // {default = true;};
-    mediaUtils = lib.mkEnableOption "media utilities (ffmpeg, mediainfo, yt-dlp)" // {default = true;};
-    network = lib.mkEnableOption "network tools (whois, iperf3, asn, dnsutils)" // {default = true;};
-    beautify = lib.mkEnableOption "beautify tools (fastfetch, hyfetch)" // {default = true;};
+    systemTools = lib.mkEnableOption "system tools (age, sops, gnupg, chezmoi)" // {default = false;};
+    dataProcessing = lib.mkEnableOption "data processing tools (pv, bc, jq, yq)" // {default = false;};
+    fileTools = lib.mkEnableOption "file tools (ouch, p7zip, yazi, eza, bat, etc.)" // {default = false;};
+    mediaUtils = lib.mkEnableOption "media utilities (ffmpeg, mediainfo, yt-dlp)" // {default = false;};
+    network = lib.mkEnableOption "network tools (whois, iperf3, asn, dnsutils)" // {default = false;};
+    beautify = lib.mkEnableOption "beautify tools (fastfetch, hyfetch)" // {default = false;};
   };
 
   config = lib.mkIf cfg.enable {

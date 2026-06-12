@@ -26,9 +26,9 @@ in {
 
     # Sub-options default to parent
     hex.nixos.desktop = {
-      hyprland.enable = lib.mkDefault true;
-      audio.enable = lib.mkDefault true;
-      fonts.enable = lib.mkDefault true;
+      hyprland.enable = lib.mkDefault false;
+      audio.enable = lib.mkDefault false;
+      fonts.enable = lib.mkDefault false;
     };
   };
 }

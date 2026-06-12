@@ -21,8 +21,20 @@
 
     # hex options
     hex.shared.nix.enable = true;
-    hex.nixos.system.enable = true;
-    hex.shared.system.enable = true;
+    hex.nixos.system = {
+      enable = true;
+      tools = {
+        enable = true;
+        monitoring = true;
+        hardware = true;
+        network = true;
+        graphics = true;
+      };
+    };
+    hex.shared.system = {
+      enable = true;
+      tools.enable = true;
+    };
     hex.nixos.desktop = {
       enable = true;
       audio = {
@@ -35,8 +47,19 @@
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;
     hex.shared.home.editor.enable = true;
-    hex.shared.home.dev.enable = true;
-    hex.shared.home.packages.enable = true;
+    hex.shared.home.dev = {
+      enable = true;
+      nodejs.enable = true;
+    };
+    hex.shared.home.packages = {
+      enable = true;
+      systemTools = true;
+      dataProcessing = true;
+      fileTools = true;
+      mediaUtils = true;
+      network = true;
+      beautify = true;
+    };
     hex.shared.home.gpg.enable = true;
 
     # host-specific proxy

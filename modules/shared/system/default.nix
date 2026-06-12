@@ -17,6 +17,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    hex.shared.system.tools.enable = lib.mkDefault true;
+    hex.shared.system.tools.enable = lib.mkDefault false;
   };
 }
