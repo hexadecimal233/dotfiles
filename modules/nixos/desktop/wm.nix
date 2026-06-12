@@ -34,7 +34,8 @@ in {
     home-manager.users.hexzii = {
       xdg.configFile."hypr/hyprland.lua".text = ''
         -- nwg-displays manages monitors via ~/.config/hypr/monitors.lua
-        require("monitors")
+        -- falls back to nothing if monitors.lua doesn't exist (first boot)
+        local ok = pcall(require, "monitors")
 
         hl.on("hyprland.start", function()
           hl.exec_cmd("noctalia")
