@@ -14,19 +14,56 @@
 
 ## Module Structure
 ```
-modules/
-├── shared/            # Cross-platform modules
-│   ├── home/          # Home-manager modules (shell, git, editor, dev, packages, gpg)
-│   ├── system/        # Cross-platform system tools (wget, curl, htop, btop, etc.)
-│   └── nix.nix        # Nix package manager settings (GC, flakes, etc.)
-├── nixos/             # NixOS-specific modules
-│   ├── system/        # NixOS system (users, locale, boot, fingerprint, linux tools)
-│   ├── desktop/       # NixOS desktop (GPU, audio, fonts, wm)
-│   │   └── home/      # NixOS-exclusive home-manager desktop modules (noctalia)
-│   └── home/          # NixOS-exclusive home-manager modules (future)
-├── darwin/            # macOS-specific modules
-│   └── system.nix     # Darwin system (nix daemon, fish shell)
-└── profile/           # NixOS orchestration (imports shared + nixos)
+.
+├── flake.nix               # Entry point + flake inputs
+├── AGENTS.md               # This file
+├── INSTALL.md              # Global installation guide
+├── justfile                # Task runner
+├── modules/
+│   ├── shared/             # Cross-platform modules
+│   │   ├── home/           # HM: shell, git, editor, dev, packages, gpg
+│   │   ├── system/         # Cross-platform system tools
+│   │   └── nix.nix         # Nix package manager settings
+│   ├── nixos/              # NixOS-specific modules
+│   │   ├── system/         # NixOS system (users, locale, boot, networking, etc.)
+│   │   │   ├── default.nix     # Core system option
+│   │   │   ├── tools.nix       # CLI tools (monitoring, hardware, network)
+│   │   │   ├── boot.nix        # GRUB bootloader
+│   │   │   ├── fingerprint.nix # fprintd + PAM
+│   │   │   ├── networking.nix  # NetworkManager, vnstat, ethtool
+│   │   │   ├── wireless.nix    # Bluetooth, bluez
+│   │   │   ├── power.nix       # UPower, power-profiles-daemon, powertop
+│   │   │   └── graphics.nix    # hardware.graphics, Vulkan, Mesa
+│   │   └── desktop/        # NixOS desktop (audio, fonts, wm)
+│   │       ├── default.nix     # desktop.enable + imports
+│   │       ├── audio.nix       # PipeWire / PulseAudio
+│   │       ├── fonts.nix       # Fonts + fontconfig
+│   │       ├── wm.nix          # Hyprland compositor (config via chezmoi)
+│   │       └── home/           # NixOS-exclusive HM desktop modules
+│   │           ├── default.nix     # hex.nixos.home.desktop
+│   │           ├── noctalia.nix    # Noctalia v5 desktop shell
+│   │           └── packages.nix    # Desktop GUI packages (ghostty)
+│   └── darwin/             # macOS-specific
+│       ├── default.nix         # Darwin orchestration
+│       ├── home.nix            # HM integration (darwin variant)
+│       ├── system.nix          # nix daemon, fish
+│       └── system/
+│           └── fonts.nix       # macOS font management
+├── hosts/                 # Host configurations (was systems/)
+│   ├── thinkpad/
+│   ├── wsl/
+│   ├── vmware/
+│   └── darwin/
+├── dotfiles/              # Chezmoi-managed dotfiles
+│   ├── .chezmoiroot
+│   ├── .chezmoiignore
+│   └── dot_config/
+├── scripts/               # Standalone Nix scripts
+│   ├── audit.nix          # Hex config tree printer
+│   ├── sudo-proxy.sh
+│   ├── set-chezmoi-dir.sh
+│   └── unquarantine.sh
+└── systems/               # (renamed to hosts/)
 ```
 
 ## Naming Convention
@@ -48,16 +85,16 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - `hex.shared.nix.enable` — Nix package manager settings (GC, flakes, etc.)
 - `hex.shared.system.enable` — cross-platform system tools (wget, curl, htop, btop)
 - `hex.nixos.system.enable` — NixOS system (users, locale, nix settings)
-  - `hex.nixos.system.tools.enable` — linux-only system tools (lshw, pciutils, etc.)
-    - `hex.nixos.system.tools.monitoring` — monitoring tools (psmisc, powertop, atop, iotop)
-    - `hex.nixos.system.tools.hardware` — hardware tools (lshw, pciutils, usbutils, etc.)
-    - `hex.nixos.system.tools.network` — network tools (rustnet, wavemon, vnstat, etc.)
+  - `hex.nixos.system.tools.enable` — linux-only system tools
+    - `hex.nixos.system.tools.monitoring` — psmisc, atop, iotop
+    - `hex.nixos.system.tools.hardware` — lshw, pciutils, usbutils, dmidecode, etc.
+    - `hex.nixos.system.tools.network` — rustnet, wavemon
   - `hex.nixos.system.boot.enable` — GRUB bootloader (UEFI)
-  - `hex.nixos.system.fingerprint.enable` — fingerprint reader (fprintd) with PAM sudo/login
-  - `hex.nixos.system.networking.enable` — network management (NetworkManager), vnstat, network tools
-  - `hex.nixos.system.wireless.enable` — wireless devices (Bluetooth, bluez)
-  - `hex.nixos.system.power.enable` — power management (UPower, power-profiles-daemon, powertop)
-  - `hex.nixos.system.graphics.enable` — graphics tools (vulkan-tools, clinfo, mesa-demos)
+  - `hex.nixos.system.fingerprint.enable` — fprintd with PAM sudo/login
+  - `hex.nixos.system.networking.enable` — NetworkManager, vnstat, ethtool, iproute2
+  - `hex.nixos.system.wireless.enable` — Bluetooth, bluez
+  - `hex.nixos.system.power.enable` — UPower, power-profiles-daemon, powertop
+  - `hex.nixos.system.graphics.enable` — hardware.graphics, vulkan-tools, clinfo, mesa-demos
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
   - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
 
@@ -182,6 +219,16 @@ dotfiles/dot_config/exact_vesktop/
 4. Template content: conditional path based on OS (see pattern above)
 
 ## Scripts
+- `audit.nix` — Standalone hex config tree printer: `just audit <host>`
 - `sudo-proxy` — Run commands with proxy (cross-platform)
 - `unquarantine` — Remove macOS quarantine attribute from apps (macOS-only)
 - `set-chezmoi-dir` - Sets chezmoi working repository for to self diectory
+
+### Just Commands
+- `just fmt` — Format with alejandra
+- `just check` — Nix flake check
+- `just diff` — Compare current/result system
+- `just update` — Update flake lockfile
+- `just tree` — Nix-tree analysis
+- `just info` — List generations + flake metadata
+- `just audit <host>` — Print hex option tree for a host

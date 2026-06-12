@@ -66,6 +66,7 @@
       beautify = true;
     };
     hex.shared.home.gpg.enable = true;
+    hex.nixos.home.desktop.packages.enable = true;
 
     # host-specific proxy
     home-manager.users.hexzii.home.sessionVariables = {

@@ -8,6 +8,7 @@
 in {
   imports = [
     ./noctalia.nix
+    ./packages.nix
   ];
 
   options.hex.nixos.home.desktop = {
