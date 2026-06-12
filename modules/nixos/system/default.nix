@@ -32,7 +32,7 @@ in {
     hex.nixos.system.tools.enable = lib.mkDefault false;
     users.users.hexzii = {
       isNormalUser = true;
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel" "networkmanager"];
       shell = pkgs.fish;
       initialPassword = "123456";
     };
