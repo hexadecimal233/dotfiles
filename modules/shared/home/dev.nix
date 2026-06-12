@@ -15,27 +15,28 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {
-      home.packages = with pkgs; [
-        # nix
-        alejandra
-        nixd
+      home.packages = with pkgs;
+        [
+          # nix
+          alejandra
+          nixd
 
-        # build tools
-        gcc
-        pkg-config
+          # build tools
+          gcc
+          pkg-config
 
-        # justfile
-        just-lsp
+          # justfile
+          just-lsp
 
-        # stuff
-        mise
-      ]
-      ++ lib.optionals cfg.nodejs.enable [
-        # nodejs (global: npx/bunx)
-        nodejs_26
-        pnpm
-        bun
-      ];
+          # stuff
+          mise
+        ]
+        ++ lib.optionals cfg.nodejs.enable [
+          # nodejs (global: npx/bunx)
+          nodejs_26
+          pnpm
+          bun
+        ];
 
       home.sessionPath = lib.mkIf cfg.nodejs.enable (lib.mkAfter ["$HOME/.bun/bin"]);
     };

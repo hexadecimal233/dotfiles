@@ -9,16 +9,21 @@
 in {
   imports = [
     ./tools.nix
+    ./boot.nix
+    ./fingerprint.nix
+    ./networking.nix
+    ./wireless.nix
+    ./power.nix
+    ./graphics.nix
   ];
 
   options.hex.nixos.system = {
     enable = lib.mkEnableOption "NixOS system (users, locale, nix settings)";
     tools = {
       enable = lib.mkEnableOption "linux-only system tools (lshw, pciutils, etc.)";
-      monitoring = lib.mkEnableOption "monitoring tools (psmisc, powertop, atop, iotop)" // {default = false;};
+      monitoring = lib.mkEnableOption "monitoring tools (psmisc, atop, iotop)" // {default = false;};
       hardware = lib.mkEnableOption "hardware tools (lshw, pciutils, usbutils, etc.)" // {default = false;};
-      network = lib.mkEnableOption "network tools (rustnet, wavemon, vnstat, etc.)" // {default = false;};
-      graphics = lib.mkEnableOption "graphics tools (vulkan-tools, clinfo, mesa-demos)" // {default = false;};
+      network = lib.mkEnableOption "extra network tools (rustnet)" // {default = false;};
     };
   };
 
@@ -39,7 +44,6 @@ in {
     programs.fish.enable = true;
     # FIXME: nix-ld enabled but no packages used yet
     programs.nix-ld.enable = true;
-    services.vnstat.enable = true;
 
     environment.systemPackages = with pkgs; [
       (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))

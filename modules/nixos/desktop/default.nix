@@ -8,7 +8,8 @@ in {
   imports = [
     ./audio.nix
     ./fonts.nix
-    ./hyprland.nix
+    ./wm.nix
+    ./home
   ];
 
   options.hex.nixos.desktop = {

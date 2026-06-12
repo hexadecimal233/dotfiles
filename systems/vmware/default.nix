@@ -43,15 +43,12 @@
     hex.shared.home.dev.enable = true;
     hex.shared.home.packages.enable = true;
 
-    # VM boot — adjust for your VMware setup (BIOS or UEFI)
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    # VM boot — GRUB (UEFI)
+    hex.nixos.system.boot.enable = true;
+    hex.nixos.system.networking.enable = true;
 
     # VMware guest tools (mouse, clipboard, screen resize)
     virtualisation.vmware.guest.enable = true;
-
-    # basic networking
-    networking.networkmanager.enable = true;
 
     # host-specific proxy
     home-manager.users.hexzii.home.sessionVariables = {

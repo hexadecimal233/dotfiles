@@ -13,7 +13,6 @@ in {
         # monitoring (linux-only)
         lib.optionals cfg.monitoring [
           psmisc
-          powertop
           atop
           iotop
         ]
@@ -34,19 +33,6 @@ in {
         # network (linux-only)
         lib.optionals cfg.network [
           rustnet
-          wavemon
-          vnstat
-          ethtool
-          iproute2
-        ]
-      )
-      ++ (
-        # graphics (linux-only)
-        lib.optionals cfg.graphics [
-          vulkan-tools
-          vulkan-loader
-          clinfo
-          mesa-demos
         ]
       );
   };

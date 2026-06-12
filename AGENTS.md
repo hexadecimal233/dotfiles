@@ -20,8 +20,10 @@ modules/
 │   ├── system/        # Cross-platform system tools (wget, curl, htop, btop, etc.)
 │   └── nix.nix        # Nix package manager settings (GC, flakes, etc.)
 ├── nixos/             # NixOS-specific modules
-│   ├── system/        # NixOS system (users, locale, linux-only tools)
-│   └── desktop/       # NixOS desktop (GPU, audio, fonts, hyprland)
+│   ├── system/        # NixOS system (users, locale, boot, fingerprint, linux tools)
+│   ├── desktop/       # NixOS desktop (GPU, audio, fonts, wm)
+│   │   └── home/      # NixOS-exclusive home-manager desktop modules (noctalia)
+│   └── home/          # NixOS-exclusive home-manager modules (future)
 ├── darwin/            # macOS-specific modules
 │   └── system.nix     # Darwin system (nix daemon, fish shell)
 └── profile/           # NixOS orchestration (imports shared + nixos)
@@ -45,12 +47,17 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 **System-level (`*.system.*`)**
 - `hex.shared.nix.enable` — Nix package manager settings (GC, flakes, etc.)
 - `hex.shared.system.enable` — cross-platform system tools (wget, curl, htop, btop)
-- `hex.nixos.system.enable` — NixOS system (users, locale, linux-only tools)
+- `hex.nixos.system.enable` — NixOS system (users, locale, nix settings)
   - `hex.nixos.system.tools.enable` — linux-only system tools (lshw, pciutils, etc.)
     - `hex.nixos.system.tools.monitoring` — monitoring tools (psmisc, powertop, atop, iotop)
     - `hex.nixos.system.tools.hardware` — hardware tools (lshw, pciutils, usbutils, etc.)
     - `hex.nixos.system.tools.network` — network tools (rustnet, wavemon, vnstat, etc.)
-    - `hex.nixos.system.tools.graphics` — graphics tools (vulkan-tools, clinfo, mesa-demos)
+  - `hex.nixos.system.boot.enable` — GRUB bootloader (UEFI)
+  - `hex.nixos.system.fingerprint.enable` — fingerprint reader (fprintd) with PAM sudo/login
+  - `hex.nixos.system.networking.enable` — network management (NetworkManager), vnstat, network tools
+  - `hex.nixos.system.wireless.enable` — wireless devices (Bluetooth, bluez)
+  - `hex.nixos.system.power.enable` — power management (UPower, power-profiles-daemon, powertop)
+  - `hex.nixos.system.graphics.enable` — graphics tools (vulkan-tools, clinfo, mesa-demos)
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
   - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
 
@@ -70,9 +77,12 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 
 **NixOS-only**
 - `hex.nixos.desktop.enable` — desktop environment
-  - `hex.nixos.desktop.hyprland.enable` — Hyprland compositor
+  - `hex.nixos.desktop.hyprland.enable` — Hyprland compositor (config via chezmoi)
   - `hex.nixos.desktop.audio.enable` — audio stack
   - `hex.nixos.desktop.fonts.enable` — fonts
+
+**NixOS-exclusive home-manager desktop**
+- `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell
 
 ## Important Rules
 - **Architecture changes must update AGENTS.md** — When modifying module structure, options, or adding/removing modules, update this file first

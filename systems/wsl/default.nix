@@ -24,7 +24,6 @@
         monitoring = true;
         network = true;
         hardware = false; # WSL has no physical hardware
-        graphics = true;
       };
     };
     hex.shared.system = {

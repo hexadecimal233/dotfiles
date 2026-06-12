@@ -30,6 +30,10 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -40,6 +44,7 @@
     home-manager,
     disko,
     nixos-hardware,
+    noctalia,
     ...
   }: {
     nixosModules = {
@@ -63,7 +68,7 @@
 
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko nixos-hardware;
+          inherit self home-manager disko nixos-hardware noctalia;
         };
         system = "x86_64-linux";
         modules = [
@@ -74,7 +79,7 @@
 
       vmware = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko;
+          inherit self home-manager disko noctalia;
         };
         system = "x86_64-linux";
         modules = [
