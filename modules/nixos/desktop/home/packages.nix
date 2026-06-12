@@ -8,7 +8,7 @@
   cfg = config.hex.nixos.home.desktop.packages;
 in {
   options.hex.nixos.home.desktop.packages = {
-    enable = lib.mkEnableOption "desktop GUI packages (ghostty, firefox, vesktop)" // {default = false;};
+    enable = lib.mkEnableOption "desktop GUI packages (ghostty, firefox, vesktop, ayugram)" // {default = false;};
   };
 
   config = lib.mkIf cfg.enable {
@@ -16,6 +16,13 @@ in {
       ghostty
       firefox
       vesktop
+      ayugram-desktop
+      mixxx
+      zed-editor
+      vscodium
+      freetube
+      mpv
+      celluloid
     ];
   };
 }
