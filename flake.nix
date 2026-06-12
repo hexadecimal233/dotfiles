@@ -62,7 +62,7 @@
         };
         system = "x86_64-linux";
         modules = [
-          ./systems/wsl/default.nix
+          ./hosts/wsl/default.nix
         ];
       };
 
@@ -73,7 +73,7 @@
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
-          ./systems/thinkpad/default.nix
+          ./hosts/thinkpad/default.nix
         ];
       };
 
@@ -84,7 +84,7 @@
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
-          ./systems/vmware/default.nix
+          ./hosts/vmware/default.nix
         ];
       };
     };
@@ -96,7 +96,7 @@
         };
         system = "aarch64-darwin";
         modules = [
-          ./systems/darwin/default.nix
+          ./hosts/darwin/default.nix
         ];
       };
     };

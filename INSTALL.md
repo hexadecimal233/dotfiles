@@ -24,9 +24,9 @@ This repo uses [disko](https://github.com/nix-community/disko) for declarative d
 
 | Host | Platform | Disko | Hardware |
 |------|----------|-------|----------|
-| `thinkpad` | NixOS | ✅ `systems/thinkpad/disko-config.nix` | Lenovo ThinkPad T14 (Intel) |
+| `thinkpad` | NixOS | ✅ `hosts/thinkpad/disko-config.nix` | Lenovo ThinkPad T14 (Intel) |
 | `wsl` | NixOS (WSL) | ❌ (WSL doesn't need partitioning) | WSL2 |
-| `vmware` | NixOS | ✅ `systems/vmware/disko-config.nix` | VMware VM |
+| `vmware` | NixOS | ✅ `hosts/vmware/disko-config.nix` | VMware VM |
 | `neo` | macOS (nix-darwin) | ❌ (macOS manages its own disk) | Apple Silicon Mac |
 
 ---
@@ -68,12 +68,12 @@ Use this if you want to inspect the result before installing, or if disko-instal
 sudo nix run github:nix-community/disko/latest -- \
   --dry-run \
   --mode destroy,format,mount \
-  systems/vmware/disko-config.nix
+  hosts/vmware/disko-config.nix
 
 # Then actually run it
 sudo nix run github:nix-community/disko/latest -- \
   --mode destroy,format,mount \
-  systems/vmware/disko-config.nix
+  hosts/vmware/disko-config.nix
 ```
 
 > **--mode breakdown**:

@@ -20,8 +20,8 @@ in {
     environment.systemPackages = with pkgs; [
       vulkan-tools # vulkaninfo
       vulkan-loader
-      clinfo      # OpenCL info
-      mesa-demos  # glxinfo, eglinfo
+      clinfo # OpenCL info
+      mesa-demos # glxinfo, eglinfo
     ];
   };
 }
