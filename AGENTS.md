@@ -32,8 +32,10 @@
 │   │   │   ├── fingerprint.nix # fprintd + PAM
 │   │   │   ├── networking.nix  # NetworkManager, vnstat, ethtool
 │   │   │   ├── wireless.nix    # Bluetooth, bluez
-│   │   │   ├── power.nix       # UPower, power-profiles-daemon, powertop
-│   │   │   └── graphics.nix    # hardware.graphics, Vulkan, Mesa
+│   │   │   ├── power.nix       # UPower, power-profiles-daemon (not TLP)
+│   │   │   ├── graphics.nix    # hardware.graphics, Vulkan, Mesa, ddcutil
+│   │   │   ├── security.nix    # polkit
+│   │   │   └── time.nix        # timezone (auto or static)
 │   │   └── desktop/        # NixOS desktop (audio, fonts, wm)
 │   │       ├── default.nix     # desktop.enable + imports
 │   │       ├── audio.nix       # PipeWire / PulseAudio
@@ -42,7 +44,8 @@
 │   │       └── home/           # NixOS-exclusive HM desktop modules
 │   │           ├── default.nix     # hex.nixos.home.desktop
 │   │           ├── noctalia.nix    # Noctalia v5 desktop shell
-│   │           └── packages.nix    # Desktop GUI packages (ghostty)
+│   │           ├── packages.nix    # Desktop GUI packages (ghostty, firefox, ...)
+│   │           └── theme.nix       # Desktop theming (Papirus icons, Bibata cursor)
 │   └── darwin/             # macOS-specific
 │       ├── default.nix         # Darwin orchestration
 │       ├── home.nix            # HM integration (darwin variant)
@@ -94,7 +97,10 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.networking.enable` — NetworkManager, vnstat, ethtool, iproute2
   - `hex.nixos.system.wireless.enable` — Bluetooth, bluez
   - `hex.nixos.system.power.enable` — UPower, power-profiles-daemon, powertop
-  - `hex.nixos.system.graphics.enable` — hardware.graphics, vulkan-tools, clinfo, mesa-demos
+  - `hex.nixos.system.graphics.enable` — hardware.graphics, vulkan-tools, clinfo, mesa-demos, ddcutil, brightnessctl
+  - `hex.nixos.system.security.enable` — polkit
+  - `hex.nixos.system.time.auto` — automatic timezone via geoclue2 (automatic-timezoned)
+  - `hex.nixos.system.time.timezone` — static timezone string (e.g. "Asia/Shanghai")
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
   - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
 
@@ -120,6 +126,8 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 
 **NixOS-exclusive home-manager desktop**
 - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell
+- `hex.nixos.home.desktop.packages.enable` — Desktop GUI packages (ghostty, firefox, vesktop, ...)
+- `hex.nixos.home.desktop.theme.enable` — Desktop theming (Papirus icons, Bibata/AOSP cursor)
 
 ## Important Rules
 - **Architecture changes must update AGENTS.md** — When modifying module structure, options, or adding/removing modules, update this file first
@@ -127,6 +135,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - Platform-specific modules go in `nixos/` or `darwin/` directories
 - Naming must follow `hex.<platform>.<scope>.<module>.enable` pattern
 - **Desktop GUI apps with built-in settings editors should NOT use home-manager for config management** — Let their internal settings editor be the source of truth. Use chezmoi or plain file install instead. Applies to apps like vesktop, vscodium, and desktop shells with GUI settings panels.
+- **Run `just audit <host>` after enabling any new hex.* option** — The module system doesn't warn you if you forgot to enable a parent option or missed a sub-option. Always verify with audit that the intended options are actually enabled on the target host.
 
 ## Dotfiles Management
 

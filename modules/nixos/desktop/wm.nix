@@ -50,10 +50,12 @@ in {
             kb_layout = "us",
             touchpad = { natural_scroll = true },
           },
+          cursor = {
+            enable_hyprcursor = false,
+          },
           misc = {
             disable_hyprland_logo = true,
             disable_splash_rendering = true,
-            enable_hyprcursor = false,
           },
         })
 
