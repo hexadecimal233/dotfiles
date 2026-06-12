@@ -6,5 +6,5 @@ See [INSTALL.md](/INSTALL.md) at the repo root for general installation instruct
 
 - **Disk device**: Typically `/dev/sda`. Verify with `lsblk` before running disko.
 - **Firmware**: This config uses `systemd-boot` (UEFI). Make sure the VM is set to UEFI firmware (not BIOS).
-- **VMware Tools**: Not enabled (open-vm-tools intentionally excluded).
+- **VMware Tools**: Enabled via `virtualisation.vmware.guest.enable = true` (open-vm-tools with mouse, clipboard, screen resize).
 - **Minimal desktop**: Hyprland with basic config for testing — not a full rice.

@@ -42,6 +42,9 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    # VMware guest tools (mouse, clipboard, screen resize)
+    virtualisation.vmware.guest.enable = true;
+
     # basic networking
     networking.networkmanager.enable = true;
 
