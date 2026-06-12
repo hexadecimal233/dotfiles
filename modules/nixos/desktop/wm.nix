@@ -38,7 +38,10 @@ in {
         end)
 
         hl.config({
-          input = { kb_layout = "us" },
+          input = {
+            kb_layout = "us",
+            touchpad = { natural_scroll = true },
+          },
           misc = {
             disable_hyprland_logo = true,
             disable_splash_rendering = true,
@@ -47,9 +50,19 @@ in {
 
         hl.bind("SUPER + Q", hl.dsp.window.close())
         hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
-        hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("hyprlauncher"))
+        hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("ghostty"))
         hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
         hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area"))
+
+        -- Volume
+        hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
+        hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+        hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+        hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
+
+        -- Brightness
+        hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 5%+"), { repeating = true })
+        hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"), { repeating = true })
       '';
       # UWSM session env
       xdg.configFile."uwsm/env".text = "XCURSOR_SIZE=24";
