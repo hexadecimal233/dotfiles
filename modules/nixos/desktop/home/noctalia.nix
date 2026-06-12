@@ -14,10 +14,21 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # home-manager: import noctalia module + config
     home-manager.users.hexzii = {
       imports = [noctalia.homeModules.default];
       programs.noctalia.enable = true;
+
+      # Tell Hyprland to start Noctalia (systemd disabled — UWSM manages it)
+      wayland.windowManager.hyprland = {
+        enable = true;
+        systemd.enable = false;
+        settings.exec-once = ["qs -c noctalia-shell"];
+      };
+
+      # UWSM session env vars
+      xdg.configFile."uwsm/env".text = ''
+        XCURSOR_SIZE=24
+      '';
     };
   };
 }
