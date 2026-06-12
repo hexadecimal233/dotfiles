@@ -85,10 +85,6 @@
     hardware.intelgpu.driver = "xe";
     hardware.enableRedistributableFirmware = true;
 
-    # Laptop-specific power (not in power module)
-    services.tlp.enable = true;
-    powerManagement.enable = true;
-
     # SSD TRIM
     services.fstrim.enable = true;
   };
