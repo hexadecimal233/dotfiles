@@ -42,6 +42,10 @@ status:
     nix flake show
     nix store diff-closures /run/current-system ./result
 
-# Print hex option tree for a host
+# Print hex option tree for a NixOS host
 audit host:
     nix eval ".#nixosConfigurations.{{host}}.config.hex" --apply 'import ./scripts/audit.nix' --impure >/dev/null
+
+# Print hex option tree for a Darwin host
+audit-darwin host:
+    nix eval ".#darwinConfigurations.{{host}}.config.hex" --apply 'import ./scripts/audit.nix' --impure >/dev/null
