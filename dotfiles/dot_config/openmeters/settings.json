@@ -1,0 +1,114 @@
+{
+  "visuals": {
+    "modules": {
+      "loudness": {
+        "enabled": true,
+        "config": {
+          "left_mode": "true_peak",
+          "right_mode": "lufs_short_term"
+        }
+      },
+      "spectrum": {
+        "enabled": true,
+        "config": {
+          "averaging": {
+            "decay_per_second": 21.5,
+            "mode": "peak_hold"
+          },
+          "bar_count": 64,
+          "bar_gap": 0.1599999964237213,
+          "display_mode": "line",
+          "fft_size": 1024,
+          "floor_db": -108.0,
+          "frequency_scale": "logarithmic",
+          "highlight_threshold": 0.6399999856948853,
+          "hop_size": 128,
+          "reverse_frequency": false,
+          "show_grid": true,
+          "show_peak_label": true,
+          "show_secondary_line": true,
+          "smoothing_passes": 0,
+          "smoothing_radius": 9,
+          "weighting_mode": "a_weighted",
+          "window": "blackman_harris"
+        }
+      },
+      "stereometer": {
+        "enabled": true,
+        "config": {
+          "correlation_meter": "multi_band",
+          "correlation_meter_side": "right",
+          "correlation_window": 0.05000000074505806,
+          "dot_radius": 1.5,
+          "flip": true,
+          "mode": "dot_cloud_bands",
+          "persistence": 0.14000000059604645,
+          "rotation": -1,
+          "scale": "exponential",
+          "scale_range": 6.0,
+          "segment_duration": 0.019999999552965164,
+          "target_sample_count": 2000
+        }
+      },
+      "waveform": {
+        "enabled": true,
+        "config": {
+          "band_db_floor": -66.0,
+          "channel_1": "mid",
+          "channel_2": "side",
+          "color_mode": "frequency",
+          "scroll_speed": 267.0,
+          "show_peak_history": false
+        }
+      },
+      "oscilloscope": {
+        "enabled": true,
+        "config": {
+          "channel_1": "mid",
+          "channel_2": "side",
+          "persistence": 0.0,
+          "segment_duration": 0.019999999552965164,
+          "trigger_mode": {
+            "Stable": {
+              "num_cycles": 2
+            }
+          }
+        }
+      },
+      "spectrogram": {
+        "enabled": true,
+        "config": {
+          "fft_size": 8192,
+          "floor_db": -96.0,
+          "frequency_scale": "logarithmic",
+          "hop_size": 256,
+          "piano_roll_overlay": "off",
+          "rotation": 0,
+          "tilt_db": 0.0,
+          "use_reassignment": true,
+          "window": "hann",
+          "zero_padding_factor": 1
+        }
+      }
+    },
+    "order": [],
+    "width_basis": {
+      "stereometer": 127.58069,
+      "spectrogram": 300.0,
+      "waveform": 292.27734,
+      "spectrum": 400.0,
+      "loudness": 160.38858,
+      "oscilloscope": 255.75342
+    }
+  },
+  "decorations": false,
+  "bar": {
+    "enabled": true,
+    "alignment": "top",
+    "height": 138,
+    "monitor": "eDP-1"
+  },
+  "capture_mode": "applications",
+  "last_device_name": null,
+  "theme": "default-custom"
+}
