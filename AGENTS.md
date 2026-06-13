@@ -35,7 +35,8 @@
 │   │   │   ├── power.nix       # UPower, power-profiles-daemon (not TLP)
 │   │   │   ├── graphics.nix    # hardware.graphics, Vulkan, Mesa, ddcutil
 │   │   │   ├── security.nix    # polkit
-│   │   │   └── time.nix        # timezone (auto or static)
+│   │   │   ├── time.nix        # timezone (auto or static)
+│   │   │   └── ime.nix         # fcitx5 + Rime + Mozc
 │   │   └── desktop/        # NixOS desktop (audio, fonts, wm)
 │   │       ├── default.nix     # desktop.enable + imports
 │   │       ├── audio.nix       # PipeWire / PulseAudio
@@ -101,6 +102,8 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.security.enable` — polkit
   - `hex.nixos.system.time.auto` — automatic timezone via geoclue2 (automatic-timezoned)
   - `hex.nixos.system.time.timezone` — static timezone string (e.g. "Asia/Shanghai")
+  - `hex.nixos.system.ime.enable` — fcitx5 input method (Rime Chinese + Mozc Japanese)
+    - `hex.nixos.system.ime.rimeSchema` — Rime schema: "wanxiang" (万象拼音) or "ice" (雾凇拼音)
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
   - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
 

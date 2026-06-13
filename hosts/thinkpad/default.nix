@@ -37,6 +37,7 @@
       power.enable = true;
       time.auto = true;
       graphics.enable = true;
+      ime.enable = true;
     };
     hex.shared.system = {
       enable = true;

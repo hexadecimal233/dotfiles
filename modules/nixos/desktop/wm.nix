@@ -31,6 +31,7 @@ in {
     };
 
     # Direct Hyprland Lua config — bypasses broken HM generator
+    # TODO: Hyprland move to chezmoi to manage!!!!
     home-manager.users.hexzii = {
       xdg.configFile."hypr/hyprland.lua".text = ''
         -- nwg-displays manages monitors via ~/.config/hypr/monitors.lua

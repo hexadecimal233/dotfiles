@@ -126,3 +126,27 @@ After rebooting into the new system, run the first switch:
 ```bash
 sudo nh os switch . -H vmware
 ```
+
+### Dotfiles (chezmoi)
+
+If `hex.shared.home.packages.systemTools = true` (installs chezmoi), wire up chezmoi to manage dotfiles from this repo:
+
+```bash
+# From the repo root
+set-chezmoi-dir
+chezmoi apply
+```
+
+> This sets chezmoi's `sourceDir` to the current directory and applies all dotfiles (Hyprland config, vesktop themes, etc.).
+
+### Input method (Chinese/Japanese)
+
+If `hex.nixos.system.ime.enable = true` with `rimeSchema = "wanxiang"` (default), download the grammar model after first login:
+
+```bash
+rime-wanxiang-grammar
+```
+
+Then deploy Rime to apply: `fcitx5-configtool` → Addons → Rime → Deploy.
+
+> `rimeSchema = "ice"` does not need this step.

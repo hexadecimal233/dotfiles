@@ -17,11 +17,6 @@ in {
     home-manager.users.hexzii = {
       imports = [noctalia.homeModules.default];
       programs.noctalia.enable = true;
-
-      # UWSM session env vars
-      xdg.configFile."uwsm/env".text = ''
-        XCURSOR_SIZE=24
-      '';
     };
   };
 }
