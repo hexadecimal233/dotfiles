@@ -51,9 +51,10 @@ in {
       home.packages = with pkgs; [
         difftastic
         gh # TODO: maybe move to dotfiles
+        jujutsu
+        lazygit
       ];
 
-      programs.lazygit.enable = true;
       programs.delta = {
         enable = true;
         enableGitIntegration = true;
