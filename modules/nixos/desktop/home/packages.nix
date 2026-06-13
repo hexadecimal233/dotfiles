@@ -27,6 +27,7 @@ in {
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
       clash-verge-rev # Clash GUI proxy client
+      obs-studio
       # bitwarden-desktop FIXME: outdated electron
       sourcegit # todo: watch 4 updates
     ];

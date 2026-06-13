@@ -51,6 +51,7 @@
       };
       fonts.enable = true;
       hyprland.enable = true;
+      proxy.verge.enable = true;
     };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;

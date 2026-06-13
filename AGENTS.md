@@ -41,8 +41,9 @@
 │   │       ├── default.nix     # desktop.enable + imports
 │   │       ├── audio.nix       # PipeWire / PulseAudio
 │   │       ├── fonts.nix       # Fonts + fontconfig
-│   │       ├── wm.nix          # Hyprland compositor (config via chezmoi)
-│   │       └── home/           # NixOS-exclusive HM desktop modules
+│   │   ├── wm.nix          # Hyprland compositor (config via chezmoi)
+│   │   ├── proxy.nix       # Clash Verge proxy (mihomo kernel)
+│   │   └── home/           # NixOS-exclusive HM desktop modules
 │   │           ├── default.nix     # hex.nixos.home.desktop
 │   │           ├── noctalia.nix    # Noctalia v5 desktop shell
 │   │           ├── packages.nix    # Desktop GUI packages (ghostty, firefox, ...)
@@ -126,6 +127,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.desktop.hyprland.enable` — Hyprland compositor (config via chezmoi)
   - `hex.nixos.desktop.audio.enable` — audio stack
   - `hex.nixos.desktop.fonts.enable` — fonts
+  - `hex.nixos.desktop.proxy.verge.enable` — Clash Verge proxy (mihomo kernel)
 
 **NixOS-exclusive home-manager desktop**
 - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell
