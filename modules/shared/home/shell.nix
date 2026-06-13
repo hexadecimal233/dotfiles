@@ -49,7 +49,7 @@ in {
           lt = "eza --tree";
           top = "btop";
           tokscale = "bunx tokscale@latest"; # count tokens
-          maleme = "bunx maleme@latest"; # fxxk
+          maleme = "bunx maleme@latest"; # triggered!!
         };
       };
 

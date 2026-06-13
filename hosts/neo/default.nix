@@ -27,6 +27,7 @@
     hex.shared.home.editor.enable = true;
     hex.shared.home.dev = {
       enable = true;
+      ai.enable = true;
       nodejs.enable = true;
     };
     hex.shared.home.packages = {

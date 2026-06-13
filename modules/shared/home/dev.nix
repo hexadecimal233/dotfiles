@@ -11,6 +11,9 @@ in {
     nodejs = {
       enable = lib.mkEnableOption "Node.js ecosystem (nodejs, pnpm, bun)" // {default = false;};
     };
+    ai = {
+      enable = lib.mkEnableOption "AI / Vibe coding / AIGC stuff" // {default = false;};
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -36,9 +39,12 @@ in {
           nodejs_26
           pnpm
           bun
+        ]
+        ++ lib.optionals cfg.ai.enable [
+          opencode
         ];
 
-      home.sessionPath = lib.mkIf cfg.nodejs.enable (lib.mkAfter ["$HOME/.bun/bin"]);
+      home.sessionPath = lib.mkIf cfg.nodejs.enable (lib.mkAfter ["$HOME/.bun/bin"]); #++ ["$HOME/go/bin"];
     };
   };
 }
