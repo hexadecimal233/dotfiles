@@ -28,6 +28,7 @@ in {
       desktop-file-utils # update-desktop-database
       clash-verge-rev # Clash GUI proxy client
       # bitwarden-desktop FIXME: outdated electron
+      sourcegit # todo: watch 4 updates
     ];
   };
 }

@@ -74,6 +74,8 @@
         "vesktop"
         "iina"
         "zed"
+        "sourcegit"
+        # "gitbutler"
       ];
     };
   };
