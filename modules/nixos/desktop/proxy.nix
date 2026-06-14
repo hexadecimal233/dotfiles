@@ -15,19 +15,19 @@ in {
 
   config = lib.mkIf (config.hex.nixos.desktop.enable && cfg.enable) {
     # Clash Verge — GUI proxy client with mihomo kernel
-    programs.clash-verge = {
-      enable = true;
-      serviceMode = true;
-      tunMode = true;
-      autoStart = true;
-    };
+    # programs.clash-verge = {
+    #   enable = true;
+    #   serviceMode = true;
+    #   tunMode = true;
+    #   autoStart = true;
+    # };
 
     # Allow mihomo TUN traffic through firewall
-    networking.firewall = {
-      trustedInterfaces = ["Mihomo"];
-      extraReversePathFilterRules = ''
-        iifname { "Mihomo" } accept comment "trusted interface"
-      '';
-    };
+    # networking.firewall = {
+    #   trustedInterfaces = ["Mihomo"];
+    #   extraReversePathFilterRules = ''
+    #     iifname { "Mihomo" } accept comment "trusted interface"
+    #   '';
+    # };
   };
 }
