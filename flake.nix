@@ -34,6 +34,10 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-cavalry = {
+      url = "github:hexadecimal233/nix-cavalry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -44,6 +48,7 @@
     home-manager,
     disko,
     nixos-hardware,
+    nix-cavalry,
     noctalia,
     ...
   }: {
@@ -68,7 +73,7 @@
 
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko nixos-hardware noctalia;
+          inherit self home-manager disko nixos-hardware noctalia nix-cavalry;
         };
         system = "x86_64-linux";
         modules = [

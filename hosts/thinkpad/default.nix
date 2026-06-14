@@ -3,6 +3,7 @@
   pkgs,
   disko,
   nixos-hardware,
+  nix-cavalry,
   ...
 }: {
   imports = [
@@ -90,7 +91,13 @@
     hardware.intelgpu.driver = "xe";
     hardware.enableRedistributableFirmware = true;
 
-    # SSD TRIM
-    services.fstrim.enable = true;
+    services.btrfs.autoScrub.enable = true;
+
+    nixpkgs.config.allowUnfree = true; # TODO: specifications
+    nixpkgs.overlays = [ nix-cavalry.overlays.default ];
+
+    home-manager.users.hexzii.home.packages = [
+      pkgs.cavalry
+    ];
   };
 }
