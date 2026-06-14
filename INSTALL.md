@@ -150,3 +150,63 @@ rime-wanxiang-grammar
 Then deploy Rime to apply: `fcitx5-configtool` → Addons → Rime → Deploy.
 
 > `rimeSchema = "ice"` does not need this step.
+
+## Troubleshooting
+
+### Build fails (`nh os switch` / `nixos-rebuild`)
+
+```bash
+# Full trace with error location
+nh os switch . -H <host> -- --show-trace
+
+# Check Nix daemon logs
+journalctl -u nix-daemon -n 50 --no-pager
+```
+
+### Input method not working
+
+```bash
+# Fcitx5 process — should show running
+pgrep -a fcitx5
+
+# Fcitx5 logs — check for addon or engine errors
+journalctl -xe --no-pager | grep -i fcitx
+
+# Environment variables — should all point to fcitx5
+env | grep -E "GTK_IM_MODULE|QT_IM_MODULE|XMODIFIERS"
+
+# Restart manually to see live errors
+fcitx5 -r 2>&1 | head -30
+```
+
+### Tray icon missing
+
+```bash
+# Check if fcitx5 is running
+pgrep -a fcitx5
+
+# Start manually to test
+fcitx5 -d
+```
+
+### Rime error / schema not working
+
+```bash
+# Rime log — shows schema loading errors, missing files, grammar warnings
+cat ~/.local/share/fcitx5/rime/ERROR
+cat ~/.local/share/fcitx5/rime/rime.log
+
+# If no logs exist: fcitx5-rime disables file logging (log_dir = "").
+# Check stderr/journalctl instead:
+journalctl -xe --no-pager | grep -i "fcitx\|rime"
+fcitx5 -d --verbose=rime=5 2>&1 | head -50
+
+# Full fcitx5 diagnostics (env, plugins, addons, Rime data paths)
+fcitx5-diagnose 2>&1 | grep -A5 -i rime
+
+# Force re-deploy (triggers second attempt, fixes first-deploy bug)
+fcitx5-remote -r
+
+# Check if default.custom.yaml exists and has correct __include
+cat ~/.local/share/fcitx5/rime/default.custom.yaml
+```
