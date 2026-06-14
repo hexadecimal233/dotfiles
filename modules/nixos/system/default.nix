@@ -18,6 +18,7 @@ in {
     ./security.nix
     ./time.nix
     ./ime.nix
+    ./ios.nix
   ];
 
   options.hex.nixos.system = {

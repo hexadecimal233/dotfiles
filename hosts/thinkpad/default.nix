@@ -39,6 +39,7 @@
       time.auto = true;
       graphics.enable = true;
       ime.enable = true;
+      ios.enable = true;
     };
     hex.shared.system = {
       enable = true;
