@@ -94,7 +94,7 @@
     services.btrfs.autoScrub.enable = true;
 
     nixpkgs.config.allowUnfree = true; # TODO: specifications
-    nixpkgs.overlays = [ nix-cavalry.overlays.default ];
+    nixpkgs.overlays = [nix-cavalry.overlays.default];
 
     home-manager.users.hexzii.home.packages = [
       pkgs.cavalry

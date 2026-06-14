@@ -32,10 +32,10 @@ in {
 
     # UWSM session env (kept inline — not managed by chezmoi)
     home-manager.users.hexzii.xdg.configFile."uwsm/env".text = ''
-        XCURSOR_SIZE=24
-        XCURSOR_THEME=Bibata-Modern-Classic
-        TERMINAL=ghostty
-      '';
+      XCURSOR_SIZE=24
+      XCURSOR_THEME=Bibata-Modern-Classic
+      TERMINAL=ghostty
+    '';
 
     # hint Electron apps to use Wayland + default terminal
     environment.sessionVariables = {

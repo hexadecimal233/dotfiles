@@ -28,6 +28,7 @@ in {
       [
         (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
         (writeShellScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.sh")))
+        (writeShellScriptBin "escape" (builtins.readFile (self + "/scripts/escape.sh")))
         (writeShellScriptBin "unquarantine" (builtins.readFile (self + "/scripts/unquarantine.sh")))
       ]
       ++ [
