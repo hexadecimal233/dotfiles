@@ -40,4 +40,4 @@ selection-background = #19283c
 selection-foreground = #fbfbfb
 split-divider-color = #262727
 # theme = Pierre Dark
-window-show-tab-bar = always
+# window-show-tab-bar = always
