@@ -1,9 +1,14 @@
-# macOS only: Library/Application Support
+# macOS exclusive
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support
 {{ end }}
 
-# Windows only: AppData
+# Windows exclusive
 {{ if ne .chezmoi.os "windows" }}
 AppData
+{{ end }}
+
+# Linux exclusive
+{{ if ne .chezmoi.os "linux" }}
+.config/hypr/**
 {{ end }}
