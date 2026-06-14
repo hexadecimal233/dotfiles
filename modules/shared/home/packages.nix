@@ -80,6 +80,7 @@ in {
           # beautify
           lib.optionals cfg.beautify [
             # hollywood
+            asciinema
             fastfetch
             hyfetch
           ]
