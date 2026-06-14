@@ -2,11 +2,6 @@
   "name": "default-custom",
   "background": "#050a19",
   "palettes": {
-    "oscilloscope": {
-      "stops": [
-        "#ffd9ff"
-      ]
-    },
     "spectrum": {
       "stops": [
         "#00000000",
@@ -14,6 +9,11 @@
         "#ff0000",
         "#ffff21",
         "#ffd9ff",
+        "#ffd9ff"
+      ]
+    },
+    "oscilloscope": {
+      "stops": [
         "#ffd9ff"
       ]
     }

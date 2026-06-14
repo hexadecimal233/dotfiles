@@ -1,11 +1,15 @@
 {
   "visuals": {
     "modules": {
-      "loudness": {
+      "waveform": {
         "enabled": true,
         "config": {
-          "left_mode": "true_peak",
-          "right_mode": "lufs_short_term"
+          "band_db_floor": -66.0,
+          "channel_1": "mid",
+          "channel_2": "side",
+          "color_mode": "frequency",
+          "scroll_speed": 267.0,
+          "show_peak_history": false
         }
       },
       "spectrum": {
@@ -33,6 +37,20 @@
           "window": "blackman_harris"
         }
       },
+      "oscilloscope": {
+        "enabled": true,
+        "config": {
+          "channel_1": "mid",
+          "channel_2": "side",
+          "persistence": 0.0,
+          "segment_duration": 0.019999999552965164,
+          "trigger_mode": {
+            "Stable": {
+              "num_cycles": 2
+            }
+          }
+        }
+      },
       "stereometer": {
         "enabled": true,
         "config": {
@@ -50,29 +68,11 @@
           "target_sample_count": 2000
         }
       },
-      "waveform": {
+      "loudness": {
         "enabled": true,
         "config": {
-          "band_db_floor": -66.0,
-          "channel_1": "mid",
-          "channel_2": "side",
-          "color_mode": "frequency",
-          "scroll_speed": 267.0,
-          "show_peak_history": false
-        }
-      },
-      "oscilloscope": {
-        "enabled": true,
-        "config": {
-          "channel_1": "mid",
-          "channel_2": "side",
-          "persistence": 0.0,
-          "segment_duration": 0.019999999552965164,
-          "trigger_mode": {
-            "Stable": {
-              "num_cycles": 2
-            }
-          }
+          "left_mode": "true_peak",
+          "right_mode": "lufs_short_term"
         }
       },
       "spectrogram": {
@@ -93,12 +93,12 @@
     },
     "order": [],
     "width_basis": {
-      "stereometer": 127.58069,
       "spectrogram": 300.0,
+      "loudness": 160.38858,
       "waveform": 292.27734,
       "spectrum": 400.0,
-      "loudness": 160.38858,
-      "oscilloscope": 255.75342
+      "oscilloscope": 255.75342,
+      "stereometer": 127.58069
     }
   },
   "decorations": false,
