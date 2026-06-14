@@ -26,6 +26,7 @@ in {
       nwg-displays # GUI multi-monitor configurator
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
+      nautilus # GNOME file manager (bound to SUPER+E)
       clash-verge-rev # Clash GUI proxy client
       obs-studio
       # bitwarden-desktop FIXME: outdated electron
