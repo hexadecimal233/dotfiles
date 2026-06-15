@@ -12,6 +12,12 @@ in {
   };
 
   config = lib.mkIf (config.hex.nixos.home.desktop.enable && cfg.enable) {
+    # Legacy JDKs (zulu8/zulu17/zulu21) come from hex.shared.home.java.legacy
+    assertions = [{
+      assertion = config.hex.shared.home.java.legacy;
+      message = "minecraft requires hex.shared.home.java.legacy to be enabled (provides zulu8/zulu17/zulu21 for launcher runtimes)";
+    }];
+
     home-manager.users.hexzii = {
       home.packages = with pkgs; [
         # minecaft launchers
@@ -36,17 +42,7 @@ in {
             zulu8
           ];
         })
-
-        zulu21
-        zulu17
-        zulu8
       ];
-
-      home.sessionVariables = {
-        JAVA8_HOME = "${pkgs.zulu8.home}";
-        JAVA17_HOME = "${pkgs.zulu17.home}";
-        JAVA21_HOME = "${pkgs.zulu21.home}";
-      };
     };
   };
 }

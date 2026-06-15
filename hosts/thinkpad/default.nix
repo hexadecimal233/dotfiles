@@ -75,6 +75,7 @@
     };
     hex.shared.home.gpg.enable = true;
     hex.shared.home.java.enable = true;
+    hex.shared.home.java.legacy = true;
     hex.nixos.home.desktop = {
       enable = true;
       noctalia.enable = true;

@@ -75,6 +75,7 @@ in {
             iperf3
             asn
             dnsutils
+            netcat
           ]
         )
         ++ (

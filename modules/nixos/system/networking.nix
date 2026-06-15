@@ -20,6 +20,7 @@ in {
       ethtool # NIC info/config
       iproute2 # ip, ss, tc
       vnstat # traffic monitor
+      tcpdump # traffic capture
     ];
   };
 }
