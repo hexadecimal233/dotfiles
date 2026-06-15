@@ -50,6 +50,7 @@ in {
     console = {
       packages = with pkgs; [pkgs.unifont];
       font = "unifont";
+      earlySetup = true;
     }; # tty cn font support
 
     i18n.defaultLocale = "zh_CN.UTF-8"; # TODO: split form this file

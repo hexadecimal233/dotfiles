@@ -32,7 +32,7 @@
 │   │   │   ├── fingerprint.nix # fprintd + PAM
 │   │   │   ├── networking.nix  # NetworkManager, vnstat, ethtool
 │   │   │   ├── wireless.nix    # Bluetooth, bluez
-│   │   │   ├── power.nix       # UPower, power-profiles-daemon (not TLP)
+│   │   │   ├── power.nix       # UPower, power-profiles-daemon, powertop
 │   │   │   ├── graphics.nix    # hardware.graphics, Vulkan, Mesa, ddcutil
 │   │   │   ├── security.nix    # polkit
 │   │   │   ├── time.nix        # timezone (auto or static)
