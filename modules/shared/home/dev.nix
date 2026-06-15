@@ -44,7 +44,14 @@ in {
           opencode
         ];
 
-      home.sessionPath = lib.mkIf cfg.nodejs.enable (lib.mkAfter ["$HOME/.bun/bin"]); #++ ["$HOME/go/bin"];
+      home.sessionPath = [
+        "$HOME/.bun/bin"
+        "$HOME/.local/share/pnpm/bin"
+
+        # below unrecommended, but added just in case
+        "$HOME/.cargo/bin"
+        "$HOME/go/bin"
+      ];
     };
   };
 }

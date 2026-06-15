@@ -13,6 +13,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     networking.networkmanager.enable = true;
+    # networking.hostName = "nixos";
     services.vnstat.enable = true; # network statistics
 
     environment.systemPackages = with pkgs; [

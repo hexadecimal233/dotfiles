@@ -1,0 +1,3 @@
+{}
+# TODO: flatpak, appimage support
+

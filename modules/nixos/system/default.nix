@@ -35,10 +35,19 @@ in {
     hex.nixos.system.tools.enable = lib.mkDefault false;
     users.users.hexzii = {
       isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = [
+        "wheel" # root access
+        "networkmanager" # wired/wireless mgmt
+        "audio" # audio mgmt
+        "jackaudio"
+        "dialout" # external bus
+        "docker" # docker mgmt
+      ];
       shell = pkgs.fish;
       initialPassword = "123456";
     };
+
+    console.font = "Uni3-Terminus16"; # tty cn font support
 
     i18n.defaultLocale = "zh_CN.UTF-8"; # TODO: split form this file
 
