@@ -22,16 +22,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {
-      home.packages = with pkgs;
-        [
-          zulu25 # Primary JDK
-        ]
-        ++ lib.optionals cfg.legacy [
-          zulu21
-          zulu17
-          zulu11
-          zulu8
-        ];
+      home.packages = with pkgs; [
+        zulu25 # Primary JDK
+      ];
 
       home.sessionVariables =
         {
@@ -44,7 +37,7 @@ in {
           JAVA_21_HOME = "${pkgs.zulu21.home}";
         };
 
-      # Batch symlink legacy JDKs to ~/.jdks/ for IDE/tool discovery
+      # Symlink legacy JDKs to ~/.jdks/ — avoids bin/java collision
       home.file = lib.mkIf cfg.legacy (
         legacyJdks
         |> builtins.attrNames
