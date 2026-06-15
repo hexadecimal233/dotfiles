@@ -7,6 +7,7 @@
   cfg = config.hex.nixos.home.desktop;
 in {
   imports = [
+    ./minecraft.nix
     ./noctalia.nix
     ./packages.nix
     ./theme.nix

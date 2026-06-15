@@ -80,6 +80,7 @@
       noctalia.enable = true;
       packages.enable = true;
       theme.enable = true;
+      minecraft.enable = true;
     };
 
     # host-specific proxy
