@@ -15,7 +15,15 @@ in {
     home-manager.users.hexzii = {
       home.packages = with pkgs; [
         # minecaft launchers
-        hmcl
+        (hmcl.override {
+          hmclJdk = zulu25.override { enableJavaFX = true; };
+          minecraftJdks = [
+            zulu25
+            zulu21
+            zulu17
+            zulu8
+          ];
+        })
         (prismlauncher.override {
           # Add binary required by some mod
           additionalPrograms = [ffmpeg-full];
