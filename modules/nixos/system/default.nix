@@ -49,6 +49,7 @@ in {
 
     # console.font = "LatArCyrHeb-16"; @ tty does not support cn font
 
+    # "en_US.UTF-8";
     i18n.defaultLocale = "zh_CN.UTF-8"; # TODO: split form this file
 
     # NixOS-specific GC schedule (systemd calendar format)

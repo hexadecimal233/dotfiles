@@ -27,6 +27,7 @@ in {
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
       nautilus # GNOME file manager (bound to SUPER+E)
+      libreoffice-fresh
       obs-studio
       # bitwarden-desktop FIXME: outdated electron
       sourcegit # todo: watch 4 updates
