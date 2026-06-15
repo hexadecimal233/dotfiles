@@ -32,6 +32,7 @@ in {
           # data processing
           lib.optionals cfg.dataProcessing [
             pv
+            progress
             bc
             jq
             yq

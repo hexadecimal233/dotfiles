@@ -5,11 +5,18 @@
     "light_dark": "dark",
     "lightness": 0.65,
     "color_align": {
-        "mode": "horizontal"
+        "mode": "custom",
+        "custom_colors": {
+            "1": 1,
+            "2": 0
+        }
     },
     "backend": "fastfetch",
     "args": null,
     "distro": null,
     "pride_month_disable": false,
-    "custom_ascii_path": null
+    "custom_ascii_path": null,
+    "custom_presets": null,
+    "palette_glyph": null,
+    "palette_type": null
 }
