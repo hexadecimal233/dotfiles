@@ -12,6 +12,7 @@
     self.nixosModules.profile
     disko.nixosModules.disko
     ./disko-config.nix
+    ./hardware-configuration.nix
   ];
 
   config = {
