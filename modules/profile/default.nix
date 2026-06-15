@@ -9,6 +9,7 @@
     ../shared/home/git.nix
     ../shared/home/editor.nix
     ../shared/home/dev.nix
+    ../shared/home/java.nix
     ../shared/home/packages.nix
     ../shared/home/gpg.nix
 

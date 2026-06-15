@@ -115,6 +115,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - `hex.shared.home.git.enable` — git, gh, lazygit, delta
 - `hex.shared.home.editor.enable` — helix
 - `hex.shared.home.dev.enable` — compilers, LSPs
+- `hex.shared.home.java.enable` — Java ecosystem (JDK, build tools, LSP)
 - `hex.shared.home.packages.enable` — CLI tools
   - `hex.shared.home.packages.systemTools` — system tools (age, sops, gnupg, chezmoi)
   - `hex.shared.home.packages.dataProcessing` — data processing (pv, bc, jq, yq)
