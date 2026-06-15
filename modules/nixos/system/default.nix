@@ -47,11 +47,7 @@ in {
       initialPassword = "123456";
     };
 
-    console = {
-      packages = with pkgs; [pkgs.unifont];
-      font = "unifont";
-      earlySetup = true;
-    }; # tty cn font support
+    # console.font = "LatArCyrHeb-16"; @ tty does not support cn font
 
     i18n.defaultLocale = "zh_CN.UTF-8"; # TODO: split form this file
 

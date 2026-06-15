@@ -50,6 +50,9 @@ in {
           top = "btop";
           tokscale = "bunx tokscale@latest"; # count tokens
           maleme = "bunx maleme@latest"; # triggered!!
+          ff = "fastfetch";
+          hf = "hyfetch";
+          cz = "chezmoi";
         };
       };
 

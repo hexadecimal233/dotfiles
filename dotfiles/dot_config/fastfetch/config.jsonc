@@ -1,176 +1,188 @@
+//   _____ _____ _____ _____ _____ _____ _____ _____ _____
+//  |   __|  _  |   __|_   _|   __|   __|_   _|     |  |  |
+//  |   __|     |__   | | | |   __|   __| | | |   --|     |
+//  |__|  |__|__|_____| |_| |__|  |_____| |_| |_____|__|__|
+//
+//  By CarterLi - https://github.com/CarterLi
+//  Homepage - https://github.com/fastfetch-cli/fastfetch
+//  config.jsonc - ニリ @niri-san
+//  pokemon-colorscripts - https://gitlab.com/phoneybadger/pokemon-colorscripts
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "builtin",
+        "position": "right",
+        "padding": {
+            "right": 2
+        }
+    },
     "display": {
-        "separator": " "
+        "separator": " - "
     },
     "modules": [
         {
+            "type": "custom", // HardwareInfo
+            "format": "• {#green}SYSTEM INFORMATION"
+        },
+        {
             "type": "host",
-            "key": "╭─󰌢",
+            "key": "HOST",
+            "format": "{name}{?vendor} ({vendor}){?}",
+            "keyColor": "green"
+        },
+        {
+            "type": "chassis",
+            "key": "COMPUTER TYPE",
             "keyColor": "green"
         },
         {
             "type": "cpu",
-            "key": "├─󰻠",
+            "key": "CPU",
             "keyColor": "green"
         },
         {
             "type": "gpu",
-            "key": "├─󰍛",
-            "keyColor": "green"
-        },
-        {
-            "type": "disk",
-            "key": "├─",
+            "key": "GPU",
             "keyColor": "green"
         },
         {
             "type": "memory",
-            "key": "├─󰑭",
+            "key": "MEMORY USED",
             "keyColor": "green"
         },
         {
             "type": "swap",
-            "key": "├─󰓡",
+            "key": "SWAP USED",
             "keyColor": "green"
         },
         {
-            "type": "display",
-            "key": "├─󰍹",
+            "type": "disk",
+            "key": "DISK",
+            "folders": "/",
             "keyColor": "green"
         },
         {
-            "type": "brightness",
-            "key": "├─󰃞",
-            "keyColor": "green"
+            "type": "custom", // SoftwareInfo
+            "format": "• {#red}SOFTWARE INFORMATION"
         },
         {
-            "type": "battery",
-            "key": "├─",
-            "keyColor": "green"
+            "type": "os",
+            "key": "DISTRO",
+            "keyColor": "red"
         },
         {
-            "type": "poweradapter",
-            "key": "├─",
-            "keyColor": "green"
+            "type": "disk",
+            "folders": "/", // Use "/System/Volumes/VM" or something else on macOS
+            "format": "{create-time}",
+            "key": "INSTALLED DATE",
+            "keyColor": "red"
         },
         {
-            "type": "gamepad",
-            "key": "├─",
-            "keyColor": "green"
+            "type": "kernel",
+            "key": "KERNEL",
+            "keyColor": "red"
         },
         {
-            "type": "bluetooth",
-            "key": "├─",
-            "keyColor": "green"
+            "type": "packages",
+            "key": "PACKAGES",
+            "keyColor": "red"
         },
         {
-            "type": "sound",
-            "key": "╰─",
-            "keyColor": "green"
-        },
-        "break",
-
-        {
-            "type": "shell",
-            "key": "╭─",
-            "keyColor": "yellow"
+            "type": "uptime",
+            "key": "UPTIME",
+            "keyColor": "red"
         },
         {
-            "type": "terminal",
-            "key": "├─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "terminalfont",
-            "key": "├─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "lm",
-            "key": "├─󰧨",
-            "keyColor": "yellow"
+            "type": "custom", // DisplayInfo
+            "format": "• {#blue}DISPLAY INFORMATION"
         },
         {
             "type": "de",
-            "key": "├─",
-            "keyColor": "yellow"
+            "key": "DESKTOP ENVIRONMENT",
+            "keyColor": "blue"
+        },
+        {
+            "type": "lm",
+            "key": "LOGIN MANAGER",
+            "format": "{type}",
+            "keyColor": "blue"
         },
         {
             "type": "wm",
-            "key": "├─",
+            "key": "WM",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wmtheme",
+            "key": "WM THEME",
+            "keyColor": "blue"
+        },
+        {
+            "type": "display",
+            "key": "MONITOR ({name})",
+            "keyColor": "blue",
+            "format": "{width}x{height} @ {refresh-rate} Hz - {physical-width}x{physical-height} mm ({inch} inches, {ppi} ppi)"
+        },
+        {
+            "type": "custom", // DesignInfo
+            "format": "• {#yellow}DESIGN INFORMATION"
+        },
+        {
+            "type": "wallpaper",
+            "key": "WALLPAPER",
             "keyColor": "yellow"
         },
         {
             "type": "theme",
-            "key": "├─󰉼",
+            "key": "KDE THEME",
+            "format": "{1}",
             "keyColor": "yellow"
         },
         {
             "type": "icons",
-            "key": "├─󰀻",
+            "key": "ICON THEME",
+            "format": "{1}",
             "keyColor": "yellow"
         },
         {
-            "type": "wallpaper",
-            "key": "╰─󰸉",
+            "type": "font",
+            "key": "FONT",
+            "format": "{?1}{1} [Qt]{?}{/1}Unknown", // Remove "[Qt]" if not using Qt
             "keyColor": "yellow"
         },
-        "break",
-
         {
-            "type": "title",
-            "key": "╭─",
-            "format": "{user-name}@{host-name}",
-            "keyColor": "blue"
+            "type": "terminalfont",
+            "key": "TERMINAL FONT",
+            "keyColor": "yellow"
         },
         {
-            "type": "os",
-            "key": "├─{icon}", // Just get your distro's logo off nerdfonts.com
-            "keyColor": "blue"
+            "type": "cursor",
+            "key": "CURSOR",
+            "keyColor": "yellow"
         },
         {
-            "type": "kernel",
-            "key": "├─",
-            "keyColor": "blue"
-        },
-        {
-            "type": "packages",
-            "key": "├─󰏖",
-            "keyColor": "blue"
-        },
-        {
-            "type": "uptime",
-            "key": "├─󰅐",
-            "keyColor": "blue"
+            "type": "custom", // OtherInfo
+            "format": "• {#cyan}VARIOUS INFORMATION"
         },
         {
             "type": "media",
-            "key": "├─󰝚",
-            "keyColor": "blue"
+            "key": "NOW PLAYING",
+            "format": "{?artist}{artist} - {?}{title}",
+            "keyColor": "cyan"
         },
+        // {
+        //     "type": "weather",
+        //     "key": "WEATHER",
+        //     "timeout": 1000,
+        //     "keyColor": "cyan"
+        // },
         {
-            "type": "localip",
-            "key": "├─󰩟",
-            "compact": true,
-            "keyColor": "blue"
+            "type": "version",
+            "key": "INFO",
+            "keyColor": "cyan"
         },
-        {
-            "type": "publicip",
-            "key": "├─󰩠",
-            "keyColor": "blue",
-            "timeout": 1000
-        },
-        {
-            "type": "wifi",
-            "key": "├─",
-            "format": "{ssid}",
-            "keyColor": "blue"
-        },
-        {
-            "type": "locale",
-            "key": "╰─",
-            "keyColor": "blue"
-        }
+        "break",
+        "colors",
+        "break"
     ]
 }
