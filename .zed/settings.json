@@ -1,18 +1,40 @@
 // NixOS config project settings
-// Formatter: alejandra (per AGENTS.md)
-// LSP: nixd
+// LSP: nixd (config from .vscode/settings.json)
+// Formatter: alejandra
 {
+  "lsp": {
+    "nixd": {
+      "initialization_options": {
+        "formatting": {
+          "command": ["alejandra"]
+        },
+        "options": {
+          "nixos-thinkpad": {
+            "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.thinkpad.options"
+          },
+          "nixos-wsl": {
+            "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.wsl.options"
+          },
+          "darwin-neo": {
+            "expr": "(builtins.getFlake (builtins.toString ./.)).darwinConfigurations.neo.options"
+          },
+          "home-manager": {
+            "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.thinkpad.options.home-manager.users.type.getSubOptions []"
+          }
+        }
+      }
+    }
+  },
   "languages": {
     "Nix": {
       "language_servers": ["nixd"],
       "formatter": {
         "external": {
           "command": "alejandra",
-          "arguments": ["--quiet"]
+          "arguments": []
         }
       },
-      "tab_size": 2,
-      "preferred_line_length": 80
+      "tab_size": 2
     }
   }
 }
