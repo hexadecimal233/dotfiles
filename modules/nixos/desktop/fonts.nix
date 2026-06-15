@@ -21,6 +21,7 @@ in {
       # user-specified
       lxgw-wenkai # 楷体 font
       liberation_ttf # windows font drop-in replacement
+      unifont # pixel font
 
       # emojis
       noto-fonts-color-emoji
