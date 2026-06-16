@@ -5,6 +5,7 @@
   config,
   pkgs,
   self,
+  hyprland-virtual-desktops,
   ...
 }: let
   cfg = config.hex.nixos.desktop.hyprland;
@@ -55,6 +56,7 @@ in {
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
           pkgs.hyprlandPlugins.hyprbars
           pkgs.hyprlandPlugins.hypr-dynamic-cursors
+          hyprland-virtual-desktops.packages.${pkgs.stdenv.hostPlatform.system}.virtual-desktops
         ];
         settings = {};
         extraConfig = ''

@@ -20,23 +20,24 @@ hl.config({
     resize_on_border = true,
     snap = {
       enabled = true,
-      window_gap = 10,
-      monitor_gap = 10,
-      border_overlap = false,
+      window_gap = 8,
+      monitor_gap = 8,
+      border_overlap = true,
       respect_gaps = false,
     },
   },
   input = {
     kb_layout = "us",
     touchpad = { natural_scroll = true },
+    follow_mouse = 0,           -- Don't focus windows on hover (click/keybind only)
   },
   cursor = {
-    enable_hyprcursor = false,
+    enable_hyprcursor = true,
   },
   gestures = {
     workspace_swipe_distance = 1200,
     workspace_swipe_invert = true,
-    workspace_swipe_min_speed_to_force = 20,
+    workspace_swipe_min_speed_to_force = 10,
     workspace_swipe_cancel_ratio = 0.4,
     workspace_swipe_direction_lock = false,
     workspace_swipe_create_new = true,
@@ -53,7 +54,7 @@ hl.config({
       range = 14,              -- Shadow spread
       render_power = 1,        -- Shadow quality (1=softest falloff, 4=sharpest)
       color = "rgba(0, 0, 0, 0.25)",           -- Active/focused shadow (prominent)
-      color_inactive = "rgba(0, 0, 0, 0.18)",  -- Softer shadow on unfocused
+      color_inactive = "rgba(0, 0, 0, 0.05)",  -- Softer shadow on unfocused
     },
     blur = {
       enabled = false,         -- Disabled — HyprGlass handles blur
@@ -65,6 +66,12 @@ hl.config({
   },
   xwayland = {force_zero_scaling = true },
 })
+
+-- Pop in 200ms (open), fade 100ms (close), other animations inherit defaults
+hl.curve("animEase", { type = "bezier", points = { {0.23, 1.0}, {0.32, 1.0} } })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "animEase", style = "popin 80%" })
+hl.animation({ leaf = "windowsOut", enabled = false })
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "animEase" })
 
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
@@ -215,4 +222,10 @@ end
 hl.window_rule({
   match = { class = ".*" },
   float = true,
+  center = true,
+  persistent_size = true,
 })
+
+-- TODO: Windows-style cascading offset from center.
+--       Use hl.on("windowOpened", ...) to track window count
+--       and apply incremental (x + 30, y + 30) offset.

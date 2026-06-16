@@ -38,6 +38,10 @@
       url = "github:hexadecimal233/nix-cavalry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland-virtual-desktops = {
+      url = "github:levnikmyskin/hyprland-virtual-desktops";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -50,6 +54,7 @@
     nixos-hardware,
     nix-cavalry,
     noctalia,
+    hyprland-virtual-desktops,
     ...
   }: let
   in {
@@ -85,7 +90,7 @@
 
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko nixos-hardware noctalia nix-cavalry;
+          inherit self home-manager disko nixos-hardware noctalia nix-cavalry hyprland-virtual-desktops;
         };
         system = "x86_64-linux";
         modules = [
