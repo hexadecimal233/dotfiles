@@ -29,7 +29,8 @@ in {
         (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
         (writeShellScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.sh")))
         (writeShellScriptBin "escape" (builtins.readFile (self + "/scripts/escape.sh")))
-        (writeShellScriptBin "unquarantine" (builtins.readFile (self + "/scripts/unquarantine.sh")))
+        (writeShellScriptBin "unquarantine" (builtins.readFile (self + "/scripts/macos/unquarantine.sh")))
+        (writeShellScriptBin "speakup" (builtins.readFile (self + "/scripts/macos/speakup.sh")))
       ]
       ++ [
         (pkgs.callPackage (self + "/packages/jhentai.nix") {})
