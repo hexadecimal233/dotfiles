@@ -22,6 +22,7 @@ hl.config({
     disable_hyprland_logo = true,
     disable_splash_rendering = true,
   },
+  xwayland = {force_zero_scaling = true },
 })
 
 hl.bind("SUPER + Q", hl.dsp.window.close())
