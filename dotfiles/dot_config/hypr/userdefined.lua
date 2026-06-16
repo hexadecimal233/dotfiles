@@ -28,7 +28,7 @@ hl.config({
   },
   input = {
     kb_layout = "us",
-    touchpad = { natural_scroll = true },
+    touchpad = { natural_scroll = true, scroll_factor = 0.3, drag_lock = true },
     follow_mouse = 0,           -- Don't focus windows on hover (click/keybind only)
   },
   cursor = {
@@ -132,7 +132,9 @@ if hl.plugin.hyprglass then
   hg.layer("noctalia-desktop-widget", { exclude = true })
   hg.layer("noctalia-bar-default", { exclude = true })
   hg.layer("noctalia-dock", { exclude = true })
-
+  hg.layer("noctalia-attached-panel", { exclude = true })
+  hg.layer("noctalia-panel", { exclude = true })
+  
   hg.preset("glass", {
     blur_strength = 3.0,
     blur_iterations = 3,
@@ -155,23 +157,19 @@ if hl.plugin.hyprbars then
   hl.config({
     plugin = {
       hyprbars = {
-        bar_height = 22,
-        bar_color = "rgb(1e1e2e)",
-        bar_blur = true,
+        bar_height = 28,
+        bar_blur = true, -- :sob: this is disabled by hyprglass
         bar_part_of_window = true,
         bar_precedence_over_border = true,
-        bar_padding = 8,
+        bar_padding = 10,
         bar_title_enabled = true,
-        bar_text_size = 10,
-        bar_text_font = "Sans",
-        bar_text_align = "center",
-        col = {
-          text = "rgba(cdcdcfff)",
-        },
+        bar_text_size = 14,
+        bar_text_weight = "medium",
+        bar_text_align = "center";        
         bar_buttons_alignment = "left",
-        bar_button_padding = 4,
-        inactive_button_color = "rgba(00000000)",
+        inactive_button_color = "rgba(aaaaaaff)",
         icon_on_hover = true,
+        on_double_click = "hyprctl dispatch 'hl.dsp.window.fullscreen()'",
       },
     },
   })
@@ -181,8 +179,8 @@ if hl.plugin.hyprbars then
     icon = "✕",
     size = 14,
     bg_color = "rgb(ff5f56)",
-    fg_color = "rgb(ffffff)",
-    action = "hyprctl dispatch killactive",
+    fg_color = "rgba(ffffff88)",
+    action = "hyprctl dispatch 'hl.dsp.window.close()'",
   })
   hb.add_button({
     icon = "─",
@@ -190,14 +188,14 @@ if hl.plugin.hyprbars then
     bg_color = "rgb(ffbd2e)",
     fg_color = "rgb(ffffff)",
     -- movetoworkspacesilent: moves to special without focus change (no freeze)
-    action = "hyprctl dispatch movetoworkspacesilent special",
+    action = "hyprctl dispatch 'hl.dsp.window.move({ workspace = \"special\" })'",
   })
   hb.add_button({
     icon = "⛶",
     size = 14,
     bg_color = "rgb(27c93f)",
     fg_color = "rgb(ffffff)",
-    action = "hyprctl dispatch fullscreen",
+    action = "hyprctl dispatch 'hl.dsp.window.fullscreen()'",
   })
 end
 
@@ -218,11 +216,29 @@ if hl.plugin.dynamic_cursors then
   }}})
 end
 
+-- TEMP: metalgrid fork w/ V2 API (upstream savonovv/hypr-kinetic-scroll doesn't work on 0.55+)
+if hl.plugin["hypr-kinetic-scroll"] then
+  hl.config({ plugin = { ["kinetic-scroll"] = {
+    enabled = true,
+    decel = 12.0,
+    min_velocity = 1.3,
+    interval_ms = 8,
+    delta_multiplier = 1.25,
+    disable_in_browser = true,
+    stop_on_target_change = true,
+    stop_on_touchpad_gesture = true,
+    stop_delay_ms = 20,
+    stop_on_click = false,
+    stop_on_focus = false,
+    debug = false,
+  }}})
+end
+
 -- Floating mode by default (macOS-like stacking behavior)
 hl.window_rule({
   match = { class = ".*" },
   float = true,
-  center = true,
+  -- center = true, -- commented: causes XWayland menus (Wine, etc.) to auto-center
   persistent_size = true,
 })
 

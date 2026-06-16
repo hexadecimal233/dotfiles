@@ -77,6 +77,26 @@
         "type": "github"
       }
     },
+    "hyprland-virtual-desktops": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778848145,
+        "narHash": "sha256-xRwTxdZuOYHNw3jfMIPp/293rPXHKPnWgHHbJZYtqLw=",
+        "owner": "levnikmyskin",
+        "repo": "hyprland-virtual-desktops",
+        "rev": "cec3d43cef31fcaecfe08f22e341e9aa6c586922",
+        "type": "github"
+      },
+      "original": {
+        "owner": "levnikmyskin",
+        "repo": "hyprland-virtual-desktops",
+        "type": "github"
+      }
+    },
     "nix-cavalry": {
       "inputs": {
         "nixpkgs": [
@@ -231,6 +251,7 @@
       "inputs": {
         "disko": "disko",
         "home-manager": "home-manager",
+        "hyprland-virtual-desktops": "hyprland-virtual-desktops",
         "nix-cavalry": "nix-cavalry",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",

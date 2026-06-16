@@ -62,6 +62,8 @@
       mkPkgs = system: let pkgs = nixpkgs.legacyPackages.${system};
       in {
         hyprglass = pkgs.callPackage ./packages/hyprglass.nix {};
+        hypr-kinetic-scroll = pkgs.callPackage ./packages/hypr-kinetic-scroll.nix {};
+        hyprbars = pkgs.callPackage ./packages/hyprbars.nix {};
         jhentai = pkgs.callPackage ./packages/jhentai.nix {};
       };
     in {
