@@ -50,6 +50,7 @@ in {
 
       home.packages = with pkgs; [
         difftastic
+        git-lfs # TODO: wip
         gh # TODO: maybe move to dotfiles
         jujutsu
         lazygit

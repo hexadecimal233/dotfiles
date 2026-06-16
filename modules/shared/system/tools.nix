@@ -13,6 +13,7 @@ in {
       # files
       wget
       curl
+      tree
       zip
       unzip
 
@@ -21,11 +22,13 @@ in {
       btop
       lsof
 
-      # network
+      # network / backup
       rsync
+      rclone
 
       # dev infrastructure
       gnumake
+      nix-prefetch-git
       nh
       just
       python3

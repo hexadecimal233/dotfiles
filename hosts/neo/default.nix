@@ -77,6 +77,9 @@
         "sourcegit"
         # "gitbutler" 这东西太超前了只能说
         "hewigovens/tap/jayjay" # for jujustu, TODO: there's a crossplatform edit coming soon
+        # fixme: fails after 2026/09/01due to fails_gatekeeper_check
+        "glance-chamburr"
+        "ayugram"
       ];
     };
   };

@@ -41,15 +41,17 @@ in {
         ++ (
           # file tools
           lib.optionals cfg.fileTools [
-            ouch
+            ouch # all in one zip / unzip tool
             p7zip
             yazi
             hexyl
             lnav
-            ncdu
             file
             eza
             bat
+
+            # file finding tools
+            ncdu
             ripgrep
             fd
             fzf
@@ -65,6 +67,7 @@ in {
               else pkgs.sox_ng
             )
             mediainfo
+            exiftool
             yt-dlp
           ]
         )
