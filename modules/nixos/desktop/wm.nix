@@ -39,8 +39,18 @@ in {
         TERMINAL=ghostty
       '';
 
+      # HM hyprland module: only used for plugins + extraConfig generation.
+      # Both package and portalPackage must be null to avoid conflict with
+      # NixOS programs.hyprland (which installs hyprland system-wide).
+      # See:
+      #   - issues/6373: package null + finalPackage.override crash
+      #   - issues/6797: package null + plugins crash (finalPackage/bin/hyprctl)
+      #   - wiki: https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/
+      # Config content managed by chezmoi -> userdefined.lua
       wayland.windowManager.hyprland = {
         enable = true;
+        package = null;
+        portalPackage = null;
         plugins = [
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
         ];
