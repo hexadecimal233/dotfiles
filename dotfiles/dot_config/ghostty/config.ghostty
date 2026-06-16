@@ -2,7 +2,7 @@
 
 background = #070707
 background-blur = macos-glass-regular
-background-opacity = 0.92
+background-opacity = 0.83
 clipboard-paste-protection = true
 cursor-color = #009fff
 cursor-opacity = 0.95
