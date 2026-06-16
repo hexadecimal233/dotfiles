@@ -4,6 +4,7 @@
   lib,
   config,
   pkgs,
+  self,
   ...
 }: let
   cfg = config.hex.nixos.desktop.hyprland;
@@ -31,11 +32,24 @@ in {
     };
 
     # UWSM session env (kept inline — not managed by chezmoi)
-    home-manager.users.hexzii.xdg.configFile."uwsm/env".text = ''
-      XCURSOR_SIZE=24
-      XCURSOR_THEME=Bibata-Modern-Classic
-      TERMINAL=ghostty
-    '';
+    home-manager.users.hexzii = {
+      xdg.configFile."uwsm/env".text = ''
+        XCURSOR_SIZE=24
+        XCURSOR_THEME=Bibata-Modern-Classic
+        TERMINAL=ghostty
+      '';
+
+      wayland.windowManager.hyprland = {
+        enable = true;
+        plugins = [
+          self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
+        ];
+        settings = {};
+        extraConfig = ''
+          pcall(require, "userdefined")
+        '';
+      };
+    };
 
     # hint Electron apps to use Wayland + default terminal
     environment.sessionVariables = {

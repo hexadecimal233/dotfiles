@@ -51,7 +51,19 @@
     nix-cavalry,
     noctalia,
     ...
-  }: {
+  }: let
+  in {
+    packages = let
+      mkPkgs = system: let pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        hyprglass = pkgs.callPackage ./packages/hyprglass.nix {};
+        jhentai = pkgs.callPackage ./packages/jhentai.nix {};
+      };
+    in {
+      x86_64-linux = mkPkgs "x86_64-linux";
+      aarch64-darwin = { jhentai = (mkPkgs "aarch64-darwin").jhentai; };
+    };
+
     nixosModules = {
       profile = import ./modules/profile;
     };

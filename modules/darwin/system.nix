@@ -32,7 +32,7 @@ in {
         (writeShellScriptBin "unquarantine" (builtins.readFile (self + "/scripts/unquarantine.sh")))
       ]
       ++ [
-        (pkgs.callPackage (self + "/modules/darwin/apps/jhentai.nix") {})
+        (pkgs.callPackage (self + "/packages/jhentai.nix") {})
       ];
   };
 }
