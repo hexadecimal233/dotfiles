@@ -99,7 +99,18 @@
     services.btrfs.autoScrub.enable = true;
 
     nixpkgs.config.allowUnfree = true; # TODO: specifications
-    nixpkgs.overlays = [nix-cavalry.overlays.default];
+    nixpkgs.overlays = [
+      nix-cavalry.overlays.default
+
+      # Patch hypr-dynamic-cursors: linear bezier for shake magnification
+      (final: prev: {
+        hyprlandPlugins = prev.hyprlandPlugins // {
+          hypr-dynamic-cursors = prev.hyprlandPlugins.hypr-dynamic-cursors.overrideAttrs (old: {
+            patches = (old.patches or []) ++ [ "${self}/packages/patches/hypr-dynamic-cursors/linear-bezier.patch" ];
+          });
+        };
+      })
+    ];
 
     home-manager.users.hexzii.home.packages = [
       pkgs.cavalry

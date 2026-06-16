@@ -14,10 +14,17 @@ hl.config({
   general = {
     border_size = 1,
     col = {
-      active_border = "rgba(aaaaffff)",
-      inactive_border = "rgba(666666ff)",
+      active_border = "rgba(cccccc55)",
+      inactive_border = "rgba(88888844)",
     },
-    resize_on_border = false,
+    resize_on_border = true,
+    snap = {
+      enabled = true,
+      window_gap = 10,
+      monitor_gap = 10,
+      border_overlap = false,
+      respect_gaps = false,
+    },
   },
   input = {
     kb_layout = "us",
@@ -25,6 +32,15 @@ hl.config({
   },
   cursor = {
     enable_hyprcursor = false,
+  },
+  gestures = {
+    workspace_swipe_distance = 1200,
+    workspace_swipe_invert = true,
+    workspace_swipe_min_speed_to_force = 20,
+    workspace_swipe_cancel_ratio = 0.4,
+    workspace_swipe_direction_lock = false,
+    workspace_swipe_create_new = true,
+    workspace_swipe_forever = true,             -- Don't clamp at neighbor workspaces
   },
   decoration = {
     rounding = 18,             -- Squircle corners (radius px)
@@ -34,10 +50,10 @@ hl.config({
     fullscreen_opacity = 1.0,
     shadow = {
       enabled = true,
-      range = 20,              -- Shadow spread
+      range = 14,              -- Shadow spread
       render_power = 1,        -- Shadow quality (1=softest falloff, 4=sharpest)
-      color = "rgba(0, 0, 0, 0.5)",           -- Active/focused shadow
-      color_inactive = "rgba(0, 0, 0, 0.15)", -- Lighter shadow on unfocused
+      color = "rgba(0, 0, 0, 0.25)",           -- Active/focused shadow (prominent)
+      color_inactive = "rgba(0, 0, 0, 0.18)",  -- Softer shadow on unfocused
     },
     blur = {
       enabled = false,         -- Disabled — HyprGlass handles blur
@@ -113,12 +129,90 @@ if hl.plugin.hyprglass then
   hg.preset("glass", {
     blur_strength = 3.0,
     blur_iterations = 3,
-    edge_thickness = 0.04,
-    refraction_strength = 8.0,
-    chromatic_aberration = 0.3,
+    edge_thickness = 0.015,
+    refraction_strength = 14.0,
+    chromatic_aberration = 0.5,
     fresnel_strength = 0.8,
     specular_strength = 0.8,
     glass_opacity = 1.0,
-    tint_color = 0xeeeeffaa,
+    tint_color = 0xeeeeff44,
   })
 end
+-- hyprbars - macOS-style title bars with traffic-light buttons
+-- Known limitation: hyprbars can't detect Wayland xdg-decoration (CSD),
+-- so bars appear on ALL windows including CSD apps (double-bar).
+-- hyprbars:no_bar window rules can selectively disable per app if needed.
+if hl.plugin.hyprbars then
+  local hb = hl.plugin.hyprbars
+
+  hl.config({
+    plugin = {
+      hyprbars = {
+        bar_height = 22,
+        bar_color = "rgb(1e1e2e)",
+        bar_blur = true,
+        bar_part_of_window = true,
+        bar_precedence_over_border = true,
+        bar_padding = 8,
+        bar_title_enabled = true,
+        bar_text_size = 10,
+        bar_text_font = "Sans",
+        bar_text_align = "center",
+        col = {
+          text = "rgba(cdcdcfff)",
+        },
+        bar_buttons_alignment = "left",
+        bar_button_padding = 4,
+        inactive_button_color = "rgba(00000000)",
+        icon_on_hover = true,
+      },
+    },
+  })
+
+  -- macOS traffic-light buttons (red / yellow / green)
+  hb.add_button({
+    icon = "✕",
+    size = 14,
+    bg_color = "rgb(ff5f56)",
+    fg_color = "rgb(ffffff)",
+    action = "hyprctl dispatch killactive",
+  })
+  hb.add_button({
+    icon = "─",
+    size = 14,
+    bg_color = "rgb(ffbd2e)",
+    fg_color = "rgb(ffffff)",
+    -- movetoworkspacesilent: moves to special without focus change (no freeze)
+    action = "hyprctl dispatch movetoworkspacesilent special",
+  })
+  hb.add_button({
+    icon = "⛶",
+    size = 14,
+    bg_color = "rgb(27c93f)",
+    fg_color = "rgb(ffffff)",
+    action = "hyprctl dispatch fullscreen",
+  })
+end
+
+-- hypr-dynamic-cursors - shake to find cursor
+if hl.plugin.dynamic_cursors then
+  hl.config({ plugin = { dynamic_cursors = {
+    enabled = true,
+    mode = "none",   -- no tilt/rotate/stretch, just shake to find
+    shake = {
+      enabled = true,
+      threshold = 6.0,
+      base = 6.0,
+      influence = 0.0,
+      speed = 0.0,
+      timeout = 400,
+    },
+    hyprcursor = { enabled = true, nearest = 1 },
+  }}})
+end
+
+-- Floating mode by default (macOS-like stacking behavior)
+hl.window_rule({
+  match = { class = ".*" },
+  float = true,
+})

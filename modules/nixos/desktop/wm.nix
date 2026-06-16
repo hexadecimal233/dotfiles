@@ -53,6 +53,8 @@ in {
         portalPackage = null;
         plugins = [
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
+          pkgs.hyprlandPlugins.hyprbars
+          pkgs.hyprlandPlugins.hypr-dynamic-cursors
         ];
         settings = {};
         extraConfig = ''
