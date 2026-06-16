@@ -14,6 +14,11 @@ hyprlandPlugins.mkHyprlandPlugin {
     hash = "sha256-coVoTJyRhn6eKZ8oJXus93p/G1gblgqcQNhNXBhx+G4=";
   };
 
+  installPhase = ''
+    mkdir -p $out/lib
+    cp hyprglass.so $out/lib/libhyprglass.so
+  '';
+
   meta = {
     homepage = "https://github.com/hyprnux/hyprglass";
     description = "Liquid Glass effect plugin for Hyprland – frosted blur, refraction, chromatic aberration";
