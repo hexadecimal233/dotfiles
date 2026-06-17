@@ -82,6 +82,7 @@
       packages.enable = true;
       theme.enable = true;
       minecraft.enable = true;
+      production.enable = true;
     };
 
     # host-specific proxy

@@ -21,55 +21,85 @@
 ├── justfile                # Task runner
 ├── modules/
 │   ├── shared/             # Cross-platform modules
-│   │   ├── home/           # HM: shell, git, editor, dev, packages, gpg
+│   │   ├── home/           # HM: shell, git, editor, dev, java, packages, gpg
+│   │   │   ├── dev.nix
+│   │   │   ├── editor.nix
+│   │   │   ├── git.nix
+│   │   │   ├── gpg.nix
+│   │   │   ├── java.nix
+│   │   │   ├── packages.nix
+│   │   │   └── shell.nix
 │   │   ├── system/         # Cross-platform system tools
+│   │   │   ├── default.nix
+│   │   │   └── tools.nix
 │   │   └── nix.nix         # Nix package manager settings
 │   ├── nixos/              # NixOS-specific modules
 │   │   ├── system/         # NixOS system (users, locale, boot, networking, etc.)
 │   │   │   ├── default.nix     # Core system option
-│   │   │   ├── tools.nix       # CLI tools (monitoring, hardware, network)
 │   │   │   ├── boot.nix        # GRUB bootloader
 │   │   │   ├── fingerprint.nix # fprintd + PAM
-│   │   │   ├── networking.nix  # NetworkManager, vnstat, ethtool
-│   │   │   ├── wireless.nix    # Bluetooth, bluez
-│   │   │   ├── power.nix       # UPower, power-profiles-daemon, powertop
 │   │   │   ├── graphics.nix    # hardware.graphics, Vulkan, Mesa, ddcutil
+│   │   │   ├── ime.nix         # fcitx5 + Rime + Mozc
+│   │   │   ├── ios.nix         # libimobiledevice + usbmuxd
+│   │   │   ├── kernel.nix      # TODO: configurable kernels (cachy, vanilla)
+│   │   │   ├── maintenance.nix # TODO: system maintenance tools (gparted, nvme)
+│   │   │   ├── networking.nix  # NetworkManager, vnstat, ethtool
+│   │   │   ├── power.nix       # UPower, power-profiles-daemon, powertop
+│   │   │   ├── printing.nix    # TODO: printer support
 │   │   │   ├── security.nix    # polkit
 │   │   │   ├── time.nix        # timezone (auto or static)
-│   │   │   ├── ime.nix         # fcitx5 + Rime + Mozc
-│   │   │   └── ios.nix         # libimobiledevice + usbmuxd
-│   │   └── desktop/        # NixOS desktop (audio, fonts, wm)
-│   │       ├── default.nix     # desktop.enable + imports
+│   │   │   ├── tools.nix       # CLI tools (monitoring, hardware, network)
+│   │   │   ├── virtualization.nix # TODO: docker/k8s
+│   │   │   └── wireless.nix    # Bluetooth, bluez
+│   │   └── desktop/        # NixOS desktop (audio, fonts, wm, home)
+│   │       ├── apps.nix        # TODO: flatpak/appimage support
 │   │       ├── audio.nix       # PipeWire / PulseAudio
+│   │       ├── default.nix     # desktop.enable + imports
 │   │       ├── fonts.nix       # Fonts + fontconfig
-│   │   ├── wm.nix          # Hyprland compositor (config via chezmoi)
-│   │   ├── proxy.nix       # Clash Verge proxy (mihomo kernel)
-│   │   └── home/           # NixOS-exclusive HM desktop modules
-│   │           ├── default.nix     # hex.nixos.home.desktop
-│   │           ├── noctalia.nix    # Noctalia v5 desktop shell
-│   │           ├── packages.nix    # Desktop GUI packages (ghostty, firefox, ...)
-│   │           └── theme.nix       # Desktop theming (Papirus icons, Bibata cursor)
-│   └── darwin/             # macOS-specific
-│       ├── default.nix         # Darwin orchestration
-│       ├── home.nix            # HM integration (darwin variant)
-│       ├── system.nix          # nix daemon, fish
-│       └── system/
-│           └── fonts.nix       # macOS font management
+│   │       ├── home/           # NixOS-exclusive HM desktop modules
+│   │       │   ├── default.nix     # hex.nixos.home.desktop
+│   │       │   ├── minecraft.nix   # Minecraft launchers + legacy JDKs
+│   │       │   ├── noctalia.nix    # Noctalia v5 desktop shell
+│   │       │   ├── office.nix      # TODO: office kit
+│   │       │   ├── packages.nix    # Desktop GUI packages (ghostty, firefox, ...)
+│   │       │   ├── production.nix  # Production tools (Mixxx, trackers)
+│   │       │   └── theme.nix       # Desktop theming (Papirus icons, Bibata cursor)
+│   │       ├── proxy.nix       # Clash Verge proxy (mihomo kernel)
+│   │       ├── steam.nix       # TODO: steam gaming support
+│   │       └── wm.nix          # Hyprland compositor (config via chezmoi)
+│   ├── darwin/             # macOS-specific
+│   │   ├── default.nix         # Darwin orchestration
+│   │   ├── home.nix            # HM integration (darwin variant)
+│   │   ├── system.nix          # nix daemon, fish
+│   │   └── system/
+│   │       └── fonts.nix       # macOS font management
+│   └── profile/            # Profile orchestration (imports all hex.* modules)
+│       ├── default.nix         # Module aggregation
+│       └── home.nix            # home-manager integration (useGlobalPkgs, useUserPackages)
 ├── hosts/                 # Host configurations (was systems/)
 │   ├── thinkpad/
+│   │   ├── default.nix
+│   │   ├── disko-config.nix
+│   │   └── hardware-configuration.nix
 │   ├── wsl/
 │   ├── vmware/
 │   └── darwin/
 ├── dotfiles/              # Chezmoi-managed dotfiles
-│   ├── .chezmoiroot
 │   ├── .chezmoiignore
-│   └── dot_config/
+│   ├── .chezmoiscripts/
+│   ├── AppData/               # Windows config symlink targets
+│   ├── dot_config/
+│   ├── Library/               # macOS config symlink targets
+│   └── Pictures/
 ├── scripts/               # Standalone Nix scripts
 │   ├── audit.nix          # Hex config tree printer
-│   ├── sudo-proxy.sh
+│   ├── escape.sh          # Escape hatch for locked-up systems
+│   ├── macos/
+│   │   ├── speakup.sh
+│   │   └── unquarantine.sh    # Remove macOS quarantine attribute
+│   ├── set-chezmoi-dir.ps1    # Windows variant
 │   ├── set-chezmoi-dir.sh
-│   └── unquarantine.sh
-└── systems/               # (renamed to hosts/)
+│   └── sudo-proxy.sh
 ```
 
 ## Naming Convention
@@ -136,6 +166,8 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell
 - `hex.nixos.home.desktop.packages.enable` — Desktop GUI packages (ghostty, firefox, vesktop, ...)
 - `hex.nixos.home.desktop.theme.enable` — Desktop theming (Papirus icons, Bibata/AOSP cursor)
+- `hex.nixos.home.desktop.minecraft.enable` — Minecraft launchers + legacy JDKs
+- `hex.nixos.home.desktop.production.enable` — Production tools (Mixxx, trackers)
 
 ## Important Rules
 - **Architecture changes must update AGENTS.md** — When modifying module structure, options, or adding/removing modules, update this file first
@@ -237,9 +269,11 @@ dotfiles/dot_config/exact_vesktop/
 
 ## Scripts
 - `audit.nix` — Standalone hex config tree printer: `just audit <host>`
-- `sudo-proxy` — Run commands with proxy (cross-platform)
-- `unquarantine` — Remove macOS quarantine attribute from apps (macOS-only)
-- `set-chezmoi-dir` - Sets chezmoi working repository for to self diectory
+- `sudo-proxy.sh` — Run commands with proxy (cross-platform)
+- `set-chezmoi-dir.sh` - Sets chezmoi working directory for this repository
+- `escape.sh` — Escape hatch for locked-up systems
+- `macos/speakup.sh` — macOS accessibility helper
+- `macos/unquarantine.sh` — Remove macOS quarantine attribute from apps (macOS-only)
 
 ### Just Commands
 - `just fmt` — Format with alejandra
