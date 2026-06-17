@@ -13,8 +13,13 @@ in {
   config = lib.mkIf (config.hex.nixos.home.desktop.enable && cfg.enable) {
     home-manager.users.hexzii.home.packages = with pkgs; [
       mixxx # DJ software
+
+      # the nostalgic trackers
       ft2-clone
       schismtracker # TODO: latest ver
+      furnace
+      famistudio
+      
     ];
   };
 }

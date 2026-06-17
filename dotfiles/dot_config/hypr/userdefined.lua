@@ -134,7 +134,7 @@ if hl.plugin.hyprglass then
   hg.layer("noctalia-dock", { exclude = true })
   hg.layer("noctalia-attached-panel", { exclude = true })
   hg.layer("noctalia-panel", { exclude = true })
-  
+
   hg.preset("glass", {
     blur_strength = 3.0,
     blur_iterations = 3,
@@ -165,7 +165,7 @@ if hl.plugin.hyprbars then
         bar_title_enabled = true,
         bar_text_size = 14,
         bar_text_weight = "medium",
-        bar_text_align = "center";        
+        bar_text_align = "center";
         bar_buttons_alignment = "left",
         inactive_button_color = "rgba(aaaaaaff)",
         icon_on_hover = true,
@@ -217,6 +217,7 @@ if hl.plugin.dynamic_cursors then
 end
 
 -- TEMP: metalgrid fork w/ V2 API (upstream savonovv/hypr-kinetic-scroll doesn't work on 0.55+)
+-- ALSO, the scrolling becomes stiff after you use your scrollpad, TODO: report to github
 if hl.plugin["hypr-kinetic-scroll"] then
   hl.config({ plugin = { ["kinetic-scroll"] = {
     enabled = true,
