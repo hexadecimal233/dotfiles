@@ -14,6 +14,7 @@ in {
     mediaUtils = lib.mkEnableOption "media utilities (ffmpeg, mediainfo, yt-dlp)" // {default = false;};
     network = lib.mkEnableOption "network tools (whois, iperf3, asn, dnsutils)" // {default = false;};
     beautify = lib.mkEnableOption "beautify tools (fastfetch, hyfetch)" // {default = false;};
+    hosting = lib.mkEnableOption "self-hosted service tools (copyparty, frp)" // {default = false;};
   };
 
   config = lib.mkIf cfg.enable {
@@ -89,6 +90,13 @@ in {
             asciinema
             fastfetch
             hyfetch
+          ]
+        )
+        ++ (
+          # hosting
+          lib.optionals cfg.hosting [
+            copyparty # file server. openlist better as service and hfs is too old
+            frp # fast reverse proxy client (as package)
           ]
         );
     };

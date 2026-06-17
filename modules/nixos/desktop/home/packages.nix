@@ -3,15 +3,19 @@
   lib,
   config,
   pkgs,
+  monique,
   ...
 }: let
   cfg = config.hex.nixos.home.desktop.packages;
 in {
+  imports = [monique.nixosModules.default];
+
   options.hex.nixos.home.desktop.packages = {
     enable = lib.mkEnableOption "desktop GUI packages (ghostty, firefox, vesktop, ayugram)" // {default = false;};
   };
 
   config = lib.mkIf cfg.enable {
+    programs.monique.enable = true;
     home-manager.users.hexzii.home.packages = with pkgs; [
       ghostty
       firefox
@@ -22,7 +26,7 @@ in {
       freetube
       mpv
       celluloid
-      nwg-displays # GUI multi-monitor configurator
+      nwg-displays
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
       nautilus # GNOME file manager (bound to SUPER+E)
@@ -30,6 +34,9 @@ in {
       obs-studio
       # bitwarden-desktop FIXME: outdated electron
       sourcegit # todo: watch 4 updates
+
+      # hyprland-exclusiv! TODO: move to wm
+      hyprshade
     ];
   };
 }

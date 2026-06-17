@@ -38,8 +38,8 @@
       url = "github:hexadecimal233/nix-cavalry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland-virtual-desktops = {
-      url = "github:levnikmyskin/hyprland-virtual-desktops";
+    monique = {
+      url = "github:ToRvaLDz/monique";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -54,12 +54,13 @@
     nixos-hardware,
     nix-cavalry,
     noctalia,
-    hyprland-virtual-desktops,
+    monique,
     ...
   }: let
   in {
     packages = let
-      mkPkgs = system: let pkgs = nixpkgs.legacyPackages.${system};
+      mkPkgs = system: let
+        pkgs = nixpkgs.legacyPackages.${system};
       in {
         hyprglass = pkgs.callPackage ./packages/hyprglass.nix {};
         hypr-kinetic-scroll = pkgs.callPackage ./packages/hypr-kinetic-scroll.nix {};
@@ -68,7 +69,7 @@
       };
     in {
       x86_64-linux = mkPkgs "x86_64-linux";
-      aarch64-darwin = { jhentai = (mkPkgs "aarch64-darwin").jhentai; };
+      aarch64-darwin = {jhentai = (mkPkgs "aarch64-darwin").jhentai;};
     };
 
     nixosModules = {
@@ -82,7 +83,7 @@
     nixosConfigurations = {
       wsl = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self nixos-wsl home-manager;
+          inherit self nixos-wsl home-manager monique;
         };
         system = "x86_64-linux";
         modules = [
@@ -92,7 +93,7 @@
 
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko nixos-hardware noctalia nix-cavalry hyprland-virtual-desktops;
+          inherit self home-manager disko nixos-hardware noctalia nix-cavalry monique;
         };
         system = "x86_64-linux";
         modules = [
@@ -103,7 +104,7 @@
 
       vmware = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko noctalia;
+          inherit self home-manager disko noctalia monique;
         };
         system = "x86_64-linux";
         modules = [

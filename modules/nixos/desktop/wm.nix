@@ -5,7 +5,6 @@
   config,
   pkgs,
   self,
-  hyprland-virtual-desktops,
   ...
 }: let
   cfg = config.hex.nixos.desktop.hyprland;
@@ -57,11 +56,6 @@ in {
           self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
           pkgs.hyprlandPlugins.hypr-dynamic-cursors
-          # FIXME: virtual-desktops crashes onConfigReloaded with SIGABRT in
-          # Hyprland 0.55.4.  Plugin uses old addConfigValue/getDataStaticPtr
-          # API incompatible with Lua config reload.  Re-enable once upstream
-          # (levnikmyskin/hyprland-virtual-desktops) ships a fix.
-          # hyprland-virtual-desktops.packages.${pkgs.stdenv.hostPlatform.system}.virtual-desktops
         ];
         settings = {};
         extraConfig = ''
