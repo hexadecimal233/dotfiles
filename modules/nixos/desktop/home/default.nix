@@ -10,6 +10,7 @@ in {
     ./minecraft.nix
     ./noctalia.nix
     ./packages.nix
+    ./production.nix
     ./theme.nix
   ];
 

@@ -17,7 +17,6 @@ in {
       firefox
       vesktop
       ayugram-desktop
-      mixxx
       zed-editor
       vscodium
       freetube
