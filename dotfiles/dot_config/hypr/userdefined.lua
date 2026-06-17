@@ -12,6 +12,7 @@ end)
 
 hl.config({
   general = {
+    gaps_workspaces = 20,
     border_size = 1,
     col = {
       active_border = "rgba(cccccc55)",
@@ -26,6 +27,8 @@ hl.config({
       border_overlap = true,
       respect_gaps = false,
     },
+    -- layout = "scrolling",
+    -- allow_tearing = true,
   },
   input = {
     kb_layout = "us",
@@ -59,16 +62,36 @@ hl.config({
       color_inactive = "rgba(0, 0, 0, 0.05)",  -- Softer shadow on unfocused
     },
     blur = {
-      enabled = false,
-      size = 10,
+      enabled = true,
+      size = 8,
       passes = 2,
+      -- xray = true,
+      -- noise = 0.16,
+      popups = true,
     },
+    motion_blur = {
+      --  enabled = true,
+    }
   },
   misc = {
     disable_hyprland_logo = true,
+    -- background_color = "rgb(000000)",
     disable_splash_rendering = true,
+    -- vrr = 3,
   },
-  xwayland = {force_zero_scaling = true },
+  xwayland = {
+    -- force_zero_scaling = true, too small
+    use_nearest_neighbor = false, -- bit windows like but okay burry :/
+  },
+})
+
+hl.workspace_rule({
+  workspace = "w[t1-4]", -- except workspace 1 for floating windows
+  -- no_border = true, for apps be resizable
+  no_rounding = true,
+  gaps_in = 0,
+  gaps_out = 0,
+  -- decorate = false,
 })
 
 -- Pop in 200ms (open), fade 100ms (close), other animations inherit defaults
@@ -77,6 +100,10 @@ hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "animEase
 hl.animation({ leaf = "windowsOut", enabled = false })
 hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "animEase" })
 
+-- Workspace swap animation (macOS/Windows-style slide)
+hl.curve("wsEase", { type = "bezier", points = { {0.65, 0.0}, {0.35, 1.0} } })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "wsEase", style = "slide 100%" })
+
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
 hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("ghostty"))
@@ -84,46 +111,39 @@ hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area"))
 
 -- Volume
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 3%+"), { repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 3%-"), { repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
 
 -- Brightness
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 5%+"), { repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"), { repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 3%+"), { repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 3%-"), { repeating = true })
 
--- Workspaces (SUPER + 1-9)
+-- hyprsplit — per-monitor independent workspaces (awesome/dwm-like)
+local hs = require("./plugins/hyprsplit")
+hs.config({ num_workspaces = 10 })
+
 -- Touchpad swipe gestures (macOS-like)
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
-hl.bind("SUPER + 1", hl.dsp.focus({ workspace = "1" }))
-hl.bind("SUPER + 2", hl.dsp.focus({ workspace = "2" }))
-hl.bind("SUPER + 3", hl.dsp.focus({ workspace = "3" }))
-hl.bind("SUPER + 4", hl.dsp.focus({ workspace = "4" }))
-hl.bind("SUPER + 5", hl.dsp.focus({ workspace = "5" }))
-hl.bind("SUPER + 6", hl.dsp.focus({ workspace = "6" }))
-hl.bind("SUPER + 7", hl.dsp.focus({ workspace = "7" }))
-hl.bind("SUPER + 8", hl.dsp.focus({ workspace = "8" }))
-hl.bind("SUPER + 9", hl.dsp.focus({ workspace = "9" }))
+-- Per-monitor workspace switching via hyprsplit dispatchers
+for i = 1, 10 do
+  local key = i % 10  -- 10 maps to key 0
+  hl.bind("SUPER + " .. key, hs.dsp.focus({ workspace = i }))
+  hl.bind("SUPER + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = false }))
+end
 
--- Move window to workspace (SUPER + SHIFT + 1-9)
-hl.bind("SUPER + SHIFT + 1", hl.dsp.window.move({ workspace = "1" }))
-hl.bind("SUPER + SHIFT + 2", hl.dsp.window.move({ workspace = "2" }))
-hl.bind("SUPER + SHIFT + 3", hl.dsp.window.move({ workspace = "3" }))
-hl.bind("SUPER + SHIFT + 4", hl.dsp.window.move({ workspace = "4" }))
-hl.bind("SUPER + SHIFT + 5", hl.dsp.window.move({ workspace = "5" }))
-hl.bind("SUPER + SHIFT + 6", hl.dsp.window.move({ workspace = "6" }))
-hl.bind("SUPER + SHIFT + 7", hl.dsp.window.move({ workspace = "7" }))
-hl.bind("SUPER + SHIFT + 8", hl.dsp.window.move({ workspace = "8" }))
-hl.bind("SUPER + SHIFT + 9", hl.dsp.window.move({ workspace = "9" }))
+-- Swap workspaces between monitors + grab orphaned windows
+hl.bind("SUPER + D", hs.dsp.workspace.swap_monitors({ monitor1 = "current", monitor2 = "+1" }))
+hl.bind("SUPER + G", hs.dsp.grab_rogue_windows())
 
 -- HyprGlass - Liquid Glass visual effects
 if hl.plugin.hyprglass then
   local hg = hl.plugin.hyprglass
 
   hg.config({
-    -- enabled = false, -- currently disables it cuz artifacts
+    enabled = false, -- currently disables it cuz artifacts
     default_theme = "dark",
     default_preset = "glass",
     tint_color = 0x8899aa22,
@@ -181,16 +201,16 @@ if hl.plugin.hyprbars then
     },
   })
 
-  -- macOS traffic-light buttons (red / yellow / green)
+  -- macOS traffic-light buttons (red / yellow / green / blue)
   hb.add_button({
-    icon = "✕",
+    icon = "x",
     size = 14,
     bg_color = "rgb(ff5f56)",
     fg_color = "rgba(ffffff88)",
     action = "hyprctl dispatch 'hl.dsp.window.close()'",
   })
   hb.add_button({
-    icon = "─",
+    icon = "-",
     size = 14,
     bg_color = "rgb(ffbd2e)",
     fg_color = "rgb(ffffff)",
@@ -198,11 +218,18 @@ if hl.plugin.hyprbars then
     action = "hyprctl dispatch 'hl.dsp.window.move({ workspace = \"special\" })'",
   })
   hb.add_button({
-    icon = "⛶",
+    icon = "/",
     size = 14,
     bg_color = "rgb(27c93f)",
     fg_color = "rgb(ffffff)",
     action = "hyprctl dispatch 'hl.dsp.window.fullscreen()'",
+  })
+  hb.add_button({
+    icon = "=",
+    size = 14,
+    bg_color = "rgb(0044cc)",
+    fg_color = "rgb(ffffff)",
+    action = "hyprctl dispatch 'hl.dsp.window.float({ action = \"unset\" })'",
   })
 end
 
