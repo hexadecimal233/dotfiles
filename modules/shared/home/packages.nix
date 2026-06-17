@@ -62,10 +62,11 @@ in {
           lib.optionals cfg.mediaUtils [
             ffmpeg-full
             (
-              if pkgs.stdenv.hostPlatform.isDarwin
+              if pkgs.stdenv.hostPlatform.isDarwin # TODO: remove this line after upstream has merged the pr
               then pkgs.sox_ng.override {enableLadspa = false;}
               else pkgs.sox_ng
             )
+            imv # image viewer
             mediainfo
             exiftool
             yt-dlp

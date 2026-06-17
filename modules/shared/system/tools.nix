@@ -29,6 +29,7 @@ in {
       # dev infrastructure
       gnumake
       nix-prefetch-git
+      nix-prefetch-github
       nh
       just
       python3
