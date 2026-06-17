@@ -18,6 +18,7 @@ hl.config({
       inactive_border = "rgba(88888844)",
     },
     resize_on_border = true,
+    extend_border_grab_area = 8,
     snap = {
       enabled = true,
       window_gap = 8,
@@ -28,7 +29,7 @@ hl.config({
   },
   input = {
     kb_layout = "us",
-    touchpad = { natural_scroll = true, scroll_factor = 0.3, drag_lock = true },
+    touchpad = { natural_scroll = true, scroll_factor = 0.2, drag_lock = true },
     follow_mouse = 0,           -- Don't focus windows on hover (click/keybind only)
   },
   cursor = {
@@ -44,7 +45,7 @@ hl.config({
     workspace_swipe_forever = true,             -- Don't clamp at neighbor workspaces
   },
   decoration = {
-    rounding = 18,             -- Squircle corners (radius px)
+    rounding = 10,             -- Squircle corners (radius px)
     rounding_power = 4.0,      -- 2.0=circle, 4.0=squircle, 1.0=triangle
     active_opacity = 1.0,
     inactive_opacity = 1.0,    -- Fully opaque unfocused
@@ -53,11 +54,14 @@ hl.config({
       enabled = true,
       range = 14,              -- Shadow spread
       render_power = 1,        -- Shadow quality (1=softest falloff, 4=sharpest)
-      color = "rgba(0, 0, 0, 0.25)",           -- Active/focused shadow (prominent)
+      offset = "0 6",
+      color = "rgba(0, 0, 0, 0.21)",           -- Active/focused shadow (prominent)
       color_inactive = "rgba(0, 0, 0, 0.05)",  -- Softer shadow on unfocused
     },
     blur = {
-      enabled = false,         -- Disabled — HyprGlass handles blur
+      enabled = false,
+      size = 10,
+      passes = 2,
     },
   },
   misc = {
@@ -119,6 +123,7 @@ if hl.plugin.hyprglass then
   local hg = hl.plugin.hyprglass
 
   hg.config({
+    -- enabled = false, -- currently disables it cuz artifacts
     default_theme = "dark",
     default_preset = "glass",
     tint_color = 0x8899aa22,
@@ -158,8 +163,10 @@ if hl.plugin.hyprbars then
     plugin = {
       hyprbars = {
         bar_height = 28,
-        bar_blur = true, -- :sob: this is disabled by hyprglass
+        bar_blur = false, -- :sob: this is disabled by hyprglass
         bar_part_of_window = true,
+        -- bar_color = "rgba(fefefeff)",
+        -- 
         bar_precedence_over_border = true,
         bar_padding = 10,
         bar_title_enabled = true,
@@ -221,7 +228,7 @@ if hl.plugin["hypr-kinetic-scroll"] then
   hl.config({ plugin = { ["kinetic-scroll"] = {
     enabled = true,
     decel = 12.0,
-    min_velocity = 1.3,
+    
     interval_ms = 8,
     delta_multiplier = 1.25,
     disable_in_browser = true,

@@ -19,6 +19,7 @@ font-thicken = true
 foreground = #fbfbfb
 minimum-contrast = 1.2
 mouse-hide-while-typing = true
+{{/* if ne .chezmoi.os "linux" */}}
 palette = 0=#141415
 palette = 1=#ff2e3f
 palette = 2=#0dbe4e
@@ -35,9 +36,10 @@ palette = 12=#69b1ff
 palette = 13=#d568ea
 palette = 14=#68cdf2
 palette = 15=#fbfbfb
-scrollback-limit = 50000
 selection-background = #19283c
 selection-foreground = #fbfbfb
+{{/* end */}}
+scrollback-limit = 100000
 split-divider-color = #262727
 # theme = Pierre Dark
 # window-show-tab-bar = always

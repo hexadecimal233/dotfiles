@@ -17,6 +17,8 @@ in {
       enable32Bit = true;
     };
 
+    hardware.i2c.enable = true; # backlight cotrnol support
+
     environment.systemPackages = with pkgs; [
       vulkan-tools # vulkaninfo
       vulkan-loader
