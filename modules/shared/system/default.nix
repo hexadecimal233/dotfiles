@@ -9,6 +9,7 @@
 in {
   imports = [
     ./tools.nix
+    ./unfree.nix
   ];
 
   options.hex.shared.system = {

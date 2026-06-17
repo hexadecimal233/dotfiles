@@ -14,6 +14,7 @@ in {
     nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
     nix.gc = {
       automatic = true;
+      #  per-system timer are handled separately
       options = "--delete-older-than 7d";
     };
   };
