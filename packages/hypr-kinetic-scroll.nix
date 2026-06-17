@@ -1,5 +1,5 @@
-# TEMP: metalgrid fork with Hyprland 0.55+ V2 API migration.
-# Switch back to upstream (savonovv/hypr-kinetic-scroll) once it merges or releases a compatible version.
+# TEMP: hexadecimal233 fork with Hyprland 0.55+ V2 API migration.
+# Upstream savonovv v0.3.1 crashed on 0.55.4 (uses V1 API, tested only on 0.54.2).
 {
   lib,
   hyprlandPlugins,
@@ -10,10 +10,10 @@ hyprlandPlugins.mkHyprlandPlugin {
   version = "0.1.0";
 
   src = fetchFromGitHub {
-    owner = "metalgrid";
+    owner = "hexadecimal233";
     repo = "hypr-kinetic-scroll";
-    rev = "d05fd0bded00da20e5e97bf47122a32963268a21";
-    hash = "sha256-hR+rSVU9YeUoUub0GNPNeS1RypJWbXX+Bdu5vm7+aDM=";
+    rev = "846407b85e0ed550a90cb70998a7fb4361c571d8";
+    hash = "sha256-4jGMqt8PXTHFxCdhSCtg4oIBUlAA1IFXb+mKGDxO7hE=";
   };
 
   installPhase = ''
@@ -22,7 +22,7 @@ hyprlandPlugins.mkHyprlandPlugin {
   '';
 
   meta = {
-    homepage = "https://github.com/metalmadz/hypr-kinetic-scroll";
+    homepage = "https://github.com/hexadecimal233/hypr-kinetic-scroll";
     description = "Kinetic (inertial) scrolling plugin for Hyprland touchpads (Hyprland 0.55+ V2 API)";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.linux;

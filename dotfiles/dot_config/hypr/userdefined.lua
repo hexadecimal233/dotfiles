@@ -216,8 +216,7 @@ if hl.plugin.dynamic_cursors then
   }}})
 end
 
--- TEMP: metalgrid fork w/ V2 API (upstream savonovv/hypr-kinetic-scroll doesn't work on 0.55+)
--- ALSO, the scrolling becomes stiff after you use your scrollpad, TODO: report to github
+-- TEMP: hexadecimal233 fork w/ V2 API (upstream savonovv v0.3.1 crashed on 0.55.4 — uses V1 API)
 if hl.plugin["hypr-kinetic-scroll"] then
   hl.config({ plugin = { ["kinetic-scroll"] = {
     enabled = true,
