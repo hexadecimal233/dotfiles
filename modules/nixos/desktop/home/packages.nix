@@ -41,6 +41,9 @@ in {
 
       # hyprland-exclusiv! TODO: move to wm
       hyprshade
+
+      # fixme: move to a "nixos/home section"
+      imv # image viewer
     ];
   };
 }

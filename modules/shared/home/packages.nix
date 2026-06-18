@@ -68,7 +68,6 @@ in {
               then pkgs.sox_ng.override {enableLadspa = false;}
               else pkgs.sox_ng
             )
-            imv # image viewer
             mediainfo
             exiftool
             yt-dlp
