@@ -35,6 +35,7 @@
       fingerprint.enable = true;
       security.enable = true;
       networking.enable = true;
+      networking.dae.enable = true;
       wireless.enable = true;
       power.enable = true;
       time.auto = true;

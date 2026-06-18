@@ -46,6 +46,7 @@ in {
             p7zip
             yazi
             hexyl
+            hexedit
             lnav
             file
             eza
@@ -67,7 +68,6 @@ in {
               then pkgs.sox_ng.override {enableLadspa = false;}
               else pkgs.sox_ng
             )
-            imv # image viewer
             mediainfo
             exiftool
             yt-dlp

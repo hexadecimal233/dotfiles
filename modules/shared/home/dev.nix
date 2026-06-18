@@ -33,6 +33,7 @@ in {
 
           # stuff
           mise
+          uv
         ]
         ++ lib.optionals cfg.nodejs.enable [
           # nodejs (global: npx/bunx)
