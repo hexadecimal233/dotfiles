@@ -31,6 +31,8 @@ in {
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
       nautilus # GNOME file manager (bound to SUPER+E)
+      nemo # may also try!
+      # dolphin
       libreoffice-fresh
       obs-studio
 
@@ -43,6 +45,10 @@ in {
       hyprshade
 
       # fixme: move to a "nixos/home section"
+      wayshot
+      wl-screenrec
+      wl-clipboard # TODO: maybe try clipvault??
+
       imv # image viewer
     ];
   };

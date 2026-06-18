@@ -4,6 +4,7 @@
   disko,
   nixos-hardware,
   nix-cavalry,
+  daeuniverse,
   ...
 }: {
   imports = [
@@ -11,6 +12,7 @@
     nixos-hardware.nixosModules.common-gpu-intel
     self.nixosModules.profile
     disko.nixosModules.disko
+    daeuniverse.nixosModules.daed
     ./disko-config.nix
     ./hardware-configuration.nix
   ];

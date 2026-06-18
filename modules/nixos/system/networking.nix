@@ -1,4 +1,4 @@
-# Network management (NetworkManager, network tools, dae proxy)
+# Network management (NetworkManager, network tools, daed proxy)
 {
   lib,
   config,
@@ -9,7 +9,7 @@
 in {
   options.hex.nixos.system.networking = {
     enable = lib.mkEnableOption "network management (NetworkManager)" // {default = false;};
-    dae.enable = lib.mkEnableOption "dae transparent proxy (eBPF-based)" // {default = false;};
+    dae.enable = lib.mkEnableOption "daed transparent proxy (eBPF-based, with web dashboard)" // {default = false;};
   };
 
   config = lib.mkMerge [
@@ -27,17 +27,20 @@ in {
       ];
     })
 
-    # dae transparent proxy
+    # daed transparent proxy (with web dashboard)
     (lib.mkIf cfg.dae.enable {
-      services.dae = {
+      services.daed = {
         enable = true;
+        configDir = "/etc/daed";
+        listen = "127.0.0.1:2023";
+        assetsPaths = with pkgs; [
+          "${v2ray-geoip}/share/v2ray/geoip.dat"
+          "${v2ray-domain-list-community}/share/v2ray/geosite.dat"
+        ];
         openFirewall = {
           enable = true;
           port = 12345;
         };
-        assets = with pkgs; [v2ray-geoip v2ray-domain-list-community];
-        # Config file managed externally (e.g. /etc/dae/config.dae)
-        # configFile = "/etc/dae/config.dae";
       };
     })
   ];

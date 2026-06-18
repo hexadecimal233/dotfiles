@@ -71,6 +71,10 @@ in {
             mediainfo
             exiftool
             yt-dlp
+            # compression
+            pngquant # lossy png
+            oxipng # lossless png
+            mozjpeg
           ]
         )
         ++ (
@@ -86,7 +90,7 @@ in {
         ++ (
           # beautify
           lib.optionals cfg.beautify [
-            # hollywood
+            hollywood
             asciinema
             fastfetch
             hyfetch
