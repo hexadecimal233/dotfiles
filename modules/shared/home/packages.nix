@@ -46,6 +46,7 @@ in {
             p7zip
             yazi
             hexyl
+            hexedit
             lnav
             file
             eza

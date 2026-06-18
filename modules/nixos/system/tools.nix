@@ -27,6 +27,7 @@ in {
           lm_sensors
           efibootmgr
           efivar
+          btrfs-heatmap # btrfs usage visualization
         ]
       )
       ++ (

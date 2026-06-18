@@ -21,6 +21,7 @@ in {
       firefox
       vesktop
       ayugram-desktop
+      imhex
       zed-editor
       vscodium
       freetube
@@ -32,6 +33,9 @@ in {
       nautilus # GNOME file manager (bound to SUPER+E)
       libreoffice-fresh
       obs-studio
+
+      gparted
+
       # bitwarden-desktop FIXME: outdated electron
       sourcegit # todo: watch 4 updates
 
