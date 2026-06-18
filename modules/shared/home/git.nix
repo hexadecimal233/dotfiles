@@ -36,6 +36,7 @@ in {
             diffs = "diff --staged";
             difft = "-c diff.external=difft --no-pager diff";
 
+            acp = "!f() { git add . && git commit -m \"$*\" && git push; }; f";
             psh = "push";
             pshf = "push --force-with-lease";
             pl = "pull";
