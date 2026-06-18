@@ -5,8 +5,7 @@
   cmake,
   hyprlandPlugins,
   fetchFromGitHub,
-}:
-let
+}: let
   version = "0.55.0-unstable-2025-12-11";
   src = fetchFromGitHub {
     owner = "hyprwm";
@@ -15,17 +14,17 @@ let
     hash = "sha256-asc7NpeB8vD66gvZeYcQkaWOs2X6Jgd29vBtP17vjxo=";
   };
 in
-hyprlandPlugins.mkHyprlandPlugin {
-  pluginName = "hyprbars";
-  inherit version;
+  hyprlandPlugins.mkHyprlandPlugin {
+    pluginName = "hyprbars";
+    inherit version;
 
-  src = "${src}/hyprbars";
-  nativeBuildInputs = [ cmake ];
+    src = "${src}/hyprbars";
+    nativeBuildInputs = [cmake];
 
-  meta = {
-    homepage = "https://github.com/hyprwm/hyprland-plugins";
-    description = "Hyprland window title plugin (latest with monitor refactor fixes)";
-    license = lib.licenses.bsd3;
-    platforms = lib.platforms.linux;
-  };
-}
+    meta = {
+      homepage = "https://github.com/hyprwm/hyprland-plugins";
+      description = "Hyprland window title plugin (latest with monitor refactor fixes)";
+      license = lib.licenses.bsd3;
+      platforms = lib.platforms.linux;
+    };
+  }

@@ -15,9 +15,9 @@ in {
     services.usbmuxd.enable = true;
 
     environment.systemPackages = with pkgs; [
-      libimobiledevice  # pairing, tethering, idevicepair
-      ifuse             # FUSE mount iOS device filesystem
-      idevicerestore    # DFU/recovery mode firmware restore
+      libimobiledevice # pairing, tethering, idevicepair
+      ifuse # FUSE mount iOS device filesystem
+      idevicerestore # DFU/recovery mode firmware restore
     ];
   };
 }

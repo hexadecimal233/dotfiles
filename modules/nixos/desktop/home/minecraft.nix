@@ -16,7 +16,7 @@ in {
       home.packages = with pkgs; [
         # minecaft launchers
         (hmcl.override {
-          hmclJdk = zulu25.override { enableJavaFX = true; };
+          hmclJdk = zulu25.override {enableJavaFX = true;};
           minecraftJdks = [
             zulu25
             zulu21
