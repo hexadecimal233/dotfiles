@@ -14,10 +14,10 @@ in {
   config = lib.mkIf cfg.enable {
     services.fprintd.enable = true;
 
-    # PAM: allow fingerprint for sudo and login
-    security.pam.services = {
-      sudo.fprintAuth = true;
-      login.fprintAuth = true;
-    };
+    # pam sucks: they execute in order
+    # security.pam.services = {
+    # sudo.fprintAuth = true;
+    # login.fprintAuth = true;
+    # };
   };
 }
