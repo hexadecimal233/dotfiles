@@ -99,6 +99,7 @@ hl.workspace_rule({
 hl.curve("animEase", { type = "bezier", points = { {0.23, 1.0}, {0.32, 1.0} } })
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "animEase", style = "popin 80%" })
 hl.animation({ leaf = "windowsOut", enabled = false })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 3, bezier = "animEase" })
 hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "animEase" })
 
 -- Workspace swap animation (macOS/Windows-style slide)
@@ -275,31 +276,47 @@ if hl.plugin["hypr-kinetic-scroll"] then
   }}})
 end
 
--- hyprspace - workspace overview (side panel)
-if hl.plugin.overview then
+-- hyprexpo - expose-style workspace overview grid
+if hl.plugin.hyprexpo then
   hl.config({
     plugin = {
-      overview = {
-        panelHeight = 140,
-        centerAligned = true,
-        exitOnClick = true,
-        exitOnSwitch = true,
-        showNewWorkspace = true,
-        showEmptyWorkspace = false,
-        showSpecialWorkspace = false,
-        autoDrag = true,
-        autoScroll = true,
-        -- Uses Hyprland's built-in workspace swipe gesture (vertical swipe)
+      hyprexpo = {
+        columns = 3,
+        gaps_in = 5,
+        gaps_out = 0,
+        bg_col = "rgb(111111)",
+        workspace_method = "center current",
+        gesture_distance = 200,
+        cancel_key = "escape",
+        show_cursor = 1,
+        label_enable = 1,
+        label_show = "always",
+        label_text_mode = "token",
+        label_token_map = "1,2,3,4,5,6,7,8,9,0",
+        keynav_enable = 1,
+        keynav_wrap_h = 1,
+        keynav_wrap_v = 1,
       },
     },
   })
 
-  -- Super + Tab → toggle workspace overview
-  hl.bind("SUPER + TAB", hl.plugin.overview.toggle)
-  hl.bind("SUPER + SHIFT + TAB", function()
-    hl.plugin.overview.toggle("all")
+  -- 三指上滑 → 切換 overview
+  hl.plugin.hyprexpo.gesture({
+    fingers = 3,
+    direction = "up",
+    action = "expo",
+  })
+
+  -- Super + Tab → toggle
+  hl.bind("SUPER + TAB", function()
+    hl.plugin.hyprexpo.expo("toggle")
   end)
-  hl.bind("SUPER + Escape", hl.plugin.overview.close)
+  hl.bind("SUPER + SHIFT + TAB", function()
+    hl.plugin.hyprexpo.expo("on")
+  end)
+  hl.bind("SUPER + Escape", function()
+    hl.plugin.hyprexpo.expo("cancel")
+  end)
 end
 
 -- Floating mode by default (macOS-like stacking behavior)
