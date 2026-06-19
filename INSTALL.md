@@ -141,15 +141,12 @@ chezmoi apply
 
 ### Input method (Chinese/Japanese)
 
-If `hex.nixos.system.ime.enable = true` with `rimeSchema = "wanxiang"` (default), download the grammar model after first login:
+After first login, deploy Rime to activate the input method:
+`fcitx5-configtool` → Addons → Rime → Deploy.
 
-```bash
-rime-wanxiang-grammar
-```
-
-Then deploy Rime to apply: `fcitx5-configtool` → Addons → Rime → Deploy.
-
-> `rimeSchema = "ice"` does not need this step.
+Optional — external grammar model for better contextual suggestions:
+Download the grammar model from [RIME-LMDG releases](https://github.com/amzxyz/RIME-LMDG/releases) (e.g. `amz-v2n3m1-zh-hans.gram`)
+and place it in `~/.local/share/fcitx5/rime/`. Then deploy Rime again.
 
 ## Troubleshooting
 

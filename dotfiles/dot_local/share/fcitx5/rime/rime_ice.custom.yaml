@@ -1,0 +1,64 @@
+# rime-ice (雾凇拼音) schema overrides
+# Managed by chezmoi — see dotfiles/dot_local/share/fcitx5/rime/
+#
+# External grammar model (wanxiang-lts-zh-hans.gram) is auto-downloaded
+# via .chezmoiexternal.toml from RIME-LMDG releases.
+# After download/update, deploy Rime: fcitx5-configtool → Addons → Rime → Deploy
+patch:
+  # Grammar model context-aware suggestions
+  grammar:
+    language: wanxiang-lts-zh-hans
+    collocation_max_length: 5
+    collocation_min_length: 2
+  translator/contextual_suggestions: true
+  # No hard limits — let the grammar model do candidate ranking
+  # translator/max_homophones: 30
+  # translator/max_homographs: 50
+
+  # U-mode (radical/component reverse lookup): single `u` prefix
+  # (upstream default is "uU" — two chars to avoid English words starting with 'u')
+  radical_lookup/prefix: u
+  "recognizer/patterns/radical_lookup": "^u[a-z]+$"
+
+  # Enable traditional Chinese candidates by default
+  "switches/@2/reset": 1
+
+  # Append fuzzy pinyin rules to upstream's algebra (do NOT replace — use /+ to append)
+  # This preserves all upstream auto-correct rules (zh/ch/sh swap, v/ü, hz→zh, etc.)
+  "speller/algebra/+":
+    # Custom: v as input for b-initial syllables.
+    # Direction: dictionary `b` → user can type `v` instead.
+    # So "vaozi" → dictionary "baozi" → 包子.
+    # Reason: `v` is unused as a pinyin initial, no conflict.
+    - derive/^b/v/
+
+    # --- Fuzzy initials ---
+    - derive/^([zcs])h/$1/           # zh ch sh → z c s
+    - derive/^([zcs])([^h])/$1h$2/  # z c s → zh ch sh
+    - derive/^l/n/                   # l → n
+    - derive/^n/l/                   # n → l
+    - derive/^f/h/                   # f → h
+    - derive/^h/f/                   # h → f
+    - derive/^r/l/                   # r → l
+    - derive/^l/r/                   # l → r
+
+    # --- Fuzzy finals ---
+    - derive/ang$/an/
+    - derive/an$/ang/
+    - derive/eng$/en/
+    - derive/en$/eng/
+    - derive/in$/ing/
+    - derive/ing$/in/
+    - derive/ian$/iang/
+    - derive/iang$/ian/
+    - derive/uan$/uang/
+    - derive/uang$/uan/
+    - derive/ai$/an/
+    - derive/an$/ai/
+
+    # Kill false "ihu" spelling created by upstream auto-correct derives.
+    # Without this, typing "moihu" segments as "mo" + "ihu" (single syllable)
+    # instead of "mo" + "i" + "hu" → 模糊, because the syllabifier greedily
+    # matches "ihu" as a longer single segment over "i"+"hu" split.
+    # erase/ MUST be last in this list to catch all derives (upstream + ours).
+    - erase/^ihu$/

@@ -42,10 +42,6 @@
       url = "github:ToRvaLDz/monique";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    daeuniverse = {
-      url = "github:daeuniverse/flake.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -59,7 +55,6 @@
     nix-cavalry,
     noctalia,
     monique,
-    daeuniverse,
     ...
   }: let
   in {
@@ -98,7 +93,7 @@
 
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko nixos-hardware noctalia nix-cavalry monique daeuniverse;
+          inherit self home-manager disko nixos-hardware noctalia nix-cavalry monique;
         };
         system = "x86_64-linux";
         modules = [

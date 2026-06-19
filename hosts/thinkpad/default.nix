@@ -4,7 +4,6 @@
   disko,
   nixos-hardware,
   nix-cavalry,
-  daeuniverse,
   ...
 }: {
   imports = [
@@ -12,7 +11,6 @@
     nixos-hardware.nixosModules.common-gpu-intel
     self.nixosModules.profile
     disko.nixosModules.disko
-    daeuniverse.nixosModules.daed
     ./disko-config.nix
     ./hardware-configuration.nix
   ];
@@ -37,7 +35,7 @@
       fingerprint.enable = true;
       security.enable = true;
       networking.enable = true;
-      networking.dae.enable = true;
+      # networking.dae.enable = true;  # FIXME: broken build, re-enable when upstream fixes pnpmDepsHash
       wireless.enable = true;
       power.enable = true;
       time.auto = true;
@@ -57,7 +55,7 @@
       };
       fonts.enable = true;
       hyprland.enable = true;
-      proxy.verge.enable = true;
+      proxy.clash.enable = true;
     };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;
@@ -102,7 +100,6 @@
     hardware.enableRedistributableFirmware = true;
 
     services.btrfs.autoScrub.enable = true;
-
     nixpkgs.overlays = [
       nix-cavalry.overlays.default # TODO: do not use overlay way
 

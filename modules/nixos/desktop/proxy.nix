@@ -1,13 +1,13 @@
-# Desktop proxy: Clash Verge (mihomo kernel)
+# Desktop proxy: Clash Verge (mihomo kernel, GUI)
 {
   lib,
   config,
   pkgs,
   ...
 }: let
-  cfg = config.hex.nixos.desktop.proxy.verge;
+  cfg = config.hex.nixos.desktop.proxy.clash;
 in {
-  options.hex.nixos.desktop.proxy.verge = {
+  options.hex.nixos.desktop.proxy.clash = {
     enable =
       lib.mkEnableOption "Clash Verge proxy (mihomo kernel, tray app)"
       // {default = false;};
@@ -15,9 +15,6 @@ in {
 
   config = lib.mkIf (config.hex.nixos.desktop.enable && cfg.enable) {
     # Clash Verge — GUI proxy client with mihomo kernel
-    # WARN : DEPRECATED DUE TO UNSTABLENESS ON LINUS
-
-    /*
     programs.clash-verge = {
       enable = true;
       serviceMode = true;
@@ -25,14 +22,13 @@ in {
       autoStart = true;
     };
 
-    # Allow mihomo TUN traffic through firewall
-    networking.firewall = {
-      trustedInterfaces = ["Mihomo"];
-      extraReversePathFilterRules = ''
-        iifname { "Mihomo" } accept comment "trusted interface"
-      '';
+    # --- pure mihomo (headless, no GUI) ---
+    /*
+    services.mihomo = {
+      enable = true;
+      tunMode = true;
+      # TODO: add a config
     };
-
     */
   };
 }

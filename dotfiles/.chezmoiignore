@@ -11,4 +11,5 @@ AppData
 # Linux exclusive
 {{ if ne .chezmoi.os "linux" }}
 .config/hypr/**
+dot_local/share/fcitx5/**
 {{ end }}

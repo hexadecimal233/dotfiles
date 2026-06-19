@@ -64,7 +64,7 @@
 │   │       │   ├── packages.nix    # Desktop GUI packages (ghostty, firefox, ...)
 │   │       │   ├── production.nix  # Production tools (Mixxx, trackers)
 │   │       │   └── theme.nix       # Desktop theming (Papirus icons, Bibata cursor)
-│   │       ├── proxy.nix       # Clash Verge proxy (mihomo kernel)
+│   │       ├── proxy.nix       # Clash/Mihomo proxy (mihomo kernel)
 │   │       ├── steam.nix       # TODO: steam gaming support
 │   │       └── wm.nix          # Hyprland compositor (config via chezmoi)
 │   ├── darwin/             # macOS-specific
@@ -134,8 +134,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.security.enable` — polkit
   - `hex.nixos.system.time.auto` — automatic timezone via geoclue2 (automatic-timezoned)
   - `hex.nixos.system.time.timezone` — static timezone string (e.g. "Asia/Shanghai")
-  - `hex.nixos.system.ime.enable` — fcitx5 input method (Rime Chinese + Mozc Japanese)
-    - `hex.nixos.system.ime.rimeSchema` — Rime schema: "wanxiang" (万象拼音) or "ice" (雾凇拼音)
+  - `hex.nixos.system.ime.enable` — fcitx5 input method (Rime 雾凇拼音 + Mozc Japanese)
   - `hex.nixos.system.ios.enable` — iOS device support (libimobiledevice, usbmuxd, ifuse, idevicerestore)
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
   - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
@@ -160,7 +159,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.desktop.hyprland.enable` — Hyprland compositor (config via chezmoi)
   - `hex.nixos.desktop.audio.enable` — audio stack
   - `hex.nixos.desktop.fonts.enable` — fonts
-  - `hex.nixos.desktop.proxy.verge.enable` — Clash Verge proxy (mihomo kernel)
+  - `hex.nixos.desktop.proxy.clash.enable` — Clash/Mihomo proxy (mihomo kernel)
 
 **NixOS-exclusive home-manager desktop**
 - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell

@@ -1,4 +1,4 @@
-# Network management (NetworkManager, network tools, daed proxy)
+# Network management (NetworkManager, network tools)
 {
   lib,
   config,
@@ -27,21 +27,21 @@ in {
       ];
     })
 
-    # daed transparent proxy (with web dashboard)
-    (lib.mkIf cfg.dae.enable {
-      services.daed = {
-        enable = true;
-        configDir = "/etc/daed";
-        listen = "127.0.0.1:2023";
-        assetsPaths = with pkgs; [
-          "${v2ray-geoip}/share/v2ray/geoip.dat"
-          "${v2ray-domain-list-community}/share/v2ray/geosite.dat"
-        ];
-        openFirewall = {
-          enable = true;
-          port = 12345;
-        };
-      };
-    })
+    # daed transparent proxy — FIXME: broken build (upstream pnpmDepsHash mismatch)
+    # (lib.mkIf cfg.dae.enable {
+    #   services.daed = {
+    #     enable = true;
+    #     configDir = "/etc/daed";
+    #     listen = "127.0.0.1:2023";
+    #     assetsPaths = with pkgs; [
+    #       "${v2ray-geoip}/share/v2ray/geoip.dat"
+    #       "${v2ray-domain-list-community}/share/v2ray/geosite.dat"
+    #     ];
+    #     openFirewall = {
+    #       enable = true;
+    #       port = 12345;
+    #     };
+    #   };
+    # })
   ];
 }

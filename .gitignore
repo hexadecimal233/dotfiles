@@ -9,3 +9,6 @@ temp
 
 # ai coding stuff
 .omo
+
+# chezmoi external: Rime grammar model (~420MB binary)
+dotfiles/dot_local/share/fcitx5/rime/*.gram

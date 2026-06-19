@@ -1,0 +1,28 @@
+# Rime default settings overrides
+# Managed by chezmoi — see dotfiles/dot_local/share/fcitx5/rime/
+patch:
+  # Include rime-ice's full default config (punctuator, recognizer, key_binder,
+  # schema_list, ascii_composer, etc.) — provides the base that rime_ice.schema.yaml
+  # depends on via __include: default:/punctuator.
+  #
+  # Without this, the fcitx5-rime-data default.yaml is empty (no rime-prelude data
+  # in nixpkgs), and Rime schema compilation fails with "unresolved dependency:
+  # Include(default:/punctuator/full_shape)".
+  __include: rime_ice_suggestion:/
+
+  # Schema list: only load rime-ice (雾凇拼音)
+  # (overrides rime_ice_suggestion's multi-schema list)
+  schema_list:
+    - schema: rime_ice
+
+  # Page size: show 9 candidates per page (default: 5)
+  menu/page_size: 9
+
+  # Shift key does nothing — use Super+Space (OS-level IME switch) to toggle
+  # between keyboard-us and rime instead
+  # (rime_ice_suggestion default has Shift_L: commit_code, overriding to noop)
+  #
+  # Page turning: - / = (rime-ice default, no override needed)
+  ascii_composer/switch_key:
+    Shift_L: noop
+    Shift_R: noop

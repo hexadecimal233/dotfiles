@@ -105,9 +105,11 @@ hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "animEase" })
 hl.curve("wsEase", { type = "bezier", points = { {0.65, 0.0}, {0.35, 1.0} } })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "wsEase", style = "slide 100%" })
 
+-- fuck ms copilot key — remap to ghostty (placeholder, change the exec cmd later)
+hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("ghostty"))
+
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
-hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("ghostty"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area"))
 
