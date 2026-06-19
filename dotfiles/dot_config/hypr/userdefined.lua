@@ -99,7 +99,7 @@ hl.workspace_rule({
 hl.curve("animEase", { type = "bezier", points = { {0.23, 1.0}, {0.32, 1.0} } })
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "animEase", style = "popin 80%" })
 hl.animation({ leaf = "windowsOut", enabled = false })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 3, bezier = "animEase" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "animEase" })
 hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "animEase" })
 
 -- Workspace swap animation (macOS/Windows-style slide)
