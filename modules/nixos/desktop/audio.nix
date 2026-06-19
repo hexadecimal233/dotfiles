@@ -32,6 +32,7 @@ in {
         crosspipe # router
         easyeffects # mixer
         openmeters
+        playerctl
       ];
     })
 

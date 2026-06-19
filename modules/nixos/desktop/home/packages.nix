@@ -15,7 +15,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs.monique.enable = true;
+    programs.monique.enable = true; # supersedes nwg-displays
     home-manager.users.hexzii.home.packages = with pkgs; [
       ghostty
       firefox
@@ -27,7 +27,6 @@ in {
       freetube
       mpv
       celluloid
-      nwg-displays
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
       nautilus # GNOME file manager (bound to SUPER+E)

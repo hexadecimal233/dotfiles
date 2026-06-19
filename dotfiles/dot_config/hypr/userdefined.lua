@@ -111,7 +111,10 @@ hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("ghostty"))
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
-hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area"))
+-- todo: screenshot hl.bind("Print", hl.dsp.exec_cmd(""))
+
+-- lock with noctalia's built-in lockscreen
+hl.bind("SUPER + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 
 -- Volume
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 3%+"), { repeating = true })
@@ -272,50 +275,31 @@ if hl.plugin["hypr-kinetic-scroll"] then
   }}})
 end
 
--- hymission - macOS Mission Control 風格工作區/視窗總覽
-if hl.plugin.hymission then
+-- hyprspace - workspace overview (side panel)
+if hl.plugin.overview then
   hl.config({
     plugin = {
-      hymission = {
-        outer_padding_top = 64,
-        outer_padding_right = 32,
-        outer_padding_bottom = 32,
-        outer_padding_left = 32,
-        row_spacing = 24,
-        column_spacing = 24,
-        min_window_length = 120,
-        max_preview_scale = 0.90,
-        expand_selected_window = 1,
-        overview_focus_follows_mouse = 1,
-        toggle_switch_mode = 1,
-        switch_toggle_auto_next = 1,
-        switch_release_key = "Super_L",
-        gesture_invert_vertical = 0,
-        only_active_workspace = 0,
-        show_special = 0,
-        workspace_strip_anchor = "left",
-        workspace_strip_thickness = 140,
-        workspace_strip_empty_mode = "existing",
-        debug_logs = 0,
+      overview = {
+        panelHeight = 140,
+        centerAligned = true,
+        exitOnClick = true,
+        exitOnSwitch = true,
+        showNewWorkspace = true,
+        showEmptyWorkspace = false,
+        showSpecialWorkspace = false,
+        autoDrag = true,
+        autoScroll = true,
+        -- Uses Hyprland's built-in workspace swipe gesture (vertical swipe)
       },
     },
   })
 
-  -- 三指上滑 → 切換 Mission Control (forceall = 所有工作區)
-  hl.plugin.hymission.gesture({
-    fingers = 3,
-    direction = "vertical",
-    action = "toggle",
-    args = "forceall",
-    scale = 0.5,
-  })
-
-  -- Super 快捷鍵
-  hl.bind("SUPER + TAB", hl.plugin.hymission.toggle)
+  -- Super + Tab → toggle workspace overview
+  hl.bind("SUPER + TAB", hl.plugin.overview.toggle)
   hl.bind("SUPER + SHIFT + TAB", function()
-    hl.plugin.hymission.toggle("forceall")
+    hl.plugin.overview.toggle("all")
   end)
-  hl.bind("SUPER + Escape", hl.plugin.hymission.close)
+  hl.bind("SUPER + Escape", hl.plugin.overview.close)
 end
 
 -- Floating mode by default (macOS-like stacking behavior)

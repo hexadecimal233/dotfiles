@@ -51,11 +51,12 @@ in {
         enable = true;
         package = null;
         portalPackage = null;
+        # using hyprspace for workspace overview — we're not using hyprexpo or hymission
         plugins = [
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
           self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
-          self.packages.${pkgs.stdenv.hostPlatform.system}.hymission
+          pkgs.hyprlandPlugins.hyprspace
           pkgs.hyprlandPlugins.hypr-dynamic-cursors
         ];
         settings = {};

@@ -60,6 +60,7 @@
 │   │       │   ├── default.nix     # hex.nixos.home.desktop
 │   │       │   ├── minecraft.nix   # Minecraft launchers + legacy JDKs
 │   │       │   ├── noctalia.nix    # Noctalia v5 desktop shell
+
 │   │       │   ├── office.nix      # TODO: office kit
 │   │       │   ├── packages.nix    # Desktop GUI packages (ghostty, firefox, ...)
 │   │       │   ├── production.nix  # Production tools (Mixxx, trackers)
