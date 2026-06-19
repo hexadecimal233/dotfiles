@@ -127,8 +127,9 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 3%-"), { repea
 local hs = require("./plugins/hyprsplit")
 hs.config({ num_workspaces = 10 })
 
--- Touchpad swipe gestures (macOS-like)
+-- Touchpad swipe gestures
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
 
 -- Per-monitor workspace switching via hyprsplit dispatchers
 for i = 1, 10 do
@@ -269,6 +270,52 @@ if hl.plugin["hypr-kinetic-scroll"] then
     stop_on_focus = false,
     debug = false,
   }}})
+end
+
+-- hymission - macOS Mission Control 風格工作區/視窗總覽
+if hl.plugin.hymission then
+  hl.config({
+    plugin = {
+      hymission = {
+        outer_padding_top = 64,
+        outer_padding_right = 32,
+        outer_padding_bottom = 32,
+        outer_padding_left = 32,
+        row_spacing = 24,
+        column_spacing = 24,
+        min_window_length = 120,
+        max_preview_scale = 0.90,
+        expand_selected_window = 1,
+        overview_focus_follows_mouse = 1,
+        toggle_switch_mode = 1,
+        switch_toggle_auto_next = 1,
+        switch_release_key = "Super_L",
+        gesture_invert_vertical = 0,
+        only_active_workspace = 0,
+        show_special = 0,
+        workspace_strip_anchor = "left",
+        workspace_strip_thickness = 140,
+        workspace_strip_empty_mode = "existing",
+        debug_logs = 0,
+      },
+    },
+  })
+
+  -- 三指上滑 → 切換 Mission Control (forceall = 所有工作區)
+  hl.plugin.hymission.gesture({
+    fingers = 3,
+    direction = "vertical",
+    action = "toggle",
+    args = "forceall",
+    scale = 0.5,
+  })
+
+  -- Super 快捷鍵
+  hl.bind("SUPER + TAB", hl.plugin.hymission.toggle)
+  hl.bind("SUPER + SHIFT + TAB", function()
+    hl.plugin.hymission.toggle("forceall")
+  end)
+  hl.bind("SUPER + Escape", hl.plugin.hymission.close)
 end
 
 -- Floating mode by default (macOS-like stacking behavior)

@@ -55,6 +55,7 @@ in {
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
           self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll
           self.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+          self.packages.${pkgs.stdenv.hostPlatform.system}.hymission
           pkgs.hyprlandPlugins.hypr-dynamic-cursors
         ];
         settings = {};
