@@ -93,7 +93,7 @@ in {
         ++ (
           # beautify & fun
           lib.optionals cfg.beautify [
-            hollywood
+            # hollywood broken
             hyfetch
             cowsay
             lolcat
