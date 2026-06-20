@@ -32,12 +32,12 @@
     };
     hex.nixos.desktop = {
       enable = true;
+      # wm = null; — WSL has no compositor
       audio = {
         enable = true;
         usePulse = true; # WSL uses WSLg PulseAudio
       };
       fonts.enable = true;
-      hyprland.enable = false; # WSL has no Hyprland
     };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;

@@ -9,13 +9,28 @@ in {
     ./audio.nix
     ./fonts.nix
     ./proxy.nix
-    ./wm.nix
+    ./wm
     ./home
   ];
 
   options.hex.nixos.desktop = {
     enable = lib.mkEnableOption "desktop environment and graphics";
-    hyprland.enable = lib.mkEnableOption "Hyprland compositor";
+
+    wm = lib.mkOption {
+      type = lib.types.nullOr (lib.types.enum ["hyprland" "niri"]);
+      default = null;
+      description = "Window manager / compositor: hyprland or niri. Set to null for no WM (bring your own).";
+      example = "hyprland";
+    };
+
+    # Internal — set by each WM module to declare its UWSM session name
+    wmSession = lib.mkOption {
+      type = lib.types.str;
+      internal = true;
+      default = "hyprland.desktop";
+      description = "UWSM session desktop file name, set by the selected WM module.";
+    };
+
     audio = {
       enable = lib.mkEnableOption "audio stack";
       usePulse = lib.mkEnableOption "use PulseAudio directly instead of PipeWire";
@@ -29,7 +44,7 @@ in {
 
     # Sub-options default to parent
     hex.nixos.desktop = {
-      hyprland.enable = lib.mkDefault false;
+      wm = lib.mkDefault null;
       audio.enable = lib.mkDefault false;
       fonts.enable = lib.mkDefault false;
     };

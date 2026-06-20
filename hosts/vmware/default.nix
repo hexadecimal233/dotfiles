@@ -28,9 +28,9 @@
     # desktop for VM testing — minimal Hyprland
     hex.nixos.desktop = {
       enable = true;
+      wm = "hyprland";
       audio.enable = true;
       fonts.enable = true;
-      hyprland.enable = true;
     };
 
     # cross-platform tools

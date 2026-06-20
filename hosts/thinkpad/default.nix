@@ -49,12 +49,12 @@
     };
     hex.nixos.desktop = {
       enable = true;
+      wm = "hyprland";
       audio = {
         enable = true;
         usePulse = false; # physical machine uses PipeWire
       };
       fonts.enable = true;
-      hyprland.enable = true;
       proxy.clash.enable = true;
     };
     hex.shared.home.shell.enable = true;

@@ -157,7 +157,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 
 **NixOS-only**
 - `hex.nixos.desktop.enable` — desktop environment
-  - `hex.nixos.desktop.hyprland.enable` — Hyprland compositor (config via chezmoi)
+  - `hex.nixos.desktop.wm` — WM choice: `"hyprland"` / `"niri"` / `null` (none)
   - `hex.nixos.desktop.audio.enable` — audio stack
   - `hex.nixos.desktop.fonts.enable` — fonts
   - `hex.nixos.desktop.proxy.clash.enable` — Clash/Mihomo proxy (mihomo kernel)
