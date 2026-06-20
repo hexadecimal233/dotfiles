@@ -27,6 +27,9 @@ in {
             sops
             gnupg
             chezmoi
+
+            asciinema
+            fastfetch
           ]
         )
         ++ (
@@ -88,12 +91,14 @@ in {
           ]
         )
         ++ (
-          # beautify
+          # beautify & fun
           lib.optionals cfg.beautify [
             hollywood
-            asciinema
-            fastfetch
             hyfetch
+            cowsay
+            lolcat
+            figlet
+            terminal-parrot
           ]
         )
         ++ (

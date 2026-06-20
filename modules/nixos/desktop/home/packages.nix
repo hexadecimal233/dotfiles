@@ -19,6 +19,7 @@ in {
     home-manager.users.hexzii.home.packages = with pkgs; [
       ghostty
       firefox
+
       vesktop
       ayugram-desktop
       imhex
@@ -49,6 +50,8 @@ in {
       wl-clipboard # TODO: maybe try clipvault??
 
       imv # image viewer
+      # dunst
+      inotify-tools
     ];
   };
 }

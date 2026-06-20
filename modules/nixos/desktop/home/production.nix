@@ -21,7 +21,11 @@ in {
       furnace
       famistudio
 
-      # drawing
+      # daws
+
+      # painting / designing
+      krita
+      inkscape
       aseprite
     ];
   };

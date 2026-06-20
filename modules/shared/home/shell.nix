@@ -50,6 +50,7 @@ in {
           top = "btop";
           tokscale = "bunx tokscale@latest"; # count tokens
           maleme = "bunx maleme@latest"; # triggered!!
+          parrot-live = "curl parrot.live";
           oc = "opencode";
           ff = "fastfetch";
           hy = "hyfetch";
