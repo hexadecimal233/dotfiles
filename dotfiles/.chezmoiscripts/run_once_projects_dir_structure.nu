@@ -2,7 +2,7 @@
 # my project structure bones
 
 
-let BASE = $"($env.HOME)/projects"
+let BASE = $"($nu.home-dir)/projects"
 
 let CATEGORIES = [
     # "nixos-config": clone this repo into the directory!!

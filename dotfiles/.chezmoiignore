@@ -12,4 +12,5 @@ AppData
 {{ if ne .chezmoi.os "linux" }}
 .config/hypr/**
 dot_local/share/fcitx5/**
+dot_local/share/krita/**
 {{ end }}
