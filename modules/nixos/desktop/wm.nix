@@ -18,6 +18,20 @@ in {
       xwayland.enable = true;
     };
 
+    # xdg portals — async URL/file open via D-Bus (non-blocking xdg-open)
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk   # provides OpenURI interface (hyprland portal lacks it)
+      ];
+      config = {
+        hyprland.default = ["hyprland" "gtk"];
+        common.default = "*";
+      };
+    };
+
     # greetd — tuigreet login, then UWSM → Hyprland
     services.greetd = {
       enable = true;
@@ -73,6 +87,11 @@ in {
       TERMINAL = "ghostty";
       EDITOR = "hx";
       VISUAL = "hx";
+      # xdg-open: force portal path (async) + help detectDE / portals identify the DE
+      NIXOS_XDG_OPEN_USE_PORTAL = "1";
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "Hyprland";
     };
   };
 }
