@@ -32,7 +32,10 @@ in {
         crosspipe # router
         easyeffects # mixer
         openmeters
+
+        # cli
         playerctl
+        alsa-utils
       ];
     })
 

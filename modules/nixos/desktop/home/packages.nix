@@ -28,6 +28,7 @@ in {
       freetube
       mpv
       celluloid
+      vlc
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
       nautilus # GNOME file manager (bound to SUPER+E)
@@ -36,7 +37,14 @@ in {
       libreoffice-fresh
       obs-studio
 
+      cheese
+
       gparted
+      networkmanagerapplet # advanced nm
+
+      # network capturing
+      wireshark
+      # proxypin
 
       # bitwarden-desktop FIXME: outdated electron
       sourcegit # todo: watch 4 updates

@@ -24,10 +24,23 @@ in {
           pciutils
           usbutils
           dmidecode
+          fetchutils
+          cpufrequtils
+          i2c-tools
           lm_sensors
+
+          beep
+
           efibootmgr
           efivar
+
+          # file tools
+          exfatprogs
+
+          # maintenance tools
           btrfs-heatmap # btrfs usage visualization
+          nvme-cli
+          smartmontools
         ]
       )
       ++ (

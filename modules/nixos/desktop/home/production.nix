@@ -21,7 +21,14 @@ in {
       furnace
       famistudio
 
-      # daws
+      # daws / audio
+      vmpk
+      audacity
+      # TODO: try reaper
+
+      # TODO: crossplatform vsts
+      # yabridge
+      # yabridgectl # cli
 
       # painting / designing
       krita

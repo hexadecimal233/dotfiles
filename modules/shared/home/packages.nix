@@ -46,6 +46,8 @@ in {
           # file tools
           lib.optionals cfg.fileTools [
             ouch # all in one zip / unzip tool
+            dos2unix # crlf -> lf
+            qpdf # pdf toolkit
             p7zip
             yazi
             hexyl
@@ -88,6 +90,7 @@ in {
             asn
             dnsutils
             netcat
+            nmap
           ]
         )
         ++ (
