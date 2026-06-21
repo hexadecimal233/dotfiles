@@ -105,6 +105,19 @@
     nixpkgs.overlays = [
       nix-cavalry.overlays.default # TODO: do not use overlay way
 
+      # Override fsearch to build from latest commit
+      (final: prev: {
+        fsearch = prev.fsearch.overrideAttrs (old: {
+          version = "unstable-2026-06-21";
+          src = final.fetchFromGitHub {
+            owner = "cboxdoerfer";
+            repo = "fsearch";
+            rev = "5056e2a67e88ba84b8bca990883ddb969e9678bb";
+            hash = "sha256-+5fjI2oCCxTh2JOt+tsQ/r5e3nl5E4dod6isz+EebUQ=";
+          };
+        });
+      })
+
       # TODO: remove this later
       # Patch hypr-dynamic-cursors: linear bezier for shake magnification
       # (final: prev: {

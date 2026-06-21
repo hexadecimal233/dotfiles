@@ -53,6 +53,8 @@ in {
       # hyprland-exclusiv! TODO: move to wm
       hyprshade
 
+      fsearch
+
       # fixme: move to a "nixos/home section"
       wayshot
       wl-screenrec

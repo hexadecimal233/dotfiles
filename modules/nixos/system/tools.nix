@@ -36,6 +36,7 @@ in {
 
           efibootmgr
           efivar
+          fwupd
 
           # file tools
           exfatprogs
