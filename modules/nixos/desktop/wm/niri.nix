@@ -22,7 +22,7 @@ in {
     xdg.portal = {
       extraPortals = with pkgs; [
         xdg-desktop-portal-gnome
-        xdg-desktop-portal-gtk   # provides OpenURI interface
+        xdg-desktop-portal-gtk # provides OpenURI interface
       ];
       config.niri.default = ["gnome" "gtk"];
     };

@@ -64,7 +64,6 @@
       in {
         hyprglass = pkgs.callPackage ./packages/hyprglass.nix {};
         hypr-kinetic-scroll = pkgs.callPackage ./packages/hypr-kinetic-scroll.nix {};
-        hyprbars = pkgs.callPackage ./packages/hyprbars.nix {};
         hyprexpo = pkgs.callPackage ./packages/hyprexpo.nix {};
         jhentai = pkgs.callPackage ./packages/jhentai.nix {};
       };

@@ -24,7 +24,7 @@ in {
     xdg.portal = {
       extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk   # provides OpenURI interface (hyprland portal lacks it)
+        xdg-desktop-portal-gtk # provides OpenURI interface (hyprland portal lacks it)
       ];
       config.hyprland.default = ["hyprland" "gtk"];
     };
@@ -51,7 +51,6 @@ in {
       plugins = [
         self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
         self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll
-        self.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
         self.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
         pkgs.hyprlandPlugins.hypr-dynamic-cursors
       ];

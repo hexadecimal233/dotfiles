@@ -20,11 +20,13 @@ in {
           init.defaultBranch = "main";
           http.postBuffer = 524288000;
           signing.signByDefault = true;
-          credential = lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
-            helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
-          } // {
-            "https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
-          };
+          credential =
+            lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+              helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
+            }
+            // {
+              "https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
+            };
           alias = {
             st = "status -sb";
             co = "checkout";

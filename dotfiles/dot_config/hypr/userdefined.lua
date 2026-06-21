@@ -113,9 +113,14 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "wsEase"
 -- fuck ms copilot key — remap to ghostty (placeholder, change the exec cmd later)
 hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("ghostty"))
 
-hl.bind("SUPER + Q", hl.dsp.window.close())
+hl.bind("SUPER + W", hl.dsp.window.close())         -- close window (alternative)
+hl.bind("SUPER + Q", hl.dsp.window.kill())          -- exit/kill program
 hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
+hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }))  -- toggle tiling/floating
+hl.bind("SUPER + CTRL + F", hl.dsp.window.fullscreen())  -- fullscreen
+hl.bind("SUPER + M", hl.dsp.window.move({ workspace = "special" }))  -- hide/minimize
+hl.bind("SUPER + ALT + X", hl.dsp.exec_cmd("hyprctl kill"))  -- xkill mode (click to kill)
 -- todo: screenshot hl.bind("Print", hl.dsp.exec_cmd(""))
 
 -- lock with noctalia's built-in lockscreen
@@ -151,7 +156,6 @@ hl.bind("SUPER + D", hs.dsp.workspace.swap_monitors({ monitor1 = "current", moni
 hl.bind("SUPER + G", hs.dsp.grab_rogue_windows())
 
 require("./plugins/hyprglass")
-require("./plugins/hyprbars")
 require("./plugins/hypr-dynamic-cursors")
 require("./plugins/hypr-kinetic-scroll")
 require("./plugins/hyprexpo")
