@@ -31,9 +31,14 @@ in {
           # justfile
           just-lsp
 
+          # lua
+          lua-language-server
+          # emmylua-ls
+
           # stuff
           mise
           uv
+          betterleaks
         ]
         ++ lib.optionals cfg.nodejs.enable [
           # nodejs (global: npx/bunx)
