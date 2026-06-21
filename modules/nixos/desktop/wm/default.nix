@@ -46,9 +46,10 @@ in {
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
       QT_QPA_PLATFORM = "wayland";
+      GDK_BACKEND = "wayland";
       TERMINAL = "ghostty";
       EDITOR = "hx";
-      VISUAL = "hx";
+      VISUAL = "zeditor";
       # xdg-open: force portal path (async)
       NIXOS_XDG_OPEN_USE_PORTAL = "1";
       XDG_SESSION_TYPE = "wayland";
