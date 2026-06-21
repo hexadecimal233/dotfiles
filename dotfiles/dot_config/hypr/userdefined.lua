@@ -69,7 +69,7 @@ hl.config({
             passes = 2,
             -- xray = true,
             -- noise = 0.16,
-            popups = true,
+            -- popups = true,
         },
         motion_blur = {
             --  enabled = true,
@@ -148,7 +148,8 @@ hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind("SUPER + " .. key, hs.dsp.focus({ workspace = i }))
-    hl.bind("SUPER + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = false }))
+    hl.bind("SUPER + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = true }))
+    hl.bind("SUPER + CTRL + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = false }))
 end
 
 -- Swap workspaces between monitors + grab orphaned windows
