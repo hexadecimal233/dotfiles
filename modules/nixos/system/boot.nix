@@ -12,7 +12,10 @@ in {
 
   config = lib.mkIf cfg.enable {
     boot.loader = {
-      systemd-boot.enable = true; # modern bootloader for linux
+      systemd-boot = {
+        enable = true;
+        consoleMode = "auto";
+      };
       /*
          use only if necessary!!
       grub = {

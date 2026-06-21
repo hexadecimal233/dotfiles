@@ -18,6 +18,35 @@ in {
     programs.uwsm.enable = true;
 
     # greetd — tuigreet login, then UWSM → selected WM
+    #
+    # ─── gnome-keyring cannot auto-unlock with fingerprint ─────────────
+    #
+    # NOT a greetd bug. Linux has no auth→keyring glue layer:
+    #
+    #   • PAM's single authtok channel carries yes/no from pam_fprintd,
+    #     not a password → pam_gnome_keyring gets NULL → keyring stays locked.
+    #   • gnome-keyring uses the login password as the AES key directly
+    #     (no KDF/TPM/escrow layer — change passwd and your keyring dies).
+    #   • Windows/macOS/Android all decouple auth from key material via
+    #     TPM/Secure Enclave/TEE. Linux has TPM 2.0 but fprintd, gnome-keyring,
+    #     systemd, and tpm2-tss are four independent projects with zero
+    #     integration. Nobody owns the auth→keyring pipeline.
+    #
+    # Community reception (10 years, same wall):
+    #   - "defeats the point of biometric login" — Fedora Discussion 2025
+    #   - "your fingerprint is not your password" — Arch BBS 2024
+    #   - "no interface to store those secrets securely" — mjg59 2023
+    #   - closed as WONTFIX — AOSC Issue #425 2016
+    #
+    # References:
+    #   https://mjg59.dreamwidth.org/68537.html
+    #   https://bbs.archlinux.org/viewtopic.php?id=310290
+    #   https://discussion.fedoraproject.org/t/164734
+    #   https://github.com/AOSC-Dev/aosc-os-abbs/issues/425
+    #   https://github.com/Tunahanyrd/tpm-keyring-unlock
+    #   https://github.com/jmylchreest/rosec
+    #
+    # ────────────────────────────────────────────────────────────────────
     services.greetd = {
       enable = true;
       restart = false;
