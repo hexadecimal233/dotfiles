@@ -30,6 +30,7 @@ in {
 
             asciinema
             fastfetch
+            stress-ng
           ]
         )
         ++ (
