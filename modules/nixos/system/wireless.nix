@@ -12,12 +12,22 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+      settings = {
+        General = {
+          Experimental = true; # power, etc
+          FastConnectable = false; # lower power
+        };
+      };
+    };
+
     hardware.bluetooth.powerOnBoot = false; # or maybe true
 
     environment.systemPackages = with pkgs; [
       bluez # bluetoothctl, etc.
       wavemon
+      blueman
     ];
   };
 }

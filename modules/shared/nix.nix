@@ -17,5 +17,14 @@ in {
       #  per-system timer are handled separately
       options = "--delete-older-than 7d";
     };
+
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "aseprite"
+        "cavalry"
+        "reaper"
+        "bitwig-studio"
+        ""
+      ];
   };
 }

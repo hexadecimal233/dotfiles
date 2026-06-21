@@ -92,7 +92,9 @@
       PROXY_DEFAULT = "http://localhost:7897";
     };
 
-    # Use latest kernel for Xe driver fixes (Linux 7.0)
+    # networking.hostName = "thinkpad";
+
+    # TODO: move to kernal
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
     # Intel GPU: xe driver with required firmware
