@@ -53,5 +53,8 @@ in {
           rustnet
         ]
       );
+
+    # fwupd service must be registered via NixOS module, not just the package
+    services.fwupd.enable = lib.mkIf cfg.hardware true;
   };
 }

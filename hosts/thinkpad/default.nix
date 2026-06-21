@@ -37,7 +37,10 @@
       networking.enable = true;
       # networking.dae.enable = true;  # FIXME: broken build, re-enable when upstream fixes pnpmDepsHash
       wireless.enable = true;
-      power.enable = true;
+      power = {
+        enable = true;
+        daemon = "tuned"; # replaces power-profiles-daemon
+      };
       time.auto = true;
       graphics.enable = true;
       ime.enable = true;
@@ -115,6 +118,7 @@
             rev = "5056e2a67e88ba84b8bca990883ddb969e9678bb";
             hash = "sha256-+5fjI2oCCxTh2JOt+tsQ/r5e3nl5E4dod6isz+EebUQ=";
           };
+          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ final.itstool ];
         });
       })
 
