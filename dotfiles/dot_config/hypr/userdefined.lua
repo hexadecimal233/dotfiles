@@ -32,7 +32,6 @@ hl.config({
   },
   input = {
     kb_layout = "us",
-    sensitivity = -0.1, --(range: -1.0 to 1.0)
     touchpad = { natural_scroll = true, scroll_factor = 0.2, drag_lock = true },
     follow_mouse = 0,           -- Don't focus windows on hover (click/keybind only)
   },
@@ -85,6 +84,9 @@ hl.config({
     use_nearest_neighbor = false, -- bit windows like but okay burry :/
   },
 })
+
+-- Per-device input settings (sensitivity, scroll_factor, etc.)
+require("devices")
 
 hl.workspace_rule({
   workspace = "w[t1-4]", -- except workspace 1 for floating windows
