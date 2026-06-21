@@ -12,13 +12,19 @@ in {
     home-manager.users.hexzii = {
       programs.git = {
         enable = true;
+        # gitFull includes git-credential-libsecret (Linux only; macOS uses osxkeychain natively)
+        package = lib.mkIf pkgs.stdenv.hostPlatform.isLinux pkgs.gitFull;
         settings = {
           user.name = "hexzii";
           user.email = "hexzii${"@"}nichijou.moe";
           init.defaultBranch = "main";
           http.postBuffer = 524288000;
           signing.signByDefault = true;
-          credential."https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
+          credential = lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+            helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
+          } // {
+            "https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
+          };
           alias = {
             st = "status -sb";
             co = "checkout";

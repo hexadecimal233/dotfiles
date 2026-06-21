@@ -40,6 +40,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.dconf.enable = true;
+    services.gnome.gnome-keyring.enable = true;
     services.gvfs.enable = true; # nautilus file manager (trash, mounts)
 
     # Sub-options default to parent

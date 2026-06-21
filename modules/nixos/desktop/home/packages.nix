@@ -31,6 +31,7 @@ in {
       vlc
       nwg-look # GTK theme/cursor/icon settings GUI
       desktop-file-utils # update-desktop-database
+      seahorse # GNOME Keyring GUI (passwords & keys)
       nautilus # GNOME file manager (bound to SUPER+E)
       nemo # may also try!
       # dolphin

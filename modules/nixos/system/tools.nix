@@ -8,8 +8,10 @@
   cfg = config.hex.nixos.system.tools;
 in {
   config = lib.mkIf config.hex.nixos.system.tools.enable {
-    environment.systemPackages = with pkgs;
-      (
+    environment.systemPackages = with pkgs; [
+        openssl
+      ]
+      ++ (
         # monitoring (linux-only)
         lib.optionals cfg.monitoring [
           psmisc

@@ -32,6 +32,8 @@ hl.config({
     },
     input = {
         kb_layout = "us",
+        repeat_rate = 30,
+        repeat_delay = 500,
         touchpad = { natural_scroll = true, scroll_factor = 0.2, drag_lock = true },
         follow_mouse = 0, -- Don't focus windows on hover (click/keybind only)
     },
