@@ -3,7 +3,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 # Rime grammar model — ~420MB, re-checks weekly
 # Requires librime-octagram or librime with grammar support
-["dot_local/share/fcitx5/rime/wanxiang-lts-zh-hans.gram"]
+[".local/share/fcitx5/rime/wanxiang-lts-zh-hans.gram"]
 type = "file"
 url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram"
 refreshPeriod = "168h"
@@ -14,7 +14,7 @@ url = "https://raw.githubusercontent.com/shezdy/hyprsplit/6b00b677d8905fb38779c9
 
 # Krita brush bundle — deevad 25-01 (CC-0)
 # Linux: ~/.local/share/krita/
-["dot_local/share/krita"]
+[".local/share/krita"]
 type = "archive"
 url = "https://www.peppercarrot.com/extras/resources/deevad-bundle_25.01.zip"
 path = "Deevad_25.01.bundle"
