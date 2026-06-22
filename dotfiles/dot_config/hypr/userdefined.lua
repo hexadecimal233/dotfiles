@@ -53,7 +53,7 @@ hl.config({
         enable_hyprcursor = true,
     },
     gestures = {
-        workspace_swipe_distance = 1200,
+        workspace_swipe_distance = 1000,
         workspace_swipe_invert = true,
         workspace_swipe_min_speed_to_force = 10,
         workspace_swipe_cancel_ratio = 0.4,
@@ -139,8 +139,8 @@ hl.bind("SUPER + G", hs.dsp.grab_rogue_windows())
 
 -- keybinds
 
--- fuck ms copilot key — remap to ghostty (TODO: change the exec cmd later)
-hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("ghostty"))
+-- fuck ms copilot key — remap to ghostty (used to active dictation)
+-- hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("ghostty"))
 
 hl.bind("SUPER + W", hl.dsp.window.close()) -- close window (alternative)
 hl.bind("SUPER + Q", hl.dsp.window.kill())  -- exit/kill program

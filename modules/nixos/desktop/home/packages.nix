@@ -63,6 +63,8 @@ in {
       # escrcpy
 
       # fixme: move to a "nixos/home section"
+      wev
+      evtest
       wayshot
       wl-screenrec
       wl-clipboard # TODO: maybe try clipvault??

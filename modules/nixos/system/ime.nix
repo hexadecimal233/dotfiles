@@ -71,7 +71,7 @@
       serviceConfig = {
         Type = "dbus";
         BusName = "org.fcitx.Vinput";
-        ExecStart = "${fcitx5-vinput.packages.${pkgs.system}.default}/bin/vinput-daemon";
+        ExecStart = "${fcitx5-vinput.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/vinput-daemon";
       };
     };
   };
