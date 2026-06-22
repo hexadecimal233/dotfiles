@@ -55,6 +55,13 @@ in {
 
       fsearch
 
+      # system / debugging
+      sysprof
+      hotspot
+
+      # lap
+      # escrcpy
+
       # fixme: move to a "nixos/home section"
       wayshot
       wl-screenrec

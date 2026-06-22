@@ -44,7 +44,7 @@
       time.auto = true;
       graphics.enable = true;
       ime.enable = true;
-      ios.enable = true;
+      mobile.enable = true;
     };
     hex.shared.system = {
       enable = true;
@@ -118,7 +118,7 @@
             rev = "5056e2a67e88ba84b8bca990883ddb969e9678bb";
             hash = "sha256-+5fjI2oCCxTh2JOt+tsQ/r5e3nl5E4dod6isz+EebUQ=";
           };
-          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ final.itstool ];
+          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [final.itstool];
         });
       })
 

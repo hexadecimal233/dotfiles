@@ -18,6 +18,7 @@ in {
           psmisc
           atop
           iotop
+          perf
         ]
       )
       ++ (

@@ -71,6 +71,8 @@
         # "middleclick" # does not work very well duh
         # bitwarden: installed via appstore
         "vesktop"
+        "julyx10/lap/lap"
+        "viarotel-org/escrcpy/escrcpy"
         "iina"
         "zed"
         "sourcegit"

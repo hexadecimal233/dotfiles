@@ -42,6 +42,7 @@ in {
     programs.dconf.enable = true;
     services.gnome.gnome-keyring.enable = true;
     services.gvfs.enable = true; # nautilus file manager (trash, mounts)
+    services.udisks2.mountOnMedia = false; # manual mount
 
     # Sub-options default to parent
     hex.nixos.desktop = {

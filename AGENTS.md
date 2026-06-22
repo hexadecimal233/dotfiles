@@ -40,7 +40,7 @@
 │   │   │   ├── fingerprint.nix # fprintd + PAM
 │   │   │   ├── graphics.nix    # hardware.graphics, Vulkan, Mesa, ddcutil
 │   │   │   ├── ime.nix         # fcitx5 + Rime + Mozc
-│   │   │   ├── ios.nix         # libimobiledevice + usbmuxd
+│   │   │   ├── mobile.nix         # libimobiledevice + usbmuxd
 │   │   │   ├── kernel.nix      # TODO: configurable kernels (cachy, vanilla)
 │   │   │   ├── maintenance.nix # TODO: system maintenance tools (gparted, nvme)
 │   │   │   ├── networking.nix  # NetworkManager, vnstat, ethtool
@@ -136,7 +136,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.time.auto` — automatic timezone via geoclue2 (automatic-timezoned)
   - `hex.nixos.system.time.timezone` — static timezone string (e.g. "Asia/Shanghai")
   - `hex.nixos.system.ime.enable` — fcitx5 input method (Rime 雾凇拼音 + Mozc Japanese)
-  - `hex.nixos.system.ios.enable` — iOS device support (libimobiledevice, usbmuxd, ifuse, idevicerestore)
+  - `hex.nixos.system.mobile.enable` — mobile device support (libimobiledevice, usbmuxd, ifuse, idevicerestore)
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
   - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
 

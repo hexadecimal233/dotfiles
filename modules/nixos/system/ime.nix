@@ -1,4 +1,4 @@
-# Input method: fcitx5 + Rime (rime-ice / 雾凇拼音) + Mozc (Japanese)
+# Input method: fcitx5 + Rime (rime-ice / 雾凇拼音) + Mozc (Japanese) + Vinput (Voice)
 #
 # Rime config overrides live in ~/.local/share/fcitx5/rime/ (chezmoi-managed):
 #   - default.custom.yaml   — page size, key bindings, Shift → English layout
@@ -8,10 +8,12 @@
 #   - Switch input methods: Super + Space
 #   - Switch Rime schemas: Ctrl + ` (backtick)
 #   - Shift key: does nothing (use Super+Space to switch)
+#   - Voice input: Right Alt (hold to record, release to commit)
 {
   lib,
   config,
   pkgs,
+  fcitx5-vinput,
   ...
 }: {
   options.hex.nixos.system.ime.enable =
@@ -47,37 +49,30 @@
 
           # Japanese: Mozc UT variant (extended dictionaries)
           fcitx5-mozc-ut
+
+          # Voice input: speech-to-text via local sherpa-onnx or cloud ASR
+          fcitx5-vinput.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
 
-        # Declarative config
-        settings = {
-          # Global options → /etc/xdg/fcitx5/config
-          globalOptions = {
-            # Super+Space to switch IM (not Ctrl+Space — conflicts with Minecraft)
-            "Hotkey/TriggerKeys"."0" = "Super+Space";
-          };
-
-          # Input method group config → /etc/xdg/fcitx5/profile
-          inputMethod = {
-            GroupOrder."0" = "Default";
-
-            "Groups/0" = {
-              Name = "Default";
-              "Default Layout" = "us";
-              # Default to Rime (Chinese) on activation
-              DefaultIM = "rime";
-            };
-
-            # Group items: keyboard-us → rime (Chinese) → mozc (Japanese)
-            "Groups/0/Items/0".Name = "keyboard-us";
-            "Groups/0/Items/1".Name = "rime";
-            "Groups/0/Items/2".Name = "mozc";
-          };
-        };
+        # we do not add options (/etc/xdg/fcitx5/config)
       };
     };
 
     # Environment variables (GTK_IM_MODULE, QT_IM_MODULE, XMODIFIERS)
     # are handled automatically by the NixOS fcitx5 module.
+
+    # ── Vinput daemon ────────────────────────────────────────────────
+    # Voice input service — D-Bus activated systemd user service.
+    # https://github.com/xifan2333/fcitx5-vinput/blob/main/packaging/vinput-daemon.service
+    systemd.user.services.vinput-daemon = {
+      description = "Vinput Voice Input Daemon";
+      after = ["pipewire.service"];
+      wantedBy = ["default.target"];
+      serviceConfig = {
+        Type = "dbus";
+        BusName = "org.fcitx.Vinput";
+        ExecStart = "${fcitx5-vinput.packages.${pkgs.system}.default}/bin/vinput-daemon";
+      };
+    };
   };
 }

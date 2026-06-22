@@ -1,6 +1,13 @@
 {
   description = "nixos-config";
 
+  # 信任 fcitx5-vinput 的二进制缓存
+  # make sure below is consistent w/ ./modules/shared/nix.nix
+  nixConfig = {
+    extra-substituters = ["https://fcitx5-vinput.cachix.org"];
+    extra-trusted-public-keys = ["fcitx5-vinput.cachix.org-1:XpX3AA6+dDIX4qJhb1QM7sbTwX6/qSlGvW8Z5NK6XdU="];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nur = {
@@ -42,6 +49,10 @@
       url = "github:ToRvaLDz/monique";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fcitx5-vinput = {
+      url = "github:xifan2333/fcitx5-vinput";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -55,6 +66,7 @@
     nix-cavalry,
     noctalia,
     monique,
+    fcitx5-vinput,
     ...
   }: let
   in {
@@ -93,7 +105,7 @@
 
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit self home-manager disko nixos-hardware noctalia nix-cavalry monique;
+          inherit self home-manager disko nixos-hardware noctalia nix-cavalry monique fcitx5-vinput;
         };
         system = "x86_64-linux";
         modules = [

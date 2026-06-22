@@ -1,6 +1,6 @@
--- nwg-displays manages monitors via ~/.config/hypr/monitors.lua
+-- nwg-displays / monique manages monitors via ~/.config/hypr/monitors.lua
 -- falls back to nothing if monitors.lua doesn't exist (first boot)
-local ok = pcall(require, "monitors")
+pcall(require, "monitors")
 
 hl.env("XCURSOR_THEME", "aosp-cursors")
 hl.env("XCURSOR_SIZE", "24")
@@ -9,6 +9,14 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("noctalia")
     hl.exec_cmd("hyprctl setcursor aosp-cursors 24")
 end)
+
+-- Per-device input settings (sensitivity, scroll_factor, etc.)
+require("devices")
+
+require("./plugins/hyprglass")
+require("./plugins/hypr-dynamic-cursors")
+require("./plugins/hypr-kinetic-scroll")
+require("./plugins/hyprexpo")
 
 hl.config({
     general = {
@@ -35,11 +43,11 @@ hl.config({
         repeat_rate = 30,
         repeat_delay = 500,
         touchpad = {
-             natural_scroll = true,
-             scroll_factor = 0.3,
-             drag_lock = 2, -- sticky mode (lazy undrag)
+            natural_scroll = true,
+            scroll_factor = 0.3,
+            drag_lock = 2, -- sticky mode (lazy undrag)
         },
-        follow_mouse = 0, -- Don't focus windows on hover (click/keybind only)
+        follow_mouse = 0,  -- Don't focus windows on hover (click/keybind only)
     },
     cursor = {
         enable_hyprcursor = true,
@@ -91,9 +99,7 @@ hl.config({
     },
 })
 
--- Per-device input settings (sensitivity, scroll_factor, etc.)
-require("devices")
-
+-- workspace / windows config
 hl.workspace_rule({
     workspace = "w[t1-4]", -- except workspace 1 for floating windows
     -- no_border = true, for apps be resizable
@@ -103,28 +109,47 @@ hl.workspace_rule({
     -- decorate = false,
 })
 
--- Pop in 200ms (open), fade 100ms (close), other animations inherit defaults
-hl.curve("animEase", { type = "bezier", points = { { 0.23, 1.0 }, { 0.32, 1.0 } } })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "animEase", style = "popin 80%" })
-hl.animation({ leaf = "windowsOut", enabled = false })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "animEase" })
-hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "animEase" })
+-- Floating mode by default (macOS-like stacking behavior)
+hl.window_rule({
+    match = { class = ".*" },
+    float = true,
+    -- center = true, -- commented: causes XWayland menus (Wine, etc.) to auto-center
+    persistent_size = true,
+})
 
--- Workspace swap animation (macOS/Windows-style slide)
-hl.curve("wsEase", { type = "bezier", points = { { 0.65, 0.0 }, { 0.35, 1.0 } } })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "wsEase", style = "slide 100%" })
+-- Touchpad swipe gestures
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
 
--- fuck ms copilot key — remap to ghostty (placeholder, change the exec cmd later)
+-- hyprsplit — per-monitor independent workspaces (awesome/dwm-like)
+local hs = require("./scripts/hyprsplit")
+hs.config({ num_workspaces = 10 })
+
+-- Per-monitor workspace switching via hyprsplit dispatchers
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind("SUPER + " .. key, hs.dsp.focus({ workspace = i }))
+    hl.bind("SUPER + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = true }))
+    hl.bind("SUPER + CTRL + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = false }))
+end
+
+-- Swap workspaces between monitors + grab orphaned windows
+hl.bind("SUPER + D", hs.dsp.workspace.swap_monitors({ monitor1 = "current", monitor2 = "+1" }))
+hl.bind("SUPER + G", hs.dsp.grab_rogue_windows())
+
+-- keybinds
+
+-- fuck ms copilot key — remap to ghostty (TODO: change the exec cmd later)
 hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("ghostty"))
 
-hl.bind("SUPER + W", hl.dsp.window.close())         -- close window (alternative)
-hl.bind("SUPER + Q", hl.dsp.window.kill())          -- exit/kill program
+hl.bind("SUPER + W", hl.dsp.window.close()) -- close window (alternative)
+hl.bind("SUPER + Q", hl.dsp.window.kill())  -- exit/kill program
 hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
-hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }))  -- toggle tiling/floating
-hl.bind("SUPER + CTRL + F", hl.dsp.window.fullscreen())  -- fullscreen
-hl.bind("SUPER + M", hl.dsp.window.move({ workspace = "special" }))  -- hide/minimize
-hl.bind("SUPER + ALT + X", hl.dsp.exec_cmd("hyprctl kill"))  -- xkill mode (click to kill)
+hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }))       -- toggle tiling/floating
+hl.bind("SUPER + M", hl.dsp.window.fullscreen())                       -- fullscreen
+hl.bind("SUPER + down", hl.dsp.window.move({ workspace = "special" })) -- hide/minimize
+hl.bind("SUPER + ALT + X", hl.dsp.exec_cmd("hyprctl kill"))            -- xkill mode (click to kill)
 -- todo: screenshot hl.bind("Print", hl.dsp.exec_cmd(""))
 
 -- lock with noctalia's built-in lockscreen
@@ -140,38 +165,19 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURC
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 3%+"), { repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 3%-"), { repeating = true })
 
--- hyprsplit — per-monitor independent workspaces (awesome/dwm-like)
-local hs = require("./scripts/hyprsplit")
-hs.config({ num_workspaces = 10 })
+-- animations
 
--- Touchpad swipe gestures
-hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
+-- Pop in 200ms (open), fade 100ms (close), other animations inherit defaults
+hl.curve("animEase", { type = "bezier", points = { { 0.23, 1.0 }, { 0.32, 1.0 } } })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "animEase", style = "popin 80%" })
+hl.animation({ leaf = "windowsOut", enabled = false })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "animEase" })
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "animEase" })
 
--- Per-monitor workspace switching via hyprsplit dispatchers
-for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind("SUPER + " .. key, hs.dsp.focus({ workspace = i }))
-    hl.bind("SUPER + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = true }))
-    hl.bind("SUPER + CTRL + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = false }))
-end
+-- Workspace swap animation (macOS/Windows-style slide)
+hl.curve("wsEase", { type = "bezier", points = { { 0.65, 0.0 }, { 0.35, 1.0 } } })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "wsEase", style = "slide 100%" })
 
--- Swap workspaces between monitors + grab orphaned windows
-hl.bind("SUPER + D", hs.dsp.workspace.swap_monitors({ monitor1 = "current", monitor2 = "+1" }))
-hl.bind("SUPER + G", hs.dsp.grab_rogue_windows())
-
-require("./plugins/hyprglass")
-require("./plugins/hypr-dynamic-cursors")
-require("./plugins/hypr-kinetic-scroll")
-require("./plugins/hyprexpo")
-
--- Floating mode by default (macOS-like stacking behavior)
-hl.window_rule({
-    match = { class = ".*" },
-    float = true,
-    -- center = true, -- commented: causes XWayland menus (Wine, etc.) to auto-center
-    persistent_size = true,
-})
 
 -- TODO: Windows-style cascading offset from center.
 --       Use hl.on("windowOpened", ...) to track window count

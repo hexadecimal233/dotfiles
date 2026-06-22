@@ -15,6 +15,9 @@ in {
       # dj software
       mixxx
 
+      # graphics
+      blender
+
       # the nostalgic trackers
       ft2-clone
       schismtracker # TODO: latest ver
@@ -31,6 +34,7 @@ in {
       # yabridgectl # cli
 
       # painting / designing
+      gimp
       krita
       inkscape
       aseprite

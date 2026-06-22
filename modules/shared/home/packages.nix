@@ -28,6 +28,10 @@ in {
             gnupg
             chezmoi
 
+            # android devices
+            android-tools
+            scrcpy
+
             asciinema
             fastfetch
             stress-ng

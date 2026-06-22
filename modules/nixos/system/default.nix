@@ -18,7 +18,7 @@ in {
     ./security.nix
     ./time.nix
     ./ime.nix
-    ./ios.nix
+    ./mobile.nix
   ];
 
   options.hex.nixos.system = {
@@ -39,6 +39,8 @@ in {
         "wheel" # root access
         "networkmanager" # wired/wireless mgmt
         "audio" # audio mgmt
+        "video" # gpu access
+        # "input"
         "jackaudio"
         "dialout" # external bus
         "docker" # docker mgmt

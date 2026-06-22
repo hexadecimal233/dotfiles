@@ -11,11 +11,16 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
-    nix.gc = {
-      automatic = true;
-      #  per-system timer are handled separately
-      options = "--delete-older-than 7d";
+    nix = {
+      settings = {
+        experimental-features = ["nix-command" "flakes" "pipe-operators"];
+        trusted-users = ["root" "hexzii"];
+      };
+      gc = {
+        automatic = true;
+        #  per-system timer are handled separately
+        options = "--delete-older-than 7d";
+      };
     };
 
     nixpkgs.config.allowUnfreePredicate = pkg:
@@ -24,7 +29,6 @@ in {
         "cavalry"
         "reaper"
         "bitwig-studio"
-        ""
       ];
   };
 }
