@@ -33,7 +33,7 @@ in {
     services.power-profiles-daemon.enable = cfg.daemon == "ppd";
 
     services.tlp =
-      { enable = cfg.daemon == "tlp"; }
+      {enable = cfg.daemon == "tlp";}
       // lib.optionalAttrs (cfg.daemon == "tlp") {
         pd.enable = cfg.tlp.pd.enable;
         settings = {

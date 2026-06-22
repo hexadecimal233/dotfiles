@@ -20,8 +20,10 @@ in {
   config = lib.mkIf cfg.enable {
     hex.shared.system.tools.enable = lib.mkDefault false;
 
-    # disable telemetry
-    environment.sessionVariables = {
+    # sessionVariables only works on linux during the whole session
+    # variables only take effect in shell sessions.
+    environment.variables = {
+      # disable telemetry
       OMO_DISABLE_POSTHOG = "1"; # oh-my-openagent
       OMO_SEND_ANONYMOUS_TELEMETRY = "0";
       ASTRO_TELEMETRY_DISABLED = "1"; # astro

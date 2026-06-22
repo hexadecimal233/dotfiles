@@ -2,6 +2,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.hex.shared.nix;
@@ -16,11 +17,21 @@ in {
         experimental-features = ["nix-command" "flakes" "pipe-operators"];
         trusted-users = ["root" "hexzii"];
       };
-      gc = {
-        automatic = true;
-        #  per-system timer are handled separately
-        options = "--delete-older-than 7d";
-      };
+      gc =
+        {
+          automatic = true;
+          options = "--delete-older-than 7d";
+        }
+        // (
+          # per-system timer are handled separately
+          if pkgs.stdenv.isDarwin
+          then {
+            interval = {Weekday = 0;}; # launchd timers
+          }
+          else {
+            dates = "weekly"; # systemd timers
+          }
+        );
     };
 
     nixpkgs.config.allowUnfreePredicate = pkg:
@@ -29,6 +40,7 @@ in {
         "cavalry"
         "reaper"
         "bitwig-studio"
+        "jetbrains-toolbox"
       ];
   };
 }

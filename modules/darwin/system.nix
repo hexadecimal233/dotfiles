@@ -15,9 +15,6 @@ in {
     # nix daemon
     nix.enable = true;
 
-    # Darwin-specific GC schedule (launchd format)
-    nix.gc.interval = [{Weekday = 0;}]; # weekly (Sunday)
-
     # shell
     programs.fish.enable = true;
     environment.shells = [pkgs.fish]; # add fish to /etc/shells
