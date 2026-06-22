@@ -37,6 +37,9 @@
         enable = true;
         usePulse = true; # WSL uses WSLg PulseAudio
       };
+    };
+    hex.shared.desktop = {
+      enable = true;
       fonts.enable = true;
     };
     hex.shared.home.shell.enable = true;

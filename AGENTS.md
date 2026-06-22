@@ -29,7 +29,7 @@
 │   │   │   ├── java.nix
 │   │   │   ├── packages.nix
 │   │   │   └── shell.nix
-│   │   ├── desktop/        # Cross-platform desktop (fonts)
+│   │   ├── desktop/        # Cross-platform desktop (fonts + Linux fontconfig)
 │   │   │   ├── default.nix
 │   │   │   └── fonts.nix
 │   │   ├── system/         # Cross-platform system tools
@@ -54,7 +54,7 @@
 │   │   │   ├── tools.nix       # CLI tools (monitoring, hardware, network)
 │   │   │   ├── virtualization.nix # TODO: docker/k8s
 │   │   │   └── wireless.nix    # Bluetooth, bluez
-│   │   └── desktop/        # NixOS desktop (audio, fonts, wm, home)
+│   │   └── desktop/        # NixOS desktop (audio, wm, home)
 │   │       ├── apps.nix        # flatpak/appimage support
 │   │       ├── audio.nix       # PipeWire / PulseAudio
 │   │       ├── default.nix     # desktop.enable + imports
@@ -162,7 +162,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.desktop.apps.flatpak.enable` — Flatpak support (system service + user package)
   - `hex.nixos.desktop.apps.appimage.enable` — AppImage support (binfmt + appimage-run)
   - `hex.shared.desktop.enable` — cross-platform desktop environment
-  - `hex.shared.desktop.fonts.enable` — fonts (noto, maple, etc.)
+  - `hex.shared.desktop.fonts.enable` — font packages (noto, maple, etc.) + Linux fontconfig
   - `hex.shared.desktop.fonts.source` — Source Han (思源) font series
 
 **NixOS-exclusive home-manager desktop**

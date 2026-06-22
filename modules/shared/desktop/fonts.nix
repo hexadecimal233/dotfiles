@@ -12,30 +12,47 @@ in {
     source = lib.mkEnableOption "Source Han (思源) font series";
   };
 
-  config = lib.mkIf (config.hex.shared.desktop.enable && cfg.enable) {
-    fonts.packages = with pkgs;
-      [
-        # noto series
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-color-emoji
+  config = lib.mkMerge [
+    # Cross-platform font packages
+    (lib.mkIf (config.hex.shared.desktop.enable && cfg.enable) {
+      fonts.packages = with pkgs;
+        [
+          # noto series
+          noto-fonts
+          noto-fonts-cjk-sans
+          noto-fonts-cjk-serif
+          noto-fonts-color-emoji
 
-        # user-specified
-        lxgw-wenkai # 楷体 font
-        liberation_ttf # windows font drop-in replacement
+          # user-specified
+          lxgw-wenkai # 楷体 font
+          liberation_ttf # windows font drop-in replacement
 
-        # mono font
-        # fira-code
-        jetbrains-mono
-        nerd-fonts.jetbrains-mono # patched jb-mono
-        maple-mono.NF-CN-unhinted # the mono font im using^^
-      ]
-      ++ lib.optionals cfg.source [
-        # source series (思源字体) — enabled via fonts.source
-        source-han-sans
-        source-han-serif
-        source-han-mono
-      ];
-  };
+          # mono font
+          # fira-code
+          jetbrains-mono
+          nerd-fonts.jetbrains-mono # patched jb-mono
+          maple-mono.NF-CN-unhinted # the mono font im using^^
+        ]
+        ++ lib.optionals cfg.source [
+          # source series (思源字体) — enabled via fonts.source
+          source-han-sans
+          source-han-serif
+          source-han-mono
+        ];
+    })
+
+    # NixOS-only fontconfig
+    (lib.mkIf (config.hex.shared.desktop.enable && cfg.enable && pkgs.stdenv.hostPlatform.isLinux) {
+      fonts.enableDefaultPackages = true;
+      fonts.fontconfig = {
+        enable = true;
+        defaultFonts = {
+          monospace = ["Maple Mono NF CN"];
+          emoji = ["Noto Color Emoji"];
+          sansSerif = ["Noto Sans CJK SC"];
+          serif = ["Noto Serif CJK SC"];
+        };
+      };
+    })
+  ];
 }

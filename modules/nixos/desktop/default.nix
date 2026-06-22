@@ -8,8 +8,6 @@ in {
   imports = [
     ./apps.nix
     ./audio.nix
-    ./fonts.nix
-    ../shared/desktop
     ./proxy.nix
     ./wm
     ./home

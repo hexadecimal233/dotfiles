@@ -30,6 +30,11 @@
       enable = true;
       wm = "hyprland";
       audio.enable = true;
+    };
+
+    # cross-platform desktop (fonts)
+    hex.shared.desktop = {
+      enable = true;
       fonts.enable = true;
     };
 

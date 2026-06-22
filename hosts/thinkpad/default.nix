@@ -57,7 +57,6 @@
         enable = true;
         usePulse = false; # physical machine uses PipeWire
       };
-      fonts.enable = true;
       proxy.clash.enable = true;
       apps = {
         flatpak = true;

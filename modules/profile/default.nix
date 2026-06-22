@@ -15,6 +15,7 @@
 
     # shared (cross-platform, system)
     ../shared/system
+    ../shared/desktop
     # nixos (system-level)
     ../nixos/system
     ../nixos/desktop
