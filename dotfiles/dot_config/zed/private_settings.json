@@ -1,0 +1,118 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // Theme & UI
+  "ui_font_family": ".ZedSans",
+  "buffer_font_family": "Maple Mono NF CN",
+  "ui_font_fallbacks": [".SystemUIFont"],
+  "buffer_font_fallbacks": ["Menlo", ".ZedMono"],
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "icon_theme": "Material Icon Theme",
+  "theme": {
+    "mode": "dark",
+    "light": "Pierre Light",
+    "dark": "Pierre Dark",
+  },
+  // Misc
+  "autosave": "on_focus_change",
+  "diff_view_style": "split",
+  "edit_predictions": {
+    "allow_data_collection": "no",
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "tabs": {
+    "git_status": true,
+  },
+  "title_bar": {
+    "show_menus": true, // Make linux/windows integrate menus with titlebar
+    "show_branch_status_icon": true,
+  },
+  "minimap": {
+    "show": "always",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "wrap_guides": [72, 80, 100, 120],
+  // AI Agent Config
+  "agent_servers": {
+    "opencode": {
+      "default_config_options": {
+        "effort": "high",
+        "model": "opencode/mimo-v2.5-free",
+      },
+      "type": "custom",
+      "command": "opencode",
+      "args": ["acp"],
+    },
+  },
+  "agent": {
+    "default_model": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "enable_thinking": true,
+      "effort": "high",
+    },
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  // Extensions
+  "auto_install_extensions": {
+    "astro": true,
+    "biome": true,
+    "catppuccin": false,
+    "catppuccin-icons": false,
+    "catppuccin-blur": false,
+    "dart": false,
+    "discord-presence": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "emmet": true,
+    "fish": true,
+    "gdscript": true,
+    "glsl": true,
+    "gotmpl": true,
+    "git-firefly": true,
+    "java": false,
+    "json5": false,
+    "just": true,
+    "lua": true,
+    "luau": false,
+    "log": true,
+    "ini": true,
+    "kotlin": false,
+    "make": true,
+    "mermaid": true,
+    "material-icon-theme": true,
+    "nix": true,
+    "nu": true,
+    "oxc": true,
+    "pierre-theme": true,
+    "powershell": true,
+    "proto": true,
+    "rainbow-csv": true,
+    "scss": true,
+    "sql": true,
+    "svelte": true,
+    "swift": false,
+    "toml": true,
+    "vue": true,
+    "wakatime": true,
+    "xml": true,
+    "zig": false,
+  },
+}

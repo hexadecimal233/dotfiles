@@ -9,6 +9,7 @@
 in {
   imports = [
     ./tools.nix
+    ./nix.nix
   ];
 
   options.hex.shared.system = {
@@ -18,5 +19,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     hex.shared.system.tools.enable = lib.mkDefault false;
+
+    # disable telemetry
+    environment.sessionVariables = {
+      OMO_DISABLE_POSTHOG = "1"; # oh-my-openagent
+      OMO_SEND_ANONYMOUS_TELEMETRY = "0";
+      ASTRO_TELEMETRY_DISABLED = "1"; # astro
+    };
   };
 }

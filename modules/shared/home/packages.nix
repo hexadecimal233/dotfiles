@@ -96,6 +96,7 @@ in {
             dnsutils
             netcat
             nmap
+            k6
           ]
         )
         ++ (

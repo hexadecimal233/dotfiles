@@ -9,9 +9,10 @@ AppData
 {{ end }}
 
 # Linux exclusive
+# "dot_" prefixes are parsed before ignore takes effect.
 {{ if ne .chezmoi.os "linux" }}
 .config/hypr/**
 .config/fcitx5/**
-dot_local/share/fcitx5/**
-dot_local/share/krita/**
+.local/share/fcitx5/**
+.local/share/krita/**
 {{ end }}

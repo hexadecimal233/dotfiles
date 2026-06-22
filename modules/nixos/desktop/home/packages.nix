@@ -59,6 +59,15 @@ in {
       sysprof
       hotspot
 
+      # TODO: migrate most of them to flatpak
+      sniffnet
+      tiny-rdm
+      jetbrains-toolbox
+
+      lrcget
+      qalculate-gtk
+      resources
+
       # lap
       # escrcpy
 

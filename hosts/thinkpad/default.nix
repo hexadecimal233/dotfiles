@@ -59,6 +59,10 @@
       };
       fonts.enable = true;
       proxy.clash.enable = true;
+      apps = {
+        flatpak = true;
+        appimage = true;
+      };
     };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;

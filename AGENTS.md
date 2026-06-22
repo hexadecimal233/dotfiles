@@ -52,7 +52,7 @@
 │   │   │   ├── virtualization.nix # TODO: docker/k8s
 │   │   │   └── wireless.nix    # Bluetooth, bluez
 │   │   └── desktop/        # NixOS desktop (audio, fonts, wm, home)
-│   │       ├── apps.nix        # TODO: flatpak/appimage support
+│   │       ├── apps.nix        # flatpak/appimage support
 │   │       ├── audio.nix       # PipeWire / PulseAudio
 │   │       ├── default.nix     # desktop.enable + imports
 │   │       ├── fonts.nix       # Fonts + fontconfig
@@ -156,11 +156,13 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - `hex.shared.home.gpg.enable` — gpg-agent
 
 **NixOS-only**
-- `hex.nixos.desktop.enable` — desktop environment
+  - `hex.nixos.desktop.enable` — desktop environment
   - `hex.nixos.desktop.wm` — WM choice: `"hyprland"` / `"niri"` / `null` (none)
   - `hex.nixos.desktop.audio.enable` — audio stack
   - `hex.nixos.desktop.fonts.enable` — fonts
   - `hex.nixos.desktop.proxy.clash.enable` — Clash/Mihomo proxy (mihomo kernel)
+  - `hex.nixos.desktop.apps.flatpak.enable` — Flatpak support (system service + user package)
+  - `hex.nixos.desktop.apps.appimage.enable` — AppImage support (binfmt + appimage-run)
 
 **NixOS-exclusive home-manager desktop**
 - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell

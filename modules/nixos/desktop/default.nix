@@ -6,6 +6,7 @@
   cfg = config.hex.nixos.desktop;
 in {
   imports = [
+    ./apps.nix
     ./audio.nix
     ./fonts.nix
     ./proxy.nix
