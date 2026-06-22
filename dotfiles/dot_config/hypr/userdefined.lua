@@ -94,7 +94,7 @@ hl.config({
         -- vrr = 3,
     },
     xwayland = {
-        -- force_zero_scaling = true, too small
+        force_zero_scaling = true, -- too small but only solution
         use_nearest_neighbor = false, -- bit windows like but okay burry :/
     },
 })
