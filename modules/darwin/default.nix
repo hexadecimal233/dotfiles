@@ -14,8 +14,8 @@
 
     # shared (cross-platform, system)
     ../shared/system
+    ../shared/desktop
     # darwin (system-level)
     ./system.nix
-    ./system/fonts.nix
   ];
 }

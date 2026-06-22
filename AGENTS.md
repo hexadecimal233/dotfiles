@@ -29,6 +29,9 @@
 │   │   │   ├── java.nix
 │   │   │   ├── packages.nix
 │   │   │   └── shell.nix
+│   │   ├── desktop/        # Cross-platform desktop (fonts)
+│   │   │   ├── default.nix
+│   │   │   └── fonts.nix
 │   │   ├── system/         # Cross-platform system tools
 │   │   │   ├── default.nix
 │   │   │   └── tools.nix
@@ -55,7 +58,6 @@
 │   │       ├── apps.nix        # flatpak/appimage support
 │   │       ├── audio.nix       # PipeWire / PulseAudio
 │   │       ├── default.nix     # desktop.enable + imports
-│   │       ├── fonts.nix       # Fonts + fontconfig
 │   │       ├── home/           # NixOS-exclusive HM desktop modules
 │   │       │   ├── default.nix     # hex.nixos.home.desktop
 │   │       │   ├── minecraft.nix   # Minecraft launchers + legacy JDKs
@@ -71,9 +73,7 @@
 │   ├── darwin/             # macOS-specific
 │   │   ├── default.nix         # Darwin orchestration
 │   │   ├── home.nix            # HM integration (darwin variant)
-│   │   ├── system.nix          # nix daemon, fish
-│   │   └── system/
-│   │       └── fonts.nix       # macOS font management
+│   │   └── system.nix          # nix daemon, fish
 │   └── profile/            # Profile orchestration (imports all hex.* modules)
 │       ├── default.nix         # Module aggregation
 │       └── home.nix            # home-manager integration (useGlobalPkgs, useUserPackages)
@@ -137,8 +137,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.time.timezone` — static timezone string (e.g. "Asia/Shanghai")
   - `hex.nixos.system.ime.enable` — fcitx5 input method (Rime 雾凇拼音 + Mozc Japanese)
   - `hex.nixos.system.mobile.enable` — mobile device support (libimobiledevice, usbmuxd, ifuse, idevicerestore)
-- `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
-  - `hex.darwin.system.fonts.enable` — Darwin font management (Maple Mono NF CN)
+  - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
 
 **Home-level (`*.home.*`)**
 - `hex.shared.home.shell.enable` — fish, starship, zoxide, direnv
@@ -159,10 +158,12 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.desktop.enable` — desktop environment
   - `hex.nixos.desktop.wm` — WM choice: `"hyprland"` / `"niri"` / `null` (none)
   - `hex.nixos.desktop.audio.enable` — audio stack
-  - `hex.nixos.desktop.fonts.enable` — fonts
   - `hex.nixos.desktop.proxy.clash.enable` — Clash/Mihomo proxy (mihomo kernel)
   - `hex.nixos.desktop.apps.flatpak.enable` — Flatpak support (system service + user package)
   - `hex.nixos.desktop.apps.appimage.enable` — AppImage support (binfmt + appimage-run)
+  - `hex.shared.desktop.enable` — cross-platform desktop environment
+  - `hex.shared.desktop.fonts.enable` — fonts (noto, maple, etc.)
+  - `hex.shared.desktop.fonts.source` — Source Han (思源) font series
 
 **NixOS-exclusive home-manager desktop**
 - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell

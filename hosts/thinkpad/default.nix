@@ -64,6 +64,13 @@
         appimage = true;
       };
     };
+    hex.shared.desktop = {
+      enable = true;
+      fonts = {
+        enable = true;
+        source = true;
+      };
+    };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;
     hex.shared.home.editor.enable = true;

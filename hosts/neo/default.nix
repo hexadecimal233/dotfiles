@@ -16,7 +16,13 @@
     # hex options
     hex.shared.nix.enable = true;
     hex.darwin.system.enable = true;
-    hex.darwin.system.fonts.enable = true;
+    hex.shared.desktop = {
+      enable = true;
+      fonts = {
+        enable = true;
+        source = true;
+      };
+    };
     hex.shared.system = {
       enable = true;
       tools.enable = true;

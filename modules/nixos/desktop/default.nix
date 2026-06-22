@@ -9,6 +9,7 @@ in {
     ./apps.nix
     ./audio.nix
     ./fonts.nix
+    ../shared/desktop
     ./proxy.nix
     ./wm
     ./home
@@ -36,7 +37,6 @@ in {
       enable = lib.mkEnableOption "audio stack";
       usePulse = lib.mkEnableOption "use PulseAudio directly instead of PipeWire";
     };
-    fonts.enable = lib.mkEnableOption "fonts";
   };
 
   config = lib.mkIf cfg.enable {
@@ -50,7 +50,6 @@ in {
     hex.nixos.desktop = {
       wm = lib.mkDefault null;
       audio.enable = lib.mkDefault false;
-      fonts.enable = lib.mkDefault false;
     };
   };
 }
