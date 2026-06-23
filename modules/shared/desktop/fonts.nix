@@ -13,7 +13,6 @@ in {
   };
 
   config = lib.mkMerge [
-    # Cross-platform font packages
     (lib.mkIf (config.hex.shared.desktop.enable && cfg.enable) {
       fonts.packages = with pkgs;
         [
@@ -39,20 +38,6 @@ in {
           source-han-serif
           source-han-mono
         ];
-    })
-
-    # NixOS-only fontconfig
-    (lib.mkIf (config.hex.shared.desktop.enable && cfg.enable && pkgs.stdenv.hostPlatform.isLinux) {
-      fonts.enableDefaultPackages = true;
-      fonts.fontconfig = {
-        enable = true;
-        defaultFonts = {
-          monospace = ["Maple Mono NF CN"];
-          emoji = ["Noto Color Emoji"];
-          sansSerif = ["Noto Sans CJK SC"];
-          serif = ["Noto Serif CJK SC"];
-        };
-      };
     })
   ];
 }

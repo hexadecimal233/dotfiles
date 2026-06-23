@@ -41,6 +41,7 @@ in {
         "reaper"
         "bitwig-studio"
         "jetbrains-toolbox"
+        "warp-terminal"
       ];
   };
 }

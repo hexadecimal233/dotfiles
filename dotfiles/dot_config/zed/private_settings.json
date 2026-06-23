@@ -8,6 +8,11 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // Theme & UI
+  "diagnostics": {
+    "inline": {
+      "min_column": 0,
+    },
+  },
   "ui_font_family": ".ZedSans",
   "buffer_font_family": "Maple Mono NF CN",
   "ui_font_fallbacks": [".SystemUIFont"],
@@ -52,7 +57,7 @@
     "opencode": {
       "default_config_options": {
         "effort": "high",
-        "model": "opencode/mimo-v2.5-free",
+        "model": "deepseek/deepseek-v4-flash",
       },
       "type": "custom",
       "command": "opencode",
@@ -60,6 +65,9 @@
     },
   },
   "agent": {
+    "commit_message_instructions": "If multiple changes are included, list each one briefly within 50 characters.",
+    "show_turn_stats": true,
+    "thinking_display": "always_expanded",
     "default_model": {
       "provider": "deepseek",
       "model": "deepseek-v4-flash",

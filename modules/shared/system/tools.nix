@@ -26,13 +26,13 @@ in {
       rsync
       rclone
 
-      # dev infrastructure
-      gnumake
+      # dev infrastructure (on darwin part is installed via xcode)
+      cmake
       nix-prefetch-git
       nix-prefetch-github
       nh
       just
-      python3
+      python3 # latest stable
     ];
   };
 }

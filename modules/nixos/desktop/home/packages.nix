@@ -57,7 +57,9 @@ in {
 
       # system / debugging
       sysprof
+      # warp-terminal
       hotspot
+      edb
 
       # TODO: migrate most of them to flatpak
       sniffnet

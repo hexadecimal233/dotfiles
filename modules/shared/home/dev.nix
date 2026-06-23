@@ -26,7 +26,6 @@ in {
 
           # build tools
           gcc
-          pkg-config
 
           # justfile
           just-lsp

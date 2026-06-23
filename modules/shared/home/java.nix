@@ -24,6 +24,7 @@ in {
     home-manager.users.hexzii = {
       home.packages = with pkgs; [
         zulu25 # Primary JDK
+        # TODO: add decomp toolkits
       ];
 
       home.sessionVariables =

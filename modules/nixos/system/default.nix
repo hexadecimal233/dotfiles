@@ -61,7 +61,7 @@ in {
     environment.systemPackages = with pkgs; [
       (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
       (writeShellScriptBin "escape" (builtins.readFile (self + "/scripts/escape.sh")))
-      (writeShellScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.sh")))
+      (writeScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.nu")))
     ];
   };
 }

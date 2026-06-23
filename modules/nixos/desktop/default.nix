@@ -43,6 +43,18 @@ in {
     services.sysprof.enable = true;
     services.gvfs.enable = true; # nautilus file manager (trash, mounts)
     services.udisks2.mountOnMedia = false; # manual mount
+    fonts = {
+      enableDefaultPackages = true;
+      fontconfig = {
+        enable = true;
+        defaultFonts = {
+          monospace = ["Maple Mono NF CN"];
+          emoji = ["Noto Color Emoji"];
+          sansSerif = ["Noto Sans CJK SC"];
+          serif = ["Noto Serif CJK SC"];
+        };
+      };
+    };
 
     # Sub-options default to parent
     hex.nixos.desktop = {

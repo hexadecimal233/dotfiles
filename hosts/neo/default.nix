@@ -82,6 +82,7 @@
         "iina"
         "zed"
         "sourcegit"
+        # "warp"
         # "clash-verge-rev" install separately to prevent install conflicts
         # "gitbutler" 这东西太超前了只能说
         "hewigovens/tap/jayjay" # for jujustu, TODO: there's a crossplatform edit coming soon

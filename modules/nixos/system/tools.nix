@@ -46,6 +46,20 @@ in {
           btrfs-heatmap # btrfs usage visualization
           nvme-cli
           smartmontools
+
+          # dev infra (crossplatform)
+          binutils
+          valgrind
+          gnumake
+          gcc
+          clang
+          pkg-config
+          lldb
+          gdb
+
+          # dev infra
+          strace
+          ltrace
         ]
       )
       ++ (
