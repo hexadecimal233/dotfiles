@@ -60,6 +60,7 @@ in {
       # warp-terminal
       hotspot
       edb
+      # TODO: tabby unavail on nixpkgs, maybe check flatpkg
 
       # TODO: migrate most of them to flatpak
       sniffnet

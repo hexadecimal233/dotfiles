@@ -82,6 +82,7 @@
         "iina"
         "zed"
         "sourcegit"
+        "tabby" # multi-remote shell client
         # "warp"
         # "clash-verge-rev" install separately to prevent install conflicts
         # "gitbutler" 这东西太超前了只能说
