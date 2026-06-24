@@ -85,6 +85,7 @@
         "iina"
         "zed"
         "sourcegit"
+        "pika"
         # "brewforge/extras/lyricsx-mxiris"
         "tabby" # multi-remote shell client
         # "warp"

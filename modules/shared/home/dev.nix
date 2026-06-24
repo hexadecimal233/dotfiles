@@ -24,7 +24,6 @@ in {
           alejandra
           nixd
 
-
           # justfile
           just-lsp
 
