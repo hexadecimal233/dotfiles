@@ -56,7 +56,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     git-hooks = {
-      url = "github:cachix/git-hooks.nix"; # TODO: add precommit checks
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -74,7 +74,8 @@
     monique,
     fcitx5-vinput,
     ...
-  }: let
+  } @ inputs: let
+    forAllSystems = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-darwin"];
   in {
     packages = let
       mkPkgs = system: let
@@ -143,5 +144,31 @@
         ];
       };
     };
+
+    formatter = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      pkgs.writeShellScriptBin "alejandra-wrapper" ''
+        exec ${pkgs.alejandra}/bin/alejandra .
+      '');
+
+    checks = forAllSystems (system: {
+      pre-commit-check = import ./git-hooks.nix {
+        inherit system;
+        git-hooks = inputs.git-hooks;
+        pkgs = nixpkgs.legacyPackages.${system};
+      };
+    });
+
+    devShells = forAllSystems (system: {
+      default = let
+        pkgs = nixpkgs.legacyPackages.${system};
+        inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
+      in
+        pkgs.mkShell {
+          inherit shellHook;
+          buildInputs = enabledPackages;
+        };
+    });
   };
 }

@@ -3,7 +3,7 @@
 ## Build & Test
 - Switch (NixOS): `nh os switch . -H <hostname>`
 - Switch (macOS): `nh darwin switch . -H <hostname>`
-- Format: `just fmt`
+- Format: `nix fmt`
 - Check: `just check`
 
 ## Conventions
@@ -16,6 +16,8 @@
 ```
 .
 ├── flake.nix               # Entry point + flake inputs
+├── git-hooks.nix           # Pre-commit hooks (alejandra format + betterleaks secret scan)
+├── .envrc                  # Direnv: auto-activates devShell (hooks installed on cd)
 ├── AGENTS.md               # This file
 ├── INSTALL.md              # Global installation guide
 ├── justfile                # Task runner
@@ -154,6 +156,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.shared.home.packages.network` — network tools (whois, iperf3, asn, dnsutils)
   - `hex.shared.home.packages.beautify` — beautify tools (fastfetch, hyfetch)
 - `hex.shared.home.gpg.enable` — gpg-agent
+- `git-hooks.nix` — pre-commit hooks (alejandra format + betterleaks secret scan, via cachix/git-hooks.nix), auto-installed via `nix develop` shellHook
 
 **NixOS-only**
   - `hex.nixos.desktop.enable` — desktop environment
@@ -280,7 +283,7 @@ dotfiles/dot_config/exact_vesktop/
 - `macos/unquarantine.sh` — Remove macOS quarantine attribute from apps (macOS-only)
 
 ### Just Commands
-- `just fmt` — Format with alejandra
+- `nix fmt` — Format all with alejandra
 - `just check` — Nix flake check
 - `just diff` — Compare current/result system
 - `just update` — Update flake lockfile

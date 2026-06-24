@@ -29,9 +29,6 @@ info:
     nixos-rebuild list-generations
     nix flake metadata
 
-# Format files with alejandra
-fmt:
-    alejandra .
 
 # Trim the FS (for WS: mainly)
 fstrim:
