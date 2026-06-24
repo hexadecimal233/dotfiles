@@ -70,10 +70,11 @@
 │   │       ├── proxy.nix       # Clash/Mihomo proxy (mihomo kernel)
 │   │       ├── steam.nix       # TODO: steam gaming support
 │   │       └── wm.nix          # Hyprland compositor (config via chezmoi)
-│   ├── darwin/             # macOS-specific
-│   │   ├── default.nix         # Darwin orchestration
-│   │   ├── home.nix            # HM integration (darwin variant)
-│   │   └── system.nix          # nix daemon, fish
+├── darwin/             # macOS-specific
+│   ├── default.nix         # Darwin orchestration
+│   ├── home.nix            # HM integration (darwin variant)
+│   ├── system.nix          # nix daemon, fish
+│   └── virtualization.nix  # Docker + Colima
 │   └── profile/            # Profile orchestration (imports all hex.* modules)
 │       ├── default.nix         # Module aggregation
 │       └── home.nix            # home-manager integration (useGlobalPkgs, useUserPackages)
@@ -137,6 +138,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.ime.enable` — fcitx5 input method (Rime 雾凇拼音 + Mozc Japanese)
   - `hex.nixos.system.mobile.enable` — mobile device support (libimobiledevice, usbmuxd, ifuse, idevicerestore)
   - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
+    - `hex.darwin.system.virtualization.enable` — Docker + Colima for macOS virtualization
 
 **Home-level (`*.home.*`)**
 - `hex.shared.home.shell.enable` — fish, starship, zoxide, direnv

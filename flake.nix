@@ -55,7 +55,7 @@
       url = "github:xifan2333/fcitx5-vinput";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    git-hooks= {
+    git-hooks = {
       url = "github:cachix/git-hooks.nix"; # TODO: add precommit checks
       inputs.nixpkgs.follows = "nixpkgs";
     };

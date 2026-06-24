@@ -7,8 +7,15 @@
 }: let
   cfg = config.hex.darwin.system;
 in {
+  imports = [
+    ./virtualization.nix
+  ];
+
   options.hex.darwin.system = {
     enable = lib.mkEnableOption "darwin system (nix daemon, fish shell)";
+    virtualization = {
+      enable = lib.mkEnableOption "darwin virtualization (docker + colima, see ./virtualization.nix)";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -23,7 +30,6 @@ in {
     # system packages (darwin-safe)
     environment.systemPackages = with pkgs;
       [
-        colima
         (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
         (writeScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.nu")))
         (writeShellScriptBin "escape" (builtins.readFile (self + "/scripts/escape.sh")))

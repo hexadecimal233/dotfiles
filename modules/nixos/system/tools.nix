@@ -47,9 +47,9 @@ in {
           nvme-cli
           smartmontools
 
-          # dev infra (crossplatform)
+          # dev infra (on darwin, these tools sre bundled in xcode)
+          gcc
           binutils
-          valgrind
           gnumake
           gcc
           clang
@@ -57,7 +57,8 @@ in {
           lldb
           gdb
 
-          # dev infra
+          # linux dev infra
+          valgrind
           strace
           ltrace
         ]

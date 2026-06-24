@@ -24,8 +24,6 @@ in {
           alejandra
           nixd
 
-          # build tools
-          gcc
 
           # justfile
           just-lsp

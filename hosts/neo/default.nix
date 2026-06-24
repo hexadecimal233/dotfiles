@@ -15,7 +15,10 @@
 
     # hex options
     hex.shared.nix.enable = true;
-    hex.darwin.system.enable = true;
+    hex.darwin.system = {
+      enable = true;
+      virtualization.enable = true;
+    };
     hex.shared.desktop = {
       enable = true;
       fonts = {

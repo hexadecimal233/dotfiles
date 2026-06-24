@@ -27,7 +27,7 @@
     },
     // 工具型/检索型 Agent – 简单任务（速度快，成本低）
     "librarian": {
-      "model": "deepseek/deepseek-v4-flash",
+      "model": "opencode/mimo-v2.5-free",
     },
     "explore": {
       "model": "deepseek/deepseek-v4-flash",
