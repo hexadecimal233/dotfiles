@@ -82,6 +82,7 @@
         "iina"
         "zed"
         "sourcegit"
+        # "brewforge/extras/lyricsx-mxiris"
         "tabby" # multi-remote shell client
         # "warp"
         # "clash-verge-rev" install separately to prevent install conflicts

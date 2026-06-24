@@ -39,6 +39,9 @@ in {
       obs-studio
 
       cheese
+      gpu-screen-recorder
+      emulsion-palette
+      calligraphy
 
       gparted
       networkmanagerapplet # advanced nm

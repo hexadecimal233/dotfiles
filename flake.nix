@@ -9,11 +9,8 @@
   };
 
   inputs = {
+    # base os
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nur = {
-      url = "github:nix-community/NUR"; # unused: reserved for future use
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +21,11 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # extra packages
+    nur = {
+      url = "github:nix-community/NUR"; # unused: reserved for future use
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
@@ -51,6 +53,10 @@
     };
     fcitx5-vinput = {
       url = "github:xifan2333/fcitx5-vinput";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    git-hooks= {
+      url = "github:cachix/git-hooks.nix"; # TODO: add precommit checks
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

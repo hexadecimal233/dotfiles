@@ -42,6 +42,8 @@ in {
         "bitwig-studio"
         "jetbrains-toolbox"
         "warp-terminal"
+        "unrar"
+        "ouch"
       ];
   };
 }
