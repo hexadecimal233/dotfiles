@@ -278,6 +278,7 @@ dotfiles/dot_config/exact_vesktop/
 - `audit.nix` — Standalone hex config tree printer: `just audit <host>`
 - `sudo-proxy.sh` — Run commands with proxy (cross-platform)
 - `set-chezmoi-dir.nu` - Sets chezmoi working directory for this repository (cross-platform)
+- `opencode-workspace.sh` — Scaffold opencode project config with opencode-rtk plugin (cross-platform)
 - `escape.sh` — Escape hatch for locked-up systems
 - `macos/speakup.sh` — macOS accessibility helper
 - `macos/unquarantine.sh` — Remove macOS quarantine attribute from apps (macOS-only)
