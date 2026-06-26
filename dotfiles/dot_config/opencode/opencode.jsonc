@@ -1,7 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
-    "oh-my-openagent@latest"
+    "oh-my-openagent@latest",
+    "opencode-rtk"
   ],
   "autoupdate": false,
   // "model": "deepseek/deepseek-v4-flash",
@@ -44,7 +45,7 @@
       ]
     }
   }
-  /* 
+  /*
   "lsp": {
     "deno": {
       "disabled": true

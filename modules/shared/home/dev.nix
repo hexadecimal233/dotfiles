@@ -32,7 +32,6 @@ in {
           # emmylua-ls
 
           # stuff
-          mise
           uv
           betterleaks
         ]
@@ -44,6 +43,7 @@ in {
         ]
         ++ lib.optionals cfg.ai.enable [
           opencode
+          rtk
         ];
 
       home.sessionPath = [
@@ -54,6 +54,11 @@ in {
         "$HOME/.cargo/bin"
         "$HOME/go/bin"
       ];
+
+      programs.mise = {
+        enable = true;
+        # enableFishIntegration defaults to true via home.shell.enableFishIntegration
+      };
     };
   };
 }
