@@ -86,7 +86,6 @@
 │   │   ├── disko-config.nix
 │   │   └── hardware-configuration.nix
 │   ├── wsl/
-│   ├── vmware/
 │   └── darwin/
 ├── dotfiles/              # Chezmoi-managed dotfiles
 │   ├── .chezmoiignore

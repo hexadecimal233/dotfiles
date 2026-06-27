@@ -120,17 +120,6 @@
           ./hosts/thinkpad/default.nix
         ];
       };
-
-      vmware = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit self home-manager disko noctalia monique;
-        };
-        system = "x86_64-linux";
-        modules = [
-          disko.nixosModules.disko
-          ./hosts/vmware/default.nix
-        ];
-      };
     };
 
     darwinConfigurations = {

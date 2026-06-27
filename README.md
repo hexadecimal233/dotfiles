@@ -76,7 +76,7 @@ nix shell nixpkgs#git --command git clone https://codeberg.org/hexzii/nixos-conf
 nixos-generate-config --root /mnt --no-filesystems
 
 # Install
-nixos-install --root /mnt --flake '/mnt/etc/nixos#vmware'
+nixos-install --root /mnt --flake '/mnt/etc/nixos#your-os'
 ```
 
 ## remote install
