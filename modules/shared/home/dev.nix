@@ -34,6 +34,7 @@ in {
           # stuff
           uv
           betterleaks
+          # godot.v
         ]
         ++ lib.optionals cfg.nodejs.enable [
           # nodejs (global: npx/bunx)

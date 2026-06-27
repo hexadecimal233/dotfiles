@@ -86,6 +86,7 @@
         "zed"
         "sourcegit"
         "pika"
+        "localsend"
         # "brewforge/extras/lyricsx-mxiris"
         "tabby" # multi-remote shell client
         # "warp"
@@ -93,6 +94,7 @@
         # "gitbutler" 这东西太超前了只能说
         "hewigovens/tap/jayjay" # for jujustu, TODO: there's a crossplatform edit coming soon
         "neighbor-z/swiftmtp/swiftmtp"
+        "UniClipboard/tap/uniclipboard"
         # fixme: fails after 2026/09/01due to fails_gatekeeper_check
         "glance-chamburr" # quicklook enhancements
         "ayugram"
