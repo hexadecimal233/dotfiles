@@ -8,6 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // Theme & UI
+  "middle_click_paste": false,
   "inlay_hints": {
     "enabled": true
   },
