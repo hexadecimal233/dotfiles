@@ -92,11 +92,11 @@
     };
 
     nixosModules = {
-      profile = import ./modules/profile;
+      nixos = import ./modules/nixos;
     };
 
     darwinModules = {
-      profile = import ./modules/darwin;
+      darwin = import ./modules/darwin;
     };
 
     nixosConfigurations = {

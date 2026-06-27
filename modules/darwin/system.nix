@@ -8,7 +8,6 @@
   cfg = config.hex.darwin.system;
 in {
   imports = [
-    ./virtualization.nix
   ];
 
   options.hex.darwin.system = {

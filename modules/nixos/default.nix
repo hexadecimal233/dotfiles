@@ -1,7 +1,15 @@
-# home-manager integration
-{home-manager, ...}: {
+{
+  config,
+  pkgs,
+  home-manager,
+  ...
+}: {
   imports = [
     home-manager.nixosModules.home-manager
+
+    ../shared
+    ./system
+    ./desktop
   ];
 
   home-manager = {

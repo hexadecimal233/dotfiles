@@ -1,10 +1,5 @@
 # Cross-platform desktop modules (fonts, etc.)
-{
-  lib,
-  config,
-  ...
-}: let
-  cfg = config.hex.shared.desktop;
+{lib, ...}: let
 in {
   imports = [
     ./fonts.nix

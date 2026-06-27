@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    self.nixosModules.profile
+    self.nixosModules.nixos
     disko.nixosModules.disko
     ./disko-config.nix
   ];

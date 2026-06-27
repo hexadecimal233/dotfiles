@@ -9,7 +9,7 @@
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-t14
     nixos-hardware.nixosModules.common-gpu-intel
-    self.nixosModules.profile
+    self.nixosModules.nixos
     disko.nixosModules.disko
     ./disko-config.nix
     ./hardware-configuration.nix

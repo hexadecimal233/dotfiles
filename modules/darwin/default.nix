@@ -1,21 +1,20 @@
-# Orchestration: imports all hex.* modules (darwin)
-{lib, ...}: {
+{
+  lib,
+  home-manager,
+  ...
+}: {
   imports = [
-    # home-manager
-    ./home.nix
+    home-manager.darwinModules.home-manager
 
-    # shared (cross-platform, home-manager)
-    ../shared/home/shell.nix
-    ../shared/home/git.nix
-    ../shared/home/editor.nix
-    ../shared/home/dev.nix
-    ../shared/home/packages.nix
-    ../shared/home/gpg.nix
+    ../shared
 
-    # shared (cross-platform, system)
-    ../shared/system
-    ../shared/desktop
-    # darwin (system-level)
     ./system.nix
+
+    ./virtualization.nix
   ];
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 }

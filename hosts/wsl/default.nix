@@ -6,7 +6,7 @@
 }: {
   imports = [
     nixos-wsl.nixosModules.default
-    self.nixosModules.profile
+    self.nixosModules.nixos
   ];
 
   config = {

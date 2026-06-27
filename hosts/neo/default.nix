@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    self.darwinModules.profile
+    self.darwinModules.darwin
   ];
 
   config = {
