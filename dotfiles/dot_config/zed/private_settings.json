@@ -9,8 +9,16 @@
 {
   // Theme & UI
   "middle_click_paste": false,
+  "indent_guides": {
+    "background_coloring": "indent_aware",
+    "coloring": "indent_aware"
+  },
+  "colorize_brackets": true,
   "inlay_hints": {
     "enabled": true
+  },
+  "experimental.theme_overrides": {
+
   },
   "code_lens": "on",
   "format_on_save": "off",
@@ -91,6 +99,7 @@
     "catppuccin": false,
     "catppuccin-icons": false,
     "catppuccin-blur": false,
+    "comment": true,
     "dart": false,
     "discord-presence": true,
     "dockerfile": true,
