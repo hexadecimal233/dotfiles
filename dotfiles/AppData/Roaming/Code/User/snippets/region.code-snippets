@@ -1,0 +1,38 @@
+{
+	"Region (Line)": {
+		"prefix": "region",
+		"body": [
+			"${LINE_COMMENT}#region ${1:Description}",
+			"$0",
+			"${LINE_COMMENT}#endregion"
+		],
+		"description": "插入行注释 Region"
+	},
+	"Region (Block)": {
+		"prefix": "region-block",
+		"body": [
+			"${BLOCK_COMMENT_START} #region ${1:Description} ${BLOCK_COMMENT_END}",
+			"$0",
+			"${BLOCK_COMMENT_START} #endregion ${BLOCK_COMMENT_END}"
+		],
+		"description": "插入块注释 Region (C样式)"
+	},
+	"Wrap with Region (Line)": {
+		"prefix": "wrap-region",
+		"body": [
+			"${LINE_COMMENT}#region ${1:Description}",
+			"${TM_SELECTED_TEXT:$0}",
+			"${LINE_COMMENT}#endregion"
+		],
+		"description": "用行注释包裹选中代码"
+	},
+	"Wrap with Region (Block)": {
+		"prefix": "wrap-region-block",
+		"body": [
+			"${BLOCK_COMMENT_START} #region ${1:Description} ${BLOCK_COMMENT_END}",
+			"${TM_SELECTED_TEXT:$0}",
+			"${BLOCK_COMMENT_START} #endregion ${BLOCK_COMMENT_END}"
+		],
+		"description": "用块注释包裹选中代码"
+	}
+}
