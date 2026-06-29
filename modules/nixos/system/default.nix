@@ -13,6 +13,7 @@ in {
     ./fingerprint.nix
     ./networking.nix
     ./wireless.nix
+    ./kernel.nix
     ./power.nix
     ./graphics.nix
     ./security.nix

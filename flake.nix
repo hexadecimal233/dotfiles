@@ -38,6 +38,7 @@
     };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia";
@@ -59,6 +60,11 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nasdots = {
+      url = "github:daskladas/nasdots";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.disko.follows = "disko";
+    };
   };
 
   outputs = {
@@ -73,6 +79,7 @@
     noctalia,
     monique,
     fcitx5-vinput,
+    nasdots,
     ...
   } @ inputs: let
     forAllSystems = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-darwin"];
@@ -118,6 +125,16 @@
         modules = [
           disko.nixosModules.disko
           ./hosts/thinkpad/default.nix
+        ];
+      };
+
+      nixnas = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit self home-manager nasdots;
+        };
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/nixnas/default.nix
         ];
       };
     };

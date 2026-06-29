@@ -107,9 +107,6 @@
 
     # networking.hostName = "thinkpad";
 
-    # TODO: move to kernal
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
     # Intel GPU: xe driver with required firmware
     hardware.intelgpu.driver = "xe";
     hardware.enableRedistributableFirmware = true;

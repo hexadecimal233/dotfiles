@@ -196,6 +196,29 @@
         "type": "github"
       }
     },
+    "nasdots": {
+      "inputs": {
+        "disko": [
+          "disko"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775500064,
+        "narHash": "sha256-UEDqqHhzbKxsupr22lDpgAJrK/fnsR4lZ+FyWGqf5Hw=",
+        "owner": "daskladas",
+        "repo": "nasdots",
+        "rev": "b22bc0b6f9a509b1eaa77f358e28f8fb9348b04e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "daskladas",
+        "repo": "nasdots",
+        "type": "github"
+      }
+    },
     "nix-cavalry": {
       "inputs": {
         "nixpkgs": [
@@ -239,14 +262,16 @@
     },
     "nixos-hardware": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1782162908,
-        "narHash": "sha256-rFG35UXPBG29B9ZI0QY2G7dttahfZAVRxQXaeyixz3U=",
+        "lastModified": 1782562157,
+        "narHash": "sha256-a7+T6QSeowynwZ1ZJJbP8T8ntAytvrui8kFGJmIZt2c=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "2564d804144a6588660bb5d2646bb05322cacf82",
+        "rev": "a9cf7546a938c737b079e738de73934a13de9784",
         "type": "github"
       },
       "original": {
@@ -277,19 +302,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1767892417,
-        "narHash": "sha256-8bW3q88CEg2u4hSP66Vf4lpbLonHz7hqDNBMcCY7E9U=",
-        "rev": "3497aa5c9457a9d88d71fa93a4a8368816fbeeba",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre924538.3497aa5c9457/nixexprs.tar.xz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1781607440,
         "narHash": "sha256-rxO+uc/KFbSJp+pgyXRuAX6QlG9hJdnt0BXpEQRXY+U=",
@@ -353,11 +365,12 @@
         "git-hooks": "git-hooks",
         "home-manager": "home-manager",
         "monique": "monique",
+        "nasdots": "nasdots",
         "nix-cavalry": "nix-cavalry",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "nur": "nur",
         "sops-nix": "sops-nix"
