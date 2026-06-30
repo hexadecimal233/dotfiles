@@ -194,7 +194,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 - Platform-specific modules go in `nixos/` or `darwin/` directories
 - Naming must follow `hex.<platform>.<scope>.<module>.enable` pattern
 - **Desktop GUI apps with built-in settings editors should NOT use home-manager for config management** — Let their internal settings editor be the source of truth. Use chezmoi or plain file install instead. Applies to apps like vesktop, vscodium, and desktop shells with GUI settings panels.
-- **Run `just audit <host>` after enabling any new hex.* option** — The module system doesn't warn you if you forgot to enable a parent option or missed a sub-option. Always verify with audit that the intended options are actually enabled on the target host.
+- **Run `just audit <nixos|darwin> <host>` after enabling any new hex.* option** — The module system doesn't warn you if you forgot to enable a parent option or missed a sub-option. Always verify with audit that the intended options are actually enabled on the target host.
 
 ## Dotfiles Management
 
@@ -287,7 +287,7 @@ dotfiles/dot_config/exact_vesktop/
 4. Template content: conditional path based on OS (see pattern above)
 
 ## Scripts
-- `audit.nix` — Standalone hex config tree printer: `just audit <host>`
+- `audit.nix` — Standalone hex config tree printer: `just audit <nixos|darwin> <host>`
 - `sudo-proxy.sh` — Run commands with proxy (cross-platform)
 - `set-chezmoi-dir.nu` - Sets chezmoi working directory for this repository (cross-platform)
 - `opencode-workspace.sh` — Scaffold opencode project config with opencode-rtk plugin (cross-platform)
@@ -302,4 +302,5 @@ dotfiles/dot_config/exact_vesktop/
 - `just update` — Update flake lockfile
 - `just tree` — Nix-tree analysis
 - `just info` — List generations + flake metadata
-- `just audit <host>` — Print hex option tree for a host
+- `just audit <nixos|darwin> <host>` — Print hex option tree for a host
+- `just flamegraph <nixos|darwin> <host>` — Time eval + generate inferno flamegraph SVG (single pass)

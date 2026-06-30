@@ -8,13 +8,13 @@
 in {
   options.hex.shared.home.packages = {
     enable = lib.mkEnableOption "CLI tools and utilities";
-    systemTools = lib.mkEnableOption "system tools (age, sops, gnupg, chezmoi)" // {default = false;};
-    dataProcessing = lib.mkEnableOption "data processing tools (pv, bc, jq, yq)" // {default = false;};
-    fileTools = lib.mkEnableOption "file tools (ouch, p7zip, yazi, eza, bat, etc.)" // {default = false;};
-    mediaUtils = lib.mkEnableOption "media utilities (ffmpeg, mediainfo, yt-dlp)" // {default = false;};
-    network = lib.mkEnableOption "network tools (whois, iperf3, asn, dnsutils)" // {default = false;};
-    beautify = lib.mkEnableOption "beautify tools (fastfetch, hyfetch)" // {default = false;};
-    hosting = lib.mkEnableOption "self-hosted service tools (copyparty, frp)" // {default = false;};
+    systemTools = lib.mkEnableOption "system tools" // {default = false;};
+    dataProcessing = lib.mkEnableOption "data processing tools" // {default = false;};
+    fileTools = lib.mkEnableOption "file tools" // {default = false;};
+    mediaUtils = lib.mkEnableOption "media utilities" // {default = false;};
+    network = lib.mkEnableOption "network tools" // {default = false;};
+    beautify = lib.mkEnableOption "beautify tools" // {default = false;};
+    hosting = lib.mkEnableOption "temp-hosted service tools" // {default = false;};
   };
 
   config = lib.mkIf cfg.enable {
@@ -27,6 +27,8 @@ in {
             sops
             gnupg
             chezmoi
+
+            inferno
 
             # android devices
             android-tools
