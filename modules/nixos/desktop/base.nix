@@ -51,7 +51,6 @@ in {
       };
     };
 
-
     # sessionVariables only works on linux during the whole session
     # variables only take effect in shell sessions.
     environment.variables = {

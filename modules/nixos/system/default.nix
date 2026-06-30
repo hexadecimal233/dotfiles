@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./tools.nix
     ./boot.nix

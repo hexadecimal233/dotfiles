@@ -83,6 +83,27 @@
     ...
   } @ inputs: let
     forAllSystems = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-darwin"];
+
+    # Pass all flake inputs to every host — modules declare what they need.
+    mkNixosHost = {
+      modules,
+      system ? "x86_64-linux",
+    }:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = inputs;
+        modules = modules;
+      };
+
+    mkDarwinHost = {
+      modules,
+      system ? "aarch64-darwin",
+    }:
+      nix-darwin.lib.darwinSystem {
+        inherit system;
+        specialArgs = inputs;
+        modules = modules;
+      };
   in {
     packages = let
       mkPkgs = system: let
@@ -107,32 +128,20 @@
     };
 
     nixosConfigurations = {
-      wsl = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit self nixos-wsl home-manager monique;
-        };
-        system = "x86_64-linux";
+      wsl = mkNixosHost {
         modules = [
           ./hosts/wsl/default.nix
         ];
       };
 
-      thinkpad = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit self home-manager disko nixos-hardware noctalia nix-cavalry monique fcitx5-vinput;
-        };
-        system = "x86_64-linux";
+      thinkpad = mkNixosHost {
         modules = [
           disko.nixosModules.disko
           ./hosts/thinkpad/default.nix
         ];
       };
 
-      nixnas = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit self home-manager nasdots;
-        };
-        system = "x86_64-linux";
+      nixnas = mkNixosHost {
         modules = [
           ./hosts/nixnas/default.nix
         ];
@@ -140,11 +149,7 @@
     };
 
     darwinConfigurations = {
-      neo = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit self nix-darwin home-manager;
-        };
-        system = "aarch64-darwin";
+      neo = mkDarwinHost {
         modules = [
           ./hosts/neo/default.nix
         ];

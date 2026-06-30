@@ -1,8 +1,5 @@
 # cross-platform system tools
-{
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./tools.nix
     ./nix.nix
