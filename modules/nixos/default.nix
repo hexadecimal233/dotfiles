@@ -10,6 +10,7 @@
     ../shared
     ./system
     ./desktop
+    ./services
   ];
 
   home-manager = {

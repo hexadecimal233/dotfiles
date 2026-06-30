@@ -1,0 +1,9 @@
+# Include /Users/hexzii/.colima/ssh_config
+# auto-added file by colima on mac, seems does not work
+Include ~/.ssh/conf.d/*.conf
+
+
+# prevent auto-disconnect
+Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3

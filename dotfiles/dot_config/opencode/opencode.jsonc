@@ -10,7 +10,7 @@
   "mcp": {
     "deepwiki": {
       "type": "remote",
-      "url": "https://mcp.deepwiki.com/mcp"
+      "url": "https://mcp.deepwiki.com/mcp",
     },
     /*
     "godot": {
@@ -24,27 +24,25 @@
     */
     "mediawiki-mcp-server": {
       "type": "local",
-      "command": [
-        "npx",
-        "@professional-wiki/mediawiki-mcp-server@latest"
-      ]
+      "command": ["npx", "@professional-wiki/mediawiki-mcp-server@latest"],
     },
     "memory": {
       "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ]
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
     },
     "nixos": {
       "type": "local",
-      "command": [
-        "uvx",
-        "mcp-nixos"
-      ]
-    }
-  }
+      "command": ["uvx", "mcp-nixos"],
+    },
+    "tmux": {
+      "type": "local",
+      "command": ["uvx", "libtmux-mcp"],
+    },
+    "yt-dlp": {
+      "type": "local",
+      "command": ["npx", "-y", "@kevinwatt/yt-dlp-mcp@latest"],
+    },
+  },
   /*
   "lsp": {
     "deno": {

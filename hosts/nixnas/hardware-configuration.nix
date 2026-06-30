@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -18,6 +17,7 @@
   boot.swraid.mdadmConf = ''
     MAILADDR root@localhost
   '';
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-id/mmc-BJTD4R_0x591758b2-part1";
     fsType = "vfat";

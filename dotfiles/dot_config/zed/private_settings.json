@@ -11,15 +11,13 @@
   "middle_click_paste": false,
   "indent_guides": {
     "background_coloring": "indent_aware",
-    "coloring": "indent_aware"
+    "coloring": "indent_aware",
   },
   "colorize_brackets": true,
   "inlay_hints": {
-    "enabled": true
+    "enabled": true,
   },
-  "experimental.theme_overrides": {
-
-  },
+  "experimental.theme_overrides": {},
   "code_lens": "on",
   "format_on_save": "off",
   "diagnostics": {
@@ -43,6 +41,7 @@
   "autosave": "on_focus_change",
   "diff_view_style": "split",
   "edit_predictions": {
+    "provider": "zed",
     "allow_data_collection": "no",
   },
   "telemetry": {
@@ -79,6 +78,7 @@
     },
   },
   "agent": {
+    "default_profile": "write",
     "commit_message_instructions": "If multiple changes are included, list each one briefly within 50 characters.",
     "show_turn_stats": true,
     "thinking_display": "always_expanded",
@@ -132,6 +132,7 @@
     "sql": true,
     "svelte": true,
     "swift": false,
+    "ssh-config": true,
     "toml": true,
     "vue": true,
     "wakatime": true,

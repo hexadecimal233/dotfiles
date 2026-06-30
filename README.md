@@ -79,6 +79,25 @@ nixos-generate-config --root /mnt --no-filesystems
 nixos-install --root /mnt --flake '/mnt/etc/nixos#your-os'
 ```
 
+## ugreen nas install
+
+similar to normal nixos install, partition your disk, run nixos-install.
+
+---
+
+reference to [nasdots](https://github.com/daskladas/nasdots), there are some different behaviors:
+
+1. you do not have to actually replace the systemd-boot, the efi boot entries can still be written and set to the first boot priority in ugreen bios.
+2. make sure to disable bios watchdog (currently didnt figure out how to feed the watchdog gracefully)
+3. back up your boot disk (often named `/dev/mmcblk0p1`), but the factory partition flag of the esp seemed to be `linux-filesystem`, this may break installation, make sure to set it as `EF00` (efi system partition) before installing.
+
+---
+
+if you have trouble booting up / stuck, either:
+
+- use live cd to troubleshoot (via `nixos-enter` or re-install), always use `nixos-switch boot` on live cds.
+- use boot parameters: `rd.systemd.break=pre-mount rd.systemd.debug_shell systemd.debug_shell`
+
 ## remote install
 
 WIP
