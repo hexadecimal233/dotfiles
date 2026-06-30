@@ -3,14 +3,19 @@
   lib,
   pkgs,
   ...
-}: let
-  cfg = config.hex.nixos.services.virtualization;
-in {
-  environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-    docker
-    docker-compose
-  ]);
-  virtualisation.docker = lib.mkIf cfg.enable {
-    enable = true;
+}: {
+  options.hex.nixos.services.virtualization = {
+    enable = lib.mkEnableOption "Docker and Docker Compose" // {default = false;};
+  };
+
+  config = lib.mkIf config.hex.nixos.services.virtualization.enable {
+    environment.systemPackages = with pkgs; [
+      docker
+      docker-compose
+    ];
+
+    virtualisation.docker = {
+      enable = true;
+    };
   };
 }

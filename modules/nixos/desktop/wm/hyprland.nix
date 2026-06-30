@@ -6,10 +6,8 @@
   pkgs,
   self,
   ...
-}: let
-  cfg = config.hex.nixos.desktop;
-in {
-  config = lib.mkIf (cfg.enable && cfg.wm == "hyprland") {
+}: {
+  config = lib.mkIf (config.hex.nixos.desktop.wm == "hyprland") {
     # Declare UWSM session name for the dispatcher
     hex.nixos.desktop.wmSession = lib.mkDefault "hyprland.desktop";
 

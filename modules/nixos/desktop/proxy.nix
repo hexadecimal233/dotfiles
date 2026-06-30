@@ -13,7 +13,7 @@ in {
       // {default = false;};
   };
 
-  config = lib.mkIf (config.hex.nixos.desktop.enable && cfg.enable) {
+  config = lib.mkIf cfg.enable {
     # Clash Verge — GUI proxy client with mihomo kernel
     programs.clash-verge = {
       enable = true;

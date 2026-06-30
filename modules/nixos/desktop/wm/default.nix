@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: let
-  cfg = config.hex.nixos.desktop;
   uwsm = lib.getExe config.programs.uwsm.package;
 in {
   imports = [
@@ -13,7 +12,24 @@ in {
     ./niri.nix
   ];
 
-  config = lib.mkIf (cfg.enable && cfg.wm != null) {
+  options.hex.nixos.desktop = {
+    wm = lib.mkOption {
+      type = lib.types.nullOr (lib.types.enum ["hyprland" "niri"]);
+      default = null;
+      description = "Window manager / compositor: hyprland or niri. Set to null for no WM (bring your own).";
+      example = "hyprland";
+    };
+
+    # Internal — set by each WM module to declare its UWSM session name
+    wmSession = lib.mkOption {
+      type = lib.types.str;
+      internal = true;
+      default = "hyprland.desktop";
+      description = "UWSM session desktop file name, set by the selected WM module.";
+    };
+  };
+
+  config = lib.mkIf (config.hex.nixos.desktop.wm != null) {
     # UWSM — systemd session manager, required by all WMs
     programs.uwsm.enable = true;
 
@@ -53,7 +69,7 @@ in {
       settings = {
         terminal.vt = 1;
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --cmd '${uwsm} start ${cfg.wmSession}'";
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd '${uwsm} start ${config.hex.nixos.desktop.wmSession}'";
           user = "greeter";
         };
       };

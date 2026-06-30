@@ -5,10 +5,8 @@
   lib,
   pkgs,
   ...
-}: let
-  cfg = config.hex.nixos.desktop;
-in {
-  config = lib.mkIf (cfg.enable && cfg.wm == "niri") {
+}: {
+  config = lib.mkIf (config.hex.nixos.desktop.wm == "niri") {
     # Declare UWSM session name for the dispatcher
     hex.nixos.desktop.wmSession = lib.mkDefault "niri.desktop";
 

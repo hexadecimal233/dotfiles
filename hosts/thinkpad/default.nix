@@ -51,7 +51,7 @@
       tools.enable = true;
     };
     hex.nixos.desktop = {
-      enable = true;
+      base.enable = true;
       wm = "hyprland";
       audio = {
         enable = true;

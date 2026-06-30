@@ -7,9 +7,6 @@ git-hooks.lib.${system}.run {
   src = ./.;
 
   hooks = {
-    # Format all Nix files with alejandra
-    alejandra.enable = true;
-
     # Scan staged changes for secrets using betterleaks
     betterleaks = {
       enable = true;

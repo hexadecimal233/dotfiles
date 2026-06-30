@@ -31,7 +31,7 @@
       tools.enable = true;
     };
     hex.nixos.desktop = {
-      enable = true;
+      base.enable = true;
       # wm = null; — WSL has no compositor
       audio = {
         enable = true;

@@ -1,3 +1,4 @@
+# Audio: PipeWire or PulseAudio, selected via audio.usePulse
 {
   lib,
   config,
@@ -8,7 +9,12 @@
   withPulse = cfg.usePulse;
   withPipewire = !withPulse;
 in {
-  config = lib.mkIf (config.hex.nixos.desktop.enable && cfg.enable) (lib.mkMerge [
+  options.hex.nixos.desktop.audio = {
+    enable = lib.mkEnableOption "audio stack" // {default = false;};
+    usePulse = lib.mkEnableOption "use PulseAudio directly instead of PipeWire" // {default = false;};
+  };
+
+  config = lib.mkIf cfg.enable (lib.mkMerge [
     {
       security.rtkit.enable = true;
     }

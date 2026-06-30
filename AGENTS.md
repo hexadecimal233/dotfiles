@@ -40,38 +40,37 @@
 │   │   └── nix.nix         # Nix package manager settings
 │   ├── nixos/              # NixOS-specific modules
 │   │   ├── system/         # NixOS system (users, locale, boot, networking, etc.)
-│   │   │   ├── default.nix     # Core system option
-│   │   │   ├── boot.nix        # GRUB bootloader
+│   │   │   ├── default.nix     # Pure imports (only hex.nixos.system.enable)
+│   │   │   ├── base.nix        # User account, locale, fish, nix-ld, scripts
+│   │   │   ├── boot.nix        # systemd-boot bootloader
 │   │   │   ├── fingerprint.nix # fprintd + PAM
 │   │   │   ├── graphics.nix    # hardware.graphics, Vulkan, Mesa, ddcutil
 │   │   │   ├── ime.nix         # fcitx5 + Rime + Mozc
-│   │   │   ├── mobile.nix         # libimobiledevice + usbmuxd
-│   │   │   ├── kernel.nix      # TODO: configurable kernels (cachy, vanilla)
-│   │   │   ├── maintenance.nix # TODO: system maintenance tools (gparted, nvme)
+│   │   │   ├── mobile.nix      # libimobiledevice + usbmuxd
+│   │   │   ├── kernel.nix      # linuxPackages_latest, swappiness (has enable)
 │   │   │   ├── networking.nix  # NetworkManager, vnstat, ethtool
 │   │   │   ├── power.nix       # UPower, power-profiles-daemon, powertop
-│   │   │   ├── printing.nix    # TODO: printer support
 │   │   │   ├── security.nix    # polkit
 │   │   │   ├── time.nix        # timezone (auto or static)
 │   │   │   ├── tools.nix       # CLI tools (monitoring, hardware, network)
-│   │   │   ├── virtualization.nix # TODO: docker/k8s
 │   │   │   └── wireless.nix    # Bluetooth, bluez
 │   │   └── desktop/        # NixOS desktop (audio, wm, home)
 │   │       ├── apps.nix        # flatpak/appimage support
-│   │       ├── audio.nix       # PipeWire / PulseAudio
-│   │       ├── default.nix     # desktop.enable + imports
+│   │       ├── audio.nix       # PipeWire / PulseAudio (owns audio.* options)
+│   │       ├── base.nix        # Desktop infra: dconf, keyring, gvfs, fontconfig, telemetry env
+│   │       ├── default.nix     # Pure imports (no options)
 │   │       ├── home/           # NixOS-exclusive HM desktop modules
 │   │       │   ├── default.nix     # hex.nixos.home.desktop
 │   │       │   ├── minecraft.nix   # Minecraft launchers + legacy JDKs
 │   │       │   ├── noctalia.nix    # Noctalia v5 desktop shell
-
-│   │       │   ├── office.nix      # TODO: office kit
 │   │       │   ├── packages.nix    # Desktop GUI packages (ghostty, firefox, ...)
 │   │       │   ├── production.nix  # Production tools (Mixxx, trackers)
 │   │       │   └── theme.nix       # Desktop theming (Papirus icons, Bibata cursor)
 │   │       ├── proxy.nix       # Clash/Mihomo proxy (mihomo kernel)
-│   │       ├── steam.nix       # TODO: steam gaming support
-│   │       └── wm.nix          # Hyprland compositor (config via chezmoi)
+│   │       └── wm/             # WM dispatcher + submodules
+│   │           ├── default.nix     # WM dispatcher (greetd, UWSM, portals) + wm/wmSession options
+│   │           ├── hyprland.nix    # Hyprland compositor
+│   │           └── niri.nix        # Niri compositor
 ├── darwin/             # macOS-specific
 │   ├── default.nix         # Darwin orchestration
 │   ├── home.nix            # HM integration (darwin variant)
@@ -122,13 +121,15 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 **System-level (`*.system.*`)**
 - `hex.shared.nix.enable` — Nix package manager settings (GC, flakes, etc.)
 - `hex.shared.system.enable` — cross-platform system tools (wget, curl, htop, btop)
+  - `hex.shared.system.tools.enable` — cross-platform system tools
 - `hex.nixos.system.enable` — NixOS system (users, locale, nix settings)
   - `hex.nixos.system.tools.enable` — linux-only system tools
     - `hex.nixos.system.tools.monitoring` — psmisc, atop, iotop
     - `hex.nixos.system.tools.hardware` — lshw, pciutils, usbutils, dmidecode, etc.
     - `hex.nixos.system.tools.network` — rustnet, wavemon
-  - `hex.nixos.system.boot.enable` — GRUB bootloader (UEFI)
+  - `hex.nixos.system.boot.enable` — systemd-boot bootloader (UEFI)
   - `hex.nixos.system.fingerprint.enable` — fprintd with PAM sudo/login
+  - `hex.nixos.system.kernel.enable` — linuxPackages_latest, swappiness
   - `hex.nixos.system.networking.enable` — NetworkManager, vnstat, ethtool, iproute2
   - `hex.nixos.system.wireless.enable` — Bluetooth, bluez
   - `hex.nixos.system.power.enable` — UPower, power-profiles-daemon, powertop
@@ -138,8 +139,10 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.time.timezone` — static timezone string (e.g. "Asia/Shanghai")
   - `hex.nixos.system.ime.enable` — fcitx5 input method (Rime 雾凇拼音 + Mozc Japanese)
   - `hex.nixos.system.mobile.enable` — mobile device support (libimobiledevice, usbmuxd, ifuse, idevicerestore)
-  - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
-    - `hex.darwin.system.virtualization.enable` — Docker + Colima for macOS virtualization
+
+**Darwin-level (`*.darwin.*`)**
+- `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
+  - `hex.darwin.system.virtualization.enable` — Docker + Colima for macOS virtualization
 
 **Home-level (`*.home.*`)**
 - `hex.shared.home.shell.enable` — fish, starship, zoxide, direnv
@@ -154,26 +157,36 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.shared.home.packages.mediaUtils` — media utilities (ffmpeg, mediainfo, yt-dlp)
   - `hex.shared.home.packages.network` — network tools (whois, iperf3, asn, dnsutils)
   - `hex.shared.home.packages.beautify` — beautify tools (fastfetch, hyfetch)
+  - `hex.shared.home.packages.hosting` — self-hosted service tools (copyparty, frp)
 - `hex.shared.home.gpg.enable` — gpg-agent
 - `git-hooks.nix` — pre-commit hooks (alejandra format + betterleaks secret scan, via cachix/git-hooks.nix), auto-installed via `nix develop` shellHook
 
-**NixOS-only**
-  - `hex.nixos.desktop.enable` — desktop environment
+**NixOS desktop system-level**
+  - `hex.nixos.desktop.base.enable` — desktop infrastructure (dconf, keyring, gvfs, fonts)
   - `hex.nixos.desktop.wm` — WM choice: `"hyprland"` / `"niri"` / `null` (none)
   - `hex.nixos.desktop.audio.enable` — audio stack
+  - `hex.nixos.desktop.audio.usePulse` — use PulseAudio directly instead of PipeWire
   - `hex.nixos.desktop.proxy.clash.enable` — Clash/Mihomo proxy (mihomo kernel)
-  - `hex.nixos.desktop.apps.flatpak.enable` — Flatpak support (system service + user package)
-  - `hex.nixos.desktop.apps.appimage.enable` — AppImage support (binfmt + appimage-run)
+  - `hex.nixos.desktop.apps.flatpak` — Flatpak support (system service + user package)
+  - `hex.nixos.desktop.apps.appimage` — AppImage support (binfmt + appimage-run)
+
+**Cross-platform desktop**
   - `hex.shared.desktop.enable` — cross-platform desktop environment
   - `hex.shared.desktop.fonts.enable` — font packages (noto, maple, etc.) + Linux fontconfig
   - `hex.shared.desktop.fonts.source` — Source Han (思源) font series
 
 **NixOS-exclusive home-manager desktop**
-- `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell
-- `hex.nixos.home.desktop.packages.enable` — Desktop GUI packages (ghostty, firefox, vesktop, ...)
-- `hex.nixos.home.desktop.theme.enable` — Desktop theming (Papirus icons, Bibata/AOSP cursor)
-- `hex.nixos.home.desktop.minecraft.enable` — Minecraft launchers + legacy JDKs
-- `hex.nixos.home.desktop.production.enable` — Production tools (Mixxx, trackers)
+- `hex.nixos.home.desktop.enable` — NixOS-exclusive desktop home-manager modules
+  - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell
+  - `hex.nixos.home.desktop.packages.enable` — Desktop GUI packages (ghostty, firefox, vesktop, ...)
+  - `hex.nixos.home.desktop.theme.enable` — Desktop theming (Papirus icons, Bibata/AOSP cursor)
+  - `hex.nixos.home.desktop.minecraft.enable` — Minecraft launchers + legacy JDKs
+  - `hex.nixos.home.desktop.production.enable` — Production tools (Mixxx, trackers)
+
+**Services**
+  - `hex.nixos.services.ssh.enable` — OpenSSH server
+  - `hex.nixos.services.fail2ban.enable` — Fail2Ban intrusion prevention
+  - `hex.nixos.services.virtualization.enable` — Docker and Docker Compose
 
 ## Important Rules
 - **Architecture changes must update AGENTS.md** — When modifying module structure, options, or adding/removing modules, update this file first

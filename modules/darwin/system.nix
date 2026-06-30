@@ -1,3 +1,4 @@
+# Darwin system: nix daemon, fish shell, system packages
 {
   lib,
   config,
@@ -7,14 +8,8 @@
 }: let
   cfg = config.hex.darwin.system;
 in {
-  imports = [
-  ];
-
   options.hex.darwin.system = {
     enable = lib.mkEnableOption "darwin system (nix daemon, fish shell)";
-    virtualization = {
-      enable = lib.mkEnableOption "darwin virtualization (docker + colima, see ./virtualization.nix)";
-    };
   };
 
   config = lib.mkIf cfg.enable {
