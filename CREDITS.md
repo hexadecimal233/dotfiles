@@ -2,9 +2,10 @@
 
 ## Scripts
 
+- [cursor shaders](dotfiles/dot_config/ghostty/shaders/ripple_cursor.glsl) - [ghostty-cursor-shaders](https://github.com/sahaj-b/ghostty-cursor-shaders)
 - [escape.sh](./scripts/escape.sh) — [dev.leiyanhui.com](https://dev.leiyanhui.com/nixos/bash-code-err/)
 
-## Wallpapers
+## Assets
 
 - [1.webp](./dotfiles/Pictures/Wallpaper/1.webp) — [@viclimmonou](https://x.com/viclimmonou/status/2050183897879888161) via X
 - [2.webp](./dotfiles/Pictures/Wallpaper/2.webp) — [@hyou_1027](https://x.com/hyou_1027/status/2029166040786321839) via X

@@ -69,6 +69,7 @@
     "show": "always",
   },
   "git_panel": {
+    "tree_view": true,
     "dock": "left",
   },
   "project_panel": {
