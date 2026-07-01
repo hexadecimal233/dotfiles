@@ -13,9 +13,18 @@ currently reference to [AGENTS.md](./AGENTS.md)
 - [x] multihost
 - [ ] split dotfiles and nix cfg
 
+## git commit hooks
+
+we use `prek` for git hooks, install via:
+
+```bash
+prek install
+```
+
 ## linux install guide
 
 what is necessary before installation:
+
 - set trusted user for proper cache download (run as root solves)
 - installing via Live-CD does **not** enable experimental features by default
 - a proper net
@@ -121,4 +130,5 @@ enter tty so desktop customization could apply smoothly
 set-chezmoi-dir
 chezmoi apply
 ```
+
 > this sets chezmoi's `sourceDir` to the current directory and applies all dotfiles

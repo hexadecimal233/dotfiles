@@ -1,23 +1,24 @@
 # AGENTS.md
 
 ## Build & Test
+
 - Switch (NixOS): `nh os switch . -H <hostname>`
 - Switch (macOS): `nh darwin switch . -H <hostname>`
 - Format: `nix fmt`
 - Check: `just check`
 
 ## Conventions
+
 - Formatter: alejandra
 - Shell: fish
 - Editor: helix
 - All comments in English
 
 ## Module Structure
+
 ```
 .
 ├── flake.nix               # Entry point + flake inputs
-├── git-hooks.nix           # Pre-commit hooks (alejandra format + betterleaks secret scan)
-├── .envrc                  # Direnv: auto-activates devShell (hooks installed on cd)
 ├── AGENTS.md               # This file
 ├── INSTALL.md              # Global installation guide
 ├── justfile                # Task runner
@@ -108,17 +109,20 @@
 Pattern: `hex.<platform>.<scope>.<module>.enable`
 
 ### Platform (root)
+
 - `hex.shared.*` — cross-platform, works on NixOS + macOS
 - `hex.nixos.*` — NixOS-only
 - `hex.darwin.*` — macOS-only
 
 ### Scope
+
 - `*.system.*` — system-level (environment.systemPackages, services, etc.)
 - `*.home.*` — home-manager level (home.packages, programs.*, etc.)
 
 ### Option Toggles
 
 **System-level (`*.system.*`)**
+
 - `hex.shared.nix.enable` — Nix package manager settings (GC, flakes, etc.)
 - `hex.shared.system.enable` — cross-platform system tools (wget, curl, htop, btop)
   - `hex.shared.system.tools.enable` — cross-platform system tools
@@ -141,10 +145,12 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.system.mobile.enable` — mobile device support (libimobiledevice, usbmuxd, ifuse, idevicerestore)
 
 **Darwin-level (`*.darwin.*`)**
+
 - `hex.darwin.system.enable` — Darwin system (nix daemon, fish shell)
   - `hex.darwin.system.virtualization.enable` — Docker + Colima for macOS virtualization
 
 **Home-level (`*.home.*`)**
+
 - `hex.shared.home.shell.enable` — fish, starship, zoxide, direnv
 - `hex.shared.home.git.enable` — git, gh, lazygit, delta
 - `hex.shared.home.editor.enable` — helix
@@ -159,23 +165,25 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.shared.home.packages.beautify` — beautify tools (fastfetch, hyfetch)
   - `hex.shared.home.packages.hosting` — self-hosted service tools (copyparty, frp)
 - `hex.shared.home.gpg.enable` — gpg-agent
-- `git-hooks.nix` — pre-commit hooks (alejandra format + betterleaks secret scan, via cachix/git-hooks.nix), auto-installed via `nix develop` shellHook
 
 **NixOS desktop system-level**
-  - `hex.nixos.desktop.base.enable` — desktop infrastructure (dconf, keyring, gvfs, fonts)
-  - `hex.nixos.desktop.wm` — WM choice: `"hyprland"` / `"niri"` / `null` (none)
-  - `hex.nixos.desktop.audio.enable` — audio stack
-  - `hex.nixos.desktop.audio.usePulse` — use PulseAudio directly instead of PipeWire
-  - `hex.nixos.desktop.proxy.clash.enable` — Clash/Mihomo proxy (mihomo kernel)
-  - `hex.nixos.desktop.apps.flatpak` — Flatpak support (system service + user package)
-  - `hex.nixos.desktop.apps.appimage` — AppImage support (binfmt + appimage-run)
+
+- `hex.nixos.desktop.base.enable` — desktop infrastructure (dconf, keyring, gvfs, fonts)
+- `hex.nixos.desktop.wm` — WM choice: `"hyprland"` / `"niri"` / `null` (none)
+- `hex.nixos.desktop.audio.enable` — audio stack
+- `hex.nixos.desktop.audio.usePulse` — use PulseAudio directly instead of PipeWire
+- `hex.nixos.desktop.proxy.clash.enable` — Clash/Mihomo proxy (mihomo kernel)
+- `hex.nixos.desktop.apps.flatpak` — Flatpak support (system service + user package)
+- `hex.nixos.desktop.apps.appimage` — AppImage support (binfmt + appimage-run)
 
 **Cross-platform desktop**
-  - `hex.shared.desktop.enable` — cross-platform desktop environment
-  - `hex.shared.desktop.fonts.enable` — font packages (noto, maple, etc.) + Linux fontconfig
-  - `hex.shared.desktop.fonts.source` — Source Han (思源) font series
+
+- `hex.shared.desktop.enable` — cross-platform desktop environment
+- `hex.shared.desktop.fonts.enable` — font packages (noto, maple, etc.) + Linux fontconfig
+- `hex.shared.desktop.fonts.source` — Source Han (思源) font series
 
 **NixOS-exclusive home-manager desktop**
+
 - `hex.nixos.home.desktop.enable` — NixOS-exclusive desktop home-manager modules
   - `hex.nixos.home.desktop.noctalia.enable` — Noctalia v5 Wayland desktop shell
   - `hex.nixos.home.desktop.packages.enable` — Desktop GUI packages (ghostty, firefox, vesktop, ...)
@@ -184,29 +192,33 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.home.desktop.production.enable` — Production tools (Mixxx, trackers)
 
 **Services**
-  - `hex.nixos.services.ddns-go.enable` — ddns-go dynamic DNS client (web UI at :9876)
-  - `hex.nixos.services.fail2ban.enable` — Fail2Ban intrusion prevention
-  - `hex.nixos.services.ssh.enable` — OpenSSH server
-  - `hex.nixos.services.tailscale.enable` — Tailscale client daemon
-  - `hex.nixos.services.virtualization.enable` — Docker and Docker Compose
+
+- `hex.nixos.services.ddns-go.enable` — ddns-go dynamic DNS client (web UI at :9876)
+- `hex.nixos.services.fail2ban.enable` — Fail2Ban intrusion prevention
+- `hex.nixos.services.ssh.enable` — OpenSSH server
+- `hex.nixos.services.tailscale.enable` — Tailscale client daemon
+- `hex.nixos.services.virtualization.enable` — Docker and Docker Compose
 
 ## Important Rules
+
 - **Architecture changes must update AGENTS.md** — When modifying module structure, options, or adding/removing modules, update this file first
 - Shared modules must be cross-platform (no Linux-only or macOS-only packages)
 - Platform-specific modules go in `nixos/` or `darwin/` directories
 - Naming must follow `hex.<platform>.<scope>.<module>.enable` pattern
 - **Desktop GUI apps with built-in settings editors should NOT use home-manager for config management** — Let their internal settings editor be the source of truth. Use chezmoi or plain file install instead. Applies to apps like vesktop, vscodium, and desktop shells with GUI settings panels.
-- **Run `just audit <nixos|darwin> <host>` after enabling any new hex.* option** — The module system doesn't warn you if you forgot to enable a parent option or missed a sub-option. Always verify with audit that the intended options are actually enabled on the target host.
+- _*Run `just audit <nixos|darwin> <host>` after enabling any new hex.* option_* — The module system doesn't warn you if you forgot to enable a parent option or missed a sub-option. Always verify with audit that the intended options are actually enabled on the target host.
 
 ## Dotfiles Management
 
 ### Architecture
+
 - **Config source of truth**: `dotfiles/dot_config/` — all real configuration files live here
 - **Symlink templates**: `dotfiles/Library/Application Support/` — only symlink targets, never actual code
 
 ### Pattern: Cross-platform App Config
 
 **For single-file configs (e.g. hyfetch):**
+
 ```
 dotfiles/
 ├── dot_config/
@@ -217,6 +229,7 @@ dotfiles/
 ```
 
 **For directory-based configs (e.g. vesktop):**
+
 ```
 dotfiles/
 ├── .chezmoiignore                      # Platform-specific ignore rules
@@ -240,6 +253,7 @@ dotfiles/
 **Note:** Use regular directory (not `exact_`) for apps like vesktop that write runtime files (session.bin, cache, etc.) into the config directory.
 
 **Symlink template format:**
+
 - File: `symlink_<filename>.json.tmpl`
 - Content: `{{ .chezmoi.sourceDir }}/dot_config/<app>/<path>`
 
@@ -257,25 +271,30 @@ dotfiles/dot_config/exact_vesktop/
 ```
 
 **Behavior:**
+
 - Without `exact_`: Chezmoi adds managed files but leaves extra files untouched (additive)
 - With `exact_`: Chezmoi makes target an exact mirror, removing unmanaged files (synchronized)
 
 **Use `exact_` when:**
+
 - Directory contains only managed files (no runtime/cache files)
 - You want removed source files to be cleaned up on target
 - Example: theme directories, script collections
 
 **Avoid `exact_` when:**
+
 - App writes runtime files into the same directory
 - Directory contains session data, caches, or logs
 - Example: most app config directories (vesktop has session.bin, etc.)
 
 **For apps with runtime files (e.g. vesktop):**
+
 - Use regular directory (no `exact_`)
 - Only symlink individual config files
 - Let runtime files exist naturally in target directory
 
 ### Rules
+
 - **NEVER** put actual config code in `Library/Application Support/` — only symlink templates
 - **ALWAYS** edit config files in `dotfiles/dot_config/<app>/`
 - **Symlink template naming**: `symlink_<filename>.json.tmpl` for JSON configs
@@ -289,6 +308,7 @@ dotfiles/dot_config/exact_vesktop/
 4. Template content: conditional path based on OS (see pattern above)
 
 ## Scripts
+
 - `audit.nix` — Standalone hex config tree printer: `just audit <nixos|darwin> <host>`
 - `sudo-proxy.sh` — Run commands with proxy (cross-platform)
 - `set-chezmoi-dir.nu` - Sets chezmoi working directory for this repository (cross-platform)
@@ -298,6 +318,7 @@ dotfiles/dot_config/exact_vesktop/
 - `macos/unquarantine.sh` — Remove macOS quarantine attribute from apps (macOS-only)
 
 ### Just Commands
+
 - `nix fmt` — Format all with alejandra
 - `just check` — Nix flake check
 - `just diff` — Compare current/result system

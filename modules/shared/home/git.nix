@@ -60,8 +60,10 @@ in {
       home.packages = with pkgs; [
         difftastic
         git-lfs # TODO: wip
-        gh # TODO: maybe move to dotfiles
+        gh
+        prek # a pre-commit alternative
         jujutsu
+
         lazygit
       ];
 

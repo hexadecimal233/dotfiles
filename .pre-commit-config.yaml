@@ -1,0 +1,13 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format-code
+        name: format code
+        entry: nix fmt
+        language: system
+        pass_filenames: false
+      - id: check-leaks
+        name: check leaks
+        entry: betterleaks dir .
+        language: system
+        pass_filenames: false

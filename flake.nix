@@ -55,10 +55,6 @@
     fcitx5-vinput = {
       url = "github:xifan2333/fcitx5-vinput"; # do not use follows or cache will fail
     };
-    git-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nasdots = {
       url = "github:daskladas/nasdots";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -161,24 +157,5 @@
       pkgs.writeShellScriptBin "alejandra-wrapper" ''
         exec ${pkgs.alejandra}/bin/alejandra .
       '');
-
-    checks = forAllSystems (system: {
-      pre-commit-check = import ./git-hooks.nix {
-        inherit system;
-        git-hooks = inputs.git-hooks;
-        pkgs = nixpkgs.legacyPackages.${system};
-      };
-    });
-
-    devShells = forAllSystems (system: {
-      default = let
-        pkgs = nixpkgs.legacyPackages.${system};
-        inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
-      in
-        pkgs.mkShell {
-          inherit shellHook;
-          buildInputs = enabledPackages;
-        };
-    });
   };
 }

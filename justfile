@@ -2,35 +2,18 @@
 #       build, switch, refresh, gc have been removed.
 
 # --- mirror args (auto-detect proxy env) ---
-_mirror_args := if env("HTTP_PROXY", "") + env("HTTPS_PROXY", "") + env_var_or_default("http_proxy", "") + env_var_or_default("https_proxy", "") + env_var_or_default("ALL_PROXY", "") + env_var_or_default("all_proxy", "") != "" {
-  "--option substituters https://mirrors.ustc.edu.cn/nix-channels/store"
-} else {
-  ""
-}
+[private]
+_mirror_args := if env("HTTP_PROXY", "") + env("HTTPS_PROXY", "") + env_var_or_default("http_proxy", "") + env_var_or_default("https_proxy", "") + env_var_or_default("ALL_PROXY", "") + env_var_or_default("all_proxy", "") != "" { "--option substituters https://mirrors.ustc.edu.cn/nix-channels/store" } else { "" }
 
 # Differentiate the package updates
 diff:
     nix run nixpkgs#nvd -- diff /run/current-system ./result
 
-# Update the flake lockfile
-update:
-    nix flake update
-
 # Analyze current system tree
 tree:
     nix run nixpkgs#nix-tree /run/current-system
 
-# Check the flake for errors
-check:
-    nix flake check
-
-# Show current generation metadata
-info:
-    nixos-rebuild list-generations
-    nix flake metadata
-
-
-# Trim the FS (for WS: mainly)
+# Trim the FS (for WSL: mainly)
 fstrim:
     sudo fstrim -v /
 
@@ -41,9 +24,8 @@ status:
 
 # Print hex option tree for a host
 audit os host:
-    nix eval ".#{{os}}Configurations.{{host}}.config.hex" \
+    nix eval ".#{{ os }}Configurations.{{ host }}.config.hex" \
       --apply 'import ./scripts/audit.nix' --impure >/dev/null
-
 
 # --- Evaluation Profiling + Flamegraph ---
 
@@ -55,12 +37,12 @@ audit os host:
 #
 # Usage:
 #   just flamegraph nixos thinkpad
-#   just flamegraph darwin neo
+# just flamegraph darwin neo
 flamegraph os host:
     #!/usr/bin/env bash
     set -euo pipefail
 
-    OS="{{os}}"; HOST="{{host}}"
+    OS="{{ os }}"; HOST="{{ host }}"
 
     case "$OS" in
         nixos) prefix="nixosConfigurations";  suffix="config.system.build.toplevel" ;;
