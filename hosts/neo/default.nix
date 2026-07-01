@@ -95,6 +95,7 @@
         "hewigovens/tap/jayjay" # for jujustu, TODO: there's a crossplatform edit coming soon
         "neighbor-z/swiftmtp/swiftmtp"
         "UniClipboard/tap/uniclipboard"
+        "tailscale-app"
         # fixme: fails after 2026/09/01due to fails_gatekeeper_check
         "glance-chamburr" # quicklook enhancements
         "ayugram"
