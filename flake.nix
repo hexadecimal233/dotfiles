@@ -53,8 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fcitx5-vinput = {
-      url = "github:xifan2333/fcitx5-vinput";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:xifan2333/fcitx5-vinput"; # do not use follows or cache will fail
     };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";

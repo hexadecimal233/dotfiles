@@ -39,6 +39,13 @@
     hex.nixos.services.fail2ban.enable = true;
     hex.nixos.services.virtualization.enable = true;
 
+    # TODO: WIP TODO: add tailscale & stiff
+    hex.nixos.services.ddns-go = {
+      enable = true;
+      # interval = 300;
+      # listen = ":9876";
+    };
+
     # TODO: use global user settings
     # TODO: changeable username
     users.users.hexzii = {

@@ -100,6 +100,9 @@
       production.enable = true;
     };
 
+    hex.nixos.services.tailscale.enable = true;
+    hex.nixos.services.virtualization.enable = true;
+
     # host-specific proxy
     home-manager.users.hexzii.home.sessionVariables = {
       PROXY_DEFAULT = "http://localhost:7897";

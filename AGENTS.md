@@ -184,8 +184,10 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.nixos.home.desktop.production.enable` — Production tools (Mixxx, trackers)
 
 **Services**
-  - `hex.nixos.services.ssh.enable` — OpenSSH server
+  - `hex.nixos.services.ddns-go.enable` — ddns-go dynamic DNS client (web UI at :9876)
   - `hex.nixos.services.fail2ban.enable` — Fail2Ban intrusion prevention
+  - `hex.nixos.services.ssh.enable` — OpenSSH server
+  - `hex.nixos.services.tailscale.enable` — Tailscale client daemon
   - `hex.nixos.services.virtualization.enable` — Docker and Docker Compose
 
 ## Important Rules

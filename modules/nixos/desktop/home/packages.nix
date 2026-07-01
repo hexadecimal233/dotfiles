@@ -66,8 +66,6 @@ in {
       localsend
       # todo : try uniclipboard
 
-      # TODO: tabby unavail on nixpkgs, maybe check flatpkg
-
       # TODO: migrate most of them to flatpak
       sniffnet
       tiny-rdm

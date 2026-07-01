@@ -1,7 +1,9 @@
 {...}: {
   imports = [
-    ./ssh.nix
+    ./ddns-go.nix
     ./fail2ban.nix
+    ./ssh.nix
+    ./tailscale.nix
     ./virtualization.nix
   ];
 }

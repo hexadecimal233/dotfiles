@@ -88,7 +88,7 @@
         "pika"
         "localsend"
         # "brewforge/extras/lyricsx-mxiris"
-        "tabby" # multi-remote shell client
+        # "tabby" # multi-remote shell client, NOTE: still not very good
         # "warp"
         # "clash-verge-rev" install separately to prevent install conflicts
         # "gitbutler" 这东西太超前了只能说

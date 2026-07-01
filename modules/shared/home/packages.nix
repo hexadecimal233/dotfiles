@@ -28,7 +28,9 @@ in {
             gnupg
             chezmoi
 
+            # benchmarking / profiling
             inferno
+            hyperfine
 
             # android devices
             android-tools
