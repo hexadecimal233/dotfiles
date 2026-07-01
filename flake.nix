@@ -54,6 +54,7 @@
     };
     fcitx5-vinput = {
       url = "github:xifan2333/fcitx5-vinput"; # do not use follows or cache will fail
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nasdots = {
       url = "github:daskladas/nasdots";
