@@ -23,12 +23,12 @@
 ├── INSTALL.md              # Global installation guide
 ├── justfile                # Task runner
 ├── modules/
-│   ├── shared/             # Cross-platform modules
-│   │   ├── home/           # HM: shell, git, editor, dev, java, packages, gpg
+│   ├── shared/
+│   │   ├── home/
 │   │   │   ├── dev.nix
 │   │   │   ├── editor.nix
 │   │   │   ├── git.nix
-│   │   │   ├── gpg.nix
+│   │   │   ├── pgp.nix
 │   │   │   ├── java.nix
 │   │   │   ├── packages.nix
 │   │   │   └── shell.nix
@@ -164,7 +164,7 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
   - `hex.shared.home.packages.network` — network tools (whois, iperf3, asn, dnsutils)
   - `hex.shared.home.packages.beautify` — beautify tools (fastfetch, hyfetch)
   - `hex.shared.home.packages.hosting` — self-hosted service tools (copyparty, frp)
-- `hex.shared.home.gpg.enable` — gpg-agent
+- `hex.shared.home.pgp.enable` — gpg-agent
 
 **NixOS desktop system-level**
 

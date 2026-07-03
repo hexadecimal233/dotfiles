@@ -47,7 +47,7 @@
       network = true;
       beautify = true;
     };
-    hex.shared.home.gpg.enable = true;
+    hex.shared.home.pgp.enable = true;
 
     # host-specific proxy
     home-manager.users.hexzii.home.sessionVariables = {
@@ -87,6 +87,8 @@
         "sourcegit"
         "pika"
         "localsend"
+        "keepingyouawake"
+        "gpgfrontend" # would not use system gnupg btw
         # "brewforge/extras/lyricsx-mxiris"
         # "tabby" # multi-remote shell client, NOTE: still not very good
         # "warp"

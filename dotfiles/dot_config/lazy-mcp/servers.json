@@ -1,0 +1,34 @@
+{
+  "servers": [
+    {
+      "name": "deepwiki",
+      "description": "Github Codebase Reserch",
+      "url": "https://mcp.deepwiki.com/mcp"
+    },
+    {
+      "name": "mediawiki-mcp-server",
+      "description": "MediaWiki (e.g. Fandom, Wikipedia) Scraping",
+      "command": ["npx", "@professional-wiki/mediawiki-mcp-server@latest"]
+    },
+    {
+      "name": "memory",
+      "description": "Remember things you've seen or heard",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"]
+    },
+    {
+      "name": "nixos",
+      "description": "Nix Utilities",
+      "command": ["uvx", "mcp-nixos"]
+    },
+    {
+      "name": "tmux",
+      "description": "tmux Session Management",
+      "command": ["uvx", "libtmux-mcp"]
+    },
+    {
+      "name": "yt-dlp",
+      "description": "Video Downloader / Scraping",
+      "command": ["npx", "-y", "@kevinwatt/yt-dlp-mcp@latest"]
+    }
+  ]
+}

@@ -63,7 +63,6 @@ in {
         gh
         prek # a pre-commit alternative
         jujutsu
-
         lazygit
       ];
 

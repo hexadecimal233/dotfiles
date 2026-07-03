@@ -25,7 +25,6 @@ in {
           lib.optionals cfg.systemTools [
             age
             sops
-            gnupg
             chezmoi
 
             # benchmarking / profiling
@@ -58,7 +57,7 @@ in {
             ouch-rar # all in one zip / unzip tool
             dos2unix # crlf -> lf
             qpdf # pdf toolkit
-            p7zip
+            _7zip-zstd-rar
             yazi
             hexyl
             hexedit

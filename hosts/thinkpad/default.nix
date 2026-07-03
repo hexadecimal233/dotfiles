@@ -88,7 +88,7 @@
       beautify = true;
       hosting = true;
     };
-    hex.shared.home.gpg.enable = true;
+    hex.shared.home.pgp.enable = true;
     hex.shared.home.java.enable = true;
     hex.shared.home.java.legacy = true;
     hex.nixos.home.desktop = {

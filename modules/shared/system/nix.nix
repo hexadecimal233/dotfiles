@@ -43,6 +43,7 @@ in {
         "jetbrains-toolbox"
         "warp-terminal"
         "unrar"
+        "7zip-zstd"
         "ouch"
       ];
   };

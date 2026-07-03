@@ -4,7 +4,7 @@
     "oh-my-openagent@latest",
     // "opencode-rtk" opt-in
   ],
-  "autoupdate": false,
+  "autoupdate": false, // prevent random updater kicking in
   // "model": "deepseek/deepseek-v4-flash",
   // "small_model": "deepseek/deepseek-v4-flash",
   "mcp": {
@@ -12,16 +12,16 @@
       "type": "remote",
       "url": "https://mcp.deepwiki.com/mcp",
     },
-    /*
     "godot": {
       "type": "local",
+      "enabled": false,
       "command": ["npx", "@coding-solo/godot-mcp"],
       "environment": {
-        "GODOT_PATH": "D:\\Program\\Godot\\Godot_v4.7-beta1_win64.exe",
-        "DEBUG": "true"
-      }
+        // We have to set GODOT_PATH to the executable path
+        "DEBUG": "true",
+      },
     },
-    */
+
     "mediawiki-mcp-server": {
       "type": "local",
       "command": ["npx", "@professional-wiki/mediawiki-mcp-server@latest"],
@@ -36,11 +36,19 @@
     },
     "tmux": {
       "type": "local",
+      // burning tokens, disabled
+      "enabled": false,
       "command": ["uvx", "libtmux-mcp"],
     },
     "yt-dlp": {
       "type": "local",
       "command": ["npx", "-y", "@kevinwatt/yt-dlp-mcp@latest"],
+    },
+    "lazy-mcp": {
+      // use if necessary
+      "type": "local",
+      "enabled": false,
+      "command": ["npx", "lazy-mcp@latest"],
     },
   },
   /*
