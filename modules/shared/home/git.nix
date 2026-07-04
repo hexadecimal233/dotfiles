@@ -8,6 +8,7 @@
 in {
   options.hex.shared.home.git.enable = lib.mkEnableOption "git with gh, lazygit, delta";
 
+  # TODO: add gpg signing support
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {
       programs.git = {

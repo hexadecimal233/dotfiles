@@ -22,7 +22,8 @@ in {
       home.packages = with pkgs; [
         gnupg
         gpg-tui
-        sequoia-sq
+        sequoia-chameleon-gnupg
+        sequoia-sq # still does not support pq :(
       ];
     };
   };

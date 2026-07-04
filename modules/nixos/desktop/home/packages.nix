@@ -37,9 +37,15 @@ in {
       # dolphin
       libreoffice-fresh
       obs-studio
-
+      # reader / viewers
+      foliate
+      papers
+      loupe
+      # oculante is good, but is still in active refactoring (switch to that later)
+      dosbox-x
       cheese
       gpu-screen-recorder
+      # TODO: add SnapX/Satty/Flameshot image capturer
       emulsion-palette
       calligraphy
 

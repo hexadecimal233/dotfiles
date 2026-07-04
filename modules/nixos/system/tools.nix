@@ -48,6 +48,7 @@ in {
 
           # file tools
           exfatprogs
+          ext4fuse # emergency purposes
 
           # maintenance tools
           btrfs-heatmap # btrfs usage visualization
@@ -62,6 +63,7 @@ in {
           pkg-config
           lldb
           gdb
+          reredirect
 
           # linux dev infra
           valgrind

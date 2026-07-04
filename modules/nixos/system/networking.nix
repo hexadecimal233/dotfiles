@@ -27,6 +27,12 @@ in {
       ];
     })
 
+    {
+      networking.nftables = {
+        enable = true; # use nftables instead of iptables-nft
+      };
+    }
+
     # daed transparent proxy — FIXME: broken build (upstream pnpmDepsHash mismatch)
     # (lib.mkIf cfg.dae.enable {
     #   services.daed = {

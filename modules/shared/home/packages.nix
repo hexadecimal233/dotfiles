@@ -30,6 +30,8 @@ in {
             # benchmarking / profiling
             inferno
             hyperfine
+            hashcat # on macos try to use -d 1 to force metal
+            clinfo # TODO: move to separate
 
             # android devices
             android-tools
