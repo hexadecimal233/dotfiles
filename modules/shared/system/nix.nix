@@ -44,6 +44,7 @@ in {
         "warp-terminal"
         "unrar"
         "7zip-zstd"
+        "uasm" # 7zip rar need this
         "ouch"
       ];
   };
