@@ -5,7 +5,7 @@ custom-shader = shaders/ripple_cursor.glsl
 
 background = #070707
 # macos-glass-regular made cursor shader glitchy.
-background-blur = true
+# background-blur = true, tis will cause huge lag on my pc so disableing
 background-opacity = 0.90
 clipboard-paste-protection = true
 # cursor-color = #ffffff
@@ -27,7 +27,7 @@ font-thicken = false
 foreground = #fbfbfb
 minimum-contrast = 1.2
 mouse-hide-while-typing = true
-{{/* if ne .chezmoi.os "linux" */}}
+
 palette = 0=#141415
 palette = 1=#ff2e3f
 palette = 2=#0dbe4e
@@ -46,7 +46,7 @@ palette = 14=#68cdf2
 palette = 15=#fbfbfb
 selection-background = #19283c
 selection-foreground = #fbfbfb
-{{/* end */}}
+
 scrollback-limit = 100000
 split-divider-color = #262727
 # theme = Pierre Dark
