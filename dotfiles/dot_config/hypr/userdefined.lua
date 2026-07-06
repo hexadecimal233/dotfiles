@@ -112,7 +112,7 @@ hl.workspace_rule({
 -- Floating mode by default (macOS-like stacking behavior)
 hl.window_rule({
     match = { class = ".*" },
-    float = true,
+    -- float = true,
     -- center = true, -- commented: causes XWayland menus (Wine, etc.) to auto-center
     persistent_size = true,
 })
