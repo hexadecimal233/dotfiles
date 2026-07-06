@@ -100,7 +100,7 @@ in {
             iperf3
             asn
             dnsutils
-            dogedns
+            doggo
             netcat
             nmap
             k6

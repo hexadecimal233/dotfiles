@@ -88,6 +88,7 @@
         "pika"
         "localsend"
         "keepingyouawake"
+        "renode/tap/renode"
         "gpgfrontend" # would not use system gnupg btw
         # "brewforge/extras/lyricsx-mxiris"
         # "tabby" # multi-remote shell client, NOTE: still not very good

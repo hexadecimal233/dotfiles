@@ -16,7 +16,10 @@ in {
     # NetworkManager + tools
     (lib.mkIf cfg.enable {
       networking.networkmanager.enable = true;
+      networking.networkmanager.wifi.macAddress = "stable"; # prevent tracking
       # networking.hostName = "nixos";
+      #
+      # TODO: optional enalbe
       services.vnstat.enable = true; # network statistics
 
       environment.systemPackages = with pkgs; [

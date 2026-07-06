@@ -20,9 +20,9 @@ in {
       };
 
       home.packages = with pkgs; [
-        gnupg
+        # gnupg, consider moving to sequoia
         gpg-tui
-        sequoia-chameleon-gnupg
+        sequoia-chameleon-gnupg # will override gpg commma
         sequoia-sq # still does not support pq :(
       ];
     };

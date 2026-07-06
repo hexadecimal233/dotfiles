@@ -8,10 +8,11 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // Theme & UI
+  "minimum_split_diff_width": 100.0,
   "git": {
     "inline_blame": {
-      "show_commit_summary": true
-    }
+      "show_commit_summary": true,
+    },
   },
   "middle_click_paste": false,
   "indent_guides": {
@@ -22,11 +23,27 @@
   "inlay_hints": {
     "enabled": true,
   },
+  "file_types": {
+    "JSONC": [
+      // they often use jsonc with .json ext
+      "settings.json",
+      "private_settings.json", // chezmoi private
+    ],
+  },
   "experimental.theme_overrides": {
+    // TODO: remove, they are experimental
     "editor.indent_guide_cycle": ["#ff000033", "#00ff0033", "#0000ff33"],
     "editor.indent_guide_cycle_active": ["#ff000066", "#00ff0066", "#0000ff66"],
-    "editor.indent_guide_background_cycle": ["#ff00001a", "#00ff001a", "#0000ff1a"],
-    "editor.indent_guide_background_cycle_active": ["#ff000033", "#00ff0033", "#0000ff33"]
+    "editor.indent_guide_background_cycle": [
+      "#ff00001a",
+      "#00ff001a",
+      "#0000ff1a",
+    ],
+    "editor.indent_guide_background_cycle_active": [
+      "#ff000033",
+      "#00ff0033",
+      "#0000ff33",
+    ],
   },
   "code_lens": "on",
   "format_on_save": "off",
@@ -69,6 +86,7 @@
     "show": "always",
   },
   "git_panel": {
+    "entry_primary_click_action": "file_diff",
     "tree_view": true,
     "dock": "left",
   },

@@ -48,6 +48,7 @@ in {
       # TODO: add SnapX/Satty/Flameshot image capturer
       emulsion-palette
       calligraphy
+      fluffychat # also outdated, currently just want to try it out
 
       gparted
       networkmanagerapplet # advanced nm

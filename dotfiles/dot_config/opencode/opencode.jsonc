@@ -50,6 +50,10 @@
       "enabled": false,
       "command": ["npx", "lazy-mcp@latest"],
     },
+    "taobao": {
+      "type": "remote",
+      "url": "http://localhost:3654/mcp"
+    }
   },
   /*
   "lsp": {

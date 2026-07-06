@@ -17,6 +17,8 @@ in {
 
       # graphics
       blender
+      radiance-vj
+      qlcplus # outdated tho but wanna try it
 
       # the nostalgic trackers
       ft2-clone

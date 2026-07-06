@@ -30,6 +30,7 @@ in {
           # lua
           lua-language-server
           # emmylua-ls
+          #
 
           # stuff
           uv
@@ -44,7 +45,8 @@ in {
         ]
         ++ lib.optionals cfg.ai.enable [
           opencode
-          rtk
+          rtk # token optimizer
+          entire # logger, yet outdated
         ];
 
       home.sessionPath = [
