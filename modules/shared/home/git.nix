@@ -8,7 +8,6 @@
 in {
   options.hex.shared.home.git.enable = lib.mkEnableOption "git with gh, lazygit, delta";
 
-  # TODO: add gpg signing support
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {
       programs.git = {
@@ -18,10 +17,10 @@ in {
         settings = {
           user.name = "hexzii";
           user.email = "hexzii${"@"}nichijou.moe";
-          user.signingkey = "56E37FD683665A11F626C061BC5D89640D000721"; # betterleaks:allow`
+          user.signingkey = "56E37FD683665A11F626C061BC5D89640D000721"; # betterleaks:allow
+          commit.gpgsign = true;
           init.defaultBranch = "main";
           http.postBuffer = 524288000;
-          signing.signByDefault = true;
           credential =
             lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
               helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
