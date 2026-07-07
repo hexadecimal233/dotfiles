@@ -8,9 +8,25 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // Theme & UI
+  "ui_font_family": "LXGW WenKai",
+  "which_key": {
+    "enabled": true
+  },
+  "use_system_window_tabs": false,
+  "terminal": {
+    "show_count_badge": false,
+    "toolbar": {
+      "breadcrumbs": false
+    }
+  },
+  "proxy": "",
+  "completion_menu_scrollbar": "auto",
+  "sticky_scroll": {
+    "enabled": true
+  },
   "text_rendering_mode": "platform_default",
   "agent_ui_font_size": 15.0,
-  "ui_font_weight": 400.0,
+  "ui_font_weight": 500.0,
   "buffer_font_weight": 400.0,
   "minimum_split_diff_width": 100.0,
   "git": {
@@ -89,11 +105,16 @@
     "show": "always",
   },
   "git_panel": {
+    "show_count_badge": false,
+    "file_icons": false,
     "entry_primary_click_action": "file_diff",
     "tree_view": true,
     "dock": "left",
   },
   "project_panel": {
+    "git_status_indicator": true,
+    "diagnostic_badges": false,
+    "bold_folder_labels": false,
     "dock": "left",
   },
   "wrap_guides": [72, 80, 100, 120],

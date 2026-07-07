@@ -17,6 +17,7 @@ in {
           if pkgs.stdenv.hostPlatform.isDarwin
           then pkgs.pinentry_mac
           else pkgs.pinentry-gnome3; # or pinentry-qt
+        # TODO: add an option to use curses on demand (e.g. ssh)
       };
 
       home.packages = with pkgs; [

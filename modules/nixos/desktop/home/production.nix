@@ -15,7 +15,7 @@ in {
       # dj / audio software
       mixxx
       spek
-      friture
+      friture # TODO: broken on wayland
       polyphone
 
       # graphics

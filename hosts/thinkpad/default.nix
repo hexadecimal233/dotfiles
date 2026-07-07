@@ -102,7 +102,6 @@
     hex.nixos.services.tailscale.enable = true;
     hex.nixos.services.virtualization.enable = true;
 
-
     # networking.hostName = "thinkpad";
 
     # Intel GPU: xe driver with required firmware

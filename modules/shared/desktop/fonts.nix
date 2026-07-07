@@ -13,25 +13,24 @@ in {
 
   config = lib.mkMerge [
     (lib.mkIf (config.hex.shared.desktop.enable && cfg.enable) {
-      fonts.packages = with pkgs;
-        [
-          # noto series
-          noto-fonts
-          source-han-sans
-          source-han-serif
-          source-han-mono
-          noto-fonts-color-emoji
+      fonts.packages = with pkgs; [
+        # noto series
+        noto-fonts
+        source-han-sans
+        source-han-serif
+        source-han-mono
+        noto-fonts-color-emoji
 
-          # user-specified
-          lxgw-wenkai # 楷体 font
-          liberation_ttf # windows font drop-in replacement
+        # user-specified
+        lxgw-wenkai # 楷体 font
+        liberation_ttf # windows font drop-in replacement
 
-          # mono font
-          # fira-code
-          jetbrains-mono
-          nerd-fonts.jetbrains-mono # patched jb-mono
-          maple-mono.NF-CN-unhinted # the mono font im using^^
-        ];
+        # mono font
+        # fira-code
+        jetbrains-mono
+        nerd-fonts.jetbrains-mono # patched jb-mono
+        maple-mono.NF-CN-unhinted # the mono font im using^^
+      ];
     })
   ];
 }

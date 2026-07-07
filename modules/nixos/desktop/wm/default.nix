@@ -87,7 +87,7 @@ in {
       TERMINAL=ghostty
     '';
 
-    # Session env — hint Electron apps to use Wayland, default tools
+    # Session env — will work on a WM
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
       QT_QPA_PLATFORM = "wayland";
@@ -95,6 +95,13 @@ in {
       TERMINAL = "ghostty";
       EDITOR = "hx";
       VISUAL = "zeditor";
+
+      # remove bad font rendering https://github.com/maximilionus/lucidglyph/blob/master/src/modules/environment/lucidglyph-freetype-properties.conf
+      FREETYPE_PROPERTIES = "autofitter:no-stem-darkening=0 autofitter:darkening-parameters=500,500,1000,500,2500,500,4000,0 cff:darkening-parameters=500,500,1000,500,2500,500,4000,0 cff:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0";
+
+      # https://github.com/maximilionus/lucidglyph
+      QT_NO_SYNTHESIZED_BOLD = "1";
+
       # xdg-open: force portal path (async)
       NIXOS_XDG_OPEN_USE_PORTAL = "1";
       XDG_SESSION_TYPE = "wayland";

@@ -21,7 +21,10 @@ in {
       enableDefaultPackages = true;
       fontconfig = {
         enable = true;
-        hinting.enable = false; # make border smoother
+        # make sure everything's right
+        hinting.style = "slight";
+        subpixel.rgba = "none";
+
         # subpixel.lcdfilter = "none";
         defaultFonts = {
           monospace = ["Maple Mono NF CN"];
@@ -29,6 +32,28 @@ in {
           sansSerif = ["Source Han Sans SC" "Noto Sans"];
           serif = ["Source Han Serif SC" "Noto Serif"];
         };
+
+        # a note here: NEVER use embolden! fucking hurts my eye and make fonts doubling
+        localConf = ''
+          <?xml version="1.0"?>
+          <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+          <fontconfig>
+            <selectfont>
+              <rejectfont>
+                <pattern>
+                  <patelt name="family">
+                    <string>Droid Sans Fallback</string>
+                  </patelt>
+                </pattern>
+                <pattern>
+                  <patelt name="family">
+                    <string>Droid Sans Japanese</string>
+                  </patelt>
+                </pattern>
+              </rejectfont>
+            </selectfont>z
+          </fontconfig>
+        '';
       };
     };
 
@@ -39,9 +64,6 @@ in {
       OMO_DISABLE_POSTHOG = "1"; # oh-my-openagent
       OMO_SEND_ANONYMOUS_TELEMETRY = "0";
       ASTRO_TELEMETRY_DISABLED = "1"; # astro
-
-      # add stem darkening to remove font weakness
-      FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
     };
   };
 }

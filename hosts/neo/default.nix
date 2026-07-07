@@ -48,7 +48,6 @@
     };
     hex.shared.home.pgp.enable = true;
 
-
     # macOS user
     users.users.hexzii = {
       name = "hexzii";

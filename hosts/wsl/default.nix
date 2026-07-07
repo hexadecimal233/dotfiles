@@ -61,7 +61,6 @@
     };
     hex.shared.home.pgp.enable = true;
 
-
     # WSL-specific (not abstracted, written directly)
     wsl.enable = true;
     wsl.defaultUser = "hexzii";
