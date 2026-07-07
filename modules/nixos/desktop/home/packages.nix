@@ -44,6 +44,7 @@ in {
       # oculante is good, but is still in active refactoring (switch to that later)
       dosbox-x
       cheese
+      zint-qt
       gpu-screen-recorder
       # TODO: add SnapX/Satty/Flameshot image capturer
       emulsion-palette

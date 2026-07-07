@@ -46,6 +46,7 @@ in {
         "7zip-zstd"
         "uasm" # 7zip rar need this
         "ouch"
+        "vcv-rack"
       ];
   };
 }

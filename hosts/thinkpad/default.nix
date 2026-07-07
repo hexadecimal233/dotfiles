@@ -111,7 +111,6 @@
     # networking.hostName = "thinkpad";
 
     # Intel GPU: xe driver with required firmware
-    hardware.graphics.extraPackages = with pkgs; [ intel-compute-runtime ]; # opencl support
     hardware.intelgpu.driver = "xe";
     hardware.enableRedistributableFirmware = true;
 

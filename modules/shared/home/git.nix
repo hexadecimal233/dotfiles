@@ -18,6 +18,7 @@ in {
         settings = {
           user.name = "hexzii";
           user.email = "hexzii${"@"}nichijou.moe";
+          user.signingkey = "56E37FD683665A11F626C061BC5D89640D000721"; # betterleaks:allow`
           init.defaultBranch = "main";
           http.postBuffer = 524288000;
           signing.signByDefault = true;

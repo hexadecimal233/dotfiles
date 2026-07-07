@@ -39,6 +39,8 @@ in {
           cpufrequtils
           i2c-tools
           lm_sensors
+          # TODO: move something to maintenance
+          # phoronix-test-suite
 
           beep
 

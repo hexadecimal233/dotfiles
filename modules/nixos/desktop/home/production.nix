@@ -12,13 +12,17 @@ in {
 
   config = lib.mkIf (config.hex.nixos.home.desktop.enable && cfg.enable) {
     home-manager.users.hexzii.home.packages = with pkgs; [
-      # dj software
+      # dj / audio software
       mixxx
+      spek
+      friture
+      polyphone
 
       # graphics
       blender
+      vengi-tools # outdate
+      upscayl
       radiance-vj
-      qlcplus # outdated tho but wanna try it
 
       # the nostalgic trackers
       ft2-clone
@@ -29,6 +33,7 @@ in {
       # daws / audio
       vmpk
       audacity
+      vcv-rack
       # TODO: try reaper
 
       # TODO: crossplatform vsts
