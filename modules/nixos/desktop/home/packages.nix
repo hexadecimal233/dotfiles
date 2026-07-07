@@ -20,6 +20,9 @@ in {
       ghostty
       firefox
 
+      # TODO
+      openspades
+
       vesktop
       ayugram-desktop
       imhex

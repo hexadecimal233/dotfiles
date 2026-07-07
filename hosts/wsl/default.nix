@@ -61,10 +61,6 @@
     };
     hex.shared.home.pgp.enable = true;
 
-    # host-specific proxy
-    home-manager.users.hexzii.home.sessionVariables = {
-      PROXY_DEFAULT = "http://192.168.2.149:10808";
-    };
 
     # WSL-specific (not abstracted, written directly)
     wsl.enable = true;

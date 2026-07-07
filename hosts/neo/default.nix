@@ -48,10 +48,6 @@
     };
     hex.shared.home.pgp.enable = true;
 
-    # host-specific proxy
-    home-manager.users.hexzii.home.sessionVariables = {
-      PROXY_DEFAULT = "http://localhost:7897";
-    };
 
     # macOS user
     users.users.hexzii = {

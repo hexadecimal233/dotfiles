@@ -32,6 +32,9 @@ in {
           # emmylua-ls
           #
 
+          minicom
+          tio
+
           # stuff
           uv
           betterleaks

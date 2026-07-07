@@ -13,31 +13,8 @@ in {
       programs.fish = {
         enable = true;
 
-        # Proxy default must be set per-host via sessionVariables
         shellInit = ''
-          # ---- Proxy ----
-          set -g _PROXY_FILE "$HOME/.cache/proxy-state"
-
-          if test -f "$_PROXY_FILE"
-            source "$_PROXY_FILE"
-          end
-
-          function proxy_on -d "Enable proxy"
-            set proxy (test -n "$argv[1]"; and echo "$argv[1]"; or echo "$PROXY_DEFAULT")
-            mkdir -p (dirname "$_PROXY_FILE")
-            echo "set -gx http_proxy $proxy
-            set -gx https_proxy $proxy
-            set -gx HTTP_PROXY $proxy
-            set -gx HTTPS_PROXY $proxy" > "$_PROXY_FILE"
-            source "$_PROXY_FILE"
-            echo "proxy ON  -> $proxy"
-          end
-
-          function proxy_off -d "Disable proxy"
-            set -e http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
-            rm -f "$_PROXY_FILE"
-            echo "proxy OFF"
-          end
+          set -g fish_greeting ""
         '';
 
         shellAliases = {
