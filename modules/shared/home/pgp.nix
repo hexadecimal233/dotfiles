@@ -16,7 +16,7 @@ in {
         pinentry.package =
           if pkgs.stdenv.hostPlatform.isDarwin
           then pkgs.pinentry_mac
-          else pkgs.pinentry-curses;
+          else pkgs.pinentry-gnome3; # or pinentry-qt
       };
 
       home.packages = with pkgs; [

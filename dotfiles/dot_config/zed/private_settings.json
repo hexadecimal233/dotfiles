@@ -8,6 +8,9 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // Theme & UI
+  "ui_font_family": ".ZedSans",
+  "ui_font_weight": 400.0,
+  "buffer_font_weight": 400.0,
   "minimum_split_diff_width": 100.0,
   "git": {
     "inline_blame": {
@@ -52,11 +55,10 @@
       "min_column": 0,
     },
   },
-  "ui_font_family": ".ZedSans",
   "buffer_font_family": "Maple Mono NF CN",
   "ui_font_fallbacks": [".SystemUIFont"],
   "buffer_font_fallbacks": ["Menlo", ".ZedMono"],
-  "ui_font_size": 16,
+  "ui_font_size": 16.0,
   "buffer_font_size": 15,
   "icon_theme": "Material Icon Theme",
   "theme": {

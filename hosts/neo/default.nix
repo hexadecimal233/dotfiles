@@ -23,7 +23,6 @@
       enable = true;
       fonts = {
         enable = true;
-        source = true;
       };
     };
     hex.shared.system = {

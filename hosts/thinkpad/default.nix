@@ -67,7 +67,6 @@
       enable = true;
       fonts = {
         enable = true;
-        source = true;
       };
     };
     hex.shared.home.shell.enable = true;

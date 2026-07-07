@@ -9,7 +9,6 @@
 in {
   options.hex.shared.desktop.fonts = {
     enable = lib.mkEnableOption "fonts";
-    source = lib.mkEnableOption "Source Han (思源) font series";
   };
 
   config = lib.mkMerge [
@@ -18,8 +17,9 @@ in {
         [
           # noto series
           noto-fonts
-          noto-fonts-cjk-sans
-          noto-fonts-cjk-serif
+          source-han-sans
+          source-han-serif
+          source-han-mono
           noto-fonts-color-emoji
 
           # user-specified
@@ -31,12 +31,6 @@ in {
           jetbrains-mono
           nerd-fonts.jetbrains-mono # patched jb-mono
           maple-mono.NF-CN-unhinted # the mono font im using^^
-        ]
-        ++ lib.optionals cfg.source [
-          # source series (思源字体) — enabled via fonts.source
-          source-han-sans
-          source-han-serif
-          source-han-mono
         ];
     })
   ];

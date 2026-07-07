@@ -20,7 +20,7 @@ in {
 
       # graphics
       blender
-      vengi-tools # outdate
+      # vengi-tools # outdate
       upscayl
       radiance-vj
 
@@ -33,7 +33,7 @@ in {
       # daws / audio
       vmpk
       audacity
-      vcv-rack
+      # vcv-rack
       # TODO: try reaper
 
       # TODO: crossplatform vsts
