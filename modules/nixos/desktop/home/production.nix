@@ -44,7 +44,7 @@ in {
       gimp
       krita
       inkscape
-      aseprite
+      # aseprite FIXME: failed build
     ];
   };
 }

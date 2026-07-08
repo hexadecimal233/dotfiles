@@ -50,8 +50,8 @@
           # Japanese: Mozc UT variant (extended dictionaries)
           fcitx5-mozc-ut
 
-          # Voice input: speech-to-text via local sherpa-onnx or cloud ASR
-          fcitx5-vinput.packages.${pkgs.stdenv.hostPlatform.system}.default
+          # TODO: re-enable after find a way to cache
+          # fcitx5-vinput.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
 
         # we do not add options (/etc/xdg/fcitx5/config)
@@ -62,8 +62,9 @@
     # are handled automatically by the NixOS fcitx5 module.
 
     # ── Vinput daemon ────────────────────────────────────────────────
-    # Voice input service — D-Bus activated systemd user service.
     # https://github.com/xifan2333/fcitx5-vinput/blob/main/packaging/vinput-daemon.service
+    /*
+
     systemd.user.services.vinput-daemon = {
       description = "Vinput Voice Input Daemon";
       after = ["pipewire.service"];
@@ -74,5 +75,6 @@
         ExecStart = "${fcitx5-vinput.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/vinput-daemon";
       };
     };
+    */
   };
 }

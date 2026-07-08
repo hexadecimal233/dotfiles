@@ -18,6 +18,7 @@ in {
     environment.systemPackages = with pkgs;
       [
         openssl
+        patchelf
       ]
       ++ (
         # monitoring (linux-only)
