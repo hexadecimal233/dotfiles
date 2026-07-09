@@ -26,4 +26,4 @@ yuriy-chumak.vscode-ol-syntax-1.1.6
 
 ## TODOs
 
-[ ] - keep an extension list (mainly use on my linux laptop)
+[ ] - keep an extension list

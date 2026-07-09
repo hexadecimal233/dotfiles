@@ -3,8 +3,7 @@
 pcall(require, "monitors")
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("noctalia") -- FIXME: when noctalia is dead, all process dies
-    -- modify cursor here
+    hl.exec_cmd("noctalia")
     hl.exec_cmd("hyprctl setcursor aosp-cursors 24")
 end)
 

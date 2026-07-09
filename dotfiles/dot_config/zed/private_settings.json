@@ -11,6 +11,18 @@
   "lsp": {
     "biome": { },
   },
+  "languages": {
+    "Nix": {
+      "language_servers": ["nixd"], // we do not use nil
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "alejandra",
+          "arguments": []
+        }
+      },
+    }
+  },
   // Theme & UI
   "ui_font_family": "LXGW WenKai",
   "which_key": {

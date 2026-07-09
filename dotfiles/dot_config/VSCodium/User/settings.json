@@ -84,6 +84,9 @@
   ],
   "biome.enabled": false,
   "biome.suggestInstallingGlobally": false,
+  "nix.enableLanguageServer": true,
+  "nix.formatterPath": "alejandra",
+  "nix.serverPath": "nixd",
   "chat.mcp.gallery.enabled": true,
   "chat.viewSessions.orientation": "stacked",
   "cmake.pinnedCommands": [

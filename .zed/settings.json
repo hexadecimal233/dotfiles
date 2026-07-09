@@ -1,13 +1,7 @@
-// NixOS config project settings
-// LSP: nixd (config from .vscode/settings.json)
-// Formatter: alejandra
 {
   "lsp": {
     "nixd": {
       "initialization_options": {
-        "formatting": {
-          "command": ["alejandra"]
-        },
         "options": {
           "nixos-thinkpad": {
             "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.thinkpad.options"
@@ -23,18 +17,6 @@
           }
         }
       }
-    }
-  },
-  "languages": {
-    "Nix": {
-      "language_servers": ["nixd"],
-      "formatter": {
-        "external": {
-          "command": "alejandra",
-          "arguments": []
-        }
-      },
-      "tab_size": 2
     }
   }
 }
