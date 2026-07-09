@@ -2,6 +2,22 @@
   "name": "default-custom",
   "background": "#050a19",
   "palettes": {
+    "loudness": {
+      "stops": [
+        "#292929",
+        "#bfc4d1",
+        "#badeba",
+        "#ffb754",
+        "#ff5c4f",
+        "#f5edc4",
+        "#b7c2c9e0"
+      ]
+    },
+    "oscilloscope": {
+      "stops": [
+        "#e0deff"
+      ]
+    },
     "spectrum": {
       "stops": [
         "#00000000",
@@ -9,11 +25,6 @@
         "#ff0000",
         "#ffff21",
         "#ffd9ff",
-        "#ffd9ff"
-      ]
-    },
-    "oscilloscope": {
-      "stops": [
         "#ffd9ff"
       ]
     }

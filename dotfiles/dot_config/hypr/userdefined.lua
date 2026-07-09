@@ -2,11 +2,9 @@
 -- falls back to nothing if monitors.lua doesn't exist (first boot)
 pcall(require, "monitors")
 
-hl.env("XCURSOR_THEME", "aosp-cursors")
-hl.env("XCURSOR_SIZE", "24")
-
 hl.on("hyprland.start", function()
-    hl.exec_cmd("noctalia")
+    hl.exec_cmd("noctalia") -- FIXME: when noctalia is dead, all process dies
+    -- modify cursor here
     hl.exec_cmd("hyprctl setcursor aosp-cursors 24")
 end)
 

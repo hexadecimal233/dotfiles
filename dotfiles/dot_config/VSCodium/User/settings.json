@@ -173,6 +173,7 @@
   "files.eol": "\n",
   "git.allowForcePush": true,
   "git.confirmSync": false,
+  "editor.selectionClipboard": false,
   "git.enableSmartCommit": true,
   "github.copilot.chat.welcomeMessage": "never",
   "github.copilot.enable": {
@@ -318,7 +319,6 @@
   "window.openFoldersInNewWindow": "on",
   "window.systemColorTheme": "auto",
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": 0.33,
   "winopacity.opacity": 255,
   "workbench.activityBar.location": "bottom",
   "workbench.browser.dataStorage": "workspace",
@@ -327,7 +327,6 @@
     "editorInlayHint.background": "#0000",
     "editorInlayHint.foreground": "#888a"
   },
-  "workbench.colorTheme": "Pierre Dark",
   "workbench.editorAssociations": {
     "{hexdiff}:/**/*.*": "hexEditor.hexedit",
   },
@@ -337,4 +336,8 @@
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 12,
   "chat.disableAIFeatures": true,
+  "workbench.colorTheme": "Pierre Dark",
+  "html.format.indentHandlebars": true,
+  "extensions.verifySignature": false,
+  "yaml.disableSchemaDetection": [],
 }

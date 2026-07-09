@@ -1,0 +1,12 @@
+{
+	"lcinc": {
+		"prefix": "lcinc",
+		"body": [
+			"#include <algorithm>\r",
+			"#include <iostream>\r",
+			"\r",
+			"using namespace std;"
+		],
+		"description": "leetcode"
+	}
+}

@@ -7,6 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  // LSP & Languages
+  "lsp": {
+    "biome": { },
+  },
   // Theme & UI
   "ui_font_family": "LXGW WenKai",
   "which_key": {
@@ -187,6 +191,7 @@
     "swift": false,
     "ssh-config": true,
     "toml": true,
+    "typos": true,
     "vue": true,
     "wakatime": true,
     "xml": true,

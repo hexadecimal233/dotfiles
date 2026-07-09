@@ -1,0 +1,11 @@
+[
+  {
+    "key": "ctrl+shift+i",
+    "command": "workbench.action.toggleDevTools"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "-workbench.action.toggleDevTools",
+    "when": "isDevelopment"
+  }
+]
