@@ -4,8 +4,8 @@
   # 信任 fcitx5-vinput 的二进制缓存
   # make sure below is consistent w/ ./modules/shared/nix.nix
   nixConfig = {
-    extra-substituters = ["https://fcitx5-vinput.cachix.org"];
-    extra-trusted-public-keys = ["fcitx5-vinput.cachix.org-1:XpX3AA6+dDIX4qJhb1QM7sbTwX6/qSlGvW8Z5NK6XdU="];
+    extra-substituters = ["https://fcitx5-vinput.cachix.org" "https://attic.xuyh0120.win/lantian"];
+    extra-trusted-public-keys = ["fcitx5-vinput.cachix.org-1:XpX3AA6+dDIX4qJhb1QM7sbTwX6/qSlGvW8Z5NK6XdU=" "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="];
   };
 
   inputs = {
@@ -61,6 +61,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.disko.follows = "disko";
     };
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    # Do not override its nixpkgs input, otherwise there can be mismatch between patches and kernel version
   };
 
   outputs = {

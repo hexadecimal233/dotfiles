@@ -2,7 +2,6 @@
   imports = [
     ./tools.nix
     ./boot.nix
-    ./fingerprint.nix
     ./networking.nix
     ./wireless.nix
     ./kernel.nix

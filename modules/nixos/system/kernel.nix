@@ -7,16 +7,30 @@
   cfg = config.hex.nixos.system.kernel;
 in {
   options.hex.nixos.system.kernel = {
-    enable = lib.mkEnableOption "kernel tuning (linuxPackages_latest, swappiness)" // {default = true;};
-  };
-
-  config = lib.mkIf cfg.enable {
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
-    boot.kernel.sysctl = {
-      "vm.swappiness" = lib.mkDefault 10; # reduce swap usage
+    variant = lib.mkOption {
+      type = lib.types.nullOr (lib.types.enum ["vanilla" "cachyos"]);
+      default = "vanilla";
     };
   };
-}
-# TODO: add configurable kernels (cachy, vanilla, etc.)
 
+  config = lib.mkIf (cfg.variant != null) (lib.mkMerge [
+    (lib.mkIf (cfg.variant == "vanilla") {
+      boot.kernelPackages = pkgs.linuxPackages_latest;
+
+      boot.kernel.sysctl = {
+        "vm.swappiness" = lib.mkDefault 10; # in-memory first, then disk
+      };
+    })
+
+    # CachyOS 内核配置
+    (lib.mkIf (cfg.variant == "cachyos") {
+      boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
+
+      boot.kernel.sysctl = {
+        "vm.swappiness" = lib.mkDefault 150; # make system utilize zram more aggresively
+      };
+
+      zramSwap.enable = true;
+    })
+  ]);
+}

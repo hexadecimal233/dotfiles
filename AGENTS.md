@@ -44,7 +44,6 @@
 │   │   │   ├── default.nix     # Pure imports (only hex.nixos.system.enable)
 │   │   │   ├── base.nix        # User account, locale, fish, nix-ld, scripts
 │   │   │   ├── boot.nix        # systemd-boot bootloader
-│   │   │   ├── fingerprint.nix # fprintd + PAM
 │   │   │   ├── graphics.nix    # hardware.graphics, Vulkan, Mesa, ddcutil
 │   │   │   ├── ime.nix         # fcitx5 + Rime + Mozc
 │   │   │   ├── mobile.nix      # libimobiledevice + usbmuxd
@@ -132,7 +131,6 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
     - `hex.nixos.system.tools.hardware` — lshw, pciutils, usbutils, dmidecode, etc.
     - `hex.nixos.system.tools.network` — rustnet, wavemon
   - `hex.nixos.system.boot.enable` — systemd-boot bootloader (UEFI)
-  - `hex.nixos.system.fingerprint.enable` — fprintd with PAM sudo/login
   - `hex.nixos.system.kernel.enable` — linuxPackages_latest, swappiness
   - `hex.nixos.system.networking.enable` — NetworkManager, vnstat, ethtool, iproute2
   - `hex.nixos.system.wireless.enable` — Bluetooth, bluez

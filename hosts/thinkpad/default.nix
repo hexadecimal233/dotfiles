@@ -4,6 +4,7 @@
   disko,
   nixos-hardware,
   nix-cavalry,
+  nix-cachyos-kernel,
   ...
 }: {
   imports = [
@@ -32,7 +33,7 @@
         network = true;
       };
       boot.enable = true;
-      fingerprint.enable = true;
+      kernel.variant = "cachyos";
       security.enable = true;
       networking.enable = true;
       # networking.dae.enable = true;  # FIXME: broken build, re-enable when upstream fixes pnpmDepsHash
@@ -109,8 +110,11 @@
     hardware.enableRedistributableFirmware = true;
 
     services.btrfs.autoScrub.enable = true;
+
+    # TODO: un-overlay em
     nixpkgs.overlays = [
       nix-cavalry.overlays.default # TODO: do not use overlay way
+      nix-cachyos-kernel.overlays.pinned
 
       # Override fsearch to build from latest commit
       (final: prev: {
