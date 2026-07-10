@@ -180,7 +180,6 @@ Pattern: `hex.<platform>.<scope>.<module>.enable`
 
 - `hex.shared.desktop.enable` — cross-platform desktop environment
 - `hex.shared.desktop.fonts.enable` — font packages (noto, maple, etc.) + Linux fontconfig
-- `hex.shared.desktop.fonts.source` — Source Han (思源) font series
 
 **NixOS-exclusive home-manager desktop**
 

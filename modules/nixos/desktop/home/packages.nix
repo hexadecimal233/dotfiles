@@ -18,7 +18,6 @@ in {
     programs.monique.enable = true; # supersedes nwg-displays
     home-manager.users.hexzii.home.packages = with pkgs; [
       ghostty
-      firefox
 
       # TODO
       openspades
@@ -46,9 +45,8 @@ in {
       loupe
       # oculante is good, but is still in active refactoring (switch to that later)
       dosbox-x
-      cheese
       zint-qt
-      gpu-screen-recorder
+
       # TODO: add SnapX/Satty/Flameshot image capturer
       emulsion-palette
       calligraphy

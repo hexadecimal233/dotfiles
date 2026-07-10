@@ -18,7 +18,7 @@ in {
         "video" # gpu access
         # "input"
         "jackaudio"
-        "dialout" # external bus
+        "dialout" # external serial bus
         "docker" # docker mgmt
       ];
       shell = pkgs.fish;

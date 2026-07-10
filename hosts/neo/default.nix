@@ -65,7 +65,6 @@
       onActivation.cleanup = "none"; # keep manually installed packages
       casks = [
         "ghostty"
-        "firefox"
         "freetube"
         "utm"
         "stats"

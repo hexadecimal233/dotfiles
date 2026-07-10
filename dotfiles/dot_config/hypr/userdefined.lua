@@ -1,10 +1,9 @@
--- nwg-displays / monique manages monitors via ~/.config/hypr/monitors.lua
+-- monique manages monitors via ~/.config/hypr/monitors.lua
 -- falls back to nothing if monitors.lua doesn't exist (first boot)
 pcall(require, "monitors")
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("noctalia")
-    hl.exec_cmd("hyprctl setcursor aosp-cursors 24")
 end)
 
 -- Per-device input settings (sensitivity, scroll_factor, etc.)

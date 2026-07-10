@@ -1,8 +1,4 @@
-# external chezmoi file
-
 {{ if eq .chezmoi.os "linux" -}}
-# Rime grammar model — ~420MB, re-checks weekly
-# Requires librime-octagram or librime with grammar support
 [".local/share/fcitx5/rime/wanxiang-lts-zh-hans.gram"]
 type = "file"
 url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram"
@@ -12,8 +8,6 @@ refreshPeriod = "168h"
 type = "file"
 url = "https://raw.githubusercontent.com/shezdy/hyprsplit/6b00b677d8905fb38779c91e12d6294e0e586a44/init.lua"
 
-# Krita brush bundle — deevad 25-01 (CC-0)
-# Linux: ~/.local/share/krita/
 [".local/share/krita"]
 type = "archive"
 url = "https://www.peppercarrot.com/extras/resources/deevad-bundle_25.01.zip"
@@ -31,9 +25,14 @@ url = "https://gitlab.com/-/project/6703061/uploads/1947bc32837caa903cfabf16c809
 exact = true
 stripComponents = 1
 
+# FIXME: icons arent working...
+[".local/share/icons"]
+type = "archive"
+url = "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/refs/tags/20250501.zip"
+stripComponents = 1
+include = ["papirus-icon-theme-20250501/Papirus-*/**"]
 {{ end -}}
 
-# Windows: %APPDATA%/krita/
 {{ if eq .chezmoi.os "windows" -}}
 ["AppData/Roaming/krita"]
 type = "archive"

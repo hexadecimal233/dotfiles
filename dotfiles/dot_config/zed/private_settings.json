@@ -93,7 +93,11 @@
   "buffer_font_fallbacks": ["Menlo", ".ZedMono"],
   "ui_font_size": 16.0,
   "buffer_font_size": 15,
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Symbols Icon Theme",
+    "dark": "Symbols Icon Theme"
+  },
   "theme": {
     "mode": "dark",
     "light": "Pierre Light",
@@ -124,10 +128,11 @@
     "show_count_badge": false,
     "file_icons": false,
     "entry_primary_click_action": "file_diff",
-    "tree_view": true,
+    "tree_view": false,
     "dock": "left",
   },
   "project_panel": {
+    "git_status": true,
     "git_status_indicator": true,
     "diagnostic_badges": false,
     "bold_folder_labels": false,
@@ -202,6 +207,7 @@
     "svelte": true,
     "swift": false,
     "ssh-config": true,
+    "symbols": true,
     "toml": true,
     "typos": true,
     "vue": true,

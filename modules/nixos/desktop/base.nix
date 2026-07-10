@@ -27,10 +27,10 @@ in {
 
         # subpixel.lcdfilter = "none";
         defaultFonts = {
-          monospace = ["Maple Mono NF CN"];
+          monospace = ["Source Han Mono SC" "DejaVu Sans Mono"]; # fix falling back to Unifont in terminal scenario ✦
           emoji = ["Noto Color Emoji"];
           sansSerif = ["Source Han Sans SC" "Noto Sans"];
-          serif = ["Source Han Serif SC" "Noto Serif"];
+          serif = ["Source Han Serif SC" "Noto Serif" "Noto Sans"];
         };
 
         # a note here: NEVER use embolden! fucking hurts my eye and make fonts doubling

@@ -92,6 +92,7 @@ in {
       NIXOS_OZONE_WL = "1";
       QT_QPA_PLATFORM = "wayland";
       GDK_BACKEND = "wayland";
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
       TERMINAL = "ghostty";
       EDITOR = "hx";
       VISUAL = "zeditor";
