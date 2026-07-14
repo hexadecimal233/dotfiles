@@ -18,6 +18,8 @@ in {
     services.gvfs.enable = true; # nautilus file manager (trash, mounts)
     services.udisks2.mountOnMedia = false; # manual mount
     fonts = {
+      fontDir.enable = true; # fix flatpak apps broken font rendering (falling back to monospace)
+      # TODO: wait to be verified
       enableDefaultPackages = true;
       fontconfig = {
         enable = true;

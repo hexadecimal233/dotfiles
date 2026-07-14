@@ -43,6 +43,7 @@ hl.config({
             scroll_factor = 0.3,
             drag_lock = 2, -- sticky mode (lazy undrag)
         },
+        accel_profile = "flat",
         follow_mouse = 0,  -- Don't focus windows on hover (click/keybind only)
     },
     cursor = {

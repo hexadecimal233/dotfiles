@@ -2,58 +2,48 @@
 # my project structure bones
 
 
-let BASE = $"($nu.home-dir)/projects"
+let FOLDERS = [
+    # data folder
+    "data/extracted-exts" # chrome extracted extensions
+    "data/src" # random src (downloaded or private ig)
+    "data/archived" # (permanently) archived code
 
-let CATEGORIES = [
     # "nixos-config": clone this repo into the directory!!
-
-    "archived" # (permanently) archived code
-    "raw-src" # raw src (prob randomly downloaded code for some purposes)
-
-    "me-related"          # my website / profile / blogs
-
+    "projects/me-related"            # my website / profile / blogs
     # game dev
-    "games/general" # godot, unity, phaser, or self built engine games
-    "games/mod" # mod development
-    "games/mod/minecraft" # minecraft mod
-
-    "general"             # multilingual / large projects
-    "docs"                # documentational projects
-
+    "projects/games/general"         # godot, unity, phaser, or self built engine games
+    "projects/games/mod"             # mod development
+    "projects/games/mod/minecraft"   # minecraft mod
+    "projects/general"               # multilingual / large projects
+    "projects/docs"                  # documentational projects
     # art / design related stuff
-    "art/visual"          # motion graphics, pixel art, shaders, etc.
-    "art/audio"           # audio experiments
-
-    # code forks / contributions
-    "contributions/_archive"  # archived / stale contribs
-
+    "projects/art/visual"            # motion graphics, pixel art, shaders, etc.
+    "projects/art/audio"             # audio experiments
+    "projects/contributions" # code forks / contributions
     # language-specific projects
-    "languages/rust"
-    "languages/swift"
-    "languages/js"        # nodejs / bun library / projects
-    "languages/web"       # web-stack related
-    "languages/dotnet"    # csharp / dotnet projects
-    "languages/java"      # java / kotlin / jvm projects
-    "languages/python"
-    "languages/nix"
-    "languages/dart"      # dart / flutter
-    "languages/c"         # good ol' c language (c, c++, c3)
-    "languages/go"
-
+    "projects/languages/rust"
+    "projects/languages/swift"
+    "projects/languages/js"          # nodejs / bun library / projects
+    "projects/languages/web"         # web-stack related
+    "projects/languages/dotnet"      # csharp / dotnet projects
+    "projects/languages/java"        # java / kotlin / jvm projects
+    "projects/languages/python"
+    "projects/languages/nix"
+    "projects/languages/dart"        # dart / flutter
+    "projects/languages/c"           # good ol' c language (c, c++, c3)
+    "projects/languages/go"
     # platform-specific projects
-    "platform/hardware" # hardware/embedded
-    "platform/android"
-    "platform/linux"
-    "platform/windows"
-    "platform/apple"
+    "projects/platform/hardware"     # hardware/embedded
+    "projects/platform/android"
+    "projects/platform/linux"
+    "projects/platform/windows"
+    "projects/platform/apple"
 ]
 
-print $"(ansi green)ensuring project folder structure under ($BASE) ...(ansi reset)"
+print $"(ansi green)ensuring project folder structure under ($nu.home-dir) ...(ansi reset)"
 
-mkdir $BASE
-
-for cat in $CATEGORIES {
-    let target = $"($BASE)/($cat)"
+for folder in $FOLDERS {
+    let target = $"($nu.home-dir)/($folder)"
     if not ($target | path exists) {
         mkdir $target
         print $"- created: ($target)"

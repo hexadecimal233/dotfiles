@@ -35,10 +35,11 @@ in {
       desktop-file-utils # update-desktop-database
       seahorse # GNOME Keyring GUI (passwords & keys)
       nautilus # GNOME file manager (bound to SUPER+E)
-      nemo # may also try!
+      # nemo # may also try!
       # dolphin
       libreoffice-fresh
       obs-studio
+
       # reader / viewers
       foliate
       papers
@@ -48,8 +49,6 @@ in {
       zint-qt
 
       # TODO: add SnapX/Satty/Flameshot image capturer
-      emulsion-palette
-      calligraphy
       fluffychat # also outdated, currently just want to try it out
 
       gparted
@@ -62,7 +61,7 @@ in {
       # bitwarden-desktop FIXME: outdated electron
       sourcegit # todo: watch 4 updates
 
-      # hyprland-exclusiv! TODO: move to wm
+      # hyprland-exclusive! TODO: move to wm
       hyprshade
 
       fsearch
@@ -95,6 +94,7 @@ in {
       wl-clipboard # TODO: maybe try clipvault??
 
       imv # image viewer
+      bubblewrap
       # dunst
       inotify-tools
     ];

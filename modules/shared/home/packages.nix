@@ -30,6 +30,8 @@ in {
             # benchmarking / profiling
             inferno
             hyperfine
+            hyprpicker
+            xmrig
             hashcat # on macos try to use -d 1 to force metal
             clinfo # TODO: move to separate
 
