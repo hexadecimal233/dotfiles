@@ -3,7 +3,7 @@ if hl.plugin["hypr-kinetic-scroll"] then
     hl.config({
         plugin = {
             ["kinetic-scroll"] = {
-                enabled = true,
+                enabled = false,
                 decel = 12.0,
 
                 interval_ms = 8,

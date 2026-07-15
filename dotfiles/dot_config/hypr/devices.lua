@@ -1,6 +1,6 @@
 hl.device({
     name = "elan06b0:00-04f3:3327-touchpad",
-    sensitivity = 0,
+    sensitivity = -0.15,
     accel_profile = "adaptive",
 })
 

@@ -7,6 +7,7 @@ let FOLDERS = [
     "data/extracted-exts" # chrome extracted extensions
     "data/src" # random src (downloaded or private ig)
     "data/archived" # (permanently) archived code
+    "data/ai-data"
 
     # "nixos-config": clone this repo into the directory!!
     "projects/me-related"            # my website / profile / blogs

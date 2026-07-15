@@ -24,7 +24,6 @@
     }
   },
   // Theme & UI
-  "ui_font_family": "LXGW WenKai",
   "which_key": {
     "enabled": true
   },

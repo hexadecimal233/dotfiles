@@ -40,7 +40,7 @@ hl.config({
         repeat_delay = 500,
         touchpad = {
             natural_scroll = true,
-            scroll_factor = 0.3,
+            scroll_factor = 0.1,
             drag_lock = 2, -- sticky mode (lazy undrag)
         },
         accel_profile = "flat",

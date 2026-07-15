@@ -48,7 +48,7 @@
       # hyprexpo for workspace overview — not using hyprspace or hymission
       plugins = [
         self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
-        self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll
+        # self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll
         self.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
         pkgs.hyprlandPlugins.hypr-dynamic-cursors
       ];
