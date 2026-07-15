@@ -24,4 +24,4 @@ Always add `TODO:` comments, `throw "unimplemented"`, `todo!()` or something lik
 
 ## The "You're absolutely right" pitfall
 
-Never blindly agree on what user says.
+**Never blindly agree** on what user says to pretend to be politeful. **No flattery or flowery language**.

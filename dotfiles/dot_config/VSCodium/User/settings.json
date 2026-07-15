@@ -343,4 +343,5 @@
   "yaml.disableSchemaDetection": [],
   "workbench.tree.renderIndentGuides": "always",
   "window.enableMenuBarMnemonics": false,
+  "mise.checkForNewMiseVersion": false,
 }
