@@ -15,12 +15,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     # Clash Verge — GUI proxy client with mihomo kernel
-    programs.clash-verge = {
-      enable = true;
-      serviceMode = true;
-      tunMode = true;
-      autoStart = true;
-    };
+    # programs.clash-verge = {
+    #   enable = true;
+    #   serviceMode = true;
+    #   tunMode = true;
+    #   autoStart = true;
+    # };
 
     # --- pure mihomo (headless, no GUI) ---
     /*
