@@ -22,7 +22,6 @@ in {
       # TODO
       openspades
 
-      vesktop
       ayugram-desktop
       imhex
       zed-editor
