@@ -318,7 +318,6 @@
   "todo-tree.highlights.useColourScheme": true,
   "trailing-spaces.includeEmptyLines": false,
   "vscord.behaviour.suppressNotifications": true,
-  "window.openFoldersInNewWindow": "on",
   "window.systemColorTheme": "auto",
   "window.titleBarStyle": "custom",
   "winopacity.opacity": 255,

@@ -23,6 +23,7 @@ in {
           # nix
           alejandra
           nixd
+          tokei
 
           # justfile
           just-lsp

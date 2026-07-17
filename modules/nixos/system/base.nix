@@ -31,8 +31,13 @@ in {
     i18n.defaultLocale = "zh_CN.UTF-8"; # TODO: split form this file
 
     programs.fish.enable = true;
-    # FIXME: nix-ld enabled but no packages used yet
     programs.nix-ld.enable = true;
+
+    programs.nix-ld.libraries = with pkgs; [
+      libGL
+      glib
+      icu # FIXME: some dotnet program does not work
+    ];
 
     environment.systemPackages = with pkgs; [
       (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
