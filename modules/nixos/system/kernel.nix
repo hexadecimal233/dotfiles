@@ -6,6 +6,7 @@
 }: let
   cfg = config.hex.nixos.system.kernel;
 in {
+  # TODO: have a ntfs auto-load
   options.hex.nixos.system.kernel = {
     variant = lib.mkOption {
       type = lib.types.nullOr (lib.types.enum ["vanilla" "cachyos"]);

@@ -9,7 +9,12 @@
 {
   // LSP & Languages
   "lsp": {
-    "biome": { },
+    "biome": {},
+    "rust-analyzer": {
+      "binary": {
+        "path": "rust-analyzer",
+      },
+    },
   },
   "languages": {
     "Nix": {
@@ -18,26 +23,26 @@
       "formatter": {
         "external": {
           "command": "alejandra",
-          "arguments": []
-        }
+          "arguments": [],
+        },
       },
-    }
+    },
   },
   // Theme & UI
   "which_key": {
-    "enabled": true
+    "enabled": true,
   },
   "use_system_window_tabs": false,
   "terminal": {
     "show_count_badge": false,
     "toolbar": {
-      "breadcrumbs": false
-    }
+      "breadcrumbs": false,
+    },
   },
   "proxy": "",
   "completion_menu_scrollbar": "auto",
   "sticky_scroll": {
-    "enabled": true
+    "enabled": true,
   },
   "text_rendering_mode": "platform_default",
   "agent_ui_font_size": 15.0,
@@ -95,7 +100,7 @@
   "icon_theme": {
     "mode": "dark",
     "light": "Symbols Icon Theme",
-    "dark": "Symbols Icon Theme"
+    "dark": "Symbols Icon Theme",
   },
   "theme": {
     "mode": "dark",
