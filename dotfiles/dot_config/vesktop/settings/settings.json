@@ -190,9 +190,6 @@
         "KeepCurrentChannel": {
             "enabled": false
         },
-        "LastFMRichPresence": {
-            "enabled": false
-        },
         "LoadingQuotes": {
             "enabled": false
         },
@@ -746,6 +743,9 @@
         },
         "NoMiddleClickPaste": {
             "enabled": false
+        },
+        "MusicRichPresence": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -758,7 +758,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1781176888516
+        "settingsSyncVersion": 1784570070292
     },
     "enabledThemes": [
         "system24.theme.css"

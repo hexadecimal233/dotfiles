@@ -8,8 +8,36 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // LSP & Languages
+  "context_servers": {
+    "nixos": {
+      "enabled": true,
+      "remote": false,
+      "command": "uvx",
+      "args": [
+        "mcp-nixos"
+      ]
+    },
+    "mediawiki": {
+      "enabled": true,
+      "remote": false,
+      "command": "npx",
+      "args": [
+        "-y",
+        "@professional-wiki/mediawiki-mcp-server@latest"
+      ]
+    },
+    "deepwiki": {
+      "enabled": true,
+      "url": "https://mcp.deepwiki.com/mcp"
+    }
+  },
+  "soft_wrap": "editor_width",
   "lsp": {
-    "biome": {},
+    "biome": {
+      "settings": {
+        "require_config_file": true,
+      },
+    },
     "rust-analyzer": {
       "binary": {
         "path": "rust-analyzer",
@@ -46,7 +74,6 @@
   },
   "text_rendering_mode": "platform_default",
   "agent_ui_font_size": 15.0,
-  "ui_font_weight": 500.0,
   "buffer_font_weight": 400.0,
   "minimum_split_diff_width": 100.0,
   "git": {
@@ -105,12 +132,15 @@
   "theme": {
     "mode": "dark",
     "light": "Pierre Light",
-    "dark": "Pierre Dark",
+    "dark": "Gruvbox Dark",
   },
   // Misc
   "autosave": "on_focus_change",
   "diff_view_style": "split",
   "edit_predictions": {
+    "open_ai_compatible_api": {
+      "model": ""
+    },
     "provider": "zed",
     "allow_data_collection": "no",
   },
@@ -129,6 +159,7 @@
     "show": "always",
   },
   "git_panel": {
+    "group_by": "staging",
     "show_count_badge": false,
     "file_icons": false,
     "entry_primary_click_action": "file_diff",
@@ -156,13 +187,30 @@
     },
   },
   "agent": {
+    "sidebar_side": "right",
+    "enable_feedback": false,
+    "tool_permissions": {
+      "tools": {
+        "mcp:mediawiki:search-page": {
+          "default": "allow"
+        },
+        "mcp:mediawiki:get-page": {
+          "default": "allow"
+        }
+      }
+    },
+    "inline_assistant_model": {
+      "provider": "opencode",
+      "model": "go/deepseek-v4-flash",
+      "enable_thinking": false,
+    },
     "default_profile": "write",
     "commit_message_instructions": "If multiple changes are included, list each one briefly within 50 characters.",
     "show_turn_stats": true,
     "thinking_display": "always_expanded",
     "default_model": {
-      "provider": "deepseek",
-      "model": "deepseek-v4-flash",
+      "provider": "opencode",
+      "model": "go/deepseek-v4-pro",
       "enable_thinking": true,
       "effort": "high",
     },
@@ -173,7 +221,7 @@
   // Extensions
   "auto_install_extensions": {
     "astro": true,
-    "biome": true,
+    "biome": false,
     "catppuccin": false,
     "catppuccin-icons": false,
     "catppuccin-blur": false,
@@ -199,6 +247,8 @@
     "make": true,
     "mermaid": true,
     "material-icon-theme": true,
+    "mcp-server-context7": true,
+    "mcp-server-exa-search": true,
     "nix": true,
     "nu": true,
     "oxc": true,
@@ -206,6 +256,7 @@
     "powershell": true,
     "proto": true,
     "rainbow-csv": true,
+    "ron": true,
     "scss": true,
     "sql": true,
     "svelte": true,
