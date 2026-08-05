@@ -8,30 +8,37 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // LSP & Languages
+  "buffer_line_height": {
+    "custom": 1.399999976158142
+  },
+  "show_edit_predictions": false,
+  "helix_mode": false,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+  },
+  "relative_line_numbers": "disabled",
+  "collaboration_panel": {
+    "button": false,
+  },
   "context_servers": {
     "nixos": {
       "enabled": true,
       "remote": false,
       "command": "uvx",
-      "args": [
-        "mcp-nixos"
-      ]
+      "args": ["mcp-nixos"],
     },
     "mediawiki": {
       "enabled": true,
       "remote": false,
       "command": "npx",
-      "args": [
-        "-y",
-        "@professional-wiki/mediawiki-mcp-server@latest"
-      ]
+      "args": ["-y", "@professional-wiki/mediawiki-mcp-server@latest"],
     },
     "deepwiki": {
       "enabled": true,
-      "url": "https://mcp.deepwiki.com/mcp"
-    }
+      "url": "https://mcp.deepwiki.com/mcp",
+    },
   },
-  "soft_wrap": "editor_width",
+  "soft_wrap": "prefer_line",
   "lsp": {
     "biome": {
       "settings": {
@@ -41,6 +48,30 @@
     "rust-analyzer": {
       "binary": {
         "path": "rust-analyzer",
+      },
+    },
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "inlayHints": {
+            "variableTypes": {
+              "enabled": false,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": false,
+            },
+          },
+        },
+        "javascript": {
+          "inlayHints": {
+            "variableTypes": {
+              "enabled": false,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": false,
+            },
+          },
+        },
       },
     },
   },
@@ -55,6 +86,19 @@
         },
       },
     },
+    // make sure oxfmt does not take precedence
+    "TOML": {
+      "prettier": {
+        "allowed": false,
+      },
+      "formatter": [
+        {
+          "language_server": {
+            "name": "tombi",
+          },
+        },
+      ],
+    },
   },
   // Theme & UI
   "which_key": {
@@ -62,6 +106,7 @@
   },
   "use_system_window_tabs": false,
   "terminal": {
+    "font_size": 12.0,
     "show_count_badge": false,
     "toolbar": {
       "breadcrumbs": false,
@@ -122,8 +167,8 @@
   "buffer_font_family": "Maple Mono NF CN",
   "ui_font_fallbacks": [".SystemUIFont"],
   "buffer_font_fallbacks": ["Menlo", ".ZedMono"],
-  "ui_font_size": 16.0,
-  "buffer_font_size": 15,
+  "ui_font_size": 15.0,
+  "buffer_font_size": 12.0,
   "icon_theme": {
     "mode": "dark",
     "light": "Symbols Icon Theme",
@@ -131,15 +176,18 @@
   },
   "theme": {
     "mode": "dark",
-    "light": "Pierre Light",
-    "dark": "Gruvbox Dark",
+    "light": "One Light",
+    "dark": "Ayu Dark",
   },
   // Misc
   "autosave": "on_focus_change",
   "diff_view_style": "split",
   "edit_predictions": {
+    "copilot": {
+      "enable_next_edit_suggestions": true
+    },
     "open_ai_compatible_api": {
-      "model": ""
+      "model": "",
     },
     "provider": "zed",
     "allow_data_collection": "no",
@@ -191,17 +239,26 @@
     "enable_feedback": false,
     "tool_permissions": {
       "tools": {
-        "mcp:mediawiki:search-page": {
+        "mcp:deepwiki:ask_question": {
           "default": "allow"
         },
+        "mcp:mcp-server-context7:query-docs": {
+          "default": "allow",
+        },
+        "mcp:mcp-server-exa-search:web_search_exa": {
+          "default": "allow",
+        },
+        "mcp:mediawiki:search-page": {
+          "default": "allow",
+        },
         "mcp:mediawiki:get-page": {
-          "default": "allow"
-        }
-      }
+          "default": "allow",
+        },
+      },
     },
     "inline_assistant_model": {
       "provider": "opencode",
-      "model": "go/deepseek-v4-flash",
+      "model": "go/mimo-v2.5",
       "enable_thinking": false,
     },
     "default_profile": "write",
@@ -210,12 +267,25 @@
     "thinking_display": "always_expanded",
     "default_model": {
       "provider": "opencode",
-      "model": "go/deepseek-v4-pro",
+      "model": "go/deepseek-v4-flash",
       "enable_thinking": true,
-      "effort": "high",
+      "effort": "max",
     },
     "dock": "right",
-    "favorite_models": [],
+    "favorite_models": [
+      {
+        "provider": "opencode",
+        "model": "go/deepseek-v4-flash",
+        "enable_thinking": true,
+        "effort": "max"
+      },
+      {
+        "provider": "opencode",
+        "model": "go/deepseek-v4-pro",
+        "enable_thinking": true,
+        "effort": "max"
+      }
+    ],
     "model_parameters": [],
   },
   // Extensions
@@ -237,7 +307,7 @@
     "gotmpl": true,
     "git-firefly": true,
     "java": false,
-    "json5": false,
+    "json5": true,
     "just": true,
     "lua": true,
     "luau": false,
@@ -264,6 +334,7 @@
     "ssh-config": true,
     "symbols": true,
     "toml": true,
+    "tombi": true,
     "typos": true,
     "vue": true,
     "wakatime": true,

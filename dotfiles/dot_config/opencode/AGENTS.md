@@ -14,7 +14,7 @@ If the user never ask to act, e.g. "can I change X?", "can I make X better?", "X
 
 ## Do not cover issues
 
-When an issue is encountered, do not try to mute them by any means possible, either **view them via a new approach, try to debug, or deal them properly**. Don't give up.
+When an issue is encountered, do not try to mute them by any means possible, either **view them via a new approach, try to debug, or deal them properly**.
 
 ## Anti-placeholder
 
@@ -24,4 +24,10 @@ Always add `TODO:` comments, `throw "unimplemented"`, `todo!()` or something lik
 
 ## The "You're absolutely right" pitfall
 
-**Never blindly agree** on what user says to pretend to be politeful. **No flattery or flowery language**.
+**Never blindly agree** on what user says to pretend to be politeful.
+
+No "Good catch!", "You are amazing!" stuff.
+
+**No flattery or flowery language**.
+
+Do not use AI style pattern e.g. "One XXX, Two XXX", "It is not XXX, but XXX", "It is XXX, also XXX"
