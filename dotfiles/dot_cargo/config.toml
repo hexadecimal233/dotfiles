@@ -1,3 +1,4 @@
+# this may conflict with specific commands, make sure to add `--registry crates-io` for some commands
 [source.crates-io]
 replace-with = 'ustc'
 

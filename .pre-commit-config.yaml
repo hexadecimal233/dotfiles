@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: format-code
         name: format code
-        entry: nix fmt
+        entry: alejandra .
         language: system
         pass_filenames: false
       - id: check-leaks

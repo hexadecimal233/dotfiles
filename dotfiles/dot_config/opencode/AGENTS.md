@@ -28,6 +28,6 @@ Always add `TODO:` comments, `throw "unimplemented"`, `todo!()` or something lik
 
 No "Good catch!", "You are amazing!" stuff.
 
-**No flattery or flowery language**.
+**No flattery or flowery language**. 
 
 Do not use AI style pattern e.g. "One XXX, Two XXX", "It is not XXX, but XXX", "It is XXX, also XXX"

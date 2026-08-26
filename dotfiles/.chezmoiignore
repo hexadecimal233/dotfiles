@@ -3,11 +3,6 @@
 Library
 {{ end }}
 
-# Windows exclusive
-{{ if ne .chezmoi.os "windows" }}
-AppData
-{{ end }}
-
 # Linux exclusive
 # "dot_" prefixes are parsed before ignore takes effect.
 {{ if ne .chezmoi.os "linux" }}

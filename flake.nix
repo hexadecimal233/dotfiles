@@ -153,12 +153,5 @@
         ];
       };
     };
-
-    formatter = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      pkgs.writeShellScriptBin "alejandra-wrapper" ''
-        exec ${pkgs.alejandra}/bin/alejandra .
-      '');
   };
 }

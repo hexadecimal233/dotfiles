@@ -32,10 +32,3 @@ url = "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/refs
 stripComponents = 1
 include = ["papirus-icon-theme-20250501/Papirus-*/**"]
 {{ end -}}
-
-{{ if eq .chezmoi.os "windows" -}}
-["AppData/Roaming/krita"]
-type = "archive"
-url = "https://www.peppercarrot.com/extras/resources/deevad-bundle_25.01.zip"
-path = "Deevad_25.01.bundle"
-{{ end -}}

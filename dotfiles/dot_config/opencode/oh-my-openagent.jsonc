@@ -4,70 +4,70 @@
   "agents": {
     // 核心 Orchestrator – 困难任务
     "sisyphus": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "prometheus": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "atlas": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     // 深度推理/架构 Agent – 困难任务
     "hephaestus": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "oracle": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "metis": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "momus": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     // 工具型/检索型 Agent – 简单任务（速度快，成本低）
     "librarian": {
       "model": "opencode/mimo-v2.5-free",
     },
     "explore": {
-      "model": "deepseek/deepseek-v4-flash",
+      "model": "opencode-go/deepseek-v4-flash",
     },
     "multimodal-looker": {
-      "model": "deepseek/deepseek-v4-flash",
+      "model": "opencode-go/deepseek-v4-flash",
     },
     // Sisyphus-Junior 通常不需要单独配置，它会使用 category 的模型
     // 但如果您想强制统一，也可以取消注释：
     // "sisyphus-junior": {
-    //   "model": "deepseek/deepseek-v4-pro"
+    //   "model": "opencode-go/gpt-5.6-luna"
     // }
   },
   // ========== Category 配置（控制 task() 委托的子任务模型） ==========
   "categories": {
     // 困难任务 → pro 版本
     "ultrabrain": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "deep": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "unspecified-high": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "visual-engineering": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     "artistry": {
-      "model": "deepseek/deepseek-v4-pro",
+      "model": "opencode-go/gpt-5.6-luna",
     },
     // 简单任务 → flash 版本
     "quick": {
-      "model": "deepseek/deepseek-v4-flash",
+      "model": "opencode-go/deepseek-v4-flash",
     },
     "unspecified-low": {
-      "model": "deepseek/deepseek-v4-flash",
+      "model": "opencode-go/deepseek-v4-flash",
     },
     "writing": {
-      "model": "deepseek/deepseek-v4-flash",
+      "model": "opencode-go/deepseek-v4-flash",
     },
   },
   "git_master": {

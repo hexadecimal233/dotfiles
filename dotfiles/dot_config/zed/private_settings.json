@@ -8,8 +8,9 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // LSP & Languages
+  "gutter": {},
   "buffer_line_height": {
-    "custom": 1.399999976158142
+    "custom": 1.399999976158142,
   },
   "show_edit_predictions": false,
   "helix_mode": false,
@@ -21,6 +22,15 @@
     "button": false,
   },
   "context_servers": {
+    "godot": {
+      "enabled": true,
+      "remote": false,
+      "command": "bunx",
+      "args": ["@coding-solo/godot-mcp"],
+      "env": {
+        "GODOT_PATH": "/Applications/Godot.app/Contents/MacOS/Godot",
+      },
+    },
     "nixos": {
       "enabled": true,
       "remote": false,
@@ -30,7 +40,7 @@
     "mediawiki": {
       "enabled": true,
       "remote": false,
-      "command": "npx",
+      "command": "bunx",
       "args": ["-y", "@professional-wiki/mediawiki-mcp-server@latest"],
     },
     "deepwiki": {
@@ -53,6 +63,10 @@
     "vtsls": {
       "settings": {
         "typescript": {
+          "referencesCodeLens": {
+            "enabled": false,
+            "showOnAllFunctions": false,
+          },
           "inlayHints": {
             "variableTypes": {
               "enabled": false,
@@ -63,6 +77,10 @@
           },
         },
         "javascript": {
+          "referencesCodeLens": {
+            "enabled": false,
+            "showOnAllFunctions": false,
+          },
           "inlayHints": {
             "variableTypes": {
               "enabled": false,
@@ -76,6 +94,30 @@
     },
   },
   "languages": {
+    "TSX": {
+      "tab_size": 2,
+    },
+    "Vue.js": {
+      "tab_size": 2,
+    },
+    "Svelte": {
+      "tab_size": 2,
+    },
+    "SASS": {
+      "tab_size": 2,
+    },
+    "CSS": {
+      "tab_size": 2,
+    },
+    "Go HTML Template": {
+      "tab_size": 2,
+    },
+    "Astro": {
+      "tab_size": 2,
+    },
+    "HTML": {
+      "tab_size": 2,
+    },
     "Nix": {
       "language_servers": ["nixd"], // we do not use nil
       "tab_size": 2,
@@ -176,15 +218,15 @@
   },
   "theme": {
     "mode": "dark",
-    "light": "One Light",
-    "dark": "Ayu Dark",
+    "light": "Pierre Light",
+    "dark": "Gruvbox Dark",
   },
   // Misc
   "autosave": "on_focus_change",
   "diff_view_style": "split",
   "edit_predictions": {
     "copilot": {
-      "enable_next_edit_suggestions": true
+      "enable_next_edit_suggestions": true,
     },
     "open_ai_compatible_api": {
       "model": "",
@@ -235,12 +277,31 @@
     },
   },
   "agent": {
+    "auto_compact": {
+      "threshold": 9999999999,
+    },
     "sidebar_side": "right",
     "enable_feedback": false,
     "tool_permissions": {
       "tools": {
+        "terminal": {
+          "default": "allow",
+        },
+        "write_file": {
+          "default": "allow",
+        },
+        "move_path": {
+          "default": "allow",
+        },
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://town-of-salem\\.fandom\\.com",
+            },
+          ],
+        },
         "mcp:deepwiki:ask_question": {
-          "default": "allow"
+          "default": "allow",
         },
         "mcp:mcp-server-context7:query-docs": {
           "default": "allow",
@@ -267,7 +328,7 @@
     "thinking_display": "always_expanded",
     "default_model": {
       "provider": "opencode",
-      "model": "go/deepseek-v4-flash",
+      "model": "go/gpt-5.6-luna",
       "enable_thinking": true,
       "effort": "max",
     },
@@ -277,25 +338,26 @@
         "provider": "opencode",
         "model": "go/deepseek-v4-flash",
         "enable_thinking": true,
-        "effort": "max"
+        "effort": "max",
       },
       {
         "provider": "opencode",
         "model": "go/deepseek-v4-pro",
         "enable_thinking": true,
-        "effort": "max"
-      }
+        "effort": "max",
+      },
     ],
     "model_parameters": [],
   },
   // Extensions
   "auto_install_extensions": {
     "astro": true,
-    "biome": false,
+    "biome": true,
     "catppuccin": false,
     "catppuccin-icons": false,
     "catppuccin-blur": false,
     "comment": true,
+    "csharp": true,
     "dart": false,
     "discord-presence": true,
     "dockerfile": true,
@@ -306,7 +368,7 @@
     "glsl": true,
     "gotmpl": true,
     "git-firefly": true,
-    "java": false,
+    "java": true,
     "json5": true,
     "just": true,
     "lua": true,
@@ -315,6 +377,7 @@
     "ini": true,
     "kotlin": false,
     "make": true,
+    "github-theme": true,
     "mermaid": true,
     "material-icon-theme": true,
     "mcp-server-context7": true,
@@ -338,6 +401,7 @@
     "typos": true,
     "vue": true,
     "wakatime": true,
+    "wgsl-wesl": true,
     "xml": true,
     "zig": false,
   },
