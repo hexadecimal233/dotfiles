@@ -3,7 +3,10 @@
     "autoUpdate": true,
     "autoUpdateNotification": true,
     "useQuickCss": true,
-    "themeLinks": [],
+    "themeLinks": [
+        "#https://raw.githubusercontent.com/DiscordStyles/HorizontalServerList/deploy/HorizontalServerList.theme.css",
+        "https://raw.githubusercontent.com/craftablescience/Discord-Square-Theme/refs/heads/main/square.theme.css"
+    ],
     "enableReactDevtools": true,
     "frameless": false,
     "transparent": false,
@@ -63,7 +66,7 @@
             "file": true
         },
         "AnonymiseFileNames": {
-            "enabled": true,
+            "enabled": false,
             "anonymiseByDefault": true,
             "method": 0,
             "randomisedLength": 7,
@@ -73,14 +76,14 @@
             "enabled": false
         },
         "BetterFolders": {
-            "enabled": true,
-            "sidebar": true,
-            "showFolderIcon": 1,
+            "enabled": false,
+            "sidebar": false,
+            "showFolderIcon": 0,
             "keepIcons": false,
             "closeAllHomeButton": false,
             "closeAllFolders": false,
             "forceOpen": false,
-            "sidebarAnim": true,
+            "sidebarAnim": false,
             "closeOthers": false
         },
         "BetterGifAltText": {
@@ -307,7 +310,7 @@
             "enabled": false
         },
         "ReadAllNotificationsButton": {
-            "enabled": true
+            "enabled": false
         },
         "RelationshipNotifier": {
             "enabled": false
@@ -329,7 +332,8 @@
             "replaceMessageContents": true
         },
         "ServerListIndicators": {
-            "enabled": false
+            "enabled": false,
+            "mode": 2
         },
         "ShikiCodeblocks": {
             "enabled": false,
@@ -712,7 +716,9 @@
             "addBack": false
         },
         "WebKeybinds": {
-            "enabled": true
+            "enabled": true,
+            "showNavigationButtons": true,
+            "overrideCommonKeybinds": true
         },
         "WebScreenShareFixes": {
             "enabled": true
@@ -746,6 +752,9 @@
         },
         "MusicRichPresence": {
             "enabled": false
+        },
+        "TenorGifSearch": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -758,11 +767,9 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1784570070292
+        "settingsSyncVersion": 1787836826170
     },
-    "enabledThemes": [
-        "system24.theme.css"
-    ],
+    "enabledThemes": [],
     "eagerPatches": false,
     "uiElements": {
         "chatBarButtons": {},
