@@ -18,7 +18,7 @@ in {
         prek # a pre-commit alternative
         jujutsu
         delta
-        lazygit
+        # lazygit
       ];
     };
   };

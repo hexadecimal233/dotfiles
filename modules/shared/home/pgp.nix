@@ -22,7 +22,6 @@ in {
 
       home.packages = with pkgs; [
         # gnupg, consider moving to sequoia
-        gpg-tui
         sequoia-chameleon-gnupg # will override gpg commma
         sequoia-sq # still does not support pq :(
       ];
