@@ -72,7 +72,6 @@
     };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;
-    hex.shared.home.editor.enable = true;
     hex.shared.home.dev = {
       enable = true;
       ai.enable = true;
@@ -89,8 +88,6 @@
       hosting = true;
     };
     hex.shared.home.pgp.enable = true;
-    hex.shared.home.java.enable = true;
-    hex.shared.home.java.legacy = true;
     hex.nixos.home.desktop = {
       enable = true;
       noctalia.enable = true;
@@ -129,18 +126,6 @@
           nativeBuildInputs = (old.nativeBuildInputs or []) ++ [final.itstool];
         });
       })
-
-      # TODO: remove this later
-      # Patch hypr-dynamic-cursors: linear bezier for shake magnification
-      # (final: prev: {
-      #   hyprlandPlugins =
-      #     prev.hyprlandPlugins
-      #     // {
-      #       hypr-dynamic-cursors = prev.hyprlandPlugins.hypr-dynamic-cursors.overrideAttrs (old: {
-      #         patches = (old.patches or []) ++ ["${self}/packages/patches/hypr-dynamic-cursors/linear-bezier.patch"];
-      #       });
-      #     };
-      # })
     ];
 
     home-manager.users.hexzii.home.packages = [

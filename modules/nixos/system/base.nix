@@ -22,7 +22,7 @@ in {
         "docker" # docker mgmt
       ];
       shell = pkgs.fish;
-      initialPassword = "123456";
+      initialPassword = "123456"; # betterleaks:allow
     };
 
     # console.font = "LatArCyrHeb-16"; @ tty does not support cn font
@@ -37,13 +37,6 @@ in {
       libGL
       glib
       icu # FIXME: some dotnet program does not work
-    ];
-
-    environment.systemPackages = with pkgs; [
-      (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
-      (writeShellScriptBin "escape" (builtins.readFile (self + "/scripts/escape.sh")))
-      (writeShellScriptBin "opencode-workspace" (builtins.readFile (self + "/scripts/opencode-workspace.sh")))
-      (writeScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.nu")))
     ];
   };
 }

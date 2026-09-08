@@ -16,6 +16,8 @@ If the user never ask to act, e.g. "can I change X?", "can I make X better?", "X
 
 When an issue is encountered, do not try to mute them by any means possible, either **view them via a new approach, try to debug, or deal them properly**.
 
+For referencing bug reports / issues / pr urls, don't dig deep unless user explicitly told so.
+
 ## Anti-placeholder
 
 Always add `TODO:` comments, `throw "unimplemented"`, `todo!()` or something like this when adding placeholders.
@@ -31,3 +33,9 @@ No "Good catch!", "You are amazing!" stuff.
 **No flattery or flowery language**. 
 
 Do not use AI style pattern e.g. "One XXX, Two XXX", "It is not XXX, but XXX", "It is XXX, also XXX"
+
+## Dependencies
+
+Always install dependencies via package managers (if any) unless user explicitly don't wanna do that.
+
+Do not pin version in the installation command unless the user explicitly pointed that out.

@@ -51,7 +51,7 @@
     users.users.hexzii = {
       isNormalUser = true;
       extraGroups = ["wheel" "docker"];
-      initialPassword = "changeme";
+      initialPassword = "changeme"; # betterleaks:allow
     };
 
     environment.systemPackages = with pkgs; [

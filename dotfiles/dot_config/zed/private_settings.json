@@ -1,11 +1,3 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
   // LSP & Languages
   "gutter": {},
@@ -277,6 +269,9 @@
     },
   },
   "agent": {
+    "sandbox_permissions": {
+      "allow_unsandboxed": true
+    },
     "auto_compact": {
       "threshold": 9999999999,
     },
@@ -284,6 +279,9 @@
     "enable_feedback": false,
     "tool_permissions": {
       "tools": {
+        "mcp:mcp-server-context7:resolve-library-id": {
+          "default": "allow"
+        },
         "terminal": {
           "default": "allow",
         },
@@ -294,10 +292,17 @@
           "default": "allow",
         },
         "fetch": {
+          "default": "allow",
           "always_allow": [
             {
-              "pattern": "^https?://town-of-salem\\.fandom\\.com",
+              "pattern": "^https?://town-of-salem\\.fandom\\.com"
             },
+            {
+              "pattern": "^https?://raw\\.githubusercontent\\.com"
+            },
+            {
+              "pattern": "^https?://atproto\\.com"
+            }
           ],
         },
         "mcp:deepwiki:ask_question": {
@@ -328,9 +333,9 @@
     "thinking_display": "always_expanded",
     "default_model": {
       "provider": "opencode",
-      "model": "go/gpt-5.6-luna",
+      "model": "go/hy3",
       "enable_thinking": true,
-      "effort": "max",
+      "effort": "high",
     },
     "dock": "right",
     "favorite_models": [
@@ -338,14 +343,14 @@
         "provider": "opencode",
         "model": "go/deepseek-v4-flash",
         "enable_thinking": true,
-        "effort": "max",
+        "effort": "high"
       },
       {
         "provider": "opencode",
         "model": "go/deepseek-v4-pro",
         "enable_thinking": true,
-        "effort": "max",
-      },
+        "effort": "max"
+      }
     ],
     "model_parameters": [],
   },

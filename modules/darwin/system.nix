@@ -20,19 +20,5 @@ in {
     programs.fish.enable = true;
     environment.shells = [pkgs.fish]; # add fish to /etc/shells
     # don't forget to run sudo chsh -l /path/to/fish hexzii
-
-    # system packages (darwin-safe)
-    environment.systemPackages = with pkgs;
-      [
-        (writeShellScriptBin "sudo-proxy" (builtins.readFile (self + "/scripts/sudo-proxy.sh")))
-        (writeScriptBin "set-chezmoi-dir" (builtins.readFile (self + "/scripts/set-chezmoi-dir.nu")))
-        (writeShellScriptBin "escape" (builtins.readFile (self + "/scripts/escape.sh")))
-        (writeShellScriptBin "opencode-workspace" (builtins.readFile (self + "/scripts/opencode-workspace.sh")))
-        (writeShellScriptBin "unquarantine" (builtins.readFile (self + "/scripts/macos/unquarantine.sh")))
-        (writeShellScriptBin "speakup" (builtins.readFile (self + "/scripts/macos/speakup.sh")))
-      ]
-      ++ [
-        (pkgs.callPackage (self + "/packages/jhentai.nix") {})
-      ];
   };
 }

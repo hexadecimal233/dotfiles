@@ -26,7 +26,7 @@ in {
           # per-system timer are handled separately
           if pkgs.stdenv.isDarwin
           then {
-            interval = {Weekday = 0;}; # launchd timers
+            # interval = {Weekday = 0;}; # launchd timers
           }
           else {
             dates = "weekly"; # systemd timers
@@ -46,7 +46,6 @@ in {
         "7zip-zstd"
         "uasm" # 7zip rar need this
         "ouch"
-        "vcv-rack"
       ];
   };
 }

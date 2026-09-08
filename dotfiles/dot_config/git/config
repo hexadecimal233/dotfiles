@@ -1,0 +1,50 @@
+[alias]
+	acp = "!f() { git add . && git commit -m \"$*\" && git push; }; f"
+	amend = "commit --amend --no-edit"
+	br = "branch -vv"
+	ca = "commit --amend"
+	cb = "checkout -b"
+	ci = "commit"
+	cm = "commit -m"
+	co = "checkout"
+	diff = "diff --color"
+	diffs = "diff --staged"
+	difft = "-c diff.external=difft --no-pager diff"
+	fch = "fetch --prune"
+	fuck = "commit --amend --no-edit"
+	lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	lga = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+	pl = "pull"
+	psh = "push"
+	pshf = "push --force-with-lease"
+	st = "status -sb"
+	undo = "reset --soft HEAD^"
+	unstage = "reset HEAD --"
+
+[commit]
+	gpgsign = true
+
+[credential "https://github.com"]
+	helper = "gh auth git-credential" # we need gh client
+
+[delta]
+
+[http]
+	postBuffer = 524288000
+
+[init]
+	defaultBranch = "main"
+
+[interactive]
+	diffFilter = "delta --color-only" # we need delta here
+
+[pager]
+	blame = "delta"
+	diff = "delta"
+	log = "delta"
+	show = "delta"
+
+[user]
+	email = "hexzii@nichijou.moe"
+	name = "hexzii"
+	signingkey = "56E37FD683665A11F626C061BC5D89640D000721" # betterleaks:allow

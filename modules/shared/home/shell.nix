@@ -12,27 +12,6 @@ in {
     home-manager.users.hexzii = {
       programs.fish = {
         enable = true;
-
-        shellInit = ''
-          set -g fish_greeting ""
-        '';
-
-        shellAliases = {
-          cd = "z";
-          cat = "bat";
-          ls = "eza";
-          ll = "eza -l";
-          la = "eza -la";
-          lt = "eza --tree";
-          top = "btop";
-          tokscale = "bunx tokscale@latest"; # count tokens
-          maleme = "bunx maleme@latest"; # triggered!!
-          parrot-live = "curl parrot.live";
-          oc = "opencode";
-          ff = "fastfetch";
-          hy = "hyfetch";
-          cz = "chezmoi";
-        };
       };
 
       programs.starship.enable = true;
@@ -54,10 +33,16 @@ in {
         nix-direnv.enable = true;
       };
 
+      programs.mise = {
+        enable = true;
+        # enableFishIntegration defaults to true via home.shell.enableFishIntegration
+      };
+
       home.packages = with pkgs; [
         tmux
         zellij
         nushell
+        helix
       ];
     };
   };

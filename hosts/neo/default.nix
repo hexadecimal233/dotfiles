@@ -31,7 +31,6 @@
     };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;
-    hex.shared.home.editor.enable = true;
     hex.shared.home.dev = {
       enable = true;
       ai.enable = true;
@@ -63,39 +62,6 @@
     homebrew = {
       enable = true;
       onActivation.cleanup = "none"; # keep manually installed packages
-      casks = [
-        "ghostty"
-        "freetube"
-        "utm"
-        "stats"
-        "vscodium"
-        "rekordbox"
-        # "middleclick" # does not work very well duh
-        # bitwarden: installed via appstore
-        "vesktop"
-        "julyx10/lap/lap"
-        "viarotel-org/escrcpy/escrcpy"
-        "iina"
-        "zed"
-        "sourcegit"
-        "pika"
-        "localsend"
-        "keepingyouawake"
-        "renode/tap/renode"
-        "gpgfrontend" # would not use system gnupg btw
-        # "brewforge/extras/lyricsx-mxiris"
-        # "tabby" # multi-remote shell client, NOTE: still not very good
-        # "warp"
-        # "clash-verge-rev" install separately to prevent install conflicts
-        # "gitbutler" 这东西太超前了只能说
-        "hewigovens/tap/jayjay" # for jujustu, TODO: there's a crossplatform edit coming soon
-        "neighbor-z/swiftmtp/swiftmtp"
-        "UniClipboard/tap/uniclipboard"
-        "tailscale-app"
-        # fixme: fails after 2026/09/01due to fails_gatekeeper_check
-        "glance-chamburr" # quicklook enhancements
-        "ayugram"
-      ];
     };
   };
 }

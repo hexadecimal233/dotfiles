@@ -58,18 +58,5 @@ in {
         '';
       };
     };
-
-    # sessionVariables only works on linux during the whole session
-    # variables only take effect in shell sessions.
-    environment.variables = {
-      # disable telemetry
-      OMO_DISABLE_POSTHOG = "1"; # oh-my-openagent
-      OMO_SEND_ANONYMOUS_TELEMETRY = "0";
-      WRANGLER_SEND_METRICS = "false";
-      ASTRO_TELEMETRY_DISABLED = "1"; # astro
-
-      # https://github.com/cloudflare/workers-sdk/issues/8158, fix workerd untrusted certificate
-      NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/ca-certificates.crt";
-    };
   };
 }

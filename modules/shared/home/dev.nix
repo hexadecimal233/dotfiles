@@ -48,24 +48,8 @@ in {
           bun
         ]
         ++ lib.optionals cfg.ai.enable [
-          opencode
           rtk # token optimizer
-          entire # logger, yet outdated
         ];
-
-      home.sessionPath = [
-        "$HOME/.bun/bin"
-        "$HOME/.local/share/pnpm/bin"
-
-        # below unrecommended, but added just in case
-        "$HOME/.cargo/bin"
-        "$HOME/go/bin"
-      ];
-
-      programs.mise = {
-        enable = true;
-        # enableFishIntegration defaults to true via home.shell.enableFishIntegration
-      };
     };
   };
 }

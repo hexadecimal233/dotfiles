@@ -44,7 +44,6 @@
     };
     hex.shared.home.shell.enable = true;
     hex.shared.home.git.enable = true;
-    hex.shared.home.editor.enable = true;
     hex.shared.home.dev = {
       enable = true;
       ai.enable = true;
