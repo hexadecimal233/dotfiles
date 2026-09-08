@@ -3,7 +3,6 @@
   lib,
   config,
   pkgs,
-  self,
   ...
 }: let
   cfg = config.hex.darwin.system;

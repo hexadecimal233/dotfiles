@@ -53,6 +53,7 @@
     };
     hex.nixos.desktop = {
       base.enable = true;
+      fonts.enable = true;
       wm = "hyprland";
       audio = {
         enable = true;

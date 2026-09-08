@@ -14,31 +14,13 @@ in {
         enable = true;
       };
 
-      programs.starship.enable = true;
-
-      # atuin - a bit heavy
-      # programs.atuin = {
-      #   enable = true;
-      #   enableFishIntegration = true;
-      # };
-
-      programs.zoxide = {
-        enable = true;
-        enableFishIntegration = true;
-      };
-
-      programs.direnv = {
-        enable = true;
-        enableFishIntegration = true;
-        nix-direnv.enable = true;
-      };
-
-      programs.mise = {
-        enable = true;
-        # enableFishIntegration defaults to true via home.shell.enableFishIntegration
-      };
-
       home.packages = with pkgs; [
+        fish
+        starship
+        zoxide
+        direnv
+        nix-direnv # will do this later
+        mise
         tmux
         zellij
         nushell
