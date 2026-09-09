@@ -112,7 +112,7 @@
       "tab_size": 2,
     },
     "Nix": {
-      // "language_servers": ["nixd"], // we do not use nil
+      "language_servers": [""], // we do not use nil nor nixd
       "tab_size": 2,
       "formatter": {
         "external": {
@@ -141,7 +141,9 @@
   },
   "use_system_window_tabs": false,
   "terminal": {
-    "shell": "system",
+    "shell": {
+      "program": "fish"
+    },
     "font_size": 12.0,
     "show_count_badge": false,
     "toolbar": {
@@ -331,7 +333,7 @@
       "enable_thinking": false,
     },
     "default_profile": "write",
-    "commit_message_instructions": "If multiple changes are included, list each one briefly within 50 characters.",
+    "commit_message_instructions": "Use Conventional Commits. If multiple changes are included, list each one briefly within 50 characters.",
     "show_turn_stats": true,
     "thinking_display": "always_expanded",
     "default_model": {

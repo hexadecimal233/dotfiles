@@ -2,3 +2,6 @@
 node = "26"
 # "cargo:https://github.com/oxalica/nil" = { version = "tag:2026-07-23", crate = "nil" }
 "cargo:inferno" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+opencode = "latest"
+bun = "latest"
