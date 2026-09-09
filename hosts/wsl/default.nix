@@ -28,7 +28,6 @@
     };
     hex.shared.system = {
       enable = true;
-      tools.enable = true;
     };
     hex.nixos.desktop = {
       base.enable = true;
@@ -43,23 +42,9 @@
       enable = true;
       fonts.enable = true;
     };
-    hex.shared.home.shell.enable = true;
-    hex.shared.home.git.enable = true;
     hex.shared.home.dev = {
       enable = true;
-      ai.enable = true;
-      nodejs.enable = true;
     };
-    hex.shared.home.packages = {
-      enable = true;
-      systemTools = true;
-      dataProcessing = true;
-      fileTools = true;
-      mediaUtils = true;
-      network = true;
-      beautify = true;
-    };
-    hex.shared.home.pgp.enable = true;
 
     # WSL-specific (not abstracted, written directly)
     wsl.enable = true;

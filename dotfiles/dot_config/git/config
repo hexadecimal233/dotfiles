@@ -48,3 +48,9 @@
 	email = "hexzii@nichijou.moe"
 	name = "hexzii"
 	signingkey = "56E37FD683665A11F626C061BC5D89640D000721" # betterleaks:allow
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

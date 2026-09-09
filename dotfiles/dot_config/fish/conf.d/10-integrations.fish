@@ -5,3 +5,6 @@ if status is-interactive
     type -q direnv;   and direnv hook fish | source
     type -q mise;     and mise activate fish | source
 end
+
+set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
+carapace _carapace | source

@@ -26,7 +26,7 @@ in {
           # per-system timer are handled separately
           if pkgs.stdenv.isDarwin
           then {
-            # interval = {Weekday = 0;}; # launchd timers
+            interval = {Weekday = 0;}; # launchd timers
           }
           else {
             dates = "weekly"; # systemd timers
@@ -38,10 +38,6 @@ in {
       builtins.elem (lib.getName pkg) [
         "aseprite"
         "cavalry"
-        "reaper"
-        "bitwig-studio"
-        "jetbrains-toolbox"
-        "warp-terminal"
         "unrar"
         "7zip-zstd"
         "uasm" # 7zip rar need this
