@@ -70,9 +70,6 @@
         enable = true;
       };
     };
-    hex.shared.home.dev = {
-      enable = true;
-    };
     hex.nixos.home.desktop = {
       enable = true;
       noctalia.enable = true;

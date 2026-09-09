@@ -112,7 +112,7 @@
       "tab_size": 2,
     },
     "Nix": {
-      "language_servers": ["nixd"], // we do not use nil
+      // "language_servers": ["nixd"], // we do not use nil
       "tab_size": 2,
       "formatter": {
         "external": {

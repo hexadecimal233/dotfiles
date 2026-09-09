@@ -37,7 +37,6 @@ audit os host:
 #
 # Usage:
 #   just flamegraph nixos thinkpad
-# just flamegraph darwin neo
 flamegraph os host:
     #!/usr/bin/env bash
     set -euo pipefail
@@ -46,9 +45,8 @@ flamegraph os host:
 
     case "$OS" in
         nixos) prefix="nixosConfigurations";  suffix="config.system.build.toplevel" ;;
-        darwin) prefix="darwinConfigurations"; suffix="system" ;;
         *)
-            echo "Usage: just flamegraph <nixos|darwin> <host>"
+            echo "Usage: just flamegraph nixos <host>"
             exit 1
             ;;
     esac

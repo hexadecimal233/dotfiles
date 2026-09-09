@@ -20,11 +20,12 @@ alias cz="chezmoi"
 
 # paths
 
-# Darwin: keep nix-darwin + home-manager + homebrew on PATH
+# Darwin: official Homebrew shell env (PATH + HOMEBREW_PREFIX/CELLAR/REPOSITORY
+# + MANPATH/INFOPATH). `brew shellenv fish` emits fish-native commands.
 if test (uname) = Darwin
-    fish_add_path --prepend --global \
-        /opt/homebrew/bin \
-        /opt/homebrew/sbin
+    if test -x /opt/homebrew/bin/brew
+        /opt/homebrew/bin/brew shellenv fish | source
+    end
 end
 
 set -gx PATH $PATH ~/user/scripts

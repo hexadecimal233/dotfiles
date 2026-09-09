@@ -8,6 +8,11 @@
 
 # Interactive only (zsh only sources .zshrc for interactive shells anyway).
 if [[ -o interactive ]]; then
+  # Homebrew shell env (macOS). `brew shellenv` emits POSIX `export` lines.
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+
   # direnv
   command -v direnv  >/dev/null 2>&1 && eval "$(direnv hook zsh)"
   # mise

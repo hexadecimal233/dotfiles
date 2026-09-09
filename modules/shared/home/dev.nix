@@ -24,6 +24,8 @@ in {
       # };
 
       home.packages = with pkgs; [
+        # am not sure gpg agent can run or not
+        /*
         # ── nix tooling ──────────────────────────────────────────────
         alejandra
         nixd
@@ -138,6 +140,7 @@ in {
         nh
         just
         python3 # latest stable
+        */
 
         # ─────────────────────────────────────────────────────────────
         # Disabled / candidates (uncomment to enable):

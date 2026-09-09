@@ -111,15 +111,9 @@ if you have trouble booting up / stuck, either:
 
 WIP
 
-## install on darwin
-
-WIP
-
-unquarantine some apps: `unquarantine appname`
-
 ## post-install
 
-use `nh os/darwin switch(boot on linux) . -H <hostname>` to switch generations.
+use `nh os switch(boot on linux) . -H <hostname>` to switch generations.
 
 ### setup chezmoi
 

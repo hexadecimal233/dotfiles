@@ -42,9 +42,6 @@
       enable = true;
       fonts.enable = true;
     };
-    hex.shared.home.dev = {
-      enable = true;
-    };
 
     # WSL-specific (not abstracted, written directly)
     wsl.enable = true;

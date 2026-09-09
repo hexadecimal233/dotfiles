@@ -15,10 +15,6 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,7 +65,6 @@
     self,
     nixpkgs,
     nixos-wsl,
-    nix-darwin,
     home-manager,
     disko,
     nixos-hardware,
@@ -80,7 +75,7 @@
     nasdots,
     ...
   } @ inputs: let
-    forAllSystems = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-darwin"];
+    forAllSystems = nixpkgs.lib.genAttrs ["x86_64-linux"];
 
     # Pass all flake inputs to every host — modules declare what they need.
     mkNixosHost = {
@@ -92,16 +87,6 @@
         specialArgs = inputs;
         modules = modules;
       };
-
-    mkDarwinHost = {
-      modules,
-      system ? "aarch64-darwin",
-    }:
-      nix-darwin.lib.darwinSystem {
-        inherit system;
-        specialArgs = inputs;
-        modules = modules;
-      };
   in {
     packages = let
       mkPkgs = system: let
@@ -109,15 +94,10 @@
       };
     in {
       x86_64-linux = mkPkgs "x86_64-linux";
-      aarch64-darwin = {jhentai = (mkPkgs "aarch64-darwin").jhentai;};
     };
 
     nixosModules = {
       nixos = import ./modules/nixos;
-    };
-
-    darwinModules = {
-      darwin = import ./modules/darwin;
     };
 
     nixosConfigurations = {
@@ -137,14 +117,6 @@
       nixnas = mkNixosHost {
         modules = [
           ./hosts/nixnas/default.nix
-        ];
-      };
-    };
-
-    darwinConfigurations = {
-      neo = mkDarwinHost {
-        modules = [
-          ./hosts/neo/default.nix
         ];
       };
     };
