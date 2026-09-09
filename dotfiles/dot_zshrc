@@ -8,11 +8,6 @@
 
 # Interactive only (zsh only sources .zshrc for interactive shells anyway).
 if [[ -o interactive ]]; then
-  # PATH for the nix / home-manager / homebrew profiles (so `command -v` finds them)
-  # zoxide
-  command -v zoxide  >/dev/null 2>&1 && eval "$(zoxide init zsh)"
-  # starship
-  command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
   # direnv
   command -v direnv  >/dev/null 2>&1 && eval "$(direnv hook zsh)"
   # mise

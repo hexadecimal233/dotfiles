@@ -1,5 +1,6 @@
 {
   // LSP & Languages
+  "auto_indent_on_paste": false,
   "gutter": {},
   "buffer_line_height": {
     "custom": 1.399999976158142,

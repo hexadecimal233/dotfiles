@@ -10,18 +10,19 @@ in {
     enable = lib.mkEnableOption "dev environment (compilers, LSPs)";
   };
 
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    pinentry.package =
-      if pkgs.stdenv.hostPlatform.isDarwin
-      then pkgs.pinentry_mac
-      else pkgs.pinentry-gnome3; # or pinentry-qt
-    # TODO: add an option to use curses on demand (e.g. ssh)
-  };
-
   config = lib.mkIf cfg.enable {
     home-manager.users.hexzii = {
+      # openpgp agent (gpg signing + ssh via hardware key)
+      # services.gpg-agent = {
+      # enable = true;
+      # enableSshSupport = true;
+      # pinentry.package =
+      #  if pkgs.stdenv.hostPlatform.isDarwin
+      #  then pkgs.pinentry_mac
+      #  else pkgs.pinentry-gnome3; # or pinentry-qt
+      # TODO: add an option to use curses on demand (e.g. ssh)
+      # };
+
       home.packages = with pkgs; [
         # ── nix tooling ──────────────────────────────────────────────
         alejandra
@@ -29,7 +30,6 @@ in {
         tokei
 
         # ── serial / embedded ────────────────────────────────────────
-        minicom
         tio
 
         # ── node.js (global: npx/bunx) ───────────────────────────────

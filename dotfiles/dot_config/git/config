@@ -7,9 +7,7 @@
 	ci = "commit"
 	cm = "commit -m"
 	co = "checkout"
-	diff = "diff --color"
-	diffs = "diff --staged"
-	difft = "-c diff.external=difft --no-pager diff"
+	difft = difftool
 	fch = "fetch --prune"
 	fuck = "commit --amend --no-edit"
 	lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -20,6 +18,16 @@
 	st = "status -sb"
 	undo = "reset --soft HEAD^"
 	unstage = "reset HEAD --"
+
+
+
+[diff]
+    # Declares Difftastic as an available external diff engine
+    tool = difftastic
+
+[difftool "difftastic"]
+    # Ensures Git passes the correct file arguments to the difftastic binary
+    cmd = difft "$LOCAL" "$REMOTE"
 
 [commit]
 	gpgsign = true
