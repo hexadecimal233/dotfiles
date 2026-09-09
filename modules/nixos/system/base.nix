@@ -21,7 +21,6 @@ in {
         "dialout" # external serial bus
         "docker" # docker mgmt
       ];
-      shell = pkgs.fish;
       initialPassword = "123456"; # betterleaks:allow
     };
 

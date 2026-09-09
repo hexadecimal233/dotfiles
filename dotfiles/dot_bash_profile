@@ -1,0 +1,7 @@
+# ~/.bash_profile — bash login shell.
+# bash only reads ~/.bashrc for interactive (non-login) shells; a *login* bash
+# reads ~/.bash_profile instead. Source ~/.bashrc so integrations load for the
+# default login shell on Linux/NixOS.
+if [ -f "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
+fi

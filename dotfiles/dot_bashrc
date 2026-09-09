@@ -1,0 +1,19 @@
+# ~/.bashrc — interactive bash configuration (Linux / NixOS default login shell).
+# Mirrors dot_zshrc: no login-shell→fish switch; fish is launched by each
+# terminal emulator. bash carries its own tool integrations so tools that spawn
+# bash (plain terminals, editor env-capture) see zoxide/starship/direnv/mise.
+
+# Only for interactive bash.
+case "$-" in
+  *i*) ;;
+  *) return ;;
+esac
+
+# zoxide
+command -v zoxide  >/dev/null 2>&1 && eval "$(zoxide init bash)"
+# starship
+command -v starship >/dev/null 2>&1 && eval "$(starship init bash)"
+# direnv
+command -v direnv  >/dev/null 2>&1 && eval "$(direnv hook bash)"
+# mise
+command -v mise    >/dev/null 2>&1 && eval "$(mise activate bash)"

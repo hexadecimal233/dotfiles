@@ -44,7 +44,7 @@ hl.config({
             drag_lock = 2, -- sticky mode (lazy undrag)
         },
         accel_profile = "flat",
-        follow_mouse = 0,  -- Don't focus windows on hover (click/keybind only)
+        follow_mouse = 0, -- Don't focus windows on hover (click/keybind only)
     },
     cursor = {
         enable_hyprcursor = true,
@@ -91,7 +91,7 @@ hl.config({
         -- vrr = 3,
     },
     xwayland = {
-        force_zero_scaling = true, -- too small but only solution
+        force_zero_scaling = true,    -- too small but only solution
         use_nearest_neighbor = false, -- bit windows like but okay burry :/
     },
 })

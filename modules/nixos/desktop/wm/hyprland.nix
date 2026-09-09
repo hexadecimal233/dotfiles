@@ -47,9 +47,10 @@
       portalPackage = null;
       # hyprexpo for workspace overview — not using hyprspace or hymission
       plugins = [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
-        # self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll
-        self.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+        # TODO: update plugins
+        # self.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
+        # self.packages.${pkgs.stdenv.hostPlatform.system}.hypr-kinetic-scroll new ver got released
+        # self.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
         pkgs.hyprlandPlugins.hypr-dynamic-cursors
       ];
       settings = {};

@@ -113,7 +113,7 @@ in {
           lib.optionals cfg.beautify [
             # hollywood broken
             hyfetch
-            cowsay
+            # cowsay
             lolcat
             figlet
             terminal-parrot

@@ -49,19 +49,10 @@
 
     # macOS user
     users.users.hexzii = {
-      name = "hexzii";
-      home = "/Users/hexzii";
-      shell = pkgs.fish;
+      home = "/Users/hexzii"; # depreacted, just make home manager work
     };
 
     # nix-darwin platform
     nixpkgs.hostPlatform = "aarch64-darwin";
-    system.primaryUser = "hexzii";
-
-    # homebrew (macOS-native apps)
-    homebrew = {
-      enable = true;
-      onActivation.cleanup = "none"; # keep manually installed packages
-    };
   };
 }

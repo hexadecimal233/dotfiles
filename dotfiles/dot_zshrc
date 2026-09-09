@@ -1,0 +1,20 @@
+# ~/.zshrc — interactive zsh configuration.
+#
+# Design: the login shell is NOT switched into fish here (no `exec fish`).
+# fish is instead launched by each terminal emulator (ghostty `command = fish`,
+# Zed `terminal.shell.program`, etc.). zsh remains a normal shell and carries
+# its own tool integrations, so tools that spawn zsh (plain terminals, editor
+# env-capture like Zed/JetBrains) still see zoxide/starship/direnv/mise.
+
+# Interactive only (zsh only sources .zshrc for interactive shells anyway).
+if [[ -o interactive ]]; then
+  # PATH for the nix / home-manager / homebrew profiles (so `command -v` finds them)
+  # zoxide
+  command -v zoxide  >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+  # starship
+  command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+  # direnv
+  command -v direnv  >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+  # mise
+  command -v mise    >/dev/null 2>&1 && eval "$(mise activate zsh)"
+fi

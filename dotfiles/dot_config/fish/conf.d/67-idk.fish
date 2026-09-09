@@ -20,6 +20,13 @@ alias cz="chezmoi"
 
 # paths
 
+# Darwin: keep nix-darwin + home-manager + homebrew on PATH
+if test (uname) = Darwin
+    fish_add_path --prepend --global \
+        /opt/homebrew/bin \
+        /opt/homebrew/sbin
+end
+
 set -gx PATH $PATH ~/user/scripts
 set -gx PATH $PATH ~/.bun/bin
 set -gx PATH $PATH ~/.local/share/pnpm/bin

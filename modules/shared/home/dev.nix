@@ -47,7 +47,7 @@ in {
           bun
         ]
         ++ lib.optionals cfg.ai.enable [
-          rtk # token optimizer
+          # rtk # token optimizer
         ];
     };
   };
