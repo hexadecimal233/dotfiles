@@ -273,7 +273,7 @@
     },
   },
   "agent": {
-    "terminal_init_command": "",
+    "terminal_init_command": "pi",
     "sandbox_permissions": {
       "allow_unsandboxed": true
     },
@@ -404,7 +404,6 @@
     "sql": true,
     "svelte": true,
     "swift": false,
-    "ssh-config": true,
     "symbols": true,
     "toml": true,
     "tombi": true,
