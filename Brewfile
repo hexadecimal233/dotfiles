@@ -33,6 +33,8 @@ brew "difftastic"
 brew "direnv"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
 # Command-line DNS Client for Humans
 brew "doggo"
 # Perl lib for reading and writing EXIF metadata
@@ -121,6 +123,8 @@ brew "sops"
 brew "starship"
 # Stress test a computer system in various selectable ways
 brew "stress-ng"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
 # Simple TTY terminal I/O application
 brew "tio"
 # Terminal multiplexer
@@ -152,8 +156,6 @@ cask "font-maple-mono-nf-cn"
 cask "freetube"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Git client for simultaneous branches on top of your existing workflow
-cask "gitbutler"
 # Utility to provide quick look previews for files that aren't natively supported
 cask "glance-chamburr"
 # Free and open-source media player
@@ -202,3 +204,4 @@ vscode "rust-lang.rust-analyzer"
 vscode "svelte.svelte-vscode"
 vscode "tamasfe.even-better-toml"
 vscode "thenuprojectcontributors.vscode-nushell-lang"
+cargo "slint-tr-extractor"

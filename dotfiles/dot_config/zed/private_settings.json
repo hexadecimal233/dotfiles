@@ -1,4 +1,21 @@
 {
+  // Big build/dependency trees: keep them out of Zed's file scan & watcher.
+  // NOTE: setting this overrides Zed's defaults, so the default globs must be repeated here.
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/target",
+    "**/node_modules",
+    "**/.venv",
+    "**/__pycache__",
+  ],
   // LSP & Languages
   "auto_indent_on_paste": false,
   "gutter": {},
@@ -397,11 +414,13 @@
     "oxc": true,
     "pierre-theme": true,
     "powershell": true,
+    "po": true,
     "proto": true,
     "rainbow-csv": true,
     "ron": true,
     "scss": true,
     "sql": true,
+    "slint": true,
     "svelte": true,
     "swift": false,
     "symbols": true,
