@@ -1,6 +1,7 @@
 {
   // Big build/dependency trees: keep them out of Zed's file scan & watcher.
   // NOTE: setting this overrides Zed's defaults, so the default globs must be repeated here.
+  "hover_popover_delay": 200,
   "file_scan_exclusions": [
     "**/.git",
     "**/.svn",

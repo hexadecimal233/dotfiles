@@ -1,0 +1,67 @@
+{
+  "version": 3,
+  "skills": {
+    "unslop": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/unslop/SKILL.md",
+      "skillFolderHash": "e19dcc9c531f4609df38bc86c62cf0e8b6d8f444",
+      "installedAt": "2026-09-19T07:59:53.969Z",
+      "updatedAt": "2026-09-19T07:59:53.969Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-09-19T07:59:59.922Z",
+      "updatedAt": "2026-09-19T07:59:59.922Z"
+    },
+    "slint": {
+      "source": "slint-ui/ai-plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/slint-ui/ai-plugins.git",
+      "skillPath": "skills/slint/SKILL.md",
+      "skillFolderHash": "ec023c979485dfdc8d469172df7b9f86dc82ff4a",
+      "installedAt": "2026-09-19T13:56:31.553Z",
+      "updatedAt": "2026-09-19T13:56:31.553Z"
+    },
+    "transitions-dev": {
+      "source": "Jakubantalik/transitions.dev",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Jakubantalik/transitions.dev.git",
+      "skillPath": "skills/transitions-dev/SKILL.md",
+      "skillFolderHash": "26c67bda945b1397fb48dfbaee9d03696ca5854b",
+      "installedAt": "2026-09-19T16:16:21.794Z",
+      "updatedAt": "2026-09-19T16:16:21.794Z"
+    },
+    "transitions-polish": {
+      "source": "Jakubantalik/transitions.dev",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Jakubantalik/transitions.dev.git",
+      "skillPath": "skills/transitions-polish/SKILL.md",
+      "skillFolderHash": "afd053fa85269d70d7e76f56321d7eb5bebde212",
+      "installedAt": "2026-09-19T16:16:21.810Z",
+      "updatedAt": "2026-09-19T16:16:21.810Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "droid",
+    "gemini-cli",
+    "github-copilot",
+    "kilo",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed"
+  ]
+}
