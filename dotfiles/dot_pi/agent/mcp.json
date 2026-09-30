@@ -1,0 +1,19 @@
+{
+   "mcpServers": {
+      "deepwiki": {
+         "url": "https://mcp.deepwiki.com/mcp",
+         "exposure": "direct"
+      },
+      "context7": {
+         "url": "https://mcp.context7.com/mcp",
+         "exposure": "direct"
+      },
+      "mediawiki-mcp-server": {
+         "command": "npx",
+         "args": [
+            "@professional-wiki/mediawiki-mcp-server@latest"
+         ],
+         "exposure": "deferred"
+      }
+   }
+}

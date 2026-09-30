@@ -1,22 +1,11 @@
 {
   // Big build/dependency trees: keep them out of Zed's file scan & watcher.
   // NOTE: setting this overrides Zed's defaults, so the default globs must be repeated here.
+  "cursor_animation": {
+    "enabled": false
+  },
   "hover_popover_delay": 200,
-  "file_scan_exclusions": [
-    "**/.git",
-    "**/.svn",
-    "**/.hg",
-    "**/.jj",
-    "**/CVS",
-    "**/.DS_Store",
-    "**/Thumbs.db",
-    "**/.classpath",
-    "**/.settings",
-    "**/target",
-    "**/node_modules",
-    "**/.venv",
-    "**/__pycache__",
-  ],
+  // this causes the folders gone from workspace, do not use!!!
   // LSP & Languages
   "auto_indent_on_paste": false,
   "gutter": {},
@@ -141,6 +130,7 @@
     },
     // make sure oxfmt does not take precedence
     "TOML": {
+      "tab_size": 2,
       "prettier": {
         "allowed": false,
       },
@@ -160,7 +150,7 @@
   "use_system_window_tabs": false,
   "terminal": {
     "shell": {
-      "program": "fish"
+      "program": "fish",
     },
     "font_size": 12.0,
     "show_count_badge": false,
@@ -293,7 +283,7 @@
   "agent": {
     "terminal_init_command": "pi",
     "sandbox_permissions": {
-      "allow_unsandboxed": true
+      "allow_unsandboxed": true,
     },
     "auto_compact": {
       "threshold": 9999999999,
@@ -303,7 +293,7 @@
     "tool_permissions": {
       "tools": {
         "mcp:mcp-server-context7:resolve-library-id": {
-          "default": "allow"
+          "default": "allow",
         },
         "terminal": {
           "default": "allow",
@@ -318,14 +308,14 @@
           "default": "allow",
           "always_allow": [
             {
-              "pattern": "^https?://town-of-salem\\.fandom\\.com"
+              "pattern": "^https?://town-of-salem\\.fandom\\.com",
             },
             {
-              "pattern": "^https?://raw\\.githubusercontent\\.com"
+              "pattern": "^https?://raw\\.githubusercontent\\.com",
             },
             {
-              "pattern": "^https?://atproto\\.com"
-            }
+              "pattern": "^https?://atproto\\.com",
+            },
           ],
         },
         "mcp:deepwiki:ask_question": {
@@ -356,7 +346,7 @@
     "thinking_display": "always_expanded",
     "default_model": {
       "provider": "opencode",
-      "model": "go/hy3",
+      "model": "go/deepseek-flash",
       "enable_thinking": true,
       "effort": "high",
     },
@@ -366,14 +356,14 @@
         "provider": "opencode",
         "model": "go/deepseek-v4-flash",
         "enable_thinking": true,
-        "effort": "high"
+        "effort": "high",
       },
       {
         "provider": "opencode",
         "model": "go/deepseek-v4-pro",
         "enable_thinking": true,
-        "effort": "max"
-      }
+        "effort": "max",
+      },
     ],
     "model_parameters": [],
   },
@@ -392,6 +382,7 @@
     "docker-compose": true,
     "emmet": true,
     "fish": true,
+    "fluent": true,
     "gdscript": true,
     "glsl": true,
     "gotmpl": true,
@@ -432,6 +423,7 @@
     "wakatime": true,
     "wgsl-wesl": true,
     "xml": true,
+    "roto": true,
     "zig": false,
   },
 }

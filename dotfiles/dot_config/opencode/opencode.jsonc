@@ -1,7 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
-    "oh-my-openagent@latest",
     // "opencode-rtk" opt-in
   ],
   "autoupdate": false, // prevent random updater kicking in
@@ -30,35 +29,15 @@
       "type": "local",
       "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
     },
-    "nixos": {
-      "type": "local",
-      "command": ["uvx", "mcp-nixos"],
-    },
     "tmux": {
       "type": "local",
       // burning tokens, disabled
       "enabled": false,
       "command": ["uvx", "libtmux-mcp"],
     },
-    "yt-dlp": {
-      "type": "local",
-      "command": ["npx", "-y", "@kevinwatt/yt-dlp-mcp@latest"],
-    },
-    "lazy-mcp": {
-      // use if necessary
-      "type": "local",
-      "enabled": false,
-      "command": ["npx", "lazy-mcp@latest"],
-    },
     "taobao": {
       "type": "remote",
-      "url": "http://localhost:3654/mcp"
-    }
+      "url": "http://localhost:3654/mcp",
+    },
   },
-  /*
-  "lsp": {
-    "deno": {
-      "disabled": true
-    }
-  }*/
 }
