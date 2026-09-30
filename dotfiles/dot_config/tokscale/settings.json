@@ -6,11 +6,34 @@
   "nativeTimeoutMs": 300000,
   "scanner": {
     "opencodeDbPaths": [],
-    "extraScanPaths": {}
+    "extraScanPaths": {},
+    "bucketTimezone": "Asia/Shanghai"
   },
   "defaultClients": [],
   "light": {
     "writeCache": false
   },
-  "minutelyTabEnabled": false
+  "usage": {
+    "disabledProviders": []
+  },
+  "minutelyTabEnabled": false,
+  "autosubmit": {
+    "enabled": false,
+    "intervalMinutes": 1440,
+    "clients": [],
+    "since": null,
+    "until": null,
+    "year": null,
+    "today": false,
+    "yesterday": false,
+    "week": false,
+    "month": false,
+    "scheduler": null,
+    "managedExecutable": null,
+    "managedExecutableVersion": null,
+    "lastRunAtMs": null,
+    "lastError": null
+  },
+  "modelAliases": {},
+  "tuiLightMode": false
 }

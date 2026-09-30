@@ -3,6 +3,7 @@ tap "julyx10/lap"
 tap "neighbor-z/swiftmtp"
 tap "oven-sh/bun", trusted: { formulae: ["bun"] }
 tap "renode/tap", trusted: { casks: ["renode"] }
+tap "totoshko88/rustconn", trusted: { formulae: ["rustconn"] }
 tap "uniclipboard/tap", "https://github.com/UniClipboard/homebrew-tap", trusted: { casks: ["uniclipboard"] }
 tap "viarotel-org/escrcpy", trusted: { casks: ["escrcpy"] }
 # Simple, modern, secure file encryption
@@ -101,8 +102,6 @@ brew "nushell"
 brew "ouch"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Fast, disk space efficient package manager
-brew "pnpm"
 # Fast Git hook manager written in Rust, drop-in alternative to pre-commit
 brew "prek"
 # Coreutils progress viewer

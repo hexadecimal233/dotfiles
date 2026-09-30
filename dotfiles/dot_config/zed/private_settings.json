@@ -270,6 +270,9 @@
   "wrap_guides": [72, 80, 100, 120],
   // AI Agent Config
   "agent_servers": {
+    "pi-acp": {
+      "type": "registry"
+    },
     "opencode": {
       "default_config_options": {
         "effort": "high",
@@ -281,6 +284,9 @@
     },
   },
   "agent": {
+    "threads_sidebar": {
+      "position": "right"
+    },
     "terminal_init_command": "pi",
     "sandbox_permissions": {
       "allow_unsandboxed": true,
@@ -288,7 +294,6 @@
     "auto_compact": {
       "threshold": 9999999999,
     },
-    "sidebar_side": "right",
     "enable_feedback": false,
     "tool_permissions": {
       "tools": {
@@ -341,12 +346,12 @@
       "enable_thinking": false,
     },
     "default_profile": "write",
-    "commit_message_instructions": "Use Conventional Commits. If multiple changes are included, list each one briefly within 50 characters.",
+    "commit_message_instructions": "Conventional Commits. If multiple changes are included, list each one briefly within 50 characters. Do not wrap text in \"```\" or add \\n at heading or trailing.",
     "show_turn_stats": true,
     "thinking_display": "always_expanded",
     "default_model": {
-      "provider": "opencode",
-      "model": "go/deepseek-flash",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
       "enable_thinking": true,
       "effort": "high",
     },

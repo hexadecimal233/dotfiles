@@ -4,13 +4,11 @@
   "defaultProvider": "opencode-go",
   "defaultModel": "deepseek-v4.1-flash",
   "packages": [
-    "npm:@ygncode/pi-web@beta",
     "npm:@inobit/pi-undo",
     "npm:@llblab/pi-telegram",
     "npm:pi-subagents",
     "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:@juicesharp/rpiv-todo",
-    "npm:pi-web-access"
+    "npm:@juicesharp/rpiv-todo"
   ],
   "quietStartup": false
 }
