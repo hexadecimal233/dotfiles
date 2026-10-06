@@ -94,6 +94,9 @@
     },
   },
   "languages": {
+    "Caddyfile": {
+      "tab_size": 2
+    },
     "TSX": {
       "tab_size": 2,
     },
@@ -342,7 +345,7 @@
     },
     "inline_assistant_model": {
       "provider": "opencode",
-      "model": "go/mimo-v2.5",
+      "model": "go/deepseek-v4.1-flash",
       "enable_thinking": false,
     },
     "default_profile": "write",
@@ -376,6 +379,7 @@
   "auto_install_extensions": {
     "astro": true,
     "biome": true,
+    "caddyfile": true,
     "catppuccin": false,
     "catppuccin-icons": false,
     "catppuccin-blur": false,

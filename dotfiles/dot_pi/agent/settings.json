@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "0.99.1",
-  "theme": "dark",
+  "lastChangelogVersion": "1.0.4",
+  "theme": "system",
   "defaultProvider": "opencode-go",
   "defaultModel": "deepseek-v4.1-flash",
   "packages": [
@@ -8,7 +8,12 @@
     "npm:@llblab/pi-telegram",
     "npm:pi-subagents",
     "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:@juicesharp/rpiv-todo"
+    "npm:@juicesharp/rpiv-todo",
+    "npm:pi-web-access",
+    "npm:@capdiem/pi-repetition-guard"
   ],
-  "quietStartup": false
+  "quietStartup": false,
+  "fullscreenCopyOnSelect": true,
+  "showCacheMissNotices": true,
+  "enableInstallTelemetry": false
 }

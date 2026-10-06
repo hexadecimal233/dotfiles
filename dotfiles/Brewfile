@@ -4,7 +4,6 @@ tap "neighbor-z/swiftmtp"
 tap "oven-sh/bun", trusted: { formulae: ["bun"] }
 tap "renode/tap", trusted: { casks: ["renode"] }
 tap "totoshko88/rustconn", trusted: { formulae: ["rustconn"] }
-tap "uniclipboard/tap", "https://github.com/UniClipboard/homebrew-tap", trusted: { casks: ["uniclipboard"] }
 tap "viarotel-org/escrcpy", trusted: { casks: ["escrcpy"] }
 # Simple, modern, secure file encryption
 brew "age"
@@ -38,6 +37,10 @@ brew "docker"
 brew "docker-compose"
 # Command-line DNS Client for Humans
 brew "doggo"
+# View disk space usage and delete unwanted data, fast
+brew "dua-cli"
+# More intuitive version of du in rust
+brew "dust"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
@@ -90,10 +93,10 @@ brew "lnav"
 brew "lsof"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # Remote terminal application
 brew "mosh"
-# NCurses Disk Usage
-brew "ncdu"
 # Utility for managing network connections
 brew "netcat"
 # Modern shell for the GitHub era
@@ -130,8 +133,6 @@ brew "tio"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Internet file retriever
 brew "wget"
 # Lookup tool for domain names and other internet resources
@@ -146,20 +147,21 @@ brew "yt-dlp"
 brew "zellij"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# Telegram client with ghost mode and message history
-cask "ayugram"
+# Command-line tools for building and debugging Android apps
+cask "android-commandlinetools"
+# Menu bar display manager: DDC brightness, HiDPI, presets, virtual displays
+cask "crisp"
 # Per-application volume mixer, equalizer, and audio router
 cask "finetune"
 cask "font-maple-mono-nf-cn"
-# YouTube player focusing on privacy
-cask "freetube"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Utility to provide quick look previews for files that aren't natively supported
-cask "glance-chamburr"
+# Homebrew's official GUI
+cask "homebrew-app"
 # Free and open-source media player
 cask "iina"
-cask "jayjay"
+# Native GUI for Jujutsu version control
+cask "hewigovens/tap/jayjay"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
 # Private local photo manager
@@ -168,8 +170,6 @@ cask "julyx10/lap/lap", trusted: true
 cask "linearmouse"
 # Open-source cross-platform alternative to AirDrop
 cask "localsend"
-# Utility to extend trackpad functionality
-cask "middleclick"
 # Colour picker for colours onscreen
 cask "pika"
 # Free Dj app to prepare and manage your music files
@@ -180,8 +180,6 @@ cask "sourcegit"
 cask "stats"
 # A modern Android File Transfer tool for macOS with AI supercharged.
 cask "neighbor-z/swiftmtp/swiftmtp", trusted: true
-# Mesh VPN based on WireGuard
-cask "tailscale-app"
 # Virtual machines UI using QEMU
 cask "utm"
 # Custom Discord App
@@ -203,4 +201,3 @@ vscode "rust-lang.rust-analyzer"
 vscode "svelte.svelte-vscode"
 vscode "tamasfe.even-better-toml"
 vscode "thenuprojectcontributors.vscode-nushell-lang"
-cargo "slint-tr-extractor"

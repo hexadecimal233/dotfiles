@@ -403,6 +403,15 @@
       "skillFolderHash": "ac92229646fccf7315ae139c37b479b3790617f2",
       "installedAt": "2026-09-25T13:06:34.444Z",
       "updatedAt": "2026-09-25T13:06:34.444Z"
+    },
+    "avoid-ai-writing": {
+      "source": "conorbronsdon/avoid-ai-writing",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/conorbronsdon/avoid-ai-writing.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "bdeb726580634868b254972d8eab1a9340d9db16",
+      "installedAt": "2026-10-02T05:50:00.225Z",
+      "updatedAt": "2026-10-02T05:50:00.225Z"
     }
   },
   "dismissed": {
