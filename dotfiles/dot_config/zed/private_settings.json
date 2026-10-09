@@ -2,7 +2,7 @@
   // Big build/dependency trees: keep them out of Zed's file scan & watcher.
   // NOTE: setting this overrides Zed's defaults, so the default globs must be repeated here.
   "cursor_animation": {
-    "enabled": false
+    "enabled": false,
   },
   "hover_popover_delay": 200,
   // this causes the folders gone from workspace, do not use!!!
@@ -21,33 +21,7 @@
   "collaboration_panel": {
     "button": false,
   },
-  "context_servers": {
-    "godot": {
-      "enabled": true,
-      "remote": false,
-      "command": "bunx",
-      "args": ["@coding-solo/godot-mcp"],
-      "env": {
-        "GODOT_PATH": "/Applications/Godot.app/Contents/MacOS/Godot",
-      },
-    },
-    "nixos": {
-      "enabled": true,
-      "remote": false,
-      "command": "uvx",
-      "args": ["mcp-nixos"],
-    },
-    "mediawiki": {
-      "enabled": true,
-      "remote": false,
-      "command": "bunx",
-      "args": ["-y", "@professional-wiki/mediawiki-mcp-server@latest"],
-    },
-    "deepwiki": {
-      "enabled": true,
-      "url": "https://mcp.deepwiki.com/mcp",
-    },
-  },
+  "context_servers": {},
   "soft_wrap": "prefer_line",
   "lsp": {
     "biome": {
@@ -95,7 +69,7 @@
   },
   "languages": {
     "Caddyfile": {
-      "tab_size": 2
+      "tab_size": 2,
     },
     "TSX": {
       "tab_size": 2,
@@ -232,13 +206,17 @@
   "autosave": "on_focus_change",
   "diff_view_style": "split",
   "edit_predictions": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "model": "qwen2.5-coder:7b-base",
+    },
     "copilot": {
       "enable_next_edit_suggestions": true,
     },
     "open_ai_compatible_api": {
       "model": "",
     },
-    "provider": "zed",
+    "provider": "ollama",
     "allow_data_collection": "no",
   },
   "telemetry": {
@@ -274,7 +252,7 @@
   // AI Agent Config
   "agent_servers": {
     "pi-acp": {
-      "type": "registry"
+      "type": "registry",
     },
     "opencode": {
       "default_config_options": {
@@ -288,7 +266,7 @@
   },
   "agent": {
     "threads_sidebar": {
-      "position": "right"
+      "position": "right",
     },
     "terminal_init_command": "pi",
     "sandbox_permissions": {
@@ -353,8 +331,8 @@
     "show_turn_stats": true,
     "thinking_display": "always_expanded",
     "default_model": {
-      "provider": "deepseek",
-      "model": "deepseek-flash",
+      "provider": "opencode",
+      "model": "go/deepseek-v4-flash",
       "enable_thinking": true,
       "effort": "high",
     },
@@ -372,6 +350,12 @@
         "enable_thinking": true,
         "effort": "max",
       },
+      {
+        "provider": "opencode",
+        "model": "go/deepseek-v4.1-flash",
+        "enable_thinking": true,
+        "effort": "high",
+      },
     ],
     "model_parameters": [],
   },
@@ -382,6 +366,7 @@
     "caddyfile": true,
     "catppuccin": false,
     "catppuccin-icons": false,
+    "ruby": true,
     "catppuccin-blur": false,
     "comment": true,
     "csharp": true,

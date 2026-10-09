@@ -412,6 +412,16 @@
       "skillFolderHash": "bdeb726580634868b254972d8eab1a9340d9db16",
       "installedAt": "2026-10-02T05:50:00.225Z",
       "updatedAt": "2026-10-02T05:50:00.225Z"
+    },
+    "humanizer": {
+      "source": "blader/humanizer",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/blader/humanizer.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8",
+      "pluginName": "humanizer",
+      "installedAt": "2026-10-08T15:12:41.732Z",
+      "updatedAt": "2026-10-08T15:12:41.732Z"
     }
   },
   "dismissed": {
@@ -428,6 +438,7 @@
     "kilo",
     "kimi-code-cli",
     "opencode",
+    "pi",
     "warp",
     "zed"
   ]

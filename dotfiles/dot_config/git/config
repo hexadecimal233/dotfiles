@@ -33,7 +33,7 @@
 	gpgsign = true
 
 [credential "https://github.com"]
-	helper = "gh auth git-credential" # we need gh client
+	helper = "!gh auth git-credential" # we need gh client
 
 [delta]
 
