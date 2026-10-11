@@ -1,13 +1,6 @@
-# macOS exclusive
-{{ if ne .chezmoi.os "darwin" }}
-Library
-{{ end }}
-
 # Linux exclusive
 # "dot_" prefixes are parsed before ignore takes effect.
 {{ if ne .chezmoi.os "linux" }}
 .config/hypr/**
-.config/fcitx5/**
-.local/share/fcitx5/**
 .local/share/krita/**
 {{ end }}

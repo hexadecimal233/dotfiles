@@ -151,7 +151,6 @@
   "editor.smoothScrolling": true,
   "editor.suggest.showStatusBar": true,
   "editor.tabCompletion": "on",
-  "editor.tabSize": 2,
   "editor.unicodeHighlight.allowedLocales": {
     "fr": true,
     "ja": true,
@@ -233,7 +232,7 @@
     "https://json-schema.org/": true,
     "https://json.schemastore.org/": true,
     "https://models.dev/model-schema.json": true,
-    "https://opencode.ai/config.json": true,
+    "https://opencode.ai/": true,
     "https://raw.githubusercontent.com/devcontainers/spec/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,
@@ -268,7 +267,7 @@
     "-actions.find"
   ],
   "terminal.integrated.env.windows": {},
-  "terminal.integrated.fontFamily": "'Maple Mono NF CN', 'Courier New', Consolas, monospace",
+  "terminal.integrated.fontFamily": "'Maple Mono NF CN', Menlo, Monaco, 'Courier New', Consolas, monospace",
   "terminal.integrated.profiles.windows": {
     "Command Prompt": {
       "args": [],

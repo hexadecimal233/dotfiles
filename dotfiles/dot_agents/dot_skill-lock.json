@@ -5,10 +5,11 @@
       "source": "cursor/plugins",
       "sourceType": "github",
       "sourceUrl": "https://github.com/cursor/plugins.git",
+      "ref": "main",
       "skillPath": "pstack/skills/unslop/SKILL.md",
-      "skillFolderHash": "e19dcc9c531f4609df38bc86c62cf0e8b6d8f444",
+      "skillFolderHash": "d5baa969e71c4ddb563412b0ec170fa3b05b6d6e",
       "installedAt": "2026-09-19T07:59:53.969Z",
-      "updatedAt": "2026-09-19T07:59:53.969Z"
+      "updatedAt": "2026-10-10T14:06:27.757Z"
     },
     "find-skills": {
       "source": "vercel-labs/skills",
@@ -422,6 +423,141 @@
       "pluginName": "humanizer",
       "installedAt": "2026-10-08T15:12:41.732Z",
       "updatedAt": "2026-10-08T15:12:41.732Z"
+    },
+    "antfu": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/antfu/SKILL.md",
+      "skillFolderHash": "cff62cc00d1f24ecf24ed4bc2d8ddefe64008434",
+      "installedAt": "2026-10-10T13:12:12.766Z",
+      "updatedAt": "2026-10-10T13:12:12.766Z"
+    },
+    "antfu-create-pr": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/antfu-create-pr/SKILL.md",
+      "skillFolderHash": "16296b3ac79c390a939aa5cc430b384547ea812c",
+      "installedAt": "2026-10-10T13:12:12.769Z",
+      "updatedAt": "2026-10-10T13:12:12.769Z"
+    },
+    "nitro": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/nitro/SKILL.md",
+      "skillFolderHash": "adbd64c5be4af7342fa7928a5f95643e6589b8c4",
+      "installedAt": "2026-10-10T13:12:12.772Z",
+      "updatedAt": "2026-10-10T13:12:12.772Z"
+    },
+    "nuxt": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/nuxt/SKILL.md",
+      "skillFolderHash": "2c8e2b122a4b45edbdac04a334800c1d16da5c12",
+      "installedAt": "2026-10-10T13:12:12.773Z",
+      "updatedAt": "2026-10-10T13:12:12.773Z"
+    },
+    "pinia": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/pinia/SKILL.md",
+      "skillFolderHash": "43859b58fbef122b18eb62689f6c2f6a082ca443",
+      "installedAt": "2026-10-10T13:12:12.773Z",
+      "updatedAt": "2026-10-10T13:12:12.773Z"
+    },
+    "pnpm": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/pnpm/SKILL.md",
+      "skillFolderHash": "4a64febd85a1ae9ec85cd71e49bc309dfcaa51b9",
+      "installedAt": "2026-10-10T13:12:12.774Z",
+      "updatedAt": "2026-10-10T13:12:12.774Z"
+    },
+    "unocss": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/unocss/SKILL.md",
+      "skillFolderHash": "482bd8e0d0072722c0a62e703cf72fca8de12c26",
+      "installedAt": "2026-10-10T13:12:12.775Z",
+      "updatedAt": "2026-10-10T13:12:12.775Z"
+    },
+    "vite": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/vite/SKILL.md",
+      "skillFolderHash": "9007774626884249324c5acce3537355a51e937d",
+      "installedAt": "2026-10-10T13:12:12.777Z",
+      "updatedAt": "2026-10-10T13:12:12.777Z"
+    },
+    "vitepress": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/vitepress/SKILL.md",
+      "skillFolderHash": "28a2918d702b595e992442fef242d27c9704c38b",
+      "installedAt": "2026-10-10T13:12:12.778Z",
+      "updatedAt": "2026-10-10T13:12:12.778Z"
+    },
+    "vitest": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/vitest/SKILL.md",
+      "skillFolderHash": "0ed74afc98af8324843b8514184c43cd6d6411ef",
+      "installedAt": "2026-10-10T13:12:12.779Z",
+      "updatedAt": "2026-10-10T13:12:12.779Z"
+    },
+    "vue": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/antfu/skills.git",
+      "skillPath": "skills/vue/SKILL.md",
+      "skillFolderHash": "d7f66ce480e7a1985f326651859564ef4d010757",
+      "installedAt": "2026-10-10T13:12:12.779Z",
+      "updatedAt": "2026-10-10T13:12:12.779Z"
+    },
+    "improve": {
+      "source": "shadcn/improve",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/shadcn/improve.git",
+      "skillPath": "skills/improve/SKILL.md",
+      "skillFolderHash": "7d77d76815e6deb704427f17f6e393f55e3cb6da",
+      "installedAt": "2026-10-10T14:06:04.295Z",
+      "updatedAt": "2026-10-10T14:06:04.295Z"
+    },
+    "dry-refactoring": {
+      "source": "kucherenko/jscpd",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kucherenko/jscpd.git",
+      "skillPath": "skills/dry-refactoring/SKILL.md",
+      "skillFolderHash": "44330c64dc30e66c1bd42d9c71a50a98ca7cb58b",
+      "installedAt": "2026-10-10T14:06:12.390Z",
+      "updatedAt": "2026-10-10T14:06:12.390Z"
+    },
+    "simple-english": {
+      "source": "AminBlg/SimpleEnglish",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/AminBlg/SimpleEnglish.git",
+      "skillPath": "skills/simple-english/SKILL.md",
+      "skillFolderHash": "dc4493623b0648588e02a0062bed8bcaa535b1de",
+      "installedAt": "2026-10-10T14:06:17.269Z",
+      "updatedAt": "2026-10-10T14:06:17.269Z"
+    },
+    "i-have-adhd": {
+      "source": "ayghri/i-have-adhd",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/ayghri/i-have-adhd.git",
+      "skillPath": "skills/i-have-adhd/SKILL.md",
+      "skillFolderHash": "759f1e56d0d2fdd3819d2a53b81e72767c08d914",
+      "installedAt": "2026-10-10T14:06:34.420Z",
+      "updatedAt": "2026-10-10T14:06:34.420Z"
     }
   },
   "dismissed": {

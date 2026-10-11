@@ -1,6 +1,8 @@
 {
   // Big build/dependency trees: keep them out of Zed's file scan & watcher.
   // NOTE: setting this overrides Zed's defaults, so the default globs must be repeated here.
+  "ensure_final_newline_on_save": false,
+  "remove_trailing_whitespace_on_save": false,
   "cursor_animation": {
     "enabled": false,
   },
