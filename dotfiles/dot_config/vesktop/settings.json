@@ -1,6 +1,6 @@
 {
-    "splashColor": "rgb(237, 237, 238)",
-    "splashBackground": "rgb(15, 15, 16)",
+    "splashColor": "rgb(212, 213, 216)",
+    "splashBackground": "rgb(0, 0, 0)",
     "hardwareVideoAcceleration": true,
     "discordBranch": "stable",
     "minimizeToTray": true,
@@ -9,5 +9,9 @@
     "openLinksWithElectron": true,
     "disableSmoothScroll": false,
     "enableSplashScreen": false,
-    "enableMenu": false
+    "enableMenu": false,
+    "spellCheckLanguages": [
+        "zh-CN",
+        "zh-Hans-CN"
+    ]
 }

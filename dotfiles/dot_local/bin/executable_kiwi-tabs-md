@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+"""导出 Android 上 Chromium 内核浏览器当前打开的标签页, 输出 Markdown 列表.
+
+Kiwi Browser 与官方 Chrome 都会在进程存活时暴露 DevTools abstract socket,
+经 adb forward 后用 DevTools HTTP 接口 /json/list 读取每个标签页的标题与网址.
+此方式无需 root.
+"""
+
+import argparse
+import json
+import os
+import shutil
+import socket
+import subprocess
+import sys
+import urllib.error
+import urllib.request
+
+DEFAULT_SOCKET = "chrome_devtools_remote"
+ADB_FALLBACKS = (
+    "~/Library/Android/sdk/platform-tools/adb",
+    "/opt/homebrew/bin/adb",
+    "/usr/local/bin/adb",
+)
+
+
+def fail(message):
+    print(message, file=sys.stderr)
+    sys.exit(1)
+
+
+def find_adb(explicit):
+    for candidate in (explicit, os.environ.get("ADB")):
+        if not candidate:
+            continue
+        if not os.path.isfile(candidate):
+            fail(f"adb 可执行文件不存在: {candidate}")
+        return candidate
+    found = shutil.which("adb")
+    if found:
+        return found
+    for candidate in ADB_FALLBACKS:
+        path = os.path.expanduser(candidate)
+        if os.path.isfile(path):
+            return path
+    fail("找不到 adb, 请用 --adb 指定可执行文件位置")
+
+
+def run_adb(adb, argv):
+    try:
+        return subprocess.run(
+            [adb, *argv], capture_output=True, text=True, check=False
+        )
+    except OSError as error:
+        fail(f"无法执行 adb: {error}")
+
+
+def adb_devices(adb):
+    result = run_adb(adb, ["devices"])
+    if result.returncode != 0:
+        fail(f"adb devices 执行失败: {result.stderr.strip()}")
+    devices = []
+    for line in result.stdout.splitlines()[1:]:
+        fields = line.split()
+        if len(fields) >= 2:
+            devices.append((fields[0], fields[1]))
+    return devices
+
+
+def pick_device(adb, requested):
+    if requested:
+        return requested
+    if os.environ.get("ANDROID_SERIAL"):
+        return os.environ["ANDROID_SERIAL"]
+    online = [serial for serial, state in adb_devices(adb) if state == "device"]
+    if not online:
+        fail("没有处于 device 状态的设备, 请检查 USB 连接与授权")
+    if len(online) > 1:
+        fail(
+            "检测到多个在线设备, 请用 --serial 指定其中一个: " + ", ".join(online)
+        )
+    return online[0]
+
+
+def free_port():
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
+        probe.bind(("127.0.0.1", 0))
+        return probe.getsockname()[1]
+
+
+def forward(adb, serial, port, socket_name):
+    result = run_adb(
+        adb,
+        ["-s", serial, "forward", f"tcp:{port}", f"localabstract:{socket_name}"],
+    )
+    if result.returncode != 0:
+        fail(
+            f"adb forward 失败: {result.stderr.strip() or result.stdout.strip()}\n"
+            "Kiwi 正在运行时才会创建 DevTools socket, 请先打开 Kiwi 并保持其进程存活"
+        )
+
+
+def unforward(adb, serial, port):
+    run_adb(adb, ["-s", serial, "forward", "--remove", f"tcp:{port}"])
+
+
+def http_json(url, timeout):
+    with urllib.request.urlopen(url, timeout=timeout) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def collapsed(text):
+    return " ".join(str(text).split())
+
+
+def markdown_title(title, url):
+    text = collapsed(title)
+    if not text:
+        return collapsed(url)
+    escaped = []
+    for char in text:
+        if char in "\\[]":
+            escaped.append("\\")
+        escaped.append(char)
+    return "".join(escaped)
+
+
+def markdown_url(url):
+    return collapsed(url).replace("(", "%28").replace(")", "%29")
+
+
+def collect(base_url, timeout):
+    targets = http_json(f"{base_url}/json/list", timeout)
+    pages = []
+    for target in targets:
+        if target.get("type") != "page":
+            continue
+        url = collapsed(target.get("url", ""))
+        if not url or url.startswith("devtools://"):
+            continue
+        pages.append((target.get("title", ""), url))
+    return pages
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="导出 Android 上 Chromium 内核浏览器打开的标签页为 Markdown 列表"
+    )
+    parser.add_argument("--adb", help="adb 可执行文件位置")
+    parser.add_argument("--serial", help="设备序列号, 默认使用唯一在线设备")
+    parser.add_argument(
+        "--socket",
+        default=DEFAULT_SOCKET,
+        help=f"DevTools abstract socket 名称, 默认 {DEFAULT_SOCKET}",
+    )
+    parser.add_argument("--port", type=int, help="本机转发端口, 默认自动选取空闲端口")
+    parser.add_argument("--timeout", type=float, default=10.0, help="HTTP 超时秒数")
+    parser.add_argument("--no-header", action="store_true", help="只输出列表, 不含标题")
+    parser.add_argument("--json", action="store_true", help="输出 JSON 数组")
+    parser.add_argument("--list-devices", action="store_true", help="列出设备后退出")
+    parser.add_argument("-o", "--output", help="写入文件, 默认写到标准输出")
+    args = parser.parse_args()
+
+    adb = find_adb(args.adb)
+    if args.list_devices:
+        for serial, state in adb_devices(adb):
+            print(f"{serial}\t{state}")
+        return
+    serial = pick_device(adb, args.serial)
+    port = args.port or free_port()
+    forward(adb, serial, port, args.socket)
+    base_url = f"http://127.0.0.1:{port}"
+    try:
+        version = http_json(f"{base_url}/json/version", args.timeout)
+        pages = collect(base_url, args.timeout)
+    except (urllib.error.URLError, TimeoutError, OSError) as error:
+        fail(f"读取 DevTools 接口失败: {error}\n传输通道已建立, 但 Kiwi 没有响应")
+    except json.JSONDecodeError as error:
+        fail(f"DevTools 返回的内容无法解析: {error}")
+    finally:
+        unforward(adb, serial, port)
+
+    if args.json:
+        body = json.dumps(
+            [{"title": collapsed(t), "url": u} for t, u in pages],
+            ensure_ascii=False,
+            indent=2,
+        )
+    else:
+        lines = []
+        if not args.no_header:
+            package = version.get("Android-Package") or "未知包名"
+            browser = version.get("Browser", "未知版本")
+            lines.append(f"# 浏览器打开的页面 ({len(pages)} 个)")
+            lines.append("")
+            lines.append(f"设备 {serial}, 包名 {package}, 浏览器 {browser}")
+            lines.append("")
+        for title, url in pages:
+            lines.append(f"- [{markdown_title(title, url)}]({markdown_url(url)})")
+        body = "\n".join(lines) + "\n"
+
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as handle:
+            handle.write(body)
+    else:
+        sys.stdout.write(body)
+
+
+if __name__ == "__main__":
+    main()

@@ -7,7 +7,7 @@ tap "nohajc/anylinuxfs"
 tap "oven-sh/bun", trusted: { formulae: ["bun"] }
 tap "renode/tap", trusted: { casks: ["renode"] }
 tap "totoshko88/rustconn", trusted: { formulae: ["rustconn"] }
-tap "viarotel-org/escrcpy", trusted: { casks: ["escrcpy"] }
+tap "viarotel-org/escrcpy"
 # Simple, modern, secure file encryption
 brew "age"
 # Command-line tool for formatting Nix Code
@@ -96,8 +96,6 @@ brew "k6"
 brew "lnav"
 # Utility to list open files
 brew "lsof"
-# Apple Silicon Monitor Top written in Go Lang
-brew "mactop"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Deep clean and optimize your Mac
@@ -166,6 +164,8 @@ cask "android-commandlinetools"
 cask "fenio/tap/anylinuxfs-gui", trusted: true
 # Menu bar display manager: DDC brightness, HiDPI, presets, virtual displays
 cask "crisp"
+# Graphical Scrcpy to display and control Android, devices powered by Electron
+cask "viarotel-org/escrcpy/escrcpy", trusted: true
 # Per-application volume mixer, equalizer, and audio router
 cask "finetune"
 cask "font-maple-mono-nf-cn"
@@ -219,10 +219,12 @@ vscode "codezombiech.gitignore"
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "denoland.vscode-deno"
+vscode "dingzhaojie.bit-peek"
 vscode "dprint.dprint"
 vscode "ecmel.vscode-html-css"
 vscode "editorconfig.editorconfig"
 vscode "edwinhuish.better-comments-next"
+vscode "electreefrying.insert-random-text"
 vscode "esbenp.prettier-vscode"
 vscode "fanaticpythoner.better-todo-tree"
 vscode "fill-labs.dependi"
@@ -238,6 +240,7 @@ vscode "kylinideteam.cmake-intellisence"
 vscode "leonardssh.vscord"
 vscode "llvm-vs-code-extensions.vscode-clangd"
 vscode "lokalise.i18n-ally"
+vscode "malo.copy-json-path"
 vscode "mechatroner.rainbow-csv"
 vscode "medo64.render-crlf"
 vscode "miguelsolorio.symbols"
@@ -247,6 +250,7 @@ vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-python-envs"
 vscode "mtxr.sqltools"
+vscode "nefrob.vscode-just-syntax"
 vscode "nicoespeon.abracadabra"
 vscode "nromanov.dotrush"
 vscode "numlia-vs.git-keizu"

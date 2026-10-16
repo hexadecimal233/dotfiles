@@ -753,7 +753,7 @@
         "MusicRichPresence": {
             "enabled": false
         },
-        "TenorGifSearch": {
+        "GifProviderSwitcher": {
             "enabled": false
         }
     },
@@ -767,7 +767,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1787836826170
+        "settingsSyncVersion": 1792155159999
     },
     "enabledThemes": [],
     "eagerPatches": false,
@@ -776,5 +776,6 @@
         "messagePopoverButtons": {}
     },
     "windowsMaterial": "none",
-    "macosVibrancyStyle": "under-page"
+    "macosVibrancyStyle": "under-page",
+    "nativeTitleBar": false
 }

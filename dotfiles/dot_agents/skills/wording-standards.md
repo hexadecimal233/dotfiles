@@ -77,7 +77,7 @@ body is needed`.
 Phrasal verbs that describe a person's movement or transfer are removed from an
 inanimate subject: `picks up`, `hands over`, `hands back`, `falls back`, `ends
 up`, `comes back`, `turns out`, `shows up`, `leads`, `meets`, `grows`, `dies`,
-`survives`, `waits`, `walks`, `stands for`, `carries on`, `carries out`.
+`survives`, `walks`, `stands for`, `carries on`, `carries out`.
 
 - `the watcher reads the files`, not `the watcher picks files up`
 - `the rows imported`, not `the rows carried over`
@@ -88,7 +88,6 @@ up`, `comes back`, `turns out`, `shows up`, `leads`, `meets`, `grows`, `dies`,
 - `a shape the engine adds`, not `a shape the engine grows`
 - `a process that ended`, not `a process that died`
 - `the token persists`, not `the token survives`
-- `the field delays before it runs the query`, not `the field waits`
 - `the filter scans the tag names`, not `the filter walks the tag names`
 - `the records are returned`, not `the records come back`
 - `the format a name refers to`, not `the format a name stands for`

@@ -28,7 +28,7 @@ if test (uname) = Darwin
     end
 end
 
-set -gx PATH $PATH ~/user/scripts
+set -gx PATH $PATH ~/.local/bin
 set -gx PATH $PATH ~/.bun/bin
 set -gx PATH $PATH ~/.local/share/pnpm/bin
 set -gx PATH $PATH ~/.npm-global/bin
@@ -36,15 +36,4 @@ set -gx PATH $PATH ~/Library/pnpm/bin # macos pnpm
 set -gx PATH $PATH ~/.cargo/bin
 set -gx PATH $PATH ~/go/bin
 
-# env vars
 
-# telemetries
-set -x OMO_DISABLE_POSTHOG "1"        # oh-my-openagent
-set -x OMO_SEND_ANONYMOUS_TELEMETRY "0"
-set -x WRANGLER_SEND_METRICS "false"
-set -x ASTRO_TELEMETRY_DISABLED "1"   # astro
-
-
-# TODO: only for linux
-# https://github.com/cloudflare/workers-sdk/issues/8158, fix workerd untrusted certificate
-# NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/ca-certificates.crt"
