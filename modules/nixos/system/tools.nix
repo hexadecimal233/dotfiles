@@ -34,16 +34,12 @@ in {
         lib.optionals cfg.hardware [
           lshw
           pciutils
-          usbutils
           dmidecode
-          fetchutils
           cpufrequtils
           i2c-tools
           lm_sensors
           # TODO: move something to maintenance
           # phoronix-test-suite
-
-          beep
 
           efibootmgr
           efivar
@@ -52,32 +48,15 @@ in {
           # file tools
           exfatprogs
           ext4fuse # emergency purposes
-
-          # maintenance tools
-          btrfs-heatmap # btrfs usage visualization
           nvme-cli
-          smartmontools
 
           # dev infra (on darwin, these tools are bundled in xcode)
-          gcc
-          binutils
-          gnumake
-          clang
-          pkg-config
-          lldb
-          gdb
           reredirect
 
           # linux dev infra
           valgrind
           strace
           ltrace
-        ]
-      )
-      ++ (
-        # network (linux-only)
-        lib.optionals cfg.network [
-          rustnet
         ]
       );
 

@@ -28,6 +28,7 @@ in {
       # mono font (non-essential; Maple Mono is the primary mono)
       # fira-code
       jetbrains-mono
+      maple-mono.NF-CN-unhinted # the mono font im using^^
       nerd-fonts.jetbrains-mono # patched jb-mono
     ];
   };

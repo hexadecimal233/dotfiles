@@ -22,7 +22,6 @@ in {
     environment.systemPackages = with pkgs; [
       vulkan-tools # vulkaninfo
       vulkan-loader
-      clinfo # OpenCL info
       mesa-demos # glxinfo, eglinfo
       ddcutil # external monitor DDC/CI control
       brightnessctl # backlight control CLI

@@ -6,7 +6,7 @@
     "minimizeToTray": true,
     "arRPC": true,
     "customTitleBar": false,
-    "openLinksWithElectron": true,
+    "openLinksWithElectron": false,
     "disableSmoothScroll": false,
     "enableSplashScreen": false,
     "enableMenu": false,

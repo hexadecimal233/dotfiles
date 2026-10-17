@@ -219,7 +219,8 @@
             "collapseDeleted": false,
             "logEdits": true,
             "logDeletes": true,
-            "inlineEdits": true
+            "inlineEdits": true,
+            "logDeletedAttachments": true
         },
         "MoreCommands": {
             "enabled": false
@@ -281,7 +282,12 @@
             "enabled": false
         },
         "OpenInApp": {
-            "enabled": false
+            "enabled": false,
+            "spotify": true,
+            "steam": true,
+            "epic": true,
+            "tidal": true,
+            "itunes": true
         },
         "PermissionsViewer": {
             "enabled": true,
@@ -462,7 +468,8 @@
             "enabled": false
         },
         "WhoReacted": {
-            "enabled": true
+            "enabled": true,
+            "clickableAvatars": true
         },
         "Wikisearch": {
             "enabled": false
@@ -755,6 +762,12 @@
         },
         "GifProviderSwitcher": {
             "enabled": false
+        },
+        "AddAttachments": {
+            "enabled": false
+        },
+        "FixDiscordCss": {
+            "enabled": true
         }
     },
     "notifications": {
@@ -767,7 +780,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1792155159999
+        "settingsSyncVersion": 1792167987560
     },
     "enabledThemes": [],
     "eagerPatches": false,

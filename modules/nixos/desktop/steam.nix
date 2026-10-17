@@ -1,3 +1,0 @@
-{}
-# TODO: steam gaming support
-

@@ -1,3 +1,4 @@
+tap "brevity1swos/tap"
 tap "fenio/tap"
 tap "gromgit/fuse"
 tap "hewigovens/tap", "https://github.com/hewigovens/tap.git"
@@ -26,6 +27,8 @@ brew "btop"
 brew "carapace"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Print information about OpenCL platforms and devices
+brew "clinfo"
 # Cross-platform make
 brew "cmake"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -56,6 +59,8 @@ brew "fastfetch"
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Banner-like program prints strings as ASCII art
+brew "figlet"
 # Utility to determine file types
 brew "file-formula"
 # User-friendly command-line shell for UNIX-like operating systems
@@ -72,10 +77,14 @@ brew "git-delta"
 brew "git-lfs"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# World's fastest and most advanced password recovery utility
+brew "hashcat"
 # Post-modern modal text editor
 brew "helix"
 # View and edit files in hexadecimal or ASCII
 brew "hexedit"
+# Command-line hex viewer
+brew "hexyl"
 # Improved top (interactive process viewer)
 brew "htop"
 # Fast, highly customisable system info script with LGBTQ+ pride flags
@@ -92,10 +101,14 @@ brew "jq"
 brew "just"
 # Modern load testing tool, using Go and JavaScript
 brew "k6"
+# Library to communicate with iOS devices natively
+brew "libimobiledevice"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Utility to list open files
 brew "lsof"
+# Unified display of technical and tag data for audio/video
+brew "media-info"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Deep clean and optimize your Mac
@@ -122,6 +135,8 @@ brew "rclone"
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Cross-platform network monitoring terminal UI with deep packet inspection
+brew "rustnet"
 # Sequoia-PGP command-line tool
 brew "sequoia-sq"
 # SMART hard drive monitoring
@@ -140,6 +155,8 @@ brew "tio"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
+# List detailed info about USB devices
+brew "usbutils"
 # Internet file retriever
 brew "wget"
 # Lookup tool for domain names and other internet resources
@@ -154,6 +171,8 @@ brew "yt-dlp"
 brew "zellij"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# A terminal regex tester with real-time matching, multi-engine support, and plain-English explanations
+brew "brevity1swos/tap/rgx", trusted: true
 # Fast high compression read-only file system (macFUSE driver)
 brew "gromgit/fuse/dwarfs-fuse-mac", trusted: true
 # Mount any linux-supported filesystem read/write using nfs and a microVM
@@ -279,3 +298,5 @@ vscode "vue.volar"
 vscode "wakatime.vscode-wakatime"
 vscode "wgsl-analyzer.wgsl-analyzer"
 vscode "yoavbls.pretty-ts-errors"
+go "cmd/go"
+go "cmd/gofmt"
