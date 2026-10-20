@@ -1,3 +1,8 @@
+---
+name: feature-request
+description: Used when user want you to implement a feature inside certain software or product
+---
+
 ## When user propose new feature for a software
 
 When user asked:

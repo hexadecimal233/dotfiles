@@ -9,10 +9,13 @@ tap "oven-sh/bun", trusted: { formulae: ["bun"] }
 tap "renode/tap", trusted: { casks: ["renode"] }
 tap "totoshko88/rustconn", trusted: { formulae: ["rustconn"] }
 tap "viarotel-org/escrcpy"
+tap "yfedoseev/tap"
 # Simple, modern, secure file encryption
 brew "age"
 # Command-line tool for formatting Nix Code
 brew "alejandra"
+# Record and share terminal sessions
+brew "asciinema"
 # Organization lookup and server tool (ASN / IPv4 / IPv6 / Prefix / AS Path)
 brew "asn"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -29,6 +32,8 @@ brew "carapace"
 brew "chezmoi"
 # Print information about OpenCL platforms and devices
 brew "clinfo"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Cross-platform make
 brew "cmake"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -65,6 +70,8 @@ brew "figlet"
 brew "file-formula"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Client app of fast reverse proxy to expose a local server to the internet
+brew "frpc"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -75,6 +82,8 @@ brew "git"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
+# Blazing fast terminal-ui for git written in rust
+brew "gitui"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # World's fastest and most advanced password recovery utility
@@ -129,6 +138,8 @@ brew "prek"
 brew "progress"
 # Monitor data's progress through a pipe
 brew "pv"
+# Tools for and transforming and inspecting PDF files
+brew "qpdf"
 # Rsync for cloud storage
 brew "rclone"
 # Search tool like grep and The Silver Searcher
@@ -137,6 +148,8 @@ brew "ripgrep"
 brew "rsync"
 # Cross-platform network monitoring terminal UI with deep packet inspection
 brew "rustnet"
+# Display and control your Android device
+brew "scrcpy"
 # Sequoia-PGP command-line tool
 brew "sequoia-sq"
 # SMART hard drive monitoring
@@ -177,8 +190,12 @@ brew "brevity1swos/tap/rgx", trusted: true
 brew "gromgit/fuse/dwarfs-fuse-mac", trusted: true
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs", trusted: true
+# The fastest PDF toolkit — extract text, images, metadata, and more
+brew "yfedoseev/tap/pdf-oxide", trusted: true
 # Command-line tools for building and debugging Android apps
 cask "android-commandlinetools"
+# Android SDK component
+cask "android-platform-tools"
 # GUI for mounting Linux filesystems
 cask "fenio/tap/anylinuxfs-gui", trusted: true
 # Menu bar display manager: DDC brightness, HiDPI, presets, virtual displays

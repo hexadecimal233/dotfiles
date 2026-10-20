@@ -558,6 +558,42 @@
       "skillFolderHash": "759f1e56d0d2fdd3819d2a53b81e72767c08d914",
       "installedAt": "2026-10-10T14:06:34.420Z",
       "updatedAt": "2026-10-10T14:06:34.420Z"
+    },
+    "security-audit": {
+      "source": "cloudflare/security-audit-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cloudflare/security-audit-skill.git",
+      "skillPath": "skills/security-audit/SKILL.md",
+      "skillFolderHash": "ccbc33ed119b28c3ef7b44a7e2081ab191ad63af",
+      "installedAt": "2026-10-18T11:08:02.820Z",
+      "updatedAt": "2026-10-18T11:08:02.820Z"
+    },
+    "gc-minimal-zine-poster-v0-3": {
+      "source": "LiamGvchi/gc-minimal-zine-poster",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/LiamGvchi/gc-minimal-zine-poster.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "ddb0d66b24a94f9c4fdd1f02835a836a2db3774e",
+      "installedAt": "2026-10-19T05:25:38.515Z",
+      "updatedAt": "2026-10-19T05:25:38.515Z"
+    },
+    "novelist": {
+      "source": "Ink-dark/novelist.skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ink-dark/novelist.skills.git",
+      "skillPath": "novelist/SKILL.md",
+      "skillFolderHash": "db7ef0b7f767df7900975019a4f45c042ec0e856",
+      "installedAt": "2026-10-20T02:36:46.202Z",
+      "updatedAt": "2026-10-20T02:36:46.202Z"
+    },
+    "self-critique": {
+      "source": "Ink-dark/novelist.skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ink-dark/novelist.skills.git",
+      "skillPath": "self-critique/SKILL.md",
+      "skillFolderHash": "e682a40898f5045aa1af3b646b57333e88362325",
+      "installedAt": "2026-10-20T02:36:46.218Z",
+      "updatedAt": "2026-10-20T02:36:46.218Z"
     }
   },
   "dismissed": {
