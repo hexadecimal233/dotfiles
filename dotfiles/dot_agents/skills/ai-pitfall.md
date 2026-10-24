@@ -1,5 +1,5 @@
 ---
-name: responsible-ai-contribution
+name: ai-pitfall
 description: Use when writing, modifying, or reviewing code with an AI agent, to catch the agent's typical anti-patterns (eagerness, laziness, uncertainty, bloat) before submission and ensure the final submitted code is human-owned and human-reviewed.
 ---
 

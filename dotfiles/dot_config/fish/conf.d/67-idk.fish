@@ -17,7 +17,6 @@ carapace _carapace | source
 
 set -g fish_greeting "" # silence fish
 
-alias cd="z"
 alias ls="eza"
 alias ll="eza -l"
 alias la="eza -la"

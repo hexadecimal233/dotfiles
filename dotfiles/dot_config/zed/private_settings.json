@@ -100,6 +100,7 @@
     "HTML": {
       "tab_size": 2,
     },
+
     "Nix": {
       "language_servers": [""], // we do not use nil nor nixd
       "tab_size": 2,
@@ -116,6 +117,7 @@
       "prettier": {
         "allowed": false,
       },
+      "show_edit_predictions": false, // https://github.com/tombi-toml/tombi/issues/1556
       "formatter": [
         {
           "language_server": {
@@ -419,7 +421,7 @@
     "tombi": true,
     "typos": true,
     "vue": true,
-    "wakatime": true,
+    "wakatime": false,
     "wgsl-wesl": true,
     "xml": true,
     "roto": true,

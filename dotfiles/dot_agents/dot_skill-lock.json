@@ -594,6 +594,15 @@
       "skillFolderHash": "e682a40898f5045aa1af3b646b57333e88362325",
       "installedAt": "2026-10-20T02:36:46.218Z",
       "updatedAt": "2026-10-20T02:36:46.218Z"
+    },
+    "abyss": {
+      "source": "BeautyyuYanli/abyss",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/BeautyyuYanli/abyss.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "f5419eb73b266c7ede21245f453842d30478d2d5",
+      "installedAt": "2026-10-24T09:05:10.306Z",
+      "updatedAt": "2026-10-24T09:05:10.306Z"
     }
   },
   "dismissed": {
@@ -605,6 +614,7 @@
     "codex",
     "cursor",
     "droid",
+    "fx",
     "gemini-cli",
     "github-copilot",
     "kilo",
