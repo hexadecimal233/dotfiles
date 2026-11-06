@@ -125,7 +125,11 @@
           },
         },
       ],
+      "language_servers": ["tombi", "!taplo"],
     },
+    "Kotlin": {
+      "enable_language_server": false
+    }
   },
   // Theme & UI
   "which_key": {
@@ -207,11 +211,11 @@
   "theme": {
     "mode": "dark",
     "light": "Pierre Light",
-    "dark": "Gruvbox Dark",
+    "dark": "Gruvbox Dark Hard",
   },
   // Misc
   "autosave": "on_window_change",
-  "diff_view_style": "split",
+  "diff_view_style": "unified",
   "edit_predictions": {
     "ollama": {
       "api_url": "http://localhost:11434",
@@ -395,7 +399,7 @@
     "luau": false,
     "log": true,
     "ini": true,
-    "kotlin": false,
+    "kotlin": true,
     "make": true,
     "github-theme": true,
     "mermaid": true,
@@ -415,7 +419,7 @@
     "sql": true,
     "slint": true,
     "svelte": true,
-    "swift": false,
+    "swift": true,
     "symbols": true,
     "toml": true,
     "tombi": true,
@@ -425,6 +429,9 @@
     "wgsl-wesl": true,
     "xml": true,
     "roto": true,
+    "rhai": true,
     "zig": false,
+    "resonance-with-hatsune-miku-theme": true,
+    "windows-batch": true,
   },
 }

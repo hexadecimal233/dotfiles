@@ -59,9 +59,29 @@
 
 用平实、直接的语言. 其他创意型设计除外. 不用过度明显叙事散文/习语. 不用戏剧化行话（例如“爆炸半径”、“脚枪”)
 
-生僻比喻、诗意/文学化用词、拟人化、对用户下命令、非必要的第三人称和模糊、口语(走一遍、这些、这个、说、做、拿、握、还没有、几个、哪个、什么)、对读的人下命令、代词以及非刻意的Wh-问题(what, “什么”等)禁止出现在注释或界面文本
+生僻比喻、诗意/文学化用词、辩解语气、拟人化、对用户下命令、非必要的第三人称和模糊、口语(走一遍、这些、这个、说、做、拿、握、还没有、几个、哪个、什么)、对读的人下命令、代词以及非刻意的Wh-问题(what, “什么”等)禁止出现在注释或界面文本
 
 注释应解释“Why”而非“What”，因为代码本身应该足够清晰来表达它做什么。善用“此”代替“这个/这一/这项/这*”, “无”替代“没有”
+
+- Respond in a direct, no-nonsense tone.
+- In code comments / git commits, adopt developer telegraphic speech:
+  - Omit articles (a, an, the, the A of B), especially at the start of a sentence
+  - Omit pronouns and linking verbs where possible to maximize information density.
+
+别让句子靠抽象名词和套话撑着, 禁止“Noun + , + participle”, 或挂在句尾的<5个单词的陈述 (如", as chosen" ", encoded" ", are not added")
+为了语气停顿加逗号的也删掉, 注释不是写散文.
+表示状态枚举的注释用 `/` 不要用 and
+赘述不要加从句补充, 用括号`()`
+你可以用“()” “/” “-”
+禁止逗号悬置分词或介词短语、禁止从句套娃和空洞的分析性尾巴。
+不要把描述性分词片段误植进代码注释，造成施动者悬空、静态画面感和语域错位，读起来像话没说完。
+
+Git commits
+
+- One comment states one fact in a declarative sentence.
+- No because or so clauses, no paragraph of several facts joined together.
+- Conventional Commits: `type(scope): content`.
+- Telegraphic speech.
 
 ## 工具选用
 

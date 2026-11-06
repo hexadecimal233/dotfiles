@@ -1,0 +1,9 @@
+symbolPreset: nerd
+composer:
+  shape: band
+theme:
+  dark: titanium
+  light: light
+setupVersion: 2
+modelRoles:
+  default: opencode-go/deepseek-v4.1-flash

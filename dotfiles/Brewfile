@@ -58,6 +58,8 @@ brew "dust"
 brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
+# Command-line batch renaming tool
+brew "f2"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -100,8 +102,12 @@ brew "htop"
 brew "hyfetch"
 # Command-line benchmarking tool
 brew "hyperfine"
+# CLI tool for searching and downloading app packages from the iOS App Store
+brew "ipatool"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
+# Synchronize a maildir with an IMAP server
+brew "isync"
 # Git-compatible distributed version control system
 brew "jj"
 # Lightweight and flexible command-line JSON processor
@@ -144,6 +150,8 @@ brew "qpdf"
 brew "rclone"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Command-line tool to batch rename files and directories
+brew "rnr"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Cross-platform network monitoring terminal UI with deep packet inspection
@@ -168,6 +176,8 @@ brew "tio"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
+# Markup-based typesetting system
+brew "typst"
 # List detailed info about USB devices
 brew "usbutils"
 # Internet file retriever
@@ -317,3 +327,4 @@ vscode "wgsl-analyzer.wgsl-analyzer"
 vscode "yoavbls.pretty-ts-errors"
 go "cmd/go"
 go "cmd/gofmt"
+uv "trafilatura"

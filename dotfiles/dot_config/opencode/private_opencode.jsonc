@@ -39,5 +39,18 @@
       "type": "remote",
       "url": "http://localhost:3654/mcp",
     },
+    "rea": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "rea-agents@6.8.0",
+        "mcp"
+      ],
+      "enabled": true,
+      "environment": {
+        "HOPPER_LAUNCHER_PATH": "/Applications/Hopper Disassembler.app/Contents/MacOS/hopper"
+      }
+    },
   },
 }

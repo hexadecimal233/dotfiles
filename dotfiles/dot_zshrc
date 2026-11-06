@@ -18,3 +18,5 @@ if [[ -o interactive ]]; then
   # mise
   command -v mise    >/dev/null 2>&1 && eval "$(mise activate zsh)"
 fi
+
+export PATH="$HOME/.local/bin:$PATH"

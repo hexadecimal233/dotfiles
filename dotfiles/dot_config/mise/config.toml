@@ -28,6 +28,7 @@ julia = { version = "1", checksum_expr = '"sha256:" + filter(fromJSON(body)[vers
 "pipx:droidasc" = "latest"
 "cargo:cargo-shear" = "latest"
 "npm:designlang" = "latest"
+"github:can1357/oh-my-pi" = "latest"
 
 [env]
 DOTNET_CLI_TELEMETRY_OPTOUT = "1"

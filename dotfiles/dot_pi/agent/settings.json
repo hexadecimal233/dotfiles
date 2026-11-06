@@ -17,5 +17,9 @@
   "quietStartup": false,
   "fullscreenCopyOnSelect": true,
   "showCacheMissNotices": true,
-  "enableInstallTelemetry": false
+  "enableInstallTelemetry": false,
+  "modelThinkingLevels": {
+    "deepseek/deepseek-flash": "high",
+    "opencode-go/deepseek-v4.1-flash": "high"
+  }
 }
